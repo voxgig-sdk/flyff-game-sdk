@@ -1,0 +1,48 @@
+# Entity: awake
+
+main: kit: entity: awake: {
+
+  alias: field: {}
+
+  name: "awake"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/awake/skill"
+          parts: [
+            "awake"
+            "skill"
+          ]
+          select: {
+            "$action": "skill"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/awake/stat"
+          parts: [
+            "awake"
+            "stat"
+          ]
+          select: {
+            "$action": "stat"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

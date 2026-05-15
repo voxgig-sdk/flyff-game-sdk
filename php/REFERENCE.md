@@ -1,0 +1,1602 @@
+# FlyffGame PHP SDK Reference
+
+Complete API reference for the FlyffGame PHP SDK.
+
+
+## FlyffGameSDK
+
+### Constructor
+
+```php
+require_once __DIR__ . '/flyff-game_sdk.php';
+
+$client = new FlyffGameSDK($options);
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `$options` | `array` | SDK configuration options. |
+| `$options["apikey"]` | `string` | API key for authentication. |
+| `$options["base"]` | `string` | Base URL for API requests. |
+| `$options["prefix"]` | `string` | URL prefix appended after base. |
+| `$options["suffix"]` | `string` | URL suffix appended after path. |
+| `$options["headers"]` | `array` | Custom headers for all requests. |
+| `$options["feature"]` | `array` | Feature configuration. |
+| `$options["system"]` | `array` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `FlyffGameSDK::test($testopts = null, $sdkopts = null)`
+
+Create a test client with mock features active. Both arguments may be `null`.
+
+```php
+$client = FlyffGameSDK::test();
+```
+
+
+### Instance Methods
+
+#### `Achievement($data = null)`
+
+Create a new `AchievementEntity` instance. Pass `null` for no initial data.
+
+#### `Awake($data = null)`
+
+Create a new `AwakeEntity` instance. Pass `null` for no initial data.
+
+#### `Badge($data = null)`
+
+Create a new `BadgeEntity` instance. Pass `null` for no initial data.
+
+#### `Class($data = null)`
+
+Create a new `ClassEntity` instance. Pass `null` for no initial data.
+
+#### `Core($data = null)`
+
+Create a new `CoreEntity` instance. Pass `null` for no initial data.
+
+#### `Couple($data = null)`
+
+Create a new `CoupleEntity` instance. Pass `null` for no initial data.
+
+#### `Dungeon($data = null)`
+
+Create a new `DungeonEntity` instance. Pass `null` for no initial data.
+
+#### `Element($data = null)`
+
+Create a new `ElementEntity` instance. Pass `null` for no initial data.
+
+#### `EquipmentSet($data = null)`
+
+Create a new `EquipmentSetEntity` instance. Pass `null` for no initial data.
+
+#### `ExchangeMenus($data = null)`
+
+Create a new `ExchangeMenusEntity` instance. Pass `null` for no initial data.
+
+#### `HousingPack($data = null)`
+
+Create a new `HousingPackEntity` instance. Pass `null` for no initial data.
+
+#### `HousingTemplate($data = null)`
+
+Create a new `HousingTemplateEntity` instance. Pass `null` for no initial data.
+
+#### `Item($data = null)`
+
+Create a new `ItemEntity` instance. Pass `null` for no initial data.
+
+#### `Language($data = null)`
+
+Create a new `LanguageEntity` instance. Pass `null` for no initial data.
+
+#### `Lifestyle($data = null)`
+
+Create a new `LifestyleEntity` instance. Pass `null` for no initial data.
+
+#### `Monster($data = null)`
+
+Create a new `MonsterEntity` instance. Pass `null` for no initial data.
+
+#### `Npc($data = null)`
+
+Create a new `NpcEntity` instance. Pass `null` for no initial data.
+
+#### `PartySkill($data = null)`
+
+Create a new `PartySkillEntity` instance. Pass `null` for no initial data.
+
+#### `Pkn($data = null)`
+
+Create a new `PknEntity` instance. Pass `null` for no initial data.
+
+#### `Place($data = null)`
+
+Create a new `PlaceEntity` instance. Pass `null` for no initial data.
+
+#### `Quest($data = null)`
+
+Create a new `QuestEntity` instance. Pass `null` for no initial data.
+
+#### `RaisedPet($data = null)`
+
+Create a new `RaisedPetEntity` instance. Pass `null` for no initial data.
+
+#### `Recipe($data = null)`
+
+Create a new `RecipeEntity` instance. Pass `null` for no initial data.
+
+#### `Skill($data = null)`
+
+Create a new `SkillEntity` instance. Pass `null` for no initial data.
+
+#### `UpgradeLevelBonus($data = null)`
+
+Create a new `UpgradeLevelBonusEntity` instance. Pass `null` for no initial data.
+
+#### `Version($data = null)`
+
+Create a new `VersionEntity` instance. Pass `null` for no initial data.
+
+#### `World($data = null)`
+
+Create a new `WorldEntity` instance. Pass `null` for no initial data.
+
+#### `optionsMap(): array`
+
+Return a deep copy of the current SDK options.
+
+#### `getUtility(): ProjectNameUtility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(array $fetchargs = []): array`
+
+Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `$fetchargs["path"]` | `string` | URL path with optional `{param}` placeholders. |
+| `$fetchargs["method"]` | `string` | HTTP method (default: `"GET"`). |
+| `$fetchargs["params"]` | `array` | Path parameter values for `{param}` substitution. |
+| `$fetchargs["query"]` | `array` | Query string parameters. |
+| `$fetchargs["headers"]` | `array` | Request headers (merged with defaults). |
+| `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
+| `$fetchargs["ctrl"]` | `array` | Control options. |
+
+**Returns:** `array [$result, $err]`
+
+#### `prepare(array $fetchargs = []): array`
+
+Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+
+
+---
+
+## AchievementEntity
+
+```php
+$achievement = $client->Achievement();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Achievement()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Achievement()->load(["id" => "achievement_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AchievementEntity`
+
+Create a new `AchievementEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## AwakeEntity
+
+```php
+$awake = $client->Awake();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Awake()->load(["id" => "awake_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AwakeEntity`
+
+Create a new `AwakeEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## BadgeEntity
+
+```php
+$badge = $client->Badge();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Badge()->load(["id" => "badge_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BadgeEntity`
+
+Create a new `BadgeEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## ClassEntity
+
+```php
+$class = $client->Class();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attack_speed` | ``$NUMBER`` | Yes |  |
+| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
+| `block` | ``$NUMBER`` | Yes |  |
+| `critical` | ``$NUMBER`` | Yes |  |
+| `defense` | ``$NUMBER`` | Yes |  |
+| `fp` | ``$NUMBER`` | Yes |  |
+| `hp` | ``$NUMBER`` | Yes |  |
+| `icon` | ``$STRING`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
+| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
+| `max_fp` | ``$STRING`` | Yes |  |
+| `max_hp` | ``$STRING`` | Yes |  |
+| `max_level` | ``$INTEGER`` | Yes |  |
+| `max_mp` | ``$STRING`` | Yes |  |
+| `min_level` | ``$INTEGER`` | Yes |  |
+| `mp` | ``$NUMBER`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `parent` | ``$INTEGER`` | No |  |
+| `tree` | ``$STRING`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Class()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Class()->load(["id" => "class_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ClassEntity`
+
+Create a new `ClassEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## CoreEntity
+
+```php
+$core = $client->Core();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Core()->load(["id" => "core_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CoreEntity`
+
+Create a new `CoreEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## CoupleEntity
+
+```php
+$couple = $client->Couple();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Couple()->load(["id" => "couple_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CoupleEntity`
+
+Create a new `CoupleEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## DungeonEntity
+
+```php
+$dungeon = $client->Dungeon();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Dungeon()->load(["id" => "dungeon_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DungeonEntity`
+
+Create a new `DungeonEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## ElementEntity
+
+```php
+$element = $client->Element();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Element()->load(["id" => "element_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ElementEntity`
+
+Create a new `ElementEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## EquipmentSetEntity
+
+```php
+$equipment_set = $client->EquipmentSet();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->EquipmentSet()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->EquipmentSet()->load(["id" => "equipment_set_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): EquipmentSetEntity`
+
+Create a new `EquipmentSetEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## ExchangeMenusEntity
+
+```php
+$exchange_menus = $client->ExchangeMenus();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->ExchangeMenus()->load(["id" => "exchange_menus_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ExchangeMenusEntity`
+
+Create a new `ExchangeMenusEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## HousingPackEntity
+
+```php
+$housing_pack = $client->HousingPack();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->HousingPack()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->HousingPack()->load(["id" => "housing_pack_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): HousingPackEntity`
+
+Create a new `HousingPackEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## HousingTemplateEntity
+
+```php
+$housing_template = $client->HousingTemplate();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->HousingTemplate()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->HousingTemplate()->load(["id" => "housing_template_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): HousingTemplateEntity`
+
+Create a new `HousingTemplateEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## ItemEntity
+
+```php
+$item = $client->Item();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Item()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Item()->load(["id" => "item_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ItemEntity`
+
+Create a new `ItemEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## LanguageEntity
+
+```php
+$language = $client->Language();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Language()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Language()->load(["id" => "language_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LanguageEntity`
+
+Create a new `LanguageEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## LifestyleEntity
+
+```php
+$lifestyle = $client->Lifestyle();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Lifestyle()->load(["id" => "lifestyle_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LifestyleEntity`
+
+Create a new `LifestyleEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## MonsterEntity
+
+```php
+$monster = $client->Monster();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Monster()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Monster()->load(["id" => "monster_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): MonsterEntity`
+
+Create a new `MonsterEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## NpcEntity
+
+```php
+$npc = $client->Npc();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Npc()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Npc()->load(["id" => "npc_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NpcEntity`
+
+Create a new `NpcEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## PartySkillEntity
+
+```php
+$party_skill = $client->PartySkill();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->PartySkill()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->PartySkill()->load(["id" => "party_skill_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PartySkillEntity`
+
+Create a new `PartySkillEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## PknEntity
+
+```php
+$pkn = $client->Pkn();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Pkn()->load(["id" => "pkn_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PknEntity`
+
+Create a new `PknEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## PlaceEntity
+
+```php
+$place = $client->Place();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Place()->load(["id" => "place_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PlaceEntity`
+
+Create a new `PlaceEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## QuestEntity
+
+```php
+$quest = $client->Quest();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Quest()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Quest()->load(["id" => "quest_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): QuestEntity`
+
+Create a new `QuestEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## RaisedPetEntity
+
+```php
+$raised_pet = $client->RaisedPet();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->RaisedPet()->load(["id" => "raised_pet_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RaisedPetEntity`
+
+Create a new `RaisedPetEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## RecipeEntity
+
+```php
+$recipe = $client->Recipe();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Recipe()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Recipe()->load(["id" => "recipe_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RecipeEntity`
+
+Create a new `RecipeEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## SkillEntity
+
+```php
+$skill = $client->Skill();
+```
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->Skill()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Skill()->load(["id" => "skill_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SkillEntity`
+
+Create a new `SkillEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## UpgradeLevelBonusEntity
+
+```php
+$upgrade_level_bonus = $client->UpgradeLevelBonus();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->UpgradeLevelBonus()->load(["id" => "upgrade_level_bonus_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): UpgradeLevelBonusEntity`
+
+Create a new `UpgradeLevelBonusEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## VersionEntity
+
+```php
+$version = $client->Version();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->Version()->load(["id" => "version_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VersionEntity`
+
+Create a new `VersionEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## WorldEntity
+
+```php
+$world = $client->World();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `continent` | ``$ARRAY`` | Yes |  |
+| `flying` | ``$BOOLEAN`` | Yes |  |
+| `height` | ``$INTEGER`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `in_door` | ``$BOOLEAN`` | Yes |  |
+| `lodestar` | ``$ARRAY`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `pk` | ``$BOOLEAN`` | Yes |  |
+| `place` | ``$ARRAY`` | Yes |  |
+| `revival_key` | ``$STRING`` | No |  |
+| `revival_world` | ``$INTEGER`` | No |  |
+| `tile_name` | ``$STRING`` | Yes |  |
+| `tile_size` | ``$INTEGER`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+| `width` | ``$INTEGER`` | Yes |  |
+
+### Operations
+
+#### `list(array $reqmatch, ?array $ctrl = null): array`
+
+List entities matching the given criteria. Returns an array.
+
+```php
+[$results, $err] = $client->World()->list([]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): array`
+
+Load a single entity matching the given criteria.
+
+```php
+[$result, $err] = $client->World()->load(["id" => "world_id"]);
+```
+
+### Common Methods
+
+#### `dataGet(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `dataSet($data): void`
+
+Set the entity data.
+
+#### `matchGet(): array`
+
+Get the entity match criteria.
+
+#### `matchSet($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WorldEntity`
+
+Create a new `WorldEntity` instance with the same client and
+options.
+
+#### `getName(): string`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```php
+$client = new FlyffGameSDK([
+  "feature" => [
+    "test" => ["active" => true],
+  ],
+]);
+```
+

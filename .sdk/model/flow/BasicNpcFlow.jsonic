@@ -1,0 +1,44 @@
+# BasicNpcFlow
+
+main: kit: flow: BasicNpcFlow:
+{
+  entity: "npc",
+  kind: "basic",
+  name: "BasicNpcFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "npc_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "npc_ref01",
+        srcdatavar: "npc_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "npc01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-npc_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNpcFlow"
+}

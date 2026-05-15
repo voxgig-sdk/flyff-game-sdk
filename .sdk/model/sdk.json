@@ -1,0 +1,4003 @@
+{
+  "name": "flyff-game",
+  "origin": "voxgig-sdk",
+  "def": "flyff-game_0.1.0.json",
+  "main": {
+    "kit": {
+      "info": {
+        "contact": {
+          "email": "ir@gala.kr",
+          "name": "Gala Lab",
+          "url": "http://galalab.kr/"
+        },
+        "description": "All Game Data from Flyff Universe. This API provides access to game data including classes, worlds, monsters, items, equipment sets, skills, NPCs, quests, achievements, and more. Limited to 300 calls per minute per IP.",
+        "license": {
+          "name": "Proprietary",
+          "url": "https://api.flyff.com/"
+        },
+        "servers": [
+          {
+            "description": "Main server",
+            "url": "https://api.flyff.com"
+          }
+        ],
+        "termsOfService": "https://api.flyff.com/",
+        "title": "Flyff Game API",
+        "version": "1.9.2"
+      },
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "achievement": {
+          "alias": {
+            "field": {}
+          },
+          "name": "achievement",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/achievement",
+                  "parts": [
+                    "achievement"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "achievement_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/achievement/{achievementIds}",
+                  "parts": [
+                    "achievement",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "achievementIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "achievement_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/achievement/{achievementId}",
+                  "parts": [
+                    "achievement",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "achievementId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "awake": {
+          "alias": {
+            "field": {}
+          },
+          "name": "awake",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/awake/skill",
+                  "parts": [
+                    "awake",
+                    "skill"
+                  ],
+                  "select": {
+                    "$action": "skill"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {}
+                },
+                {
+                  "method": "GET",
+                  "orig": "/awake/stat",
+                  "parts": [
+                    "awake",
+                    "stat"
+                  ],
+                  "select": {
+                    "$action": "stat"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "badge": {
+          "alias": {
+            "field": {}
+          },
+          "name": "badge",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/badge/{fileName}",
+                  "parts": [
+                    "image",
+                    "badge",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "class": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "attack_speed",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "auto_attack_factor",
+              "req": true,
+              "type": "`$OBJECT`",
+              "active": true
+            },
+            {
+              "name": "block",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "critical",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "defense",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "fp",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "hp",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "icon",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "id",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "magic_defense_int_factor",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "magic_defense_sta_factor",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "max_fp",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "max_hp",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "max_level",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_mp",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "min_level",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "mp",
+              "req": true,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": true,
+              "type": "`$OBJECT`",
+              "active": true
+            },
+            {
+              "name": "parent",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "tree",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "type",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "class",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/class",
+                  "parts": [
+                    "class"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "vagrant.png",
+                        "kind": "param",
+                        "name": "file_name",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "messenger",
+                        "kind": "param",
+                        "name": "style",
+                        "orig": "style",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/class/{style}/{fileName}",
+                  "parts": [
+                    "image",
+                    "class",
+                    "{style}",
+                    "{file_name}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "file_name"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "file_name",
+                      "style"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "Vagrant.png",
+                        "kind": "param",
+                        "name": "file_name",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/class/tree/{fileName}",
+                  "parts": [
+                    "image",
+                    "class",
+                    "tree",
+                    "{file_name}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "file_name"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "file_name"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "1689,296,2881",
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "class_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/class/{classIds}",
+                  "parts": [
+                    "class",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "classIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": 1689,
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "class_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/class/{classId}",
+                  "parts": [
+                    "class",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "classId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "tree"
+              ],
+              [
+                "class"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "core": {
+          "alias": {
+            "field": {}
+          },
+          "name": "core",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "parameter_id",
+                        "orig": "parameter_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/parameter/{parameterIds}",
+                  "parts": [
+                    "parameter",
+                    "{parameter_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "parameterIds": "parameter_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "parameter_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "parameter_id",
+                        "orig": "parameter_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/parameter/{parameterId}",
+                  "parts": [
+                    "parameter",
+                    "{parameter_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "parameterId": "parameter_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "parameter_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "parameter"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "couple": {
+          "alias": {
+            "field": {}
+          },
+          "name": "couple",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/couple",
+                  "parts": [
+                    "couple"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "dungeon": {
+          "alias": {
+            "field": {}
+          },
+          "name": "dungeon",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/dungeon",
+                  "parts": [
+                    "dungeon"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "element": {
+          "alias": {
+            "field": {}
+          },
+          "name": "element",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/element/{fileName}",
+                  "parts": [
+                    "image",
+                    "element",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "equipment_set": {
+          "alias": {
+            "field": {}
+          },
+          "name": "equipment_set",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/equipmentset",
+                  "parts": [
+                    "equipmentset"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "equipment_set_id",
+                        "orig": "equipment_set_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/equipmentset/{equipmentSetIds}",
+                  "parts": [
+                    "equipmentset",
+                    "{equipment_set_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "equipmentSetIds": "equipment_set_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "equipment_set_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "equipment_set_id",
+                        "orig": "equipment_set_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/equipmentset/{equipmentSetId}",
+                  "parts": [
+                    "equipmentset",
+                    "{equipment_set_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "equipmentSetId": "equipment_set_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "equipment_set_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "equipmentset"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "exchange_menus": {
+          "alias": {
+            "field": {}
+          },
+          "name": "exchange_menus",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/exchangemenu",
+                  "parts": [
+                    "exchangemenu"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "housing_pack": {
+          "alias": {
+            "field": {}
+          },
+          "name": "housing_pack",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/housingpack",
+                  "parts": [
+                    "housingpack"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "housing_pack_id",
+                        "orig": "housing_pack_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/housingpack/{housingPackIds}",
+                  "parts": [
+                    "housingpack",
+                    "{housing_pack_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "housingPackIds": "housing_pack_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "housing_pack_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "housing_pack_id",
+                        "orig": "housing_pack_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/housingpack/{housingPackId}",
+                  "parts": [
+                    "housingpack",
+                    "{housing_pack_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "housingPackId": "housing_pack_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "housing_pack_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "housingpack"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "housing_template": {
+          "alias": {
+            "field": {}
+          },
+          "name": "housing_template",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/housingtemplate",
+                  "parts": [
+                    "housingtemplate"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "file_name",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/housingtemplate/{fileName}",
+                  "parts": [
+                    "image",
+                    "housingtemplate",
+                    "{file_name}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "file_name"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "file_name"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "housing_template_id",
+                        "orig": "housing_template_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/housingtemplate/{housingTemplateIds}",
+                  "parts": [
+                    "housingtemplate",
+                    "{housing_template_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "housingTemplateIds": "housing_template_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "housing_template_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "housing_template_id",
+                        "orig": "housing_template_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/housingtemplate/{housingTemplateId}",
+                  "parts": [
+                    "housingtemplate",
+                    "{housing_template_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "housingTemplateId": "housing_template_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "housing_template_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "housingtemplate"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "item": {
+          "alias": {
+            "field": {}
+          },
+          "name": "item",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/item",
+                  "parts": [
+                    "item"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/item/{fileName}",
+                  "parts": [
+                    "image",
+                    "item",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "item_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/item/{itemIds}",
+                  "parts": [
+                    "item",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "itemIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "item_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/item/{itemId}",
+                  "parts": [
+                    "item",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "itemId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "language": {
+          "alias": {
+            "field": {}
+          },
+          "name": "language",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/language",
+                  "parts": [
+                    "language"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "language_code",
+                        "orig": "language_code",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/language/{languageCode}.png",
+                  "parts": [
+                    "image",
+                    "language",
+                    "{languageCode}.png"
+                  ],
+                  "select": {
+                    "$action": "language_code",
+                    "exist": [
+                      "language_code"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "language"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "lifestyle": {
+          "alias": {
+            "field": {}
+          },
+          "name": "lifestyle",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/lifestyle",
+                  "parts": [
+                    "lifestyle"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "monster": {
+          "alias": {
+            "field": {}
+          },
+          "name": "monster",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/monster",
+                  "parts": [
+                    "monster"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/monster/{fileName}",
+                  "parts": [
+                    "image",
+                    "monster",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "monster_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/monster/{monsterIds}",
+                  "parts": [
+                    "monster",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "monsterIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "monster_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/monster/{monsterId}",
+                  "parts": [
+                    "monster",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "monsterId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "npc": {
+          "alias": {
+            "field": {}
+          },
+          "name": "npc",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/npc",
+                  "parts": [
+                    "npc"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/npc/{fileName}",
+                  "parts": [
+                    "image",
+                    "npc",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "npc_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/npc/{npcIds}",
+                  "parts": [
+                    "npc",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "npcIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "npc_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/npc/{npcId}",
+                  "parts": [
+                    "npc",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "npcId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "party_skill": {
+          "alias": {
+            "field": {}
+          },
+          "name": "party_skill",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/partyskill",
+                  "parts": [
+                    "partyskill"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "party_skill_id",
+                        "orig": "party_skill_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/partyskill/{partySkillIds}",
+                  "parts": [
+                    "partyskill",
+                    "{party_skill_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "partySkillIds": "party_skill_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "party_skill_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "party_skill_id",
+                        "orig": "party_skill_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/partyskill/{partySkillId}",
+                  "parts": [
+                    "partyskill",
+                    "{party_skill_id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "partySkillId": "party_skill_id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "party_skill_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "partyskill"
+              ]
+            ]
+          },
+          "active": true,
+          "fields": []
+        },
+        "pkn": {
+          "alias": {
+            "field": {}
+          },
+          "name": "pkn",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/pk",
+                  "parts": [
+                    "pk"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "place": {
+          "alias": {
+            "field": {}
+          },
+          "name": "place",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/place/{fileName}",
+                  "parts": [
+                    "image",
+                    "place",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "quest": {
+          "alias": {
+            "field": {}
+          },
+          "name": "quest",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/quest",
+                  "parts": [
+                    "quest"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "quest_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/quest/{questIds}",
+                  "parts": [
+                    "quest",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "questIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "quest_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/quest/{questId}",
+                  "parts": [
+                    "quest",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "questId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "raised_pet": {
+          "alias": {
+            "field": {}
+          },
+          "name": "raised_pet",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/raisedpet",
+                  "parts": [
+                    "raisedpet"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "recipe": {
+          "alias": {
+            "field": {}
+          },
+          "name": "recipe",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/recipe",
+                  "parts": [
+                    "recipe"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "recipe_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/recipe/{recipeIds}",
+                  "parts": [
+                    "recipe",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "recipeIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "recipe_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/recipe/{recipeId}",
+                  "parts": [
+                    "recipe",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "recipeId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "skill": {
+          "alias": {
+            "field": {}
+          },
+          "name": "skill",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/skill",
+                  "parts": [
+                    "skill"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "file_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/skill/{fileName}",
+                  "parts": [
+                    "image",
+                    "skill",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "fileName": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "skill_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/skill/{skillIds}",
+                  "parts": [
+                    "skill",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "skillIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "skill_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/skill/{skillId}",
+                  "parts": [
+                    "skill",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "skillId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "upgrade_level_bonus": {
+          "alias": {
+            "field": {}
+          },
+          "name": "upgrade_level_bonus",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/upgradelevelbonus",
+                  "parts": [
+                    "upgradelevelbonus"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "version": {
+          "alias": {
+            "field": {}
+          },
+          "name": "version",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/version/api",
+                  "parts": [
+                    "version",
+                    "api"
+                  ],
+                  "select": {
+                    "$action": "api"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {}
+                },
+                {
+                  "method": "GET",
+                  "orig": "/version/data",
+                  "parts": [
+                    "version",
+                    "data"
+                  ],
+                  "select": {
+                    "$action": "data"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "world": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "continent",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "flying",
+              "req": true,
+              "type": "`$BOOLEAN`",
+              "active": true
+            },
+            {
+              "name": "height",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "id",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "in_door",
+              "req": true,
+              "type": "`$BOOLEAN`",
+              "active": true
+            },
+            {
+              "name": "lodestar",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": true,
+              "type": "`$OBJECT`",
+              "active": true
+            },
+            {
+              "name": "pk",
+              "req": true,
+              "type": "`$BOOLEAN`",
+              "active": true
+            },
+            {
+              "name": "place",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "revival_key",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "revival_world",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "tile_name",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "tile_size",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "type",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "width",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "world",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/world",
+                  "parts": [
+                    "world"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "tile_x",
+                        "orig": "tile_x",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "kind": "param",
+                        "name": "tile_y",
+                        "orig": "tile_y",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "wdmadrigal",
+                        "kind": "param",
+                        "name": "world_tile_name",
+                        "orig": "world_tile_name",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
+                  "parts": [
+                    "image",
+                    "world",
+                    "{worldTileName}{tileX}-{tileY}-0.png"
+                  ],
+                  "select": {
+                    "$action": "world_tile_nametile_x_tile_y_0",
+                    "exist": [
+                      "tile_x",
+                      "tile_y",
+                      "world_tile_name"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "4015,4839,6063",
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "world_id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/world/{worldIds}",
+                  "parts": [
+                    "world",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "worldIds": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": 4015,
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "world_id",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/world/{worldId}",
+                  "parts": [
+                    "world",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "worldId": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "world"
+              ]
+            ]
+          },
+          "active": true
+        }
+      },
+      "feature": {
+        "test": {
+          "name": "test",
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1",
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            }
+          },
+          "target": {
+            "ts": {
+              "deps": {}
+            },
+            "go": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            }
+          }
+        }
+      },
+      "flow": {
+        "BasicAchievementFlow": {
+          "entity": "achievement",
+          "kind": "basic",
+          "name": "BasicAchievementFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "achievement_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "achievement_ref01",
+                "srcdatavar": "achievement_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "achievement01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-achievement_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicAchievementFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicAwakeFlow": {
+          "entity": "awake",
+          "kind": "basic",
+          "name": "BasicAwakeFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "awake_ref01",
+                "srcdatavar": "awake_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-awake_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicAwakeFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicBadgeFlow": {
+          "entity": "badge",
+          "kind": "basic",
+          "name": "BasicBadgeFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "badge_ref01",
+                "srcdatavar": "badge_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "badge01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-badge_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicBadgeFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicClassFlow": {
+          "entity": "class",
+          "kind": "basic",
+          "name": "BasicClassFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "class_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "class_ref01",
+                "srcdatavar": "class_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "class01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-class_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicClassFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCoreFlow": {
+          "entity": "core",
+          "kind": "basic",
+          "name": "BasicCoreFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "core_ref01",
+                "srcdatavar": "core_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "core01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-core_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCoreFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCoupleFlow": {
+          "entity": "couple",
+          "kind": "basic",
+          "name": "BasicCoupleFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "couple_ref01",
+                "srcdatavar": "couple_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-couple_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCoupleFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicDungeonFlow": {
+          "entity": "dungeon",
+          "kind": "basic",
+          "name": "BasicDungeonFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "dungeon_ref01",
+                "srcdatavar": "dungeon_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-dungeon_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicDungeonFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicElementFlow": {
+          "entity": "element",
+          "kind": "basic",
+          "name": "BasicElementFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "element_ref01",
+                "srcdatavar": "element_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "element01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-element_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicElementFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicEquipmentSetFlow": {
+          "entity": "equipment_set",
+          "kind": "basic",
+          "name": "BasicEquipmentSetFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "equipment_set_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "equipment_set_ref01",
+                "srcdatavar": "equipment_set_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "equipment_set01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-equipment_set_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicEquipmentSetFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicExchangeMenusFlow": {
+          "entity": "exchange_menus",
+          "kind": "basic",
+          "name": "BasicExchangeMenusFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "exchange_menus_ref01",
+                "srcdatavar": "exchange_menus_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-exchange_menus_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicExchangeMenusFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicHousingPackFlow": {
+          "entity": "housing_pack",
+          "kind": "basic",
+          "name": "BasicHousingPackFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "housing_pack_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "housing_pack_ref01",
+                "srcdatavar": "housing_pack_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "housing_pack01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-housing_pack_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicHousingPackFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicHousingTemplateFlow": {
+          "entity": "housing_template",
+          "kind": "basic",
+          "name": "BasicHousingTemplateFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "housing_template_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "housing_template_ref01",
+                "srcdatavar": "housing_template_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "housing_template01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-housing_template_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicHousingTemplateFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicItemFlow": {
+          "entity": "item",
+          "kind": "basic",
+          "name": "BasicItemFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "item_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "item_ref01",
+                "srcdatavar": "item_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "item01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-item_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicItemFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicLanguageFlow": {
+          "entity": "language",
+          "kind": "basic",
+          "name": "BasicLanguageFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "language_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "language_ref01",
+                "srcdatavar": "language_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "language_code": "language_code01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-language_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicLanguageFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicLifestyleFlow": {
+          "entity": "lifestyle",
+          "kind": "basic",
+          "name": "BasicLifestyleFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "lifestyle_ref01",
+                "srcdatavar": "lifestyle_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-lifestyle_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicLifestyleFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicMonsterFlow": {
+          "entity": "monster",
+          "kind": "basic",
+          "name": "BasicMonsterFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "monster_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "monster_ref01",
+                "srcdatavar": "monster_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "monster01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-monster_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicMonsterFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicNpcFlow": {
+          "entity": "npc",
+          "kind": "basic",
+          "name": "BasicNpcFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "npc_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "npc_ref01",
+                "srcdatavar": "npc_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "npc01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-npc_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicNpcFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicPartySkillFlow": {
+          "entity": "party_skill",
+          "kind": "basic",
+          "name": "BasicPartySkillFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "party_skill_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "party_skill_ref01",
+                "srcdatavar": "party_skill_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "party_skill01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-party_skill_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicPartySkillFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicPknFlow": {
+          "entity": "pkn",
+          "kind": "basic",
+          "name": "BasicPknFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "pkn_ref01",
+                "srcdatavar": "pkn_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-pkn_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicPknFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicPlaceFlow": {
+          "entity": "place",
+          "kind": "basic",
+          "name": "BasicPlaceFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "place_ref01",
+                "srcdatavar": "place_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "place01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-place_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicPlaceFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicQuestFlow": {
+          "entity": "quest",
+          "kind": "basic",
+          "name": "BasicQuestFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "quest_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "quest_ref01",
+                "srcdatavar": "quest_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "quest01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-quest_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicQuestFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicRaisedPetFlow": {
+          "entity": "raised_pet",
+          "kind": "basic",
+          "name": "BasicRaisedPetFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "raised_pet_ref01",
+                "srcdatavar": "raised_pet_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-raised_pet_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicRaisedPetFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicRecipeFlow": {
+          "entity": "recipe",
+          "kind": "basic",
+          "name": "BasicRecipeFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "recipe_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "recipe_ref01",
+                "srcdatavar": "recipe_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "recipe01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-recipe_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicRecipeFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicSkillFlow": {
+          "entity": "skill",
+          "kind": "basic",
+          "name": "BasicSkillFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "skill_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "skill_ref01",
+                "srcdatavar": "skill_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "skill01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-skill_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicSkillFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicUpgradeLevelBonusFlow": {
+          "entity": "upgrade_level_bonus",
+          "kind": "basic",
+          "name": "BasicUpgradeLevelBonusFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "upgrade_level_bonus_ref01",
+                "srcdatavar": "upgrade_level_bonus_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-upgrade_level_bonus_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicUpgradeLevelBonusFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicVersionFlow": {
+          "entity": "version",
+          "kind": "basic",
+          "name": "BasicVersionFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "version_ref01",
+                "srcdatavar": "version_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-version_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicVersionFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicWorldFlow": {
+          "entity": "world",
+          "kind": "basic",
+          "name": "BasicWorldFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "world_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "world_ref01",
+                "srcdatavar": "world_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "world01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-world_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicWorldFlow",
+          "active": true,
+          "param": {}
+        }
+      },
+      "target": {
+        "ts": {
+          "title": "TypeScript",
+          "ext": "ts",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "version": "^17.4.2",
+              "kind": "dev"
+            },
+            "typescript": {
+              "active": true,
+              "version": "^5.9.3",
+              "kind": "dev"
+            },
+            "@types/node": {
+              "active": true,
+              "version": "^25.6.0",
+              "kind": "dev"
+            }
+          },
+          "name": "ts",
+          "active": true
+        },
+        "go": {
+          "title": "Golang",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "srcfeature": false,
+          "deps": {
+            "github.com/voxgig/struct": {
+              "active": true,
+              "version": "v0.0.0",
+              "replace": "./utility/struct",
+              "kind": "prod"
+            }
+          },
+          "name": "go",
+          "active": true
+        },
+        "lua": {
+          "title": "Lua",
+          "ext": "lua",
+          "comment": {
+            "line": "--"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "srcfeature": false,
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "version": "2.5",
+              "kind": "prod"
+            }
+          },
+          "name": "lua",
+          "active": true
+        },
+        "php": {
+          "title": "PHP",
+          "ext": "php",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "srcfeature": false,
+          "deps": {},
+          "name": "php",
+          "active": true
+        },
+        "py": {
+          "title": "Python",
+          "ext": "py",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "srcfeature": false,
+          "deps": {
+            "requests": {
+              "active": true,
+              "version": "2.33",
+              "kind": "prod"
+            }
+          },
+          "name": "py",
+          "active": true
+        },
+        "rb": {
+          "title": "Ruby",
+          "ext": "rb",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "flyff-game"
+          },
+          "srcfeature": false,
+          "deps": {
+            "voxgig-struct": {
+              "active": true,
+              "version": "0.0.10",
+              "kind": "prod"
+            },
+            "json": {
+              "active": true,
+              "version": "0",
+              "kind": "prod"
+            }
+          },
+          "name": "rb",
+          "active": true
+        }
+      },
+      "option": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "api": {
+      "guide": {},
+      "entity": {}
+    }
+  },
+  "name__orig": "flyff-game",
+  "Name": "FlyffGame",
+  "name_": "flyff_game",
+  "name-": "flyff-game",
+  "NAME": "FLYFF-GAME"
+}

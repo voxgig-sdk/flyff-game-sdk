@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "core": {
+      "CORE00": {
+        "parameter_id": "PARAMETER01"
+      },
+      "CORE01": {
+        "parameter_id": "PARAMETER01"
+      },
+      "CORE02": {
+        "parameter_id": "PARAMETER01"
+      }
+    }
+  },
+  "new": {
+    "core": {
+      "core_ref01": {}
+    }
+  }
+}

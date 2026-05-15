@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "badge": {
+      "BADGE00": {},
+      "BADGE01": {},
+      "BADGE02": {}
+    }
+  },
+  "new": {
+    "badge": {
+      "badge_ref01": {}
+    }
+  }
+}

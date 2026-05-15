@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "dungeon": {
+      "DUNGEON00": {},
+      "DUNGEON01": {},
+      "DUNGEON02": {}
+    }
+  },
+  "new": {
+    "dungeon": {
+      "dungeon_ref01": {}
+    }
+  }
+}

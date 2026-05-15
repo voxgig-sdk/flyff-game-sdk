@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "language": {
+      "LANGUAGE00": {
+        "language_code": "LANGUAGE_CODE01"
+      },
+      "LANGUAGE01": {
+        "language_code": "LANGUAGE_CODE01"
+      },
+      "LANGUAGE02": {
+        "language_code": "LANGUAGE_CODE01"
+      }
+    }
+  },
+  "new": {
+    "language": {
+      "language_ref01": {}
+    }
+  }
+}

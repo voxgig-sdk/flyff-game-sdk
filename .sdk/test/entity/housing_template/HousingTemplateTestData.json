@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "housing_template": {
+      "HOUSING_TEMPLATE00": {
+        "file_name": "FILE_NAME01",
+        "housing_template_id": "HOUSING_TEMPLATE01"
+      },
+      "HOUSING_TEMPLATE01": {
+        "file_name": "FILE_NAME01",
+        "housing_template_id": "HOUSING_TEMPLATE01"
+      },
+      "HOUSING_TEMPLATE02": {
+        "file_name": "FILE_NAME01",
+        "housing_template_id": "HOUSING_TEMPLATE01"
+      }
+    }
+  },
+  "new": {
+    "housing_template": {
+      "housing_template_ref01": {}
+    }
+  }
+}

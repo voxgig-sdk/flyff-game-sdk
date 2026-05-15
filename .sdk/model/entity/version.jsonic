@@ -1,0 +1,48 @@
+# Entity: version
+
+main: kit: entity: version: {
+
+  alias: field: {}
+
+  name: "version"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/version/api"
+          parts: [
+            "version"
+            "api"
+          ]
+          select: {
+            "$action": "api"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/version/data"
+          parts: [
+            "version"
+            "data"
+          ]
+          select: {
+            "$action": "data"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

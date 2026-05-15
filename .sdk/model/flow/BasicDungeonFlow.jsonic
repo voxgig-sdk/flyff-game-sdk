@@ -1,0 +1,28 @@
+# BasicDungeonFlow
+
+main: kit: flow: BasicDungeonFlow:
+{
+  entity: "dungeon",
+  kind: "basic",
+  name: "BasicDungeonFlow",
+  step: [
+    {
+      input: {
+        ref: "dungeon_ref01",
+        srcdatavar: "dungeon_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dungeon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDungeonFlow"
+}

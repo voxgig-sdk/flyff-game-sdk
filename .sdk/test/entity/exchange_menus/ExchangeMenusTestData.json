@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "exchange_menus": {
+      "EXCHANGE_MENUS00": {},
+      "EXCHANGE_MENUS01": {},
+      "EXCHANGE_MENUS02": {}
+    }
+  },
+  "new": {
+    "exchange_menus": {
+      "exchange_menus_ref01": {}
+    }
+  }
+}

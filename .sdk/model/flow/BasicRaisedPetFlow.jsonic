@@ -1,0 +1,28 @@
+# BasicRaisedPetFlow
+
+main: kit: flow: BasicRaisedPetFlow:
+{
+  entity: "raised_pet",
+  kind: "basic",
+  name: "BasicRaisedPetFlow",
+  step: [
+    {
+      input: {
+        ref: "raised_pet_ref01",
+        srcdatavar: "raised_pet_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-raised_pet_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRaisedPetFlow"
+}

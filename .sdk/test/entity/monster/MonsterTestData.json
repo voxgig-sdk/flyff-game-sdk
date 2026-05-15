@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "monster": {
+      "MONSTER00": {},
+      "MONSTER01": {},
+      "MONSTER02": {}
+    }
+  },
+  "new": {
+    "monster": {
+      "monster_ref01": {}
+    }
+  }
+}

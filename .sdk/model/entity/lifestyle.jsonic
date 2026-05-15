@@ -1,0 +1,29 @@
+# Entity: lifestyle
+
+main: kit: entity: lifestyle: {
+
+  alias: field: {}
+
+  name: "lifestyle"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/lifestyle"
+          parts: [
+            "lifestyle"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

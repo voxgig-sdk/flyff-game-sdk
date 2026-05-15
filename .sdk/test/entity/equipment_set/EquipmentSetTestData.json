@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "equipment_set": {
+      "EQUIPMENT_SET00": {
+        "equipment_set_id": "EQUIPMENT_SET01"
+      },
+      "EQUIPMENT_SET01": {
+        "equipment_set_id": "EQUIPMENT_SET01"
+      },
+      "EQUIPMENT_SET02": {
+        "equipment_set_id": "EQUIPMENT_SET01"
+      }
+    }
+  },
+  "new": {
+    "equipment_set": {
+      "equipment_set_ref01": {}
+    }
+  }
+}

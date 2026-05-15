@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "raised_pet": {
+      "RAISED_PET00": {},
+      "RAISED_PET01": {},
+      "RAISED_PET02": {}
+    }
+  },
+  "new": {
+    "raised_pet": {
+      "raised_pet_ref01": {}
+    }
+  }
+}

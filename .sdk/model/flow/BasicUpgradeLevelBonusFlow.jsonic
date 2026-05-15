@@ -1,0 +1,28 @@
+# BasicUpgradeLevelBonusFlow
+
+main: kit: flow: BasicUpgradeLevelBonusFlow:
+{
+  entity: "upgrade_level_bonus",
+  kind: "basic",
+  name: "BasicUpgradeLevelBonusFlow",
+  step: [
+    {
+      input: {
+        ref: "upgrade_level_bonus_ref01",
+        srcdatavar: "upgrade_level_bonus_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-upgrade_level_bonus_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUpgradeLevelBonusFlow"
+}

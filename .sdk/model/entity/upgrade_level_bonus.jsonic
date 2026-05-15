@@ -1,0 +1,29 @@
+# Entity: upgrade_level_bonus
+
+main: kit: entity: upgrade_level_bonus: {
+
+  alias: field: {}
+
+  name: "upgrade_level_bonus"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/upgradelevelbonus"
+          parts: [
+            "upgradelevelbonus"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

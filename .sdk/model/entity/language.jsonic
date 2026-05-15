@@ -1,0 +1,72 @@
+# Entity: language
+
+main: kit: entity: language: {
+
+  alias: field: {}
+
+  name: "language"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/language"
+          parts: [
+            "language"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "language_code"
+                orig: "language_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/language/{languageCode}.png"
+          parts: [
+            "image"
+            "language"
+            "{languageCode}.png"
+          ]
+          select: {
+            "$action": "language_code"
+            exist: [
+              "language_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "language"
+      ]
+    ]
+  }
+
+
+
+}

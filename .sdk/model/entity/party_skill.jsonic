@@ -1,0 +1,108 @@
+# Entity: party_skill
+
+main: kit: entity: party_skill: {
+
+  alias: field: {}
+
+  name: "party_skill"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/partyskill"
+          parts: [
+            "partyskill"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "party_skill_id"
+                orig: "party_skill_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/partyskill/{partySkillIds}"
+          parts: [
+            "partyskill"
+            "{party_skill_id}"
+          ]
+          rename: {
+            param: {
+              partySkillIds: "party_skill_id"
+            }
+          }
+          select: {
+            exist: [
+              "party_skill_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "party_skill_id"
+                orig: "party_skill_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/partyskill/{partySkillId}"
+          parts: [
+            "partyskill"
+            "{party_skill_id}"
+          ]
+          rename: {
+            param: {
+              partySkillId: "party_skill_id"
+            }
+          }
+          select: {
+            exist: [
+              "party_skill_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "partyskill"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,28 @@
+# BasicPknFlow
+
+main: kit: flow: BasicPknFlow:
+{
+  entity: "pkn",
+  kind: "basic",
+  name: "BasicPknFlow",
+  step: [
+    {
+      input: {
+        ref: "pkn_ref01",
+        srcdatavar: "pkn_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pkn_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPknFlow"
+}

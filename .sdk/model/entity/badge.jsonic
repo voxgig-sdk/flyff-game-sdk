@@ -1,0 +1,52 @@
+# Entity: badge
+
+main: kit: entity: badge: {
+
+  alias: field: {}
+
+  name: "badge"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "file_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/badge/{fileName}"
+          parts: [
+            "image"
+            "badge"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              fileName: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

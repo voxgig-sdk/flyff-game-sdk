@@ -1,0 +1,29 @@
+# Entity: dungeon
+
+main: kit: entity: dungeon: {
+
+  alias: field: {}
+
+  name: "dungeon"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/dungeon"
+          parts: [
+            "dungeon"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "skill": {
+      "SKILL00": {},
+      "SKILL01": {},
+      "SKILL02": {}
+    }
+  },
+  "new": {
+    "skill": {
+      "skill_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,108 @@
+# Entity: housing_pack
+
+main: kit: entity: housing_pack: {
+
+  alias: field: {}
+
+  name: "housing_pack"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/housingpack"
+          parts: [
+            "housingpack"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "housing_pack_id"
+                orig: "housing_pack_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/housingpack/{housingPackIds}"
+          parts: [
+            "housingpack"
+            "{housing_pack_id}"
+          ]
+          rename: {
+            param: {
+              housingPackIds: "housing_pack_id"
+            }
+          }
+          select: {
+            exist: [
+              "housing_pack_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "housing_pack_id"
+                orig: "housing_pack_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/housingpack/{housingPackId}"
+          parts: [
+            "housingpack"
+            "{housing_pack_id}"
+          ]
+          rename: {
+            param: {
+              housingPackId: "housing_pack_id"
+            }
+          }
+          select: {
+            exist: [
+              "housing_pack_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "housingpack"
+      ]
+    ]
+  }
+
+
+
+}

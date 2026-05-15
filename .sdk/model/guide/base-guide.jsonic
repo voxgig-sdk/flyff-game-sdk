@@ -1,0 +1,328 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 27
+  metrics: count: path: 65
+  metrics: count: method: 65
+
+  entity: achievement: {
+    path: "/achievement": {
+      op: list: method: *GET
+    }
+    path: "/achievement/{achievementIds}": {
+      rename: param: "achievementIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/achievement/{achievementId}": {
+      rename: param: "achievementId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: awake: {
+    path: "/awake/skill": {
+      action: "skill": {}
+      op: load: method: *GET
+    }
+    path: "/awake/stat": {
+      action: "stat": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: badge: {
+    path: "/image/badge/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: class: {
+    path: "/class": {
+      op: list: method: *GET
+    }
+    path: "/class/{classIds}": {
+      rename: param: "classIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/class/{classId}": {
+      rename: param: "classId": *"id"
+      op: load: method: *GET
+    }
+    path: "/image/class/tree/{fileName}": {
+      rename: param: "fileName": *"file_name"
+      op: load: method: *GET
+    }
+    path: "/image/class/{style}/{fileName}": {
+      rename: param: "fileName": *"file_name"
+      op: load: method: *GET
+    }
+  }
+
+  entity: core: {
+    path: "/parameter/{parameterIds}": {
+      rename: param: "parameterIds": *"parameter_id"
+      op: load: method: *GET
+    }
+    path: "/parameter/{parameterId}": {
+      rename: param: "parameterId": *"parameter_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: couple: {
+    path: "/couple": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: dungeon: {
+    path: "/dungeon": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: element: {
+    path: "/image/element/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: equipment_set: {
+    path: "/equipmentset": {
+      op: list: method: *GET
+    }
+    path: "/equipmentset/{equipmentSetIds}": {
+      rename: param: "equipmentSetIds": *"equipment_set_id"
+      op: load: method: *GET
+    }
+    path: "/equipmentset/{equipmentSetId}": {
+      rename: param: "equipmentSetId": *"equipment_set_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: exchange_menus: {
+    path: "/exchangemenu": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: housing_pack: {
+    path: "/housingpack": {
+      op: list: method: *GET
+    }
+    path: "/housingpack/{housingPackIds}": {
+      rename: param: "housingPackIds": *"housing_pack_id"
+      op: load: method: *GET
+    }
+    path: "/housingpack/{housingPackId}": {
+      rename: param: "housingPackId": *"housing_pack_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: housing_template: {
+    path: "/housingtemplate": {
+      op: list: method: *GET
+    }
+    path: "/housingtemplate/{housingTemplateIds}": {
+      rename: param: "housingTemplateIds": *"housing_template_id"
+      op: load: method: *GET
+    }
+    path: "/housingtemplate/{housingTemplateId}": {
+      rename: param: "housingTemplateId": *"housing_template_id"
+      op: load: method: *GET
+    }
+    path: "/image/housingtemplate/{fileName}": {
+      rename: param: "fileName": *"file_name"
+      op: load: method: *GET
+    }
+  }
+
+  entity: item: {
+    path: "/image/item/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+    path: "/item": {
+      op: list: method: *GET
+    }
+    path: "/item/{itemIds}": {
+      rename: param: "itemIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/item/{itemId}": {
+      rename: param: "itemId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: language: {
+    path: "/image/language/{languageCode}.png": {
+      action: "language_code": {}
+      op: load: method: *GET
+    }
+    path: "/language": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: lifestyle: {
+    path: "/lifestyle": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: monster: {
+    path: "/image/monster/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+    path: "/monster": {
+      op: list: method: *GET
+    }
+    path: "/monster/{monsterIds}": {
+      rename: param: "monsterIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/monster/{monsterId}": {
+      rename: param: "monsterId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: npc: {
+    path: "/image/npc/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+    path: "/npc": {
+      op: list: method: *GET
+    }
+    path: "/npc/{npcIds}": {
+      rename: param: "npcIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/npc/{npcId}": {
+      rename: param: "npcId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: party_skill: {
+    path: "/partyskill": {
+      op: list: method: *GET
+    }
+    path: "/partyskill/{partySkillIds}": {
+      rename: param: "partySkillIds": *"party_skill_id"
+      op: load: method: *GET
+    }
+    path: "/partyskill/{partySkillId}": {
+      rename: param: "partySkillId": *"party_skill_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: pkn: {
+    path: "/pk": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: place: {
+    path: "/image/place/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: quest: {
+    path: "/quest": {
+      op: list: method: *GET
+    }
+    path: "/quest/{questIds}": {
+      rename: param: "questIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/quest/{questId}": {
+      rename: param: "questId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: raised_pet: {
+    path: "/raisedpet": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: recipe: {
+    path: "/recipe": {
+      op: list: method: *GET
+    }
+    path: "/recipe/{recipeIds}": {
+      rename: param: "recipeIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/recipe/{recipeId}": {
+      rename: param: "recipeId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: skill: {
+    path: "/image/skill/{fileName}": {
+      rename: param: "fileName": *"id"
+      op: load: method: *GET
+    }
+    path: "/skill": {
+      op: list: method: *GET
+    }
+    path: "/skill/{skillIds}": {
+      rename: param: "skillIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/skill/{skillId}": {
+      rename: param: "skillId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: upgrade_level_bonus: {
+    path: "/upgradelevelbonus": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: version: {
+    path: "/version/api": {
+      action: "api": {}
+      op: load: method: *GET
+    }
+    path: "/version/data": {
+      action: "data": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: world: {
+    path: "/image/world/{worldTileName}{tileX}-{tileY}-0.png": {
+      action: "world_tile_nametile_x_tile_y_0": {}
+      op: load: method: *GET
+    }
+    path: "/world": {
+      op: list: method: *GET
+    }
+    path: "/world/{worldIds}": {
+      rename: param: "worldIds": *"id"
+      op: load: method: *GET
+    }
+    path: "/world/{worldId}": {
+      rename: param: "worldId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

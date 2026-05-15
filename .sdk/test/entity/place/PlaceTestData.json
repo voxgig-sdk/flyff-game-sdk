@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "place": {
+      "PLACE00": {},
+      "PLACE01": {},
+      "PLACE02": {}
+    }
+  },
+  "new": {
+    "place": {
+      "place_ref01": {}
+    }
+  }
+}

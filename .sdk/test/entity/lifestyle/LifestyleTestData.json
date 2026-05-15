@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "lifestyle": {
+      "LIFESTYLE00": {},
+      "LIFESTYLE01": {},
+      "LIFESTYLE02": {}
+    }
+  },
+  "new": {
+    "lifestyle": {
+      "lifestyle_ref01": {}
+    }
+  }
+}

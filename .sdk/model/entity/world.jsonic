@@ -1,0 +1,240 @@
+# Entity: world
+
+main: kit: entity: world: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "continent"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "flying"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "height"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "in_door"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "lodestar"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "pk"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "place"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "revival_key"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "revival_world"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tile_name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tile_size"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "width"
+      req: true
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "world"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/world"
+          parts: [
+            "world"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "tile_x"
+                orig: "tile_x"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "tile_y"
+                orig: "tile_y"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                example: "wdmadrigal"
+                kind: "param"
+                name: "world_tile_name"
+                orig: "world_tile_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/world/{worldTileName}{tileX}-{tileY}-0.png"
+          parts: [
+            "image"
+            "world"
+            "{worldTileName}{tileX}-{tileY}-0.png"
+          ]
+          select: {
+            "$action": "world_tile_nametile_x_tile_y_0"
+            exist: [
+              "tile_x"
+              "tile_y"
+              "world_tile_name"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "4015,4839,6063"
+                kind: "param"
+                name: "id"
+                orig: "world_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/world/{worldIds}"
+          parts: [
+            "world"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              worldIds: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: 4015
+                kind: "param"
+                name: "id"
+                orig: "world_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/world/{worldId}"
+          parts: [
+            "world"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              worldId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "world"
+      ]
+    ]
+  }
+
+
+
+}

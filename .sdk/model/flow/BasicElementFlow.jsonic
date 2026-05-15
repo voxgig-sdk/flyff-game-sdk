@@ -1,0 +1,32 @@
+# BasicElementFlow
+
+main: kit: flow: BasicElementFlow:
+{
+  entity: "element",
+  kind: "basic",
+  name: "BasicElementFlow",
+  step: [
+    {
+      input: {
+        ref: "element_ref01",
+        srcdatavar: "element_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "element01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-element_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicElementFlow"
+}

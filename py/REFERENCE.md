@@ -1,0 +1,1574 @@
+# FlyffGame Python SDK Reference
+
+Complete API reference for the FlyffGame Python SDK.
+
+
+## FlyffGameSDK
+
+### Constructor
+
+```python
+from flyff-game_sdk import FlyffGameSDK
+
+client = FlyffGameSDK(options)
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `options` | `dict` | SDK configuration options. |
+| `options["apikey"]` | `str` | API key for authentication. |
+| `options["base"]` | `str` | Base URL for API requests. |
+| `options["prefix"]` | `str` | URL prefix appended after base. |
+| `options["suffix"]` | `str` | URL suffix appended after path. |
+| `options["headers"]` | `dict` | Custom headers for all requests. |
+| `options["feature"]` | `dict` | Feature configuration. |
+| `options["system"]` | `dict` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `FlyffGameSDK.test(testopts=None, sdkopts=None)`
+
+Create a test client with mock features active. Both arguments may be `None`.
+
+```python
+client = FlyffGameSDK.test()
+```
+
+
+### Instance Methods
+
+#### `Achievement(data=None)`
+
+Create a new `AchievementEntity` instance. Pass `None` for no initial data.
+
+#### `Awake(data=None)`
+
+Create a new `AwakeEntity` instance. Pass `None` for no initial data.
+
+#### `Badge(data=None)`
+
+Create a new `BadgeEntity` instance. Pass `None` for no initial data.
+
+#### `Class(data=None)`
+
+Create a new `ClassEntity` instance. Pass `None` for no initial data.
+
+#### `Core(data=None)`
+
+Create a new `CoreEntity` instance. Pass `None` for no initial data.
+
+#### `Couple(data=None)`
+
+Create a new `CoupleEntity` instance. Pass `None` for no initial data.
+
+#### `Dungeon(data=None)`
+
+Create a new `DungeonEntity` instance. Pass `None` for no initial data.
+
+#### `Element(data=None)`
+
+Create a new `ElementEntity` instance. Pass `None` for no initial data.
+
+#### `EquipmentSet(data=None)`
+
+Create a new `EquipmentSetEntity` instance. Pass `None` for no initial data.
+
+#### `ExchangeMenus(data=None)`
+
+Create a new `ExchangeMenusEntity` instance. Pass `None` for no initial data.
+
+#### `HousingPack(data=None)`
+
+Create a new `HousingPackEntity` instance. Pass `None` for no initial data.
+
+#### `HousingTemplate(data=None)`
+
+Create a new `HousingTemplateEntity` instance. Pass `None` for no initial data.
+
+#### `Item(data=None)`
+
+Create a new `ItemEntity` instance. Pass `None` for no initial data.
+
+#### `Language(data=None)`
+
+Create a new `LanguageEntity` instance. Pass `None` for no initial data.
+
+#### `Lifestyle(data=None)`
+
+Create a new `LifestyleEntity` instance. Pass `None` for no initial data.
+
+#### `Monster(data=None)`
+
+Create a new `MonsterEntity` instance. Pass `None` for no initial data.
+
+#### `Npc(data=None)`
+
+Create a new `NpcEntity` instance. Pass `None` for no initial data.
+
+#### `PartySkill(data=None)`
+
+Create a new `PartySkillEntity` instance. Pass `None` for no initial data.
+
+#### `Pkn(data=None)`
+
+Create a new `PknEntity` instance. Pass `None` for no initial data.
+
+#### `Place(data=None)`
+
+Create a new `PlaceEntity` instance. Pass `None` for no initial data.
+
+#### `Quest(data=None)`
+
+Create a new `QuestEntity` instance. Pass `None` for no initial data.
+
+#### `RaisedPet(data=None)`
+
+Create a new `RaisedPetEntity` instance. Pass `None` for no initial data.
+
+#### `Recipe(data=None)`
+
+Create a new `RecipeEntity` instance. Pass `None` for no initial data.
+
+#### `Skill(data=None)`
+
+Create a new `SkillEntity` instance. Pass `None` for no initial data.
+
+#### `UpgradeLevelBonus(data=None)`
+
+Create a new `UpgradeLevelBonusEntity` instance. Pass `None` for no initial data.
+
+#### `Version(data=None)`
+
+Create a new `VersionEntity` instance. Pass `None` for no initial data.
+
+#### `World(data=None)`
+
+Create a new `WorldEntity` instance. Pass `None` for no initial data.
+
+#### `options_map() -> dict`
+
+Return a deep copy of the current SDK options.
+
+#### `get_utility() -> Utility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(fetchargs=None) -> tuple`
+
+Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `fetchargs["path"]` | `str` | URL path with optional `{param}` placeholders. |
+| `fetchargs["method"]` | `str` | HTTP method (default: `"GET"`). |
+| `fetchargs["params"]` | `dict` | Path parameter values. |
+| `fetchargs["query"]` | `dict` | Query string parameters. |
+| `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
+| `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
+
+**Returns:** `(result_dict, err)`
+
+#### `prepare(fetchargs=None) -> tuple`
+
+Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+
+
+---
+
+## AchievementEntity
+
+```python
+achievement = client.Achievement()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Achievement().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Achievement().load({"id": "achievement_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AchievementEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AwakeEntity
+
+```python
+awake = client.Awake()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Awake().load({"id": "awake_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AwakeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BadgeEntity
+
+```python
+badge = client.Badge()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Badge().load({"id": "badge_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BadgeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ClassEntity
+
+```python
+class = client.Class()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attack_speed` | ``$NUMBER`` | Yes |  |
+| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
+| `block` | ``$NUMBER`` | Yes |  |
+| `critical` | ``$NUMBER`` | Yes |  |
+| `defense` | ``$NUMBER`` | Yes |  |
+| `fp` | ``$NUMBER`` | Yes |  |
+| `hp` | ``$NUMBER`` | Yes |  |
+| `icon` | ``$STRING`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
+| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
+| `max_fp` | ``$STRING`` | Yes |  |
+| `max_hp` | ``$STRING`` | Yes |  |
+| `max_level` | ``$INTEGER`` | Yes |  |
+| `max_mp` | ``$STRING`` | Yes |  |
+| `min_level` | ``$INTEGER`` | Yes |  |
+| `mp` | ``$NUMBER`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `parent` | ``$INTEGER`` | No |  |
+| `tree` | ``$STRING`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Class().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Class().load({"id": "class_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ClassEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CoreEntity
+
+```python
+core = client.Core()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Core().load({"id": "core_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CoreEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CoupleEntity
+
+```python
+couple = client.Couple()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Couple().load({"id": "couple_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CoupleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DungeonEntity
+
+```python
+dungeon = client.Dungeon()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Dungeon().load({"id": "dungeon_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DungeonEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ElementEntity
+
+```python
+element = client.Element()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Element().load({"id": "element_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ElementEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## EquipmentSetEntity
+
+```python
+equipment_set = client.EquipmentSet()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.EquipmentSet().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.EquipmentSet().load({"id": "equipment_set_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EquipmentSetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ExchangeMenusEntity
+
+```python
+exchange_menus = client.ExchangeMenus()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.ExchangeMenus().load({"id": "exchange_menus_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExchangeMenusEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## HousingPackEntity
+
+```python
+housing_pack = client.HousingPack()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.HousingPack().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.HousingPack().load({"id": "housing_pack_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `HousingPackEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## HousingTemplateEntity
+
+```python
+housing_template = client.HousingTemplate()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.HousingTemplate().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.HousingTemplate().load({"id": "housing_template_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `HousingTemplateEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ItemEntity
+
+```python
+item = client.Item()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Item().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Item().load({"id": "item_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ItemEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LanguageEntity
+
+```python
+language = client.Language()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Language().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Language().load({"id": "language_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LanguageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LifestyleEntity
+
+```python
+lifestyle = client.Lifestyle()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Lifestyle().load({"id": "lifestyle_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LifestyleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## MonsterEntity
+
+```python
+monster = client.Monster()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Monster().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Monster().load({"id": "monster_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MonsterEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NpcEntity
+
+```python
+npc = client.Npc()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Npc().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Npc().load({"id": "npc_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NpcEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PartySkillEntity
+
+```python
+party_skill = client.PartySkill()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.PartySkill().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.PartySkill().load({"id": "party_skill_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PartySkillEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PknEntity
+
+```python
+pkn = client.Pkn()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Pkn().load({"id": "pkn_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PknEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PlaceEntity
+
+```python
+place = client.Place()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Place().load({"id": "place_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PlaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## QuestEntity
+
+```python
+quest = client.Quest()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Quest().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Quest().load({"id": "quest_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `QuestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RaisedPetEntity
+
+```python
+raised_pet = client.RaisedPet()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.RaisedPet().load({"id": "raised_pet_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RaisedPetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RecipeEntity
+
+```python
+recipe = client.Recipe()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Recipe().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Recipe().load({"id": "recipe_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RecipeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SkillEntity
+
+```python
+skill = client.Skill()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Skill().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Skill().load({"id": "skill_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SkillEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## UpgradeLevelBonusEntity
+
+```python
+upgrade_level_bonus = client.UpgradeLevelBonus()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.UpgradeLevelBonus().load({"id": "upgrade_level_bonus_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UpgradeLevelBonusEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VersionEntity
+
+```python
+version = client.Version()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Version().load({"id": "version_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VersionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WorldEntity
+
+```python
+world = client.World()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `continent` | ``$ARRAY`` | Yes |  |
+| `flying` | ``$BOOLEAN`` | Yes |  |
+| `height` | ``$INTEGER`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `in_door` | ``$BOOLEAN`` | Yes |  |
+| `lodestar` | ``$ARRAY`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `pk` | ``$BOOLEAN`` | Yes |  |
+| `place` | ``$ARRAY`` | Yes |  |
+| `revival_key` | ``$STRING`` | No |  |
+| `revival_world` | ``$INTEGER`` | No |  |
+| `tile_name` | ``$STRING`` | Yes |  |
+| `tile_size` | ``$INTEGER`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+| `width` | ``$INTEGER`` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.World().list({})
+```
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.World().load({"id": "world_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorldEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```python
+client = FlyffGameSDK({
+    "feature": {
+        "test": {"active": True},
+    },
+})
+```
+

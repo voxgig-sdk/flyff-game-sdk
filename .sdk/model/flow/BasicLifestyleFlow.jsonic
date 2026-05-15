@@ -1,0 +1,28 @@
+# BasicLifestyleFlow
+
+main: kit: flow: BasicLifestyleFlow:
+{
+  entity: "lifestyle",
+  kind: "basic",
+  name: "BasicLifestyleFlow",
+  step: [
+    {
+      input: {
+        ref: "lifestyle_ref01",
+        srcdatavar: "lifestyle_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-lifestyle_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLifestyleFlow"
+}

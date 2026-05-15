@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "upgrade_level_bonus": {
+      "UPGRADE_LEVEL_BONUS00": {},
+      "UPGRADE_LEVEL_BONUS01": {},
+      "UPGRADE_LEVEL_BONUS02": {}
+    }
+  },
+  "new": {
+    "upgrade_level_bonus": {
+      "upgrade_level_bonus_ref01": {}
+    }
+  }
+}

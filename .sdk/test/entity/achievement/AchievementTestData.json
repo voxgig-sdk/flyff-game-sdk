@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "achievement": {
+      "ACHIEVEMENT00": {},
+      "ACHIEVEMENT01": {},
+      "ACHIEVEMENT02": {}
+    }
+  },
+  "new": {
+    "achievement": {
+      "achievement_ref01": {}
+    }
+  }
+}

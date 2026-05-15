@@ -1,0 +1,44 @@
+# BasicMonsterFlow
+
+main: kit: flow: BasicMonsterFlow:
+{
+  entity: "monster",
+  kind: "basic",
+  name: "BasicMonsterFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "monster_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "monster_ref01",
+        srcdatavar: "monster_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "monster01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-monster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMonsterFlow"
+}

@@ -1,0 +1,28 @@
+# BasicExchangeMenusFlow
+
+main: kit: flow: BasicExchangeMenusFlow:
+{
+  entity: "exchange_menus",
+  kind: "basic",
+  name: "BasicExchangeMenusFlow",
+  step: [
+    {
+      input: {
+        ref: "exchange_menus_ref01",
+        srcdatavar: "exchange_menus_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-exchange_menus_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicExchangeMenusFlow"
+}

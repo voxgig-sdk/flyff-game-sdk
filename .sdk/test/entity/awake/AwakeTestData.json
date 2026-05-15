@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "awake": {
+      "AWAKE00": {},
+      "AWAKE01": {},
+      "AWAKE02": {}
+    }
+  },
+  "new": {
+    "awake": {
+      "awake_ref01": {}
+    }
+  }
+}

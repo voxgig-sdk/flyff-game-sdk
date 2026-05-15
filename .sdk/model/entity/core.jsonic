@@ -1,0 +1,92 @@
+# Entity: core
+
+main: kit: entity: core: {
+
+  alias: field: {}
+
+  name: "core"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "parameter_id"
+                orig: "parameter_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/parameter/{parameterIds}"
+          parts: [
+            "parameter"
+            "{parameter_id}"
+          ]
+          rename: {
+            param: {
+              parameterIds: "parameter_id"
+            }
+          }
+          select: {
+            exist: [
+              "parameter_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "parameter_id"
+                orig: "parameter_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/parameter/{parameterId}"
+          parts: [
+            "parameter"
+            "{parameter_id}"
+          ]
+          rename: {
+            param: {
+              parameterId: "parameter_id"
+            }
+          }
+          select: {
+            exist: [
+              "parameter_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "parameter"
+      ]
+    ]
+  }
+
+
+
+}

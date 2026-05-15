@@ -1,0 +1,108 @@
+# Entity: equipment_set
+
+main: kit: entity: equipment_set: {
+
+  alias: field: {}
+
+  name: "equipment_set"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/equipmentset"
+          parts: [
+            "equipmentset"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "equipment_set_id"
+                orig: "equipment_set_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/equipmentset/{equipmentSetIds}"
+          parts: [
+            "equipmentset"
+            "{equipment_set_id}"
+          ]
+          rename: {
+            param: {
+              equipmentSetIds: "equipment_set_id"
+            }
+          }
+          select: {
+            exist: [
+              "equipment_set_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "equipment_set_id"
+                orig: "equipment_set_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/equipmentset/{equipmentSetId}"
+          parts: [
+            "equipmentset"
+            "{equipment_set_id}"
+          ]
+          rename: {
+            param: {
+              equipmentSetId: "equipment_set_id"
+            }
+          }
+          select: {
+            exist: [
+              "equipment_set_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "equipmentset"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicEquipmentSetFlow
+
+main: kit: flow: BasicEquipmentSetFlow:
+{
+  entity: "equipment_set",
+  kind: "basic",
+  name: "BasicEquipmentSetFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "equipment_set_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "equipment_set_ref01",
+        srcdatavar: "equipment_set_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "equipment_set01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-equipment_set_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEquipmentSetFlow"
+}

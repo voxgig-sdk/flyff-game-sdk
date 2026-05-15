@@ -1,0 +1,29 @@
+# Entity: pkn
+
+main: kit: entity: pkn: {
+
+  alias: field: {}
+
+  name: "pkn"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/pk"
+          parts: [
+            "pk"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

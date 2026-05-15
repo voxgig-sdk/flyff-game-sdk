@@ -1,0 +1,44 @@
+# BasicPartySkillFlow
+
+main: kit: flow: BasicPartySkillFlow:
+{
+  entity: "party_skill",
+  kind: "basic",
+  name: "BasicPartySkillFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "party_skill_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "party_skill_ref01",
+        srcdatavar: "party_skill_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "party_skill01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-party_skill_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPartySkillFlow"
+}

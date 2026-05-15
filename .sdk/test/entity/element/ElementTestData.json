@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "element": {
+      "ELEMENT00": {},
+      "ELEMENT01": {},
+      "ELEMENT02": {}
+    }
+  },
+  "new": {
+    "element": {
+      "element_ref01": {}
+    }
+  }
+}

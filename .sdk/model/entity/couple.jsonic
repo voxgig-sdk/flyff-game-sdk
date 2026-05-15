@@ -1,0 +1,29 @@
+# Entity: couple
+
+main: kit: entity: couple: {
+
+  alias: field: {}
+
+  name: "couple"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/couple"
+          parts: [
+            "couple"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

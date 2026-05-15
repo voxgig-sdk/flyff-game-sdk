@@ -1,0 +1,1605 @@
+# FlyffGame Ruby SDK Reference
+
+Complete API reference for the FlyffGame Ruby SDK.
+
+
+## FlyffGameSDK
+
+### Constructor
+
+```ruby
+require_relative 'flyff-game_sdk'
+
+client = FlyffGameSDK.new(options)
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `options` | `Hash` | SDK configuration options. |
+| `options["apikey"]` | `String` | API key for authentication. |
+| `options["base"]` | `String` | Base URL for API requests. |
+| `options["prefix"]` | `String` | URL prefix appended after base. |
+| `options["suffix"]` | `String` | URL suffix appended after path. |
+| `options["headers"]` | `Hash` | Custom headers for all requests. |
+| `options["feature"]` | `Hash` | Feature configuration. |
+| `options["system"]` | `Hash` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `FlyffGameSDK.test(testopts = nil, sdkopts = nil)`
+
+Create a test client with mock features active. Both arguments may be `nil`.
+
+```ruby
+client = FlyffGameSDK.test
+```
+
+
+### Instance Methods
+
+#### `Achievement(data = nil)`
+
+Create a new `Achievement` entity instance. Pass `nil` for no initial data.
+
+#### `Awake(data = nil)`
+
+Create a new `Awake` entity instance. Pass `nil` for no initial data.
+
+#### `Badge(data = nil)`
+
+Create a new `Badge` entity instance. Pass `nil` for no initial data.
+
+#### `Class(data = nil)`
+
+Create a new `Class` entity instance. Pass `nil` for no initial data.
+
+#### `Core(data = nil)`
+
+Create a new `Core` entity instance. Pass `nil` for no initial data.
+
+#### `Couple(data = nil)`
+
+Create a new `Couple` entity instance. Pass `nil` for no initial data.
+
+#### `Dungeon(data = nil)`
+
+Create a new `Dungeon` entity instance. Pass `nil` for no initial data.
+
+#### `Element(data = nil)`
+
+Create a new `Element` entity instance. Pass `nil` for no initial data.
+
+#### `EquipmentSet(data = nil)`
+
+Create a new `EquipmentSet` entity instance. Pass `nil` for no initial data.
+
+#### `ExchangeMenus(data = nil)`
+
+Create a new `ExchangeMenus` entity instance. Pass `nil` for no initial data.
+
+#### `HousingPack(data = nil)`
+
+Create a new `HousingPack` entity instance. Pass `nil` for no initial data.
+
+#### `HousingTemplate(data = nil)`
+
+Create a new `HousingTemplate` entity instance. Pass `nil` for no initial data.
+
+#### `Item(data = nil)`
+
+Create a new `Item` entity instance. Pass `nil` for no initial data.
+
+#### `Language(data = nil)`
+
+Create a new `Language` entity instance. Pass `nil` for no initial data.
+
+#### `Lifestyle(data = nil)`
+
+Create a new `Lifestyle` entity instance. Pass `nil` for no initial data.
+
+#### `Monster(data = nil)`
+
+Create a new `Monster` entity instance. Pass `nil` for no initial data.
+
+#### `Npc(data = nil)`
+
+Create a new `Npc` entity instance. Pass `nil` for no initial data.
+
+#### `PartySkill(data = nil)`
+
+Create a new `PartySkill` entity instance. Pass `nil` for no initial data.
+
+#### `Pkn(data = nil)`
+
+Create a new `Pkn` entity instance. Pass `nil` for no initial data.
+
+#### `Place(data = nil)`
+
+Create a new `Place` entity instance. Pass `nil` for no initial data.
+
+#### `Quest(data = nil)`
+
+Create a new `Quest` entity instance. Pass `nil` for no initial data.
+
+#### `RaisedPet(data = nil)`
+
+Create a new `RaisedPet` entity instance. Pass `nil` for no initial data.
+
+#### `Recipe(data = nil)`
+
+Create a new `Recipe` entity instance. Pass `nil` for no initial data.
+
+#### `Skill(data = nil)`
+
+Create a new `Skill` entity instance. Pass `nil` for no initial data.
+
+#### `UpgradeLevelBonus(data = nil)`
+
+Create a new `UpgradeLevelBonus` entity instance. Pass `nil` for no initial data.
+
+#### `Version(data = nil)`
+
+Create a new `Version` entity instance. Pass `nil` for no initial data.
+
+#### `World(data = nil)`
+
+Create a new `World` entity instance. Pass `nil` for no initial data.
+
+#### `options_map -> Hash`
+
+Return a deep copy of the current SDK options.
+
+#### `get_utility -> Utility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(fetchargs = {}) -> Hash, err`
+
+Make a direct HTTP request to any API endpoint.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `fetchargs["path"]` | `String` | URL path with optional `{param}` placeholders. |
+| `fetchargs["method"]` | `String` | HTTP method (default: `"GET"`). |
+| `fetchargs["params"]` | `Hash` | Path parameter values for `{param}` substitution. |
+| `fetchargs["query"]` | `Hash` | Query string parameters. |
+| `fetchargs["headers"]` | `Hash` | Request headers (merged with defaults). |
+| `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
+| `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
+
+**Returns:** `Hash, err`
+
+#### `prepare(fetchargs = {}) -> Hash, err`
+
+Prepare a fetch definition without sending the request. Accepts the
+same parameters as `direct()`.
+
+**Returns:** `Hash, err`
+
+
+---
+
+## AchievementEntity
+
+```ruby
+achievement = client.Achievement
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Achievement.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Achievement.load({ "id" => "achievement_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AchievementEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AwakeEntity
+
+```ruby
+awake = client.Awake
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Awake.load({ "id" => "awake_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AwakeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BadgeEntity
+
+```ruby
+badge = client.Badge
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Badge.load({ "id" => "badge_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BadgeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ClassEntity
+
+```ruby
+class = client.Class
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attack_speed` | ``$NUMBER`` | Yes |  |
+| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
+| `block` | ``$NUMBER`` | Yes |  |
+| `critical` | ``$NUMBER`` | Yes |  |
+| `defense` | ``$NUMBER`` | Yes |  |
+| `fp` | ``$NUMBER`` | Yes |  |
+| `hp` | ``$NUMBER`` | Yes |  |
+| `icon` | ``$STRING`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
+| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
+| `max_fp` | ``$STRING`` | Yes |  |
+| `max_hp` | ``$STRING`` | Yes |  |
+| `max_level` | ``$INTEGER`` | Yes |  |
+| `max_mp` | ``$STRING`` | Yes |  |
+| `min_level` | ``$INTEGER`` | Yes |  |
+| `mp` | ``$NUMBER`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `parent` | ``$INTEGER`` | No |  |
+| `tree` | ``$STRING`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Class.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Class.load({ "id" => "class_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ClassEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CoreEntity
+
+```ruby
+core = client.Core
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Core.load({ "id" => "core_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CoreEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CoupleEntity
+
+```ruby
+couple = client.Couple
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Couple.load({ "id" => "couple_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CoupleEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DungeonEntity
+
+```ruby
+dungeon = client.Dungeon
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Dungeon.load({ "id" => "dungeon_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DungeonEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ElementEntity
+
+```ruby
+element = client.Element
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Element.load({ "id" => "element_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ElementEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## EquipmentSetEntity
+
+```ruby
+equipment_set = client.EquipmentSet
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.EquipmentSet.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.EquipmentSet.load({ "id" => "equipment_set_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `EquipmentSetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ExchangeMenusEntity
+
+```ruby
+exchange_menus = client.ExchangeMenus
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.ExchangeMenus.load({ "id" => "exchange_menus_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ExchangeMenusEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## HousingPackEntity
+
+```ruby
+housing_pack = client.HousingPack
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.HousingPack.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.HousingPack.load({ "id" => "housing_pack_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `HousingPackEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## HousingTemplateEntity
+
+```ruby
+housing_template = client.HousingTemplate
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.HousingTemplate.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.HousingTemplate.load({ "id" => "housing_template_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `HousingTemplateEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ItemEntity
+
+```ruby
+item = client.Item
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Item.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Item.load({ "id" => "item_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ItemEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LanguageEntity
+
+```ruby
+language = client.Language
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Language.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Language.load({ "id" => "language_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LanguageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LifestyleEntity
+
+```ruby
+lifestyle = client.Lifestyle
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Lifestyle.load({ "id" => "lifestyle_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LifestyleEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## MonsterEntity
+
+```ruby
+monster = client.Monster
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Monster.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Monster.load({ "id" => "monster_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `MonsterEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NpcEntity
+
+```ruby
+npc = client.Npc
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Npc.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Npc.load({ "id" => "npc_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NpcEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PartySkillEntity
+
+```ruby
+party_skill = client.PartySkill
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.PartySkill.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.PartySkill.load({ "id" => "party_skill_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PartySkillEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PknEntity
+
+```ruby
+pkn = client.Pkn
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Pkn.load({ "id" => "pkn_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PknEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PlaceEntity
+
+```ruby
+place = client.Place
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Place.load({ "id" => "place_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PlaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## QuestEntity
+
+```ruby
+quest = client.Quest
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Quest.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Quest.load({ "id" => "quest_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `QuestEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RaisedPetEntity
+
+```ruby
+raised_pet = client.RaisedPet
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.RaisedPet.load({ "id" => "raised_pet_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RaisedPetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RecipeEntity
+
+```ruby
+recipe = client.Recipe
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Recipe.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Recipe.load({ "id" => "recipe_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RecipeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SkillEntity
+
+```ruby
+skill = client.Skill
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.Skill.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Skill.load({ "id" => "skill_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SkillEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## UpgradeLevelBonusEntity
+
+```ruby
+upgrade_level_bonus = client.UpgradeLevelBonus
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.UpgradeLevelBonus.load({ "id" => "upgrade_level_bonus_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `UpgradeLevelBonusEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VersionEntity
+
+```ruby
+version = client.Version
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.Version.load({ "id" => "version_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VersionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WorldEntity
+
+```ruby
+world = client.World
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `continent` | ``$ARRAY`` | Yes |  |
+| `flying` | ``$BOOLEAN`` | Yes |  |
+| `height` | ``$INTEGER`` | Yes |  |
+| `id` | ``$INTEGER`` | Yes |  |
+| `in_door` | ``$BOOLEAN`` | Yes |  |
+| `lodestar` | ``$ARRAY`` | Yes |  |
+| `name` | ``$OBJECT`` | Yes |  |
+| `pk` | ``$BOOLEAN`` | Yes |  |
+| `place` | ``$ARRAY`` | Yes |  |
+| `revival_key` | ``$STRING`` | No |  |
+| `revival_world` | ``$INTEGER`` | No |  |
+| `tile_name` | ``$STRING`` | Yes |  |
+| `tile_size` | ``$INTEGER`` | Yes |  |
+| `type` | ``$STRING`` | Yes |  |
+| `width` | ``$INTEGER`` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl = nil) -> result, err`
+
+List entities matching the given criteria. Returns an array.
+
+```ruby
+results, err = client.World.list(nil)
+```
+
+#### `load(reqmatch, ctrl = nil) -> result, err`
+
+Load a single entity matching the given criteria.
+
+```ruby
+result, err = client.World.load({ "id" => "world_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WorldEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```ruby
+client = FlyffGameSDK.new({
+  "feature" => {
+    "test" => { "active" => true },
+  },
+})
+```
+

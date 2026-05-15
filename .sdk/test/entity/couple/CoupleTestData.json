@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "couple": {
+      "COUPLE00": {},
+      "COUPLE01": {},
+      "COUPLE02": {}
+    }
+  },
+  "new": {
+    "couple": {
+      "couple_ref01": {}
+    }
+  }
+}

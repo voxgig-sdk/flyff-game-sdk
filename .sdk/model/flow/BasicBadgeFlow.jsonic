@@ -1,0 +1,32 @@
+# BasicBadgeFlow
+
+main: kit: flow: BasicBadgeFlow:
+{
+  entity: "badge",
+  kind: "basic",
+  name: "BasicBadgeFlow",
+  step: [
+    {
+      input: {
+        ref: "badge_ref01",
+        srcdatavar: "badge_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "badge01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-badge_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBadgeFlow"
+}

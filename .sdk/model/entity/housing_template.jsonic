@@ -1,0 +1,142 @@
+# Entity: housing_template
+
+main: kit: entity: housing_template: {
+
+  alias: field: {}
+
+  name: "housing_template"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/housingtemplate"
+          parts: [
+            "housingtemplate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "file_name"
+                orig: "file_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/housingtemplate/{fileName}"
+          parts: [
+            "image"
+            "housingtemplate"
+            "{file_name}"
+          ]
+          rename: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          select: {
+            exist: [
+              "file_name"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "housing_template_id"
+                orig: "housing_template_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/housingtemplate/{housingTemplateIds}"
+          parts: [
+            "housingtemplate"
+            "{housing_template_id}"
+          ]
+          rename: {
+            param: {
+              housingTemplateIds: "housing_template_id"
+            }
+          }
+          select: {
+            exist: [
+              "housing_template_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "housing_template_id"
+                orig: "housing_template_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/housingtemplate/{housingTemplateId}"
+          parts: [
+            "housingtemplate"
+            "{housing_template_id}"
+          ]
+          rename: {
+            param: {
+              housingTemplateId: "housing_template_id"
+            }
+          }
+          select: {
+            exist: [
+              "housing_template_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "housingtemplate"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,307 @@
+# Entity: class
+
+main: kit: entity: class: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "attack_speed"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "auto_attack_factor"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "block"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "critical"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "defense"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fp"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "hp"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "icon"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "magic_defense_int_factor"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "magic_defense_sta_factor"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "max_fp"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "max_hp"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "max_level"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_mp"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "min_level"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "mp"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "parent"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tree"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "class"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/class"
+          parts: [
+            "class"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "vagrant.png"
+                kind: "param"
+                name: "file_name"
+                orig: "file_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "messenger"
+                kind: "param"
+                name: "style"
+                orig: "style"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/class/{style}/{fileName}"
+          parts: [
+            "image"
+            "class"
+            "{style}"
+            "{file_name}"
+          ]
+          rename: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          select: {
+            exist: [
+              "file_name"
+              "style"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "Vagrant.png"
+                kind: "param"
+                name: "file_name"
+                orig: "file_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/image/class/tree/{fileName}"
+          parts: [
+            "image"
+            "class"
+            "tree"
+            "{file_name}"
+          ]
+          rename: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          select: {
+            exist: [
+              "file_name"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "1689,296,2881"
+                kind: "param"
+                name: "id"
+                orig: "class_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/class/{classIds}"
+          parts: [
+            "class"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              classIds: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: 1689
+                kind: "param"
+                name: "id"
+                orig: "class_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/class/{classId}"
+          parts: [
+            "class"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              classId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "tree"
+      ]
+      [
+        "class"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicHousingPackFlow
+
+main: kit: flow: BasicHousingPackFlow:
+{
+  entity: "housing_pack",
+  kind: "basic",
+  name: "BasicHousingPackFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "housing_pack_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "housing_pack_ref01",
+        srcdatavar: "housing_pack_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "housing_pack01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-housing_pack_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHousingPackFlow"
+}

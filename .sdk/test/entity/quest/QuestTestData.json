@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "quest": {
+      "QUEST00": {},
+      "QUEST01": {},
+      "QUEST02": {}
+    }
+  },
+  "new": {
+    "quest": {
+      "quest_ref01": {}
+    }
+  }
+}

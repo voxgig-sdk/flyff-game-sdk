@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "recipe": {
+      "RECIPE00": {},
+      "RECIPE01": {},
+      "RECIPE02": {}
+    }
+  },
+  "new": {
+    "recipe": {
+      "recipe_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicCoupleFlow
+
+main: kit: flow: BasicCoupleFlow:
+{
+  entity: "couple",
+  kind: "basic",
+  name: "BasicCoupleFlow",
+  step: [
+    {
+      input: {
+        ref: "couple_ref01",
+        srcdatavar: "couple_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-couple_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCoupleFlow"
+}

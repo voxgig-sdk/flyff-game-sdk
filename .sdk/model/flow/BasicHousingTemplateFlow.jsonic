@@ -1,0 +1,44 @@
+# BasicHousingTemplateFlow
+
+main: kit: flow: BasicHousingTemplateFlow:
+{
+  entity: "housing_template",
+  kind: "basic",
+  name: "BasicHousingTemplateFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "housing_template_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "housing_template_ref01",
+        srcdatavar: "housing_template_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "housing_template01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-housing_template_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHousingTemplateFlow"
+}

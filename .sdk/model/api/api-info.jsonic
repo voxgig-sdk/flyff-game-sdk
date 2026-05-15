@@ -1,0 +1,30 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "ir@gala.kr"
+        name: "Gala Lab"
+        url: "http://galalab.kr/"
+      }
+      description: "All Game Data from Flyff Universe. This API provides access to game data including classes, worlds, monsters, items, equipment sets, skills, NPCs, quests, achievements, and more. Limited to 300 calls per minute per IP."
+      license: {
+        name: "Proprietary"
+        url: "https://api.flyff.com/"
+      }
+      servers: [
+        {
+          description: "Main server"
+          url: "https://api.flyff.com"
+        }
+      ]
+      termsOfService: "https://api.flyff.com/"
+      title: "Flyff Game API"
+      version: "1.9.2"
+    }
+  }
+}
+
+}

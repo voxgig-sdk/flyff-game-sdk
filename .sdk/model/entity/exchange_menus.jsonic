@@ -1,0 +1,29 @@
+# Entity: exchange_menus
+
+main: kit: entity: exchange_menus: {
+
+  alias: field: {}
+
+  name: "exchange_menus"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/exchangemenu"
+          parts: [
+            "exchangemenu"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

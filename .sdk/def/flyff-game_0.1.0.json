@@ -1,0 +1,2715 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Flyff Game API",
+    "description": "All Game Data from Flyff Universe. This API provides access to game data including classes, worlds, monsters, items, equipment sets, skills, NPCs, quests, achievements, and more. Limited to 300 calls per minute per IP.",
+    "version": "1.9.2",
+    "contact": {
+      "name": "Gala Lab",
+      "email": "ir@gala.kr",
+      "url": "http://galalab.kr/"
+    },
+    "termsOfService": "https://api.flyff.com/",
+    "license": {
+      "name": "Proprietary",
+      "url": "https://api.flyff.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.flyff.com",
+      "description": "Main server"
+    }
+  ],
+  "paths": {
+    "/version/data": {
+      "get": {
+        "summary": "Get the version of the game data",
+        "description": "Returns an unique ID representing the current version of the static game data",
+        "operationId": "getDataVersion",
+        "tags": [
+          "Version"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/version/api": {
+      "get": {
+        "summary": "Get the version of the game API",
+        "description": "Returns the current version of the game API",
+        "operationId": "getApiVersion",
+        "tags": [
+          "Version"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.9.2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/class": {
+      "get": {
+        "summary": "Get all classes IDs",
+        "description": "Returns an array containing the ID of all available classes",
+        "operationId": "getAllClassIds",
+        "tags": [
+          "Class"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "example": [
+                    1689,
+                    296,
+                    2881
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/class/{classId}": {
+      "get": {
+        "summary": "Find class by ID",
+        "description": "Returns a single class",
+        "operationId": "getClassById",
+        "tags": [
+          "Class"
+        ],
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "description": "ID of class to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1689
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Class not found"
+          }
+        }
+      }
+    },
+    "/class/{classIds}": {
+      "get": {
+        "summary": "Find classes by a list of IDs",
+        "description": "Returns an array with classes",
+        "operationId": "getClassesByIds",
+        "tags": [
+          "Class"
+        ],
+        "parameters": [
+          {
+            "name": "classIds",
+            "in": "path",
+            "description": "IDs of classes to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1689,296,2881"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Class not found"
+          }
+        }
+      }
+    },
+    "/image/class/{style}/{fileName}": {
+      "get": {
+        "summary": "Get class icon",
+        "description": "Returns icon for the specified file name",
+        "operationId": "getClassIcon",
+        "tags": [
+          "Class"
+        ],
+        "parameters": [
+          {
+            "name": "style",
+            "in": "path",
+            "description": "Style of the icon. Accepted values: messenger, old_female, old_male, target",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "messenger",
+                "old_female",
+                "old_male",
+                "target"
+              ],
+              "example": "messenger"
+            }
+          },
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the icon",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "vagrant.png"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/image/class/tree/{fileName}": {
+      "get": {
+        "summary": "Get class skill tree",
+        "description": "Returns skill tree for the specified file name",
+        "operationId": "getClassSkillTree",
+        "tags": [
+          "Class"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the skill tree",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Vagrant.png"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tree not found"
+          }
+        }
+      }
+    },
+    "/world": {
+      "get": {
+        "summary": "Get all worlds IDs",
+        "description": "Returns an array containing the ID of all available worlds",
+        "operationId": "getAllWorldIds",
+        "tags": [
+          "World"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "example": [
+                    4015,
+                    4839,
+                    6063
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/world/{worldId}": {
+      "get": {
+        "summary": "Find world by ID",
+        "description": "Returns a single world",
+        "operationId": "getWorldById",
+        "tags": [
+          "World"
+        ],
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "description": "ID of world to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 4015
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/World"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "World not found"
+          }
+        }
+      }
+    },
+    "/world/{worldIds}": {
+      "get": {
+        "summary": "Find worlds by a list of IDs",
+        "description": "Returns an array with worlds",
+        "operationId": "getWorldsByIds",
+        "tags": [
+          "World"
+        ],
+        "parameters": [
+          {
+            "name": "worldIds",
+            "in": "path",
+            "description": "IDs of worlds to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "4015,4839,6063"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/World"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "World not found"
+          }
+        }
+      }
+    },
+    "/image/world/{worldTileName}{tileX}-{tileY}-0.png": {
+      "get": {
+        "summary": "Get world tile",
+        "description": "Returns tile for the specified world and position",
+        "operationId": "getWorldTile",
+        "tags": [
+          "World"
+        ],
+        "parameters": [
+          {
+            "name": "worldTileName",
+            "in": "path",
+            "description": "Tile name of the world",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "wdmadrigal"
+            }
+          },
+          {
+            "name": "tileX",
+            "in": "path",
+            "description": "X position of the tile",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tileY",
+            "in": "path",
+            "description": "Y position of the tile",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tile not found"
+          }
+        }
+      }
+    },
+    "/monster": {
+      "get": {
+        "summary": "Get all monsters IDs",
+        "description": "Returns an array containing the ID of all available monsters",
+        "operationId": "getAllMonsterIds",
+        "tags": [
+          "Monster"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/monster/{monsterId}": {
+      "get": {
+        "summary": "Find monster by ID",
+        "description": "Returns a single monster",
+        "operationId": "getMonsterById",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "monsterId",
+            "in": "path",
+            "description": "ID of monster to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Monster not found"
+          }
+        }
+      }
+    },
+    "/monster/{monsterIds}": {
+      "get": {
+        "summary": "Find monsters by a list of IDs",
+        "description": "Returns an array with monsters",
+        "operationId": "getMonstersByIds",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "monsterIds",
+            "in": "path",
+            "description": "IDs of monsters to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Monster not found"
+          }
+        }
+      }
+    },
+    "/image/monster/{fileName}": {
+      "get": {
+        "summary": "Get monster icon",
+        "description": "Returns icon for the specified monster",
+        "operationId": "getMonsterIcon",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the monster icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/item": {
+      "get": {
+        "summary": "Get all items IDs",
+        "description": "Returns an array containing the ID of all available items",
+        "operationId": "getAllItemIds",
+        "tags": [
+          "Item"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/item/{itemId}": {
+      "get": {
+        "summary": "Find item by ID",
+        "description": "Returns a single item",
+        "operationId": "getItemById",
+        "tags": [
+          "Item"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "ID of item to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    },
+    "/item/{itemIds}": {
+      "get": {
+        "summary": "Find items by a list of IDs",
+        "description": "Returns an array with items",
+        "operationId": "getItemsByIds",
+        "tags": [
+          "Item"
+        ],
+        "parameters": [
+          {
+            "name": "itemIds",
+            "in": "path",
+            "description": "IDs of items to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    },
+    "/image/item/{fileName}": {
+      "get": {
+        "summary": "Get item icon",
+        "description": "Returns icon for the specified item",
+        "operationId": "getItemIcon",
+        "tags": [
+          "Item"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the item icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/equipmentset": {
+      "get": {
+        "summary": "Get all equipment set IDs",
+        "description": "Returns an array containing the ID of all available equipment sets",
+        "operationId": "getAllEquipmentSetIds",
+        "tags": [
+          "Equipment Set"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipmentset/{equipmentSetId}": {
+      "get": {
+        "summary": "Find equipment set by ID",
+        "description": "Returns a single equipment set",
+        "operationId": "getEquipmentSetById",
+        "tags": [
+          "Equipment Set"
+        ],
+        "parameters": [
+          {
+            "name": "equipmentSetId",
+            "in": "path",
+            "description": "ID of equipment set to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Equipment set not found"
+          }
+        }
+      }
+    },
+    "/equipmentset/{equipmentSetIds}": {
+      "get": {
+        "summary": "Find equipment sets by a list of IDs",
+        "description": "Returns an array with equipment sets",
+        "operationId": "getEquipmentSetsByIds",
+        "tags": [
+          "Equipment Set"
+        ],
+        "parameters": [
+          {
+            "name": "equipmentSetIds",
+            "in": "path",
+            "description": "IDs of equipment sets to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Equipment set not found"
+          }
+        }
+      }
+    },
+    "/skill": {
+      "get": {
+        "summary": "Get all skills IDs",
+        "description": "Returns an array containing the ID of all available skills",
+        "operationId": "getAllSkillIds",
+        "tags": [
+          "Skill"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skill/{skillId}": {
+      "get": {
+        "summary": "Find skill by ID",
+        "description": "Returns a single skill",
+        "operationId": "getSkillById",
+        "tags": [
+          "Skill"
+        ],
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "description": "ID of skill to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Skill not found"
+          }
+        }
+      }
+    },
+    "/skill/{skillIds}": {
+      "get": {
+        "summary": "Find skills by a list of IDs",
+        "description": "Returns an array with skills",
+        "operationId": "getSkillsByIds",
+        "tags": [
+          "Skill"
+        ],
+        "parameters": [
+          {
+            "name": "skillIds",
+            "in": "path",
+            "description": "IDs of skills to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Skill not found"
+          }
+        }
+      }
+    },
+    "/image/skill/{fileName}": {
+      "get": {
+        "summary": "Get skill icon",
+        "description": "Returns icon for the specified skill",
+        "operationId": "getSkillIcon",
+        "tags": [
+          "Skill"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the skill icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/partyskill": {
+      "get": {
+        "summary": "Get all party skills IDs",
+        "description": "Returns an array containing the ID of all available party skills",
+        "operationId": "getAllPartySkillIds",
+        "tags": [
+          "Party Skill"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/partyskill/{partySkillId}": {
+      "get": {
+        "summary": "Find party skill by ID",
+        "description": "Returns a single party skill",
+        "operationId": "getPartySkillById",
+        "tags": [
+          "Party Skill"
+        ],
+        "parameters": [
+          {
+            "name": "partySkillId",
+            "in": "path",
+            "description": "ID of party skill to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Party skill not found"
+          }
+        }
+      }
+    },
+    "/partyskill/{partySkillIds}": {
+      "get": {
+        "summary": "Find party skills by a list of IDs",
+        "description": "Returns an array with party skills",
+        "operationId": "getPartySkillsByIds",
+        "tags": [
+          "Party Skill"
+        ],
+        "parameters": [
+          {
+            "name": "partySkillIds",
+            "in": "path",
+            "description": "IDs of party skills to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Party skill not found"
+          }
+        }
+      }
+    },
+    "/npc": {
+      "get": {
+        "summary": "Get all NPCs IDs",
+        "description": "Returns an array containing the ID of all available NPCs",
+        "operationId": "getAllNpcIds",
+        "tags": [
+          "NPC"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/npc/{npcId}": {
+      "get": {
+        "summary": "Find NPC by ID",
+        "description": "Returns a single NPC",
+        "operationId": "getNpcById",
+        "tags": [
+          "NPC"
+        ],
+        "parameters": [
+          {
+            "name": "npcId",
+            "in": "path",
+            "description": "ID of NPC to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "NPC not found"
+          }
+        }
+      }
+    },
+    "/npc/{npcIds}": {
+      "get": {
+        "summary": "Find NPCs by a list of IDs",
+        "description": "Returns an array with NPCs",
+        "operationId": "getNpcsByIds",
+        "tags": [
+          "NPC"
+        ],
+        "parameters": [
+          {
+            "name": "npcIds",
+            "in": "path",
+            "description": "IDs of NPCs to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "NPC not found"
+          }
+        }
+      }
+    },
+    "/image/npc/{fileName}": {
+      "get": {
+        "summary": "Get NPC dialog image",
+        "description": "Returns dialog image for the specified NPC",
+        "operationId": "getNpcDialogImage",
+        "tags": [
+          "NPC"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the NPC dialog image",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Image not found"
+          }
+        }
+      }
+    },
+    "/quest": {
+      "get": {
+        "summary": "Get all Quests IDs",
+        "description": "Returns an array containing the ID of all available quests",
+        "operationId": "getAllQuestIds",
+        "tags": [
+          "Quest"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quest/{questId}": {
+      "get": {
+        "summary": "Find Quest by ID",
+        "description": "Returns a single quest",
+        "operationId": "getQuestById",
+        "tags": [
+          "Quest"
+        ],
+        "parameters": [
+          {
+            "name": "questId",
+            "in": "path",
+            "description": "ID of quest to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Quest not found"
+          }
+        }
+      }
+    },
+    "/quest/{questIds}": {
+      "get": {
+        "summary": "Find Quests by a list of IDs",
+        "description": "Returns an array with quests",
+        "operationId": "getQuestsByIds",
+        "tags": [
+          "Quest"
+        ],
+        "parameters": [
+          {
+            "name": "questIds",
+            "in": "path",
+            "description": "IDs of quests to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Quest not found"
+          }
+        }
+      }
+    },
+    "/pk": {
+      "get": {
+        "summary": "Get all PK information",
+        "description": "Returns PK (Player Kill) information",
+        "operationId": "getPkInformation",
+        "tags": [
+          "PK"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/achievement": {
+      "get": {
+        "summary": "Get all achievement IDs",
+        "description": "Returns an array containing the ID of all available achievements",
+        "operationId": "getAllAchievementIds",
+        "tags": [
+          "Achievement"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/achievement/{achievementId}": {
+      "get": {
+        "summary": "Find achievement by ID",
+        "description": "Returns a single achievement",
+        "operationId": "getAchievementById",
+        "tags": [
+          "Achievement"
+        ],
+        "parameters": [
+          {
+            "name": "achievementId",
+            "in": "path",
+            "description": "ID of achievement to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Achievement not found"
+          }
+        }
+      }
+    },
+    "/achievement/{achievementIds}": {
+      "get": {
+        "summary": "Find achievements by a list of IDs",
+        "description": "Returns an array with achievements",
+        "operationId": "getAchievementsByIds",
+        "tags": [
+          "Achievement"
+        ],
+        "parameters": [
+          {
+            "name": "achievementIds",
+            "in": "path",
+            "description": "IDs of achievements to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Achievement not found"
+          }
+        }
+      }
+    },
+    "/upgradelevelbonus": {
+      "get": {
+        "summary": "Get the upgrade bonus levels",
+        "description": "Returns upgrade level bonus information",
+        "operationId": "getUpgradeLevelBonus",
+        "tags": [
+          "Upgrade Level Bonus"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/awake/skill": {
+      "get": {
+        "summary": "Get the skill awake values",
+        "description": "Returns skill awake values",
+        "operationId": "getSkillAwakeValues",
+        "tags": [
+          "Awake"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/awake/stat": {
+      "get": {
+        "summary": "Get the stat awake values",
+        "description": "Returns stat awake values",
+        "operationId": "getStatAwakeValues",
+        "tags": [
+          "Awake"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/raisedpet": {
+      "get": {
+        "summary": "Get the raised pet information",
+        "description": "Returns raised pet information",
+        "operationId": "getRaisedPetInformation",
+        "tags": [
+          "Raised Pets"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dungeon": {
+      "get": {
+        "summary": "Get dungeons information",
+        "description": "Returns dungeons information",
+        "operationId": "getDungeonsInformation",
+        "tags": [
+          "Dungeons"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchangemenu": {
+      "get": {
+        "summary": "Get the item exchange menus",
+        "description": "Returns item exchange menus",
+        "operationId": "getExchangeMenus",
+        "tags": [
+          "Exchange Menus"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/housingtemplate": {
+      "get": {
+        "summary": "Get all housing template IDs",
+        "description": "Returns an array containing the ID of all available housing templates",
+        "operationId": "getAllHousingTemplateIds",
+        "tags": [
+          "Housing Template"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/housingtemplate/{housingTemplateId}": {
+      "get": {
+        "summary": "Find housing template by ID",
+        "description": "Returns a single housing template",
+        "operationId": "getHousingTemplateById",
+        "tags": [
+          "Housing Template"
+        ],
+        "parameters": [
+          {
+            "name": "housingTemplateId",
+            "in": "path",
+            "description": "ID of housing template to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Housing template not found"
+          }
+        }
+      }
+    },
+    "/housingtemplate/{housingTemplateIds}": {
+      "get": {
+        "summary": "Find housing templates by a list of IDs",
+        "description": "Returns an array with housing templates",
+        "operationId": "getHousingTemplatesByIds",
+        "tags": [
+          "Housing Template"
+        ],
+        "parameters": [
+          {
+            "name": "housingTemplateIds",
+            "in": "path",
+            "description": "IDs of housing templates to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Housing template not found"
+          }
+        }
+      }
+    },
+    "/image/housingtemplate/{fileName}": {
+      "get": {
+        "summary": "Get Housing template preview image",
+        "description": "Returns preview image for the specified housing template",
+        "operationId": "getHousingTemplatePreview",
+        "tags": [
+          "Housing Template"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the housing template preview",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Preview image not found"
+          }
+        }
+      }
+    },
+    "/housingpack": {
+      "get": {
+        "summary": "Get all housing pack IDs",
+        "description": "Returns an array containing the ID of all available housing packs",
+        "operationId": "getAllHousingPackIds",
+        "tags": [
+          "Housing Pack"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/housingpack/{housingPackId}": {
+      "get": {
+        "summary": "Find housing pack by ID",
+        "description": "Returns a single housing pack",
+        "operationId": "getHousingPackById",
+        "tags": [
+          "Housing Pack"
+        ],
+        "parameters": [
+          {
+            "name": "housingPackId",
+            "in": "path",
+            "description": "ID of housing pack to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Housing pack not found"
+          }
+        }
+      }
+    },
+    "/housingpack/{housingPackIds}": {
+      "get": {
+        "summary": "Find housing packs by a list of IDs",
+        "description": "Returns an array with housing packs",
+        "operationId": "getHousingPacksByIds",
+        "tags": [
+          "Housing Pack"
+        ],
+        "parameters": [
+          {
+            "name": "housingPackIds",
+            "in": "path",
+            "description": "IDs of housing packs to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Housing pack not found"
+          }
+        }
+      }
+    },
+    "/couple": {
+      "get": {
+        "summary": "Get all Couple information",
+        "description": "Returns couple information",
+        "operationId": "getCoupleInformation",
+        "tags": [
+          "Couple"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lifestyle": {
+      "get": {
+        "summary": "Get all Lifestyle information",
+        "description": "Returns lifestyle information",
+        "operationId": "getLifestyleInformation",
+        "tags": [
+          "Lifestyle"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recipe": {
+      "get": {
+        "summary": "Get all recipe IDs",
+        "description": "Returns an array containing the ID of all available recipes",
+        "operationId": "getAllRecipeIds",
+        "tags": [
+          "Recipe"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recipe/{recipeId}": {
+      "get": {
+        "summary": "Find recipe by ID",
+        "description": "Returns a single recipe",
+        "operationId": "getRecipeById",
+        "tags": [
+          "Recipe"
+        ],
+        "parameters": [
+          {
+            "name": "recipeId",
+            "in": "path",
+            "description": "ID of recipe to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Recipe not found"
+          }
+        }
+      }
+    },
+    "/recipe/{recipeIds}": {
+      "get": {
+        "summary": "Find recipes by a list of IDs",
+        "description": "Returns an array with recipes",
+        "operationId": "getRecipesByIds",
+        "tags": [
+          "Recipe"
+        ],
+        "parameters": [
+          {
+            "name": "recipeIds",
+            "in": "path",
+            "description": "IDs of recipes to return separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Recipe not found"
+          }
+        }
+      }
+    },
+    "/language": {
+      "get": {
+        "summary": "Get all languages",
+        "description": "Returns an array of all available languages",
+        "operationId": "getAllLanguages",
+        "tags": [
+          "Language"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image/language/{languageCode}.png": {
+      "get": {
+        "summary": "Get language flag",
+        "description": "Returns flag image for the specified language",
+        "operationId": "getLanguageFlag",
+        "tags": [
+          "Language"
+        ],
+        "parameters": [
+          {
+            "name": "languageCode",
+            "in": "path",
+            "description": "Language code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Flag not found"
+          }
+        }
+      }
+    },
+    "/parameter/{parameterId}": {
+      "get": {
+        "summary": "Get parameter name",
+        "description": "Returns parameter name for the specified ID",
+        "operationId": "getParameterName",
+        "tags": [
+          "Core"
+        ],
+        "parameters": [
+          {
+            "name": "parameterId",
+            "in": "path",
+            "description": "ID of parameter",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        }
+      }
+    },
+    "/parameter/{parameterIds}": {
+      "get": {
+        "summary": "Get a list of parameter names",
+        "description": "Returns an array with parameter names",
+        "operationId": "getParameterNames",
+        "tags": [
+          "Core"
+        ],
+        "parameters": [
+          {
+            "name": "parameterIds",
+            "in": "path",
+            "description": "IDs of parameters separated by comma",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parameters not found"
+          }
+        }
+      }
+    },
+    "/image/place/{fileName}": {
+      "get": {
+        "summary": "Get place icon",
+        "description": "Returns icon for the specified place",
+        "operationId": "getPlaceIcon",
+        "tags": [
+          "Place"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the place icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/image/element/{fileName}": {
+      "get": {
+        "summary": "Get element icon",
+        "description": "Returns icon for the specified element",
+        "operationId": "getElementIcon",
+        "tags": [
+          "Element"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the element icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    },
+    "/image/badge/{fileName}": {
+      "get": {
+        "summary": "Get a badge icon",
+        "description": "Returns icon for the specified badge",
+        "operationId": "getBadgeIcon",
+        "tags": [
+          "Badge"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "description": "File name of the badge icon",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LocalizedText": {
+        "type": "object",
+        "description": "Text available in several languages",
+        "properties": {
+          "en": {
+            "type": "string",
+            "description": "English text"
+          },
+          "fr": {
+            "type": "string",
+            "description": "French text"
+          },
+          "kr": {
+            "type": "string",
+            "description": "Korean text"
+          }
+        },
+        "example": {
+          "en": "Julia",
+          "fr": "[Intendante de Flarine] Julia",
+          "kr": "쥬리아"
+        }
+      },
+      "Class": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "icon",
+          "tree",
+          "minLevel",
+          "maxLevel",
+          "maxHP",
+          "maxFP",
+          "maxMP",
+          "hp",
+          "mp",
+          "fp",
+          "attackSpeed",
+          "block",
+          "critical",
+          "autoAttackFactors",
+          "defense",
+          "magicDefenseStaFactor",
+          "magicDefenseIntFactor"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the class"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "beginner",
+              "expert",
+              "professional"
+            ],
+            "description": "Type of the class"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon of the Class"
+          },
+          "tree": {
+            "type": "string",
+            "description": "Skill tree image for the class"
+          },
+          "minLevel": {
+            "type": "integer",
+            "description": "Minimum player level for the Class"
+          },
+          "maxLevel": {
+            "type": "integer",
+            "description": "Maximum player level for the Class"
+          },
+          "parent": {
+            "type": "integer",
+            "description": "ID of the parent class"
+          },
+          "maxHP": {
+            "type": "string",
+            "description": "Formula to compute the maximum Hit Points of the player"
+          },
+          "maxFP": {
+            "type": "string",
+            "description": "Formula to compute the maximum Fatigue Points of the player"
+          },
+          "maxMP": {
+            "type": "string",
+            "description": "Formula to compute the maximum Mana Points of the player"
+          },
+          "hp": {
+            "type": "number",
+            "format": "float",
+            "description": "HP Factor"
+          },
+          "mp": {
+            "type": "number",
+            "format": "float",
+            "description": "MP Factor"
+          },
+          "fp": {
+            "type": "number",
+            "format": "float",
+            "description": "FP Factor"
+          },
+          "attackSpeed": {
+            "type": "number",
+            "format": "float",
+            "description": "Attack speed constant used in attack speed calculation"
+          },
+          "block": {
+            "type": "number",
+            "format": "float",
+            "description": "Blocking constant used in block calculation"
+          },
+          "critical": {
+            "type": "number",
+            "format": "float",
+            "description": "Critical chance constant used in critical chance calculation"
+          },
+          "autoAttackFactors": {
+            "type": "object",
+            "description": "Auto attack damage factors used in damage calculation",
+            "properties": {
+              "sword": {
+                "type": "number",
+                "format": "float"
+              },
+              "axe": {
+                "type": "number",
+                "format": "float"
+              },
+              "staff": {
+                "type": "number",
+                "format": "float"
+              },
+              "stick": {
+                "type": "number",
+                "format": "float"
+              },
+              "knuckle": {
+                "type": "number",
+                "format": "float"
+              },
+              "yoyo": {
+                "type": "number",
+                "format": "float"
+              },
+              "bow": {
+                "type": "number",
+                "format": "float"
+              },
+              "wand": {
+                "type": "number",
+                "format": "float"
+              }
+            }
+          },
+          "defense": {
+            "type": "number",
+            "format": "float",
+            "description": "Defense factor use in defensive calculations"
+          },
+          "magicDefenseStaFactor": {
+            "type": "number",
+            "format": "float",
+            "description": "Magic defense factor based on STA used in defensive calculations"
+          },
+          "magicDefenseIntFactor": {
+            "type": "number",
+            "format": "float",
+            "description": "Magic defense factor based on INT used in defensive calculations"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "world": {
+            "type": "integer",
+            "description": "World ID"
+          },
+          "x": {
+            "type": "number",
+            "format": "float",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "format": "float",
+            "description": "Y coordinate"
+          },
+          "z": {
+            "type": "number",
+            "format": "float",
+            "description": "Z coordinate"
+          },
+          "continent": {
+            "type": "integer",
+            "description": "Continent ID"
+          }
+        }
+      },
+      "Place": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of place"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      },
+      "Lodestar": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Lodestar key"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      },
+      "Continent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Continent ID"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "town": {
+            "type": "boolean",
+            "description": "Whether the continent is a town"
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "World": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "width",
+          "height",
+          "tileName",
+          "tileSize",
+          "flying",
+          "pk",
+          "inDoor",
+          "places",
+          "lodestars",
+          "continents"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the World"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "main",
+              "prison",
+              "dungeon",
+              "instance",
+              "event"
+            ],
+            "description": "Type of the World"
+          },
+          "width": {
+            "type": "integer",
+            "description": "Width of the World in meters"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Height of the World in meters"
+          },
+          "tileName": {
+            "type": "string",
+            "description": "Name of the world Tiles for navigator"
+          },
+          "tileSize": {
+            "type": "integer",
+            "description": "World meters per Tile"
+          },
+          "flying": {
+            "type": "boolean",
+            "description": "Whether players can fly in the World or not"
+          },
+          "pk": {
+            "type": "boolean",
+            "description": "Whether players can kill other players in the World or not"
+          },
+          "inDoor": {
+            "type": "boolean",
+            "description": "Whether the World has a sky or not"
+          },
+          "revivalWorld": {
+            "type": "integer",
+            "description": "ID of the World where players revive when they die in the World"
+          },
+          "revivalKey": {
+            "type": "string",
+            "description": "ID of the Lodestar where players revive when they die in the World"
+          },
+          "places": {
+            "type": "array",
+            "description": "Special Places in the World",
+            "items": {
+              "$ref": "#/components/schemas/Place"
+            }
+          },
+          "lodestars": {
+            "type": "array",
+            "description": "Revival places in the World",
+            "items": {
+              "$ref": "#/components/schemas/Lodestar"
+            }
+          },
+          "continents": {
+            "type": "array",
+            "description": "Continents in the World",
+            "items": {
+              "$ref": "#/components/schemas/Continent"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Version",
+      "description": "API and game data version information"
+    },
+    {
+      "name": "Class",
+      "description": "Player classes and their attributes"
+    },
+    {
+      "name": "World",
+      "description": "Game worlds and maps"
+    },
+    {
+      "name": "Monster",
+      "description": "Monsters and enemies"
+    },
+    {
+      "name": "Item",
+      "description": "Items and equipment"
+    },
+    {
+      "name": "Equipment Set",
+      "description": "Equipment sets and bonuses"
+    },
+    {
+      "name": "Skill",
+      "description": "Player skills and abilities"
+    },
+    {
+      "name": "Party Skill",
+      "description": "Party skills and buffs"
+    },
+    {
+      "name": "NPC",
+      "description": "Non-player characters"
+    },
+    {
+      "name": "Quest",
+      "description": "Quests and missions"
+    },
+    {
+      "name": "PK",
+      "description": "Player Kill information"
+    },
+    {
+      "name": "Achievement",
+      "description": "Achievements and rewards"
+    },
+    {
+      "name": "Upgrade Level Bonus",
+      "description": "Upgrade bonus information"
+    },
+    {
+      "name": "Awake",
+      "description": "Awake system values"
+    },
+    {
+      "name": "Raised Pets",
+      "description": "Raised pet information"
+    },
+    {
+      "name": "Dungeons",
+      "description": "Dungeon information"
+    },
+    {
+      "name": "Exchange Menus",
+      "description": "Item exchange menus"
+    },
+    {
+      "name": "Housing Template",
+      "description": "Housing templates"
+    },
+    {
+      "name": "Housing Pack",
+      "description": "Housing packs"
+    },
+    {
+      "name": "Couple",
+      "description": "Couple system information"
+    },
+    {
+      "name": "Lifestyle",
+      "description": "Lifestyle system information"
+    },
+    {
+      "name": "Recipe",
+      "description": "Crafting recipes"
+    },
+    {
+      "name": "Language",
+      "description": "Language support"
+    },
+    {
+      "name": "Core",
+      "description": "Core API functionality"
+    },
+    {
+      "name": "Place",
+      "description": "Place icons"
+    },
+    {
+      "name": "Element",
+      "description": "Element icons"
+    },
+    {
+      "name": "Badge",
+      "description": "Badge icons"
+    }
+  ]
+}
