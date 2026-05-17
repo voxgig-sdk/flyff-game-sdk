@@ -1,9 +1,15 @@
 {
   "existing": {
     "pkn": {
-      "PKN00": {},
-      "PKN01": {},
-      "PKN02": {}
+      "PKN00": {
+        "id": "PKN00"
+      },
+      "PKN01": {
+        "id": "PKN01"
+      },
+      "PKN02": {
+        "id": "PKN02"
+      }
     }
   },
   "new": {

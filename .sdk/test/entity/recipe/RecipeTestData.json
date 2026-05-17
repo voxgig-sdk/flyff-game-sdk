@@ -1,9 +1,15 @@
 {
   "existing": {
     "recipe": {
-      "RECIPE00": {},
-      "RECIPE01": {},
-      "RECIPE02": {}
+      "RECIPE00": {
+        "id": "RECIPE00"
+      },
+      "RECIPE01": {
+        "id": "RECIPE01"
+      },
+      "RECIPE02": {
+        "id": "RECIPE02"
+      }
     }
   },
   "new": {

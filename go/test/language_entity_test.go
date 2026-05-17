@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/flyff-game-sdk"
-	"github.com/voxgig-sdk/flyff-game-sdk/core"
+	sdk "github.com/voxgig-sdk/flyff-game-sdk/go"
+	"github.com/voxgig-sdk/flyff-game-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/flyff-game-sdk/go/utility/struct"
 )
 
 func TestLanguageEntity(t *testing.T) {

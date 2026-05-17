@@ -1,9 +1,15 @@
 {
   "existing": {
     "element": {
-      "ELEMENT00": {},
-      "ELEMENT01": {},
-      "ELEMENT02": {}
+      "ELEMENT00": {
+        "id": "ELEMENT00"
+      },
+      "ELEMENT01": {
+        "id": "ELEMENT01"
+      },
+      "ELEMENT02": {
+        "id": "ELEMENT02"
+      }
     }
   },
   "new": {

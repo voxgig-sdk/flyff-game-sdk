@@ -1,9 +1,15 @@
 {
   "existing": {
     "version": {
-      "VERSION00": {},
-      "VERSION01": {},
-      "VERSION02": {}
+      "VERSION00": {
+        "id": "VERSION00"
+      },
+      "VERSION01": {
+        "id": "VERSION01"
+      },
+      "VERSION02": {
+        "id": "VERSION02"
+      }
     }
   },
   "new": {

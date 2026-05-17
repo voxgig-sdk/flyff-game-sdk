@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/flyff-game-sdk/core"
+	"github.com/voxgig-sdk/flyff-game-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/flyff-game-sdk/go/utility/struct"
 )
 
 type ClassEntity struct {

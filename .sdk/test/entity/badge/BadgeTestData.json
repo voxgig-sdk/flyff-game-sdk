@@ -1,9 +1,15 @@
 {
   "existing": {
     "badge": {
-      "BADGE00": {},
-      "BADGE01": {},
-      "BADGE02": {}
+      "BADGE00": {
+        "id": "BADGE00"
+      },
+      "BADGE01": {
+        "id": "BADGE01"
+      },
+      "BADGE02": {
+        "id": "BADGE02"
+      }
     }
   },
   "new": {

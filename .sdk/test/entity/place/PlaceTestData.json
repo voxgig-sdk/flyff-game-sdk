@@ -1,9 +1,15 @@
 {
   "existing": {
     "place": {
-      "PLACE00": {},
-      "PLACE01": {},
-      "PLACE02": {}
+      "PLACE00": {
+        "id": "PLACE00"
+      },
+      "PLACE01": {
+        "id": "PLACE01"
+      },
+      "PLACE02": {
+        "id": "PLACE02"
+      }
     }
   },
   "new": {

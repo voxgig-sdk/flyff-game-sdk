@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/flyff-game-sdk"
+	sdk "github.com/voxgig-sdk/flyff-game-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

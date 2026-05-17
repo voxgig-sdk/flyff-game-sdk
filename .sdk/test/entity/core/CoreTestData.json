@@ -2,13 +2,16 @@
   "existing": {
     "core": {
       "CORE00": {
-        "parameter_id": "PARAMETER01"
+        "parameter_id": "PARAMETER01",
+        "id": "CORE00"
       },
       "CORE01": {
-        "parameter_id": "PARAMETER01"
+        "parameter_id": "PARAMETER01",
+        "id": "CORE01"
       },
       "CORE02": {
-        "parameter_id": "PARAMETER01"
+        "parameter_id": "PARAMETER01",
+        "id": "CORE02"
       }
     }
   },

@@ -1,9 +1,15 @@
 {
   "existing": {
     "lifestyle": {
-      "LIFESTYLE00": {},
-      "LIFESTYLE01": {},
-      "LIFESTYLE02": {}
+      "LIFESTYLE00": {
+        "id": "LIFESTYLE00"
+      },
+      "LIFESTYLE01": {
+        "id": "LIFESTYLE01"
+      },
+      "LIFESTYLE02": {
+        "id": "LIFESTYLE02"
+      }
     }
   },
   "new": {

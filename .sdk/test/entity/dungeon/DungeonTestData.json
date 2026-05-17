@@ -1,9 +1,15 @@
 {
   "existing": {
     "dungeon": {
-      "DUNGEON00": {},
-      "DUNGEON01": {},
-      "DUNGEON02": {}
+      "DUNGEON00": {
+        "id": "DUNGEON00"
+      },
+      "DUNGEON01": {
+        "id": "DUNGEON01"
+      },
+      "DUNGEON02": {
+        "id": "DUNGEON02"
+      }
     }
   },
   "new": {

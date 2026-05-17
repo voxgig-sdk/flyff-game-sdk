@@ -1,9 +1,15 @@
 {
   "existing": {
     "awake": {
-      "AWAKE00": {},
-      "AWAKE01": {},
-      "AWAKE02": {}
+      "AWAKE00": {
+        "id": "AWAKE00"
+      },
+      "AWAKE01": {
+        "id": "AWAKE01"
+      },
+      "AWAKE02": {
+        "id": "AWAKE02"
+      }
     }
   },
   "new": {

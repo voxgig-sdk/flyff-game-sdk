@@ -1,9 +1,15 @@
 {
   "existing": {
     "skill": {
-      "SKILL00": {},
-      "SKILL01": {},
-      "SKILL02": {}
+      "SKILL00": {
+        "id": "SKILL00"
+      },
+      "SKILL01": {
+        "id": "SKILL01"
+      },
+      "SKILL02": {
+        "id": "SKILL02"
+      }
     }
   },
   "new": {

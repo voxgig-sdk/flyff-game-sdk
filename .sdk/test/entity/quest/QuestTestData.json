@@ -1,9 +1,15 @@
 {
   "existing": {
     "quest": {
-      "QUEST00": {},
-      "QUEST01": {},
-      "QUEST02": {}
+      "QUEST00": {
+        "id": "QUEST00"
+      },
+      "QUEST01": {
+        "id": "QUEST01"
+      },
+      "QUEST02": {
+        "id": "QUEST02"
+      }
     }
   },
   "new": {

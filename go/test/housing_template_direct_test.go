@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/flyff-game-sdk"
-	"github.com/voxgig-sdk/flyff-game-sdk/core"
+	sdk "github.com/voxgig-sdk/flyff-game-sdk/go"
+	"github.com/voxgig-sdk/flyff-game-sdk/go/core"
 )
 
 func TestHousingTemplateDirect(t *testing.T) {

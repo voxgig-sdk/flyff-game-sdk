@@ -1,9 +1,15 @@
 {
   "existing": {
     "monster": {
-      "MONSTER00": {},
-      "MONSTER01": {},
-      "MONSTER02": {}
+      "MONSTER00": {
+        "id": "MONSTER00"
+      },
+      "MONSTER01": {
+        "id": "MONSTER01"
+      },
+      "MONSTER02": {
+        "id": "MONSTER02"
+      }
     }
   },
   "new": {

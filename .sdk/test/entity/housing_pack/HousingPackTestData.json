@@ -2,13 +2,16 @@
   "existing": {
     "housing_pack": {
       "HOUSING_PACK00": {
-        "housing_pack_id": "HOUSING_PACK01"
+        "housing_pack_id": "HOUSING_PACK01",
+        "id": "HOUSING_PACK00"
       },
       "HOUSING_PACK01": {
-        "housing_pack_id": "HOUSING_PACK01"
+        "housing_pack_id": "HOUSING_PACK01",
+        "id": "HOUSING_PACK01"
       },
       "HOUSING_PACK02": {
-        "housing_pack_id": "HOUSING_PACK01"
+        "housing_pack_id": "HOUSING_PACK01",
+        "id": "HOUSING_PACK02"
       }
     }
   },

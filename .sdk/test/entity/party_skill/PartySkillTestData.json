@@ -2,13 +2,16 @@
   "existing": {
     "party_skill": {
       "PARTY_SKILL00": {
-        "party_skill_id": "PARTY_SKILL01"
+        "party_skill_id": "PARTY_SKILL01",
+        "id": "PARTY_SKILL00"
       },
       "PARTY_SKILL01": {
-        "party_skill_id": "PARTY_SKILL01"
+        "party_skill_id": "PARTY_SKILL01",
+        "id": "PARTY_SKILL01"
       },
       "PARTY_SKILL02": {
-        "party_skill_id": "PARTY_SKILL01"
+        "party_skill_id": "PARTY_SKILL01",
+        "id": "PARTY_SKILL02"
       }
     }
   },

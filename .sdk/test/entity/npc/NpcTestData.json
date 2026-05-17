@@ -1,9 +1,15 @@
 {
   "existing": {
     "npc": {
-      "NPC00": {},
-      "NPC01": {},
-      "NPC02": {}
+      "NPC00": {
+        "id": "NPC00"
+      },
+      "NPC01": {
+        "id": "NPC01"
+      },
+      "NPC02": {
+        "id": "NPC02"
+      }
     }
   },
   "new": {

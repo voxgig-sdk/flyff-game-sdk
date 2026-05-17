@@ -1,9 +1,15 @@
 {
   "existing": {
     "couple": {
-      "COUPLE00": {},
-      "COUPLE01": {},
-      "COUPLE02": {}
+      "COUPLE00": {
+        "id": "COUPLE00"
+      },
+      "COUPLE01": {
+        "id": "COUPLE01"
+      },
+      "COUPLE02": {
+        "id": "COUPLE02"
+      }
     }
   },
   "new": {
