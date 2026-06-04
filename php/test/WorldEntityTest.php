@@ -96,7 +96,6 @@ function world_basic_setup($extra)
         "FLYFFGAME_TEST_WORLD_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +107,6 @@ function world_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

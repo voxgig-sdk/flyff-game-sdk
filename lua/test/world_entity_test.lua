@@ -102,7 +102,6 @@ function world_basic_setup(extra)
     ["FLYFFGAME_TEST_WORLD_ENTID"] = idmap,
     ["FLYFFGAME_TEST_LIVE"] = "FALSE",
     ["FLYFFGAME_TEST_EXPLAIN"] = "FALSE",
-    ["FLYFFGAME_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function world_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FLYFFGAME_APIKEY"],
       },
       extra or {},
     })

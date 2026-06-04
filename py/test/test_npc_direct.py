@@ -109,14 +109,12 @@ def _npc_direct_setup(mockres):
     env = runner.env_override({
         "FLYFFGAME_TEST_NPC_ENTID": {},
         "FLYFFGAME_TEST_LIVE": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     live = env.get("FLYFFGAME_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("FLYFFGAME_APIKEY"),
         }
         client = FlyffGameSDK(merged_opts)
         return {

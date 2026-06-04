@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { FlyffGameSDK } from 'flyff-game'
 
-const client = new FlyffGameSDK({
-  apikey: process.env.FLYFF-GAME_APIKEY,
-})
+const client = new FlyffGameSDK({})
 ```
 
 ### 2. List achievements
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new FlyffGameSDK({ apikey: '...' })
+const client = new FlyffGameSDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new FlyffGameSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 FLYFF-GAME_TEST_LIVE=TRUE
-FLYFF-GAME_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new FlyffGameSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new FlyffGameSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

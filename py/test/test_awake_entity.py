@@ -91,7 +91,6 @@ def _awake_basic_setup(extra):
         "FLYFFGAME_TEST_AWAKE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _awake_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

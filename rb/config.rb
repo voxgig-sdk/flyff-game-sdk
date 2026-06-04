@@ -15,9 +15,6 @@ module FlyffGameConfig
       },
       "options" => {
         "base" => "https://api.flyff.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
