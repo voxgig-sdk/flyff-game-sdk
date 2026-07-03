@@ -99,12 +99,14 @@ func pknDirectSetup(mockres any) *pknDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FLYFFGAME_TEST_PKN_ENTID": map[string]any{},
 		"FLYFFGAME_TEST_LIVE":    "FALSE",
+		"FLYFFGAME_APIKEY":       "NONE",
 	})
 
 	live := env["FLYFFGAME_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["FLYFFGAME_APIKEY"],
 		}
 		client := sdk.NewFlyffGameSDK(mergedOpts)
 

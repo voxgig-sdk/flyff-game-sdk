@@ -61,12 +61,14 @@ def upgrade_level_bonus_direct_setup(mockres)
   env = Runner.env_override({
     "FLYFFGAME_TEST_UPGRADE_LEVEL_BONUS_ENTID" => {},
     "FLYFFGAME_TEST_LIVE" => "FALSE",
+    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["FLYFFGAME_APIKEY"],
     }
     client = FlyffGameSDK.new(merged_opts)
     return {

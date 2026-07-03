@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FLYFFGAME_TEST_SKILL_ENTID': {},
     'FLYFFGAME_TEST_LIVE': 'FALSE',
+    'FLYFFGAME_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FLYFFGAME_TEST_LIVE
 
   if (live) {
     const client = new FlyffGameSDK({
+      apikey: env.FLYFFGAME_APIKEY,
     })
 
     let idmap: any = env['FLYFFGAME_TEST_SKILL_ENTID']

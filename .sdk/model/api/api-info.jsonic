@@ -23,56 +23,7 @@ main: {
       termsOfService: "https://api.flyff.com/"
       title: "Flyff Game API"
       version: "1.9.2"
-      tagline: "Read-only access to Flyff Universe game data — classes, worlds, monsters, items, skills and more"
-      homepage: "https://api.flyff.com"
-      docs_url: "https://api.flyff.com"
-      license_short: "Proprietary — Gala Lab grants use only for information sites and tools about the official Flyff game; no commercial use, no automation/cheating"
-      license_md: `- Proprietary licence from Gala Lab (publisher of Flyff Universe).
-- Permission to use data and images is granted only for information sites and tools about the official game.
-- Commercial use, in-game automation, cheat tools, and use in other video games are prohibited.
-- Gala Lab reserves the right to modify the terms; contact \`ir@gala.kr\` for licence questions.`
-      about_md: `The Flyff Game API exposes the static game data behind [Flyff Universe](https://universe.flyff.com), the browser MMORPG published by [Gala Lab](https://gala-lab.com). It is the same data source the official site uses to render classes, monsters, items, skills and world maps.
-
-What you get from the API:
-- Character data — classes and their skill trees, party skills, skill scaling and requirements
-- World data — world IDs, continents, revival points and pre-rendered tilemap images
-- Combat data — monsters with stats, drops and spawn locations; elements and debuff types
-- Equipment and economy — items, equipment sets and set bonuses, recipes, upgrade and awake bonuses, exchange menus
-- Progression and social systems — quests, achievements, badges, NPCs, dungeons, housing, lifestyle, couples and raised pets
-- Localisation — language packs and translated text
-- Image endpoints — class, monster, item, skill, NPC and world tile assets under \`/image/...\`
-
-Operational notes: the API is public and unauthenticated, served from \`https://api.flyff.com\`. The publisher documents a limit of **300 calls per minute per IP** and recommends caching, refreshing only when \`/version/data\` changes. CORS is disabled, so requests are intended to be made server-side. \`/version/api\` exposes the current API version.`
-      entity_desc: {
-        achievement: "In-game achievement definitions — `GET /achievement` for IDs and `GET /achievement/{id}` for details."
-        awake: "Awakening bonus tables used by the gear awakening system."
-        badge: "Badge definitions used as supporting metadata on characters and items."
-        class: "Playable character classes and their skill trees — `GET /class`, `GET /class/{classId}` and batch `GET /class/{classIds}`."
-        core: "Core/shared reference data used across other resources."
-        couple: "Couple system data describing paired-character bonuses and mechanics."
-        dungeon: "Dungeon definitions covering mechanics, layout and rewards."
-        element: "Elemental type definitions used by skills, monsters and items."
-        equipment_set: "Equipment sets and their set bonuses — `GET /equipset` and `GET /equipset/{equipSetId}`."
-        exchange_menus: "Exchange/shop menu definitions used by in-game exchange systems."
-        housing_pack: "Player housing packs — bundled housing content definitions."
-        housing_template: "Housing template definitions describing house layouts and slots, under `/housing*`."
-        item: "Items with properties, abilities and pricing — `GET /item`, `GET /item/{itemId}` and batch `GET /item/{itemIds}`."
-        language: "Language packs and localised strings for translated UI text."
-        lifestyle: "Lifestyle system data covering non-combat character activities."
-        monster: "Monsters with stats, drops and spawn locations — `GET /monster`, `GET /monster/{monsterId}` and batch `GET /monster/{monsterIds}`."
-        npc: "Non-player characters including dialog and portrait images under `/npc` and `/image/npc/...`."
-        party_skill: "Party-wide skill definitions — `GET /partyskill`."
-        pkn: "PKN (player-versus-player related) reference data used by combat systems."
-        place: "Place/location definitions used by worlds, quests and NPCs."
-        quest: "Quest definitions including objectives and rewards under `/quest`."
-        raised_pet: "Raised-pet definitions describing pet growth and bonuses."
-        recipe: "Crafting recipes and their ingredient/result mappings under `/recipe`."
-        skill: "Skills with mechanics, scaling and requirements — `GET /skill`, `GET /skill/{skillId}` and batch `GET /skill/{skillIds}`."
-        upgrade_level_bonus: "Upgrade-level bonus tables describing stat gains from gear upgrades."
-        version: "Data and API version identifiers — `GET /version/data` and `GET /version/api`, used to invalidate caches."
-        world: "Worlds with continents and revival points, plus tilemap images — `GET /world`, `GET /world/{worldId}`, batch `GET /world/{worldIds}` and `/image/world/...`."
-      }
-      auth: false
     }
   }
 }
+

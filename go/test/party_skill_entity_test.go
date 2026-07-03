@@ -129,6 +129,7 @@ func party_skillBasicSetup(extra map[string]any) *entityTestSetup {
 		"FLYFFGAME_TEST_PARTY_SKILL_ENTID": idmap,
 		"FLYFFGAME_TEST_LIVE":      "FALSE",
 		"FLYFFGAME_TEST_EXPLAIN":   "FALSE",
+		"FLYFFGAME_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FLYFFGAME_TEST_PARTY_SKILL_ENTID"])
@@ -139,6 +140,7 @@ func party_skillBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FLYFFGAME_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["FLYFFGAME_APIKEY"],
 			},
 			extra,
 		})

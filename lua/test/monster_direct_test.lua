@@ -117,12 +117,14 @@ function monster_direct_setup(mockres)
   local env = runner.env_override({
     ["FLYFFGAME_TEST_MONSTER_ENTID"] = {},
     ["FLYFFGAME_TEST_LIVE"] = "FALSE",
+    ["FLYFFGAME_APIKEY"] = "NONE",
   })
 
   local live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["FLYFFGAME_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

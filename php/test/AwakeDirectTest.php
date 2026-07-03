@@ -67,12 +67,14 @@ function awake_direct_setup($mockres)
     $env = Runner::env_override([
         "FLYFFGAME_TEST_AWAKE_ENTID" => [],
         "FLYFFGAME_TEST_LIVE" => "FALSE",
+        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $live = $env["FLYFFGAME_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["FLYFFGAME_APIKEY"],
         ];
         $client = new FlyffGameSDK($merged_opts);
         return [

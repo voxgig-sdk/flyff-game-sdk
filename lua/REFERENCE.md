@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -198,7 +198,7 @@ local achievement = client:Achievement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Achievement(nil):list(nil, nil)
+local results, err = client:Achievement():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -206,7 +206,7 @@ local results, err = client:Achievement(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Achievement(nil):load({ id = "achievement_id" }, nil)
+local result, err = client:Achievement():load({ id = "achievement_id" })
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ local awake = client:Awake(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Awake(nil):load({ id = "awake_id" }, nil)
+local result, err = client:Awake():load({ id = "awake_id" })
 ```
 
 ### Common Methods
@@ -298,7 +298,7 @@ local badge = client:Badge(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Badge(nil):load({ id = "badge_id" }, nil)
+local result, err = client:Badge():load({ id = "badge_id" })
 ```
 
 ### Common Methods
@@ -370,7 +370,7 @@ local class = client:Class(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Class(nil):list(nil, nil)
+local results, err = client:Class():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -378,7 +378,7 @@ local results, err = client:Class(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Class(nil):load({ id = "class_id" }, nil)
+local result, err = client:Class():load({ id = "class_id" })
 ```
 
 ### Common Methods
@@ -424,7 +424,7 @@ local core = client:Core(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Core(nil):load({ id = "core_id" }, nil)
+local result, err = client:Core():load({ id = "core_id" })
 ```
 
 ### Common Methods
@@ -470,7 +470,7 @@ local couple = client:Couple(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Couple(nil):load({ id = "couple_id" }, nil)
+local result, err = client:Couple():load({ id = "couple_id" })
 ```
 
 ### Common Methods
@@ -516,7 +516,7 @@ local dungeon = client:Dungeon(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dungeon(nil):load({ id = "dungeon_id" }, nil)
+local result, err = client:Dungeon():load({ id = "dungeon_id" })
 ```
 
 ### Common Methods
@@ -562,7 +562,7 @@ local element = client:Element(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Element(nil):load({ id = "element_id" }, nil)
+local result, err = client:Element():load({ id = "element_id" })
 ```
 
 ### Common Methods
@@ -608,7 +608,7 @@ local equipment_set = client:EquipmentSet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:EquipmentSet(nil):list(nil, nil)
+local results, err = client:EquipmentSet():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -616,7 +616,7 @@ local results, err = client:EquipmentSet(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:EquipmentSet(nil):load({ id = "equipment_set_id" }, nil)
+local result, err = client:EquipmentSet():load({ id = "equipment_set_id" })
 ```
 
 ### Common Methods
@@ -662,7 +662,7 @@ local exchange_menus = client:ExchangeMenus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ExchangeMenus(nil):load({ id = "exchange_menus_id" }, nil)
+local result, err = client:ExchangeMenus():load({ id = "exchange_menus_id" })
 ```
 
 ### Common Methods
@@ -708,7 +708,7 @@ local housing_pack = client:HousingPack(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:HousingPack(nil):list(nil, nil)
+local results, err = client:HousingPack():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -716,7 +716,7 @@ local results, err = client:HousingPack(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingPack(nil):load({ id = "housing_pack_id" }, nil)
+local result, err = client:HousingPack():load({ id = "housing_pack_id" })
 ```
 
 ### Common Methods
@@ -762,7 +762,7 @@ local housing_template = client:HousingTemplate(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:HousingTemplate(nil):list(nil, nil)
+local results, err = client:HousingTemplate():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -770,7 +770,7 @@ local results, err = client:HousingTemplate(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingTemplate(nil):load({ id = "housing_template_id" }, nil)
+local result, err = client:HousingTemplate():load({ id = "housing_template_id" })
 ```
 
 ### Common Methods
@@ -816,7 +816,7 @@ local item = client:Item(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Item(nil):list(nil, nil)
+local results, err = client:Item():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -824,7 +824,7 @@ local results, err = client:Item(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Item(nil):load({ id = "item_id" }, nil)
+local result, err = client:Item():load({ id = "item_id" })
 ```
 
 ### Common Methods
@@ -870,7 +870,7 @@ local language = client:Language(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Language(nil):list(nil, nil)
+local results, err = client:Language():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -878,7 +878,7 @@ local results, err = client:Language(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Language(nil):load({ id = "language_id" }, nil)
+local result, err = client:Language():load({ id = "language_id" })
 ```
 
 ### Common Methods
@@ -924,7 +924,7 @@ local lifestyle = client:Lifestyle(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Lifestyle(nil):load({ id = "lifestyle_id" }, nil)
+local result, err = client:Lifestyle():load({ id = "lifestyle_id" })
 ```
 
 ### Common Methods
@@ -970,7 +970,7 @@ local monster = client:Monster(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Monster(nil):list(nil, nil)
+local results, err = client:Monster():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -978,7 +978,7 @@ local results, err = client:Monster(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Monster(nil):load({ id = "monster_id" }, nil)
+local result, err = client:Monster():load({ id = "monster_id" })
 ```
 
 ### Common Methods
@@ -1024,7 +1024,7 @@ local npc = client:Npc(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Npc(nil):list(nil, nil)
+local results, err = client:Npc():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1032,7 +1032,7 @@ local results, err = client:Npc(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Npc(nil):load({ id = "npc_id" }, nil)
+local result, err = client:Npc():load({ id = "npc_id" })
 ```
 
 ### Common Methods
@@ -1078,7 +1078,7 @@ local party_skill = client:PartySkill(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:PartySkill(nil):list(nil, nil)
+local results, err = client:PartySkill():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1086,7 +1086,7 @@ local results, err = client:PartySkill(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PartySkill(nil):load({ id = "party_skill_id" }, nil)
+local result, err = client:PartySkill():load({ id = "party_skill_id" })
 ```
 
 ### Common Methods
@@ -1132,7 +1132,7 @@ local pkn = client:Pkn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Pkn(nil):load({ id = "pkn_id" }, nil)
+local result, err = client:Pkn():load({ id = "pkn_id" })
 ```
 
 ### Common Methods
@@ -1178,7 +1178,7 @@ local place = client:Place(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Place(nil):load({ id = "place_id" }, nil)
+local result, err = client:Place():load({ id = "place_id" })
 ```
 
 ### Common Methods
@@ -1224,7 +1224,7 @@ local quest = client:Quest(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Quest(nil):list(nil, nil)
+local results, err = client:Quest():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1232,7 +1232,7 @@ local results, err = client:Quest(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Quest(nil):load({ id = "quest_id" }, nil)
+local result, err = client:Quest():load({ id = "quest_id" })
 ```
 
 ### Common Methods
@@ -1278,7 +1278,7 @@ local raised_pet = client:RaisedPet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RaisedPet(nil):load({ id = "raised_pet_id" }, nil)
+local result, err = client:RaisedPet():load({ id = "raised_pet_id" })
 ```
 
 ### Common Methods
@@ -1324,7 +1324,7 @@ local recipe = client:Recipe(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Recipe(nil):list(nil, nil)
+local results, err = client:Recipe():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1332,7 +1332,7 @@ local results, err = client:Recipe(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Recipe(nil):load({ id = "recipe_id" }, nil)
+local result, err = client:Recipe():load({ id = "recipe_id" })
 ```
 
 ### Common Methods
@@ -1378,7 +1378,7 @@ local skill = client:Skill(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Skill(nil):list(nil, nil)
+local results, err = client:Skill():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1386,7 +1386,7 @@ local results, err = client:Skill(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Skill(nil):load({ id = "skill_id" }, nil)
+local result, err = client:Skill():load({ id = "skill_id" })
 ```
 
 ### Common Methods
@@ -1432,7 +1432,7 @@ local upgrade_level_bonus = client:UpgradeLevelBonus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:UpgradeLevelBonus(nil):load({ id = "upgrade_level_bonus_id" }, nil)
+local result, err = client:UpgradeLevelBonus():load({ id = "upgrade_level_bonus_id" })
 ```
 
 ### Common Methods
@@ -1478,7 +1478,7 @@ local version = client:Version(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Version(nil):load({ id = "version_id" }, nil)
+local result, err = client:Version():load({ id = "version_id" })
 ```
 
 ### Common Methods
@@ -1544,7 +1544,7 @@ local world = client:World(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:World(nil):list(nil, nil)
+local results, err = client:World():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1552,7 +1552,7 @@ local results, err = client:World(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:World(nil):load({ id = "world_id" }, nil)
+local result, err = client:World():load({ id = "world_id" })
 ```
 
 ### Common Methods

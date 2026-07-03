@@ -1,23 +1,8 @@
 # FlyffGame SDK
 
-Read-only access to Flyff Universe game data — classes, worlds, monsters, items, skills and more
+Flyff Game API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Flyff Game API
-
-The Flyff Game API exposes the static game data behind [Flyff Universe](https://universe.flyff.com), the browser MMORPG published by [Gala Lab](https://gala-lab.com). It is the same data source the official site uses to render classes, monsters, items, skills and world maps.
-
-What you get from the API:
-- Character data — classes and their skill trees, party skills, skill scaling and requirements
-- World data — world IDs, continents, revival points and pre-rendered tilemap images
-- Combat data — monsters with stats, drops and spawn locations; elements and debuff types
-- Equipment and economy — items, equipment sets and set bonuses, recipes, upgrade and awake bonuses, exchange menus
-- Progression and social systems — quests, achievements, badges, NPCs, dungeons, housing, lifestyle, couples and raised pets
-- Localisation — language packs and translated text
-- Image endpoints — class, monster, item, skill, NPC and world tile assets under `/image/...`
-
-Operational notes: the API is public and unauthenticated, served from `https://api.flyff.com`. The publisher documents a limit of **300 calls per minute per IP** and recommends caching, refreshing only when `/version/data` changes. CORS is disabled, so requests are intended to be made server-side. `/version/api` exposes the current API version.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install flyff-game-sdk
 luarocks install flyff-game-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FlyffGameSDK } from 'flyff-game'
 
-const client = new FlyffGameSDK({})
+const client = new FlyffGameSDK({
+  apikey: process.env.FLYFF-GAME_APIKEY,
+})
 
 // List all achievements
 const achievements = await client.Achievement().list()
+console.log(achievements.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,33 +90,33 @@ The API exposes 27 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Achievement** | In-game achievement definitions — `GET /achievement` for IDs and `GET /achievement/{id}` for details. | `/achievement` |
-| **Awake** | Awakening bonus tables used by the gear awakening system. | `/awake/skill` |
-| **Badge** | Badge definitions used as supporting metadata on characters and items. | `/image/badge/{fileName}` |
-| **Class** | Playable character classes and their skill trees — `GET /class`, `GET /class/{classId}` and batch `GET /class/{classIds}`. | `/class` |
-| **Core** | Core/shared reference data used across other resources. | `/parameter/{parameterIds}` |
-| **Couple** | Couple system data describing paired-character bonuses and mechanics. | `/couple` |
-| **Dungeon** | Dungeon definitions covering mechanics, layout and rewards. | `/dungeon` |
-| **Element** | Elemental type definitions used by skills, monsters and items. | `/image/element/{fileName}` |
-| **EquipmentSet** | Equipment sets and their set bonuses — `GET /equipset` and `GET /equipset/{equipSetId}`. | `/equipmentset` |
-| **ExchangeMenus** | Exchange/shop menu definitions used by in-game exchange systems. | `/exchangemenu` |
-| **HousingPack** | Player housing packs — bundled housing content definitions. | `/housingpack` |
-| **HousingTemplate** | Housing template definitions describing house layouts and slots, under `/housing*`. | `/housingtemplate` |
-| **Item** | Items with properties, abilities and pricing — `GET /item`, `GET /item/{itemId}` and batch `GET /item/{itemIds}`. | `/item` |
-| **Language** | Language packs and localised strings for translated UI text. | `/language` |
-| **Lifestyle** | Lifestyle system data covering non-combat character activities. | `/lifestyle` |
-| **Monster** | Monsters with stats, drops and spawn locations — `GET /monster`, `GET /monster/{monsterId}` and batch `GET /monster/{monsterIds}`. | `/monster` |
-| **Npc** | Non-player characters including dialog and portrait images under `/npc` and `/image/npc/...`. | `/npc` |
-| **PartySkill** | Party-wide skill definitions — `GET /partyskill`. | `/partyskill` |
-| **Pkn** | PKN (player-versus-player related) reference data used by combat systems. | `/pk` |
-| **Place** | Place/location definitions used by worlds, quests and NPCs. | `/image/place/{fileName}` |
-| **Quest** | Quest definitions including objectives and rewards under `/quest`. | `/quest` |
-| **RaisedPet** | Raised-pet definitions describing pet growth and bonuses. | `/raisedpet` |
-| **Recipe** | Crafting recipes and their ingredient/result mappings under `/recipe`. | `/recipe` |
-| **Skill** | Skills with mechanics, scaling and requirements — `GET /skill`, `GET /skill/{skillId}` and batch `GET /skill/{skillIds}`. | `/skill` |
-| **UpgradeLevelBonus** | Upgrade-level bonus tables describing stat gains from gear upgrades. | `/upgradelevelbonus` |
-| **Version** | Data and API version identifiers — `GET /version/data` and `GET /version/api`, used to invalidate caches. | `/version/api` |
-| **World** | Worlds with continents and revival points, plus tilemap images — `GET /world`, `GET /world/{worldId}`, batch `GET /world/{worldIds}` and `/image/world/...`. | `/world` |
+| **Achievement** |  | `/achievement` |
+| **Awake** |  | `/awake/skill` |
+| **Badge** |  | `/image/badge/{fileName}` |
+| **Class** |  | `/class` |
+| **Core** |  | `/parameter/{parameterIds}` |
+| **Couple** |  | `/couple` |
+| **Dungeon** |  | `/dungeon` |
+| **Element** |  | `/image/element/{fileName}` |
+| **EquipmentSet** |  | `/equipmentset` |
+| **ExchangeMenus** |  | `/exchangemenu` |
+| **HousingPack** |  | `/housingpack` |
+| **HousingTemplate** |  | `/housingtemplate` |
+| **Item** |  | `/item` |
+| **Language** |  | `/language` |
+| **Lifestyle** |  | `/lifestyle` |
+| **Monster** |  | `/monster` |
+| **Npc** |  | `/npc` |
+| **PartySkill** |  | `/partyskill` |
+| **Pkn** |  | `/pk` |
+| **Place** |  | `/image/place/{fileName}` |
+| **Quest** |  | `/quest` |
+| **RaisedPet** |  | `/raisedpet` |
+| **Recipe** |  | `/recipe` |
+| **Skill** |  | `/skill` |
+| **UpgradeLevelBonus** |  | `/upgradelevelbonus` |
+| **Version** |  | `/version/api` |
+| **World** |  | `/world` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -139,17 +126,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from flyffgame_sdk import FlyffGameSDK
 
-client = FlyffGameSDK({})
+client = FlyffGameSDK({
+    "apikey": os.environ.get("FLYFF-GAME_APIKEY"),
+})
 
 # List all achievements
-achievements, err = client.Achievement(None).list(None, None)
+achievements, err = client.Achievement().list()
+print(achievements)
 
 # Load a specific achievement
-achievement, err = client.Achievement(None).load(
-    {"id": "example_id"}, None
-)
+achievement, err = client.Achievement().load({"id": "example_id"})
+print(achievement)
 ```
 
 ### PHP
@@ -158,15 +148,17 @@ achievement, err = client.Achievement(None).load(
 <?php
 require_once 'flyffgame_sdk.php';
 
-$client = new FlyffGameSDK([]);
+$client = new FlyffGameSDK([
+    "apikey" => getenv("FLYFF-GAME_APIKEY"),
+]);
 
 // List all achievements
-[$achievements, $err] = $client->Achievement(null)->list(null, null);
+[$achievements, $err] = $client->Achievement()->list();
+print_r($achievements);
 
 // Load a specific achievement
-[$achievement, $err] = $client->Achievement(null)->load(
-    ["id" => "example_id"], null
-);
+[$achievement, $err] = $client->Achievement()->load(["id" => "example_id"]);
+print_r($achievement);
 ```
 
 ### Golang
@@ -174,10 +166,13 @@ $client = new FlyffGameSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/flyff-game-sdk/go"
 
-client := sdk.NewFlyffGameSDK(map[string]any{})
+client := sdk.NewFlyffGameSDK(map[string]any{
+    "apikey": os.Getenv("FLYFF-GAME_APIKEY"),
+})
 
 // List all achievements
 achievements, err := client.Achievement(nil).List(nil, nil)
+fmt.Println(achievements)
 ```
 
 ### Ruby
@@ -185,15 +180,17 @@ achievements, err := client.Achievement(nil).List(nil, nil)
 ```ruby
 require_relative "FlyffGame_sdk"
 
-client = FlyffGameSDK.new({})
+client = FlyffGameSDK.new({
+  "apikey" => ENV["FLYFF-GAME_APIKEY"],
+})
 
 # List all achievements
-achievements, err = client.Achievement(nil).list(nil, nil)
+achievements, err = client.Achievement().list
+puts achievements
 
 # Load a specific achievement
-achievement, err = client.Achievement(nil).load(
-  { "id" => "example_id" }, nil
-)
+achievement, err = client.Achievement().load({ "id" => "example_id" })
+puts achievement
 ```
 
 ### Lua
@@ -201,15 +198,17 @@ achievement, err = client.Achievement(nil).load(
 ```lua
 local sdk = require("flyff-game_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FLYFF-GAME_APIKEY"),
+})
 
 -- List all achievements
-local achievements, err = client:Achievement(nil):list(nil, nil)
+local achievements, err = client:Achievement():list()
+print(achievements)
 
 -- Load a specific achievement
-local achievement, err = client:Achievement(nil):load(
-  { id = "example_id" }, nil
-)
+local achievement, err = client:Achievement():load({ id = "example_id" })
+print(achievement)
 ```
 
 ## Unit testing in offline mode
@@ -228,25 +227,21 @@ const result = await client.Achievement().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FlyffGameSDK.test(None, None)
-result, err = client.Achievement(None).load(
-    {"id": "test01"}, None
-)
+client = FlyffGameSDK.test()
+result, err = client.Achievement().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FlyffGameSDK::test(null, null);
-[$result, $err] = $client->Achievement(null)->load(
-    ["id" => "test01"], null
-);
+$client = FlyffGameSDK::test();
+[$result, $err] = $client->Achievement()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Achievement(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -255,19 +250,15 @@ result, err := client.Achievement(nil).Load(
 ### Ruby
 
 ```ruby
-client = FlyffGameSDK.test(nil, nil)
-result, err = client.Achievement(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FlyffGameSDK.test
+result, err = client.Achievement().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Achievement(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Achievement():load({ id = "test01" })
 ```
 
 ## How it works
@@ -371,15 +362,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Flyff Game API
-
-- Upstream: [https://api.flyff.com](https://api.flyff.com)
-
-- Proprietary licence from Gala Lab (publisher of Flyff Universe).
-- Permission to use data and images is granted only for information sites and tools about the official game.
-- Commercial use, in-game automation, cheat tools, and use in other video games are prohibited.
-- Gala Lab reserves the right to modify the terms; contact `ir@gala.kr` for licence questions.
 
 ---
 
