@@ -10,7 +10,7 @@ The Lua SDK for the FlyffGame API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install flyff-game-sdk
+luarocks install voxgig-sdk-flyff-game
 ```
 
 If the module is not yet published, add the source directory to

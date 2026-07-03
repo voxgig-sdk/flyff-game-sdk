@@ -10,7 +10,7 @@ The PHP SDK for the FlyffGame API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/flyff-game-sdk
+composer require voxgig-sdk/flyff-game
 ```
 
 

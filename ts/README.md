@@ -10,7 +10,7 @@ The TypeScript SDK for the FlyffGame API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install flyff-game
+npm install @voxgig-sdk/flyff-game
 ```
 ## Tutorial: your first API call
 

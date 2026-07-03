@@ -10,7 +10,7 @@ The Python SDK for the FlyffGame API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install flyff-game-sdk
+pip install voxgig-sdk-flyff-game
 ```
 
 Or install from source:

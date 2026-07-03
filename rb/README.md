@@ -10,13 +10,13 @@ The Ruby SDK for the FlyffGame API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install flyff-game-sdk
+gem install voxgig-sdk-flyff-game
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "flyff-game-sdk"
+gem "voxgig-sdk-flyff-game"
 ```
 
 Then run:
