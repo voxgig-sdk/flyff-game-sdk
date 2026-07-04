@@ -421,7 +421,7 @@ Alias for `FlyffGameSDK.test()`.
 ## AchievementEntity
 
 ```ts
-const achievement = client.achievement
+const achievement = client.Achievement()
 ```
 
 ### Operations
@@ -431,7 +431,7 @@ const achievement = client.achievement
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.achievement.list()
+const results = await client.Achievement().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -439,7 +439,7 @@ const results = await client.achievement.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.achievement.load({ id: 'achievement_id' })
+const result = await client.Achievement().load({ id: 'achievement_id' })
 ```
 
 ### Common Methods
@@ -473,7 +473,7 @@ Return a copy of the entity options.
 ## AwakeEntity
 
 ```ts
-const awake = client.awake
+const awake = client.Awake()
 ```
 
 ### Operations
@@ -483,7 +483,7 @@ const awake = client.awake
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.awake.load({ id: 'awake_id' })
+const result = await client.Awake().load({ id: 'awake_id' })
 ```
 
 ### Common Methods
@@ -517,7 +517,7 @@ Return a copy of the entity options.
 ## BadgeEntity
 
 ```ts
-const badge = client.badge
+const badge = client.Badge()
 ```
 
 ### Operations
@@ -527,7 +527,7 @@ const badge = client.badge
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.badge.load({ id: 'badge_id' })
+const result = await client.Badge().load({ id: 'badge_id' })
 ```
 
 ### Common Methods
@@ -561,7 +561,7 @@ Return a copy of the entity options.
 ## ClassEntity
 
 ```ts
-const class = client.class
+const class = client.Class()
 ```
 
 ### Fields
@@ -597,7 +597,7 @@ const class = client.class
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.class.list()
+const results = await client.Class().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -605,7 +605,7 @@ const results = await client.class.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.class.load({ id: 'class_id' })
+const result = await client.Class().load({ id: 'class_id' })
 ```
 
 ### Common Methods
@@ -639,7 +639,7 @@ Return a copy of the entity options.
 ## CoreEntity
 
 ```ts
-const core = client.core
+const core = client.Core()
 ```
 
 ### Operations
@@ -649,7 +649,7 @@ const core = client.core
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.core.load({ id: 'core_id' })
+const result = await client.Core().load({ id: 'core_id' })
 ```
 
 ### Common Methods
@@ -683,7 +683,7 @@ Return a copy of the entity options.
 ## CoupleEntity
 
 ```ts
-const couple = client.couple
+const couple = client.Couple()
 ```
 
 ### Operations
@@ -693,7 +693,7 @@ const couple = client.couple
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.couple.load({ id: 'couple_id' })
+const result = await client.Couple().load({ id: 'couple_id' })
 ```
 
 ### Common Methods
@@ -727,7 +727,7 @@ Return a copy of the entity options.
 ## DungeonEntity
 
 ```ts
-const dungeon = client.dungeon
+const dungeon = client.Dungeon()
 ```
 
 ### Operations
@@ -737,7 +737,7 @@ const dungeon = client.dungeon
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.dungeon.load({ id: 'dungeon_id' })
+const result = await client.Dungeon().load({ id: 'dungeon_id' })
 ```
 
 ### Common Methods
@@ -771,7 +771,7 @@ Return a copy of the entity options.
 ## ElementEntity
 
 ```ts
-const element = client.element
+const element = client.Element()
 ```
 
 ### Operations
@@ -781,7 +781,7 @@ const element = client.element
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.element.load({ id: 'element_id' })
+const result = await client.Element().load({ id: 'element_id' })
 ```
 
 ### Common Methods
@@ -815,7 +815,7 @@ Return a copy of the entity options.
 ## EquipmentSetEntity
 
 ```ts
-const equipment_set = client.equipment_set
+const equipment_set = client.EquipmentSet()
 ```
 
 ### Operations
@@ -825,7 +825,7 @@ const equipment_set = client.equipment_set
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.equipment_set.list()
+const results = await client.EquipmentSet().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -833,7 +833,7 @@ const results = await client.equipment_set.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.equipment_set.load({ id: 'equipment_set_id' })
+const result = await client.EquipmentSet().load({ id: 'equipment_set_id' })
 ```
 
 ### Common Methods
@@ -867,7 +867,7 @@ Return a copy of the entity options.
 ## ExchangeMenusEntity
 
 ```ts
-const exchange_menus = client.exchange_menus
+const exchange_menus = client.ExchangeMenus()
 ```
 
 ### Operations
@@ -877,7 +877,7 @@ const exchange_menus = client.exchange_menus
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.exchange_menus.load({ id: 'exchange_menus_id' })
+const result = await client.ExchangeMenus().load({ id: 'exchange_menus_id' })
 ```
 
 ### Common Methods
@@ -911,7 +911,7 @@ Return a copy of the entity options.
 ## HousingPackEntity
 
 ```ts
-const housing_pack = client.housing_pack
+const housing_pack = client.HousingPack()
 ```
 
 ### Operations
@@ -921,7 +921,7 @@ const housing_pack = client.housing_pack
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.housing_pack.list()
+const results = await client.HousingPack().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -929,7 +929,7 @@ const results = await client.housing_pack.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.housing_pack.load({ id: 'housing_pack_id' })
+const result = await client.HousingPack().load({ id: 'housing_pack_id' })
 ```
 
 ### Common Methods
@@ -963,7 +963,7 @@ Return a copy of the entity options.
 ## HousingTemplateEntity
 
 ```ts
-const housing_template = client.housing_template
+const housing_template = client.HousingTemplate()
 ```
 
 ### Operations
@@ -973,7 +973,7 @@ const housing_template = client.housing_template
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.housing_template.list()
+const results = await client.HousingTemplate().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -981,7 +981,7 @@ const results = await client.housing_template.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.housing_template.load({ id: 'housing_template_id' })
+const result = await client.HousingTemplate().load({ id: 'housing_template_id' })
 ```
 
 ### Common Methods
@@ -1015,7 +1015,7 @@ Return a copy of the entity options.
 ## ItemEntity
 
 ```ts
-const item = client.item
+const item = client.Item()
 ```
 
 ### Operations
@@ -1025,7 +1025,7 @@ const item = client.item
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.item.list()
+const results = await client.Item().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1033,7 +1033,7 @@ const results = await client.item.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.item.load({ id: 'item_id' })
+const result = await client.Item().load({ id: 'item_id' })
 ```
 
 ### Common Methods
@@ -1067,7 +1067,7 @@ Return a copy of the entity options.
 ## LanguageEntity
 
 ```ts
-const language = client.language
+const language = client.Language()
 ```
 
 ### Operations
@@ -1077,7 +1077,7 @@ const language = client.language
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.language.list()
+const results = await client.Language().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1085,7 +1085,7 @@ const results = await client.language.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.language.load({ id: 'language_id' })
+const result = await client.Language().load({ id: 'language_id' })
 ```
 
 ### Common Methods
@@ -1119,7 +1119,7 @@ Return a copy of the entity options.
 ## LifestyleEntity
 
 ```ts
-const lifestyle = client.lifestyle
+const lifestyle = client.Lifestyle()
 ```
 
 ### Operations
@@ -1129,7 +1129,7 @@ const lifestyle = client.lifestyle
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.lifestyle.load({ id: 'lifestyle_id' })
+const result = await client.Lifestyle().load({ id: 'lifestyle_id' })
 ```
 
 ### Common Methods
@@ -1163,7 +1163,7 @@ Return a copy of the entity options.
 ## MonsterEntity
 
 ```ts
-const monster = client.monster
+const monster = client.Monster()
 ```
 
 ### Operations
@@ -1173,7 +1173,7 @@ const monster = client.monster
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.monster.list()
+const results = await client.Monster().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1181,7 +1181,7 @@ const results = await client.monster.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.monster.load({ id: 'monster_id' })
+const result = await client.Monster().load({ id: 'monster_id' })
 ```
 
 ### Common Methods
@@ -1215,7 +1215,7 @@ Return a copy of the entity options.
 ## NpcEntity
 
 ```ts
-const npc = client.npc
+const npc = client.Npc()
 ```
 
 ### Operations
@@ -1225,7 +1225,7 @@ const npc = client.npc
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.npc.list()
+const results = await client.Npc().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1233,7 +1233,7 @@ const results = await client.npc.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.npc.load({ id: 'npc_id' })
+const result = await client.Npc().load({ id: 'npc_id' })
 ```
 
 ### Common Methods
@@ -1267,7 +1267,7 @@ Return a copy of the entity options.
 ## PartySkillEntity
 
 ```ts
-const party_skill = client.party_skill
+const party_skill = client.PartySkill()
 ```
 
 ### Operations
@@ -1277,7 +1277,7 @@ const party_skill = client.party_skill
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.party_skill.list()
+const results = await client.PartySkill().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1285,7 +1285,7 @@ const results = await client.party_skill.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.party_skill.load({ id: 'party_skill_id' })
+const result = await client.PartySkill().load({ id: 'party_skill_id' })
 ```
 
 ### Common Methods
@@ -1319,7 +1319,7 @@ Return a copy of the entity options.
 ## PknEntity
 
 ```ts
-const pkn = client.pkn
+const pkn = client.Pkn()
 ```
 
 ### Operations
@@ -1329,7 +1329,7 @@ const pkn = client.pkn
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.pkn.load({ id: 'pkn_id' })
+const result = await client.Pkn().load({ id: 'pkn_id' })
 ```
 
 ### Common Methods
@@ -1363,7 +1363,7 @@ Return a copy of the entity options.
 ## PlaceEntity
 
 ```ts
-const place = client.place
+const place = client.Place()
 ```
 
 ### Operations
@@ -1373,7 +1373,7 @@ const place = client.place
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.place.load({ id: 'place_id' })
+const result = await client.Place().load({ id: 'place_id' })
 ```
 
 ### Common Methods
@@ -1407,7 +1407,7 @@ Return a copy of the entity options.
 ## QuestEntity
 
 ```ts
-const quest = client.quest
+const quest = client.Quest()
 ```
 
 ### Operations
@@ -1417,7 +1417,7 @@ const quest = client.quest
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.quest.list()
+const results = await client.Quest().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1425,7 +1425,7 @@ const results = await client.quest.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.quest.load({ id: 'quest_id' })
+const result = await client.Quest().load({ id: 'quest_id' })
 ```
 
 ### Common Methods
@@ -1459,7 +1459,7 @@ Return a copy of the entity options.
 ## RaisedPetEntity
 
 ```ts
-const raised_pet = client.raised_pet
+const raised_pet = client.RaisedPet()
 ```
 
 ### Operations
@@ -1469,7 +1469,7 @@ const raised_pet = client.raised_pet
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.raised_pet.load({ id: 'raised_pet_id' })
+const result = await client.RaisedPet().load({ id: 'raised_pet_id' })
 ```
 
 ### Common Methods
@@ -1503,7 +1503,7 @@ Return a copy of the entity options.
 ## RecipeEntity
 
 ```ts
-const recipe = client.recipe
+const recipe = client.Recipe()
 ```
 
 ### Operations
@@ -1513,7 +1513,7 @@ const recipe = client.recipe
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.recipe.list()
+const results = await client.Recipe().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1521,7 +1521,7 @@ const results = await client.recipe.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.recipe.load({ id: 'recipe_id' })
+const result = await client.Recipe().load({ id: 'recipe_id' })
 ```
 
 ### Common Methods
@@ -1555,7 +1555,7 @@ Return a copy of the entity options.
 ## SkillEntity
 
 ```ts
-const skill = client.skill
+const skill = client.Skill()
 ```
 
 ### Operations
@@ -1565,7 +1565,7 @@ const skill = client.skill
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.skill.list()
+const results = await client.Skill().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1573,7 +1573,7 @@ const results = await client.skill.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.skill.load({ id: 'skill_id' })
+const result = await client.Skill().load({ id: 'skill_id' })
 ```
 
 ### Common Methods
@@ -1607,7 +1607,7 @@ Return a copy of the entity options.
 ## UpgradeLevelBonusEntity
 
 ```ts
-const upgrade_level_bonus = client.upgrade_level_bonus
+const upgrade_level_bonus = client.UpgradeLevelBonus()
 ```
 
 ### Operations
@@ -1617,7 +1617,7 @@ const upgrade_level_bonus = client.upgrade_level_bonus
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.upgrade_level_bonus.load({ id: 'upgrade_level_bonus_id' })
+const result = await client.UpgradeLevelBonus().load({ id: 'upgrade_level_bonus_id' })
 ```
 
 ### Common Methods
@@ -1651,7 +1651,7 @@ Return a copy of the entity options.
 ## VersionEntity
 
 ```ts
-const version = client.version
+const version = client.Version()
 ```
 
 ### Operations
@@ -1661,7 +1661,7 @@ const version = client.version
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.version.load({ id: 'version_id' })
+const result = await client.Version().load({ id: 'version_id' })
 ```
 
 ### Common Methods
@@ -1695,7 +1695,7 @@ Return a copy of the entity options.
 ## WorldEntity
 
 ```ts
-const world = client.world
+const world = client.World()
 ```
 
 ### Fields
@@ -1725,7 +1725,7 @@ const world = client.world
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.world.list()
+const results = await client.World().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1733,7 +1733,7 @@ const results = await client.world.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.world.load({ id: 'world_id' })
+const result = await client.World().load({ id: 'world_id' })
 ```
 
 ### Common Methods

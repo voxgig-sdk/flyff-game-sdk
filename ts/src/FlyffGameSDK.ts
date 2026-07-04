@@ -230,378 +230,189 @@ class FlyffGameSDK {
 
 
 
-  _achievement?: AchievementEntity
-
-  // Idiomatic facade: `client.achievement.list()` / `client.achievement.load({ id })`.
-  get achievement(): AchievementEntity {
-    return (this._achievement ??= new AchievementEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.achievement` instead. */
+  // Entity access: `client.Achievement().list()` / `client.Achievement().load({ id })`.
   Achievement(data?: any) {
     const self = this
     return new AchievementEntity(self,data)
   }
 
 
-  _awake?: AwakeEntity
-
-  // Idiomatic facade: `client.awake.list()` / `client.awake.load({ id })`.
-  get awake(): AwakeEntity {
-    return (this._awake ??= new AwakeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.awake` instead. */
+  // Entity access: `client.Awake().list()` / `client.Awake().load({ id })`.
   Awake(data?: any) {
     const self = this
     return new AwakeEntity(self,data)
   }
 
 
-  _badge?: BadgeEntity
-
-  // Idiomatic facade: `client.badge.list()` / `client.badge.load({ id })`.
-  get badge(): BadgeEntity {
-    return (this._badge ??= new BadgeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.badge` instead. */
+  // Entity access: `client.Badge().list()` / `client.Badge().load({ id })`.
   Badge(data?: any) {
     const self = this
     return new BadgeEntity(self,data)
   }
 
 
-  _class?: ClassEntity
-
-  // Idiomatic facade: `client.class.list()` / `client.class.load({ id })`.
-  get class(): ClassEntity {
-    return (this._class ??= new ClassEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.class` instead. */
+  // Entity access: `client.Class().list()` / `client.Class().load({ id })`.
   Class(data?: any) {
     const self = this
     return new ClassEntity(self,data)
   }
 
 
-  _core?: CoreEntity
-
-  // Idiomatic facade: `client.core.list()` / `client.core.load({ id })`.
-  get core(): CoreEntity {
-    return (this._core ??= new CoreEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.core` instead. */
+  // Entity access: `client.Core().list()` / `client.Core().load({ id })`.
   Core(data?: any) {
     const self = this
     return new CoreEntity(self,data)
   }
 
 
-  _couple?: CoupleEntity
-
-  // Idiomatic facade: `client.couple.list()` / `client.couple.load({ id })`.
-  get couple(): CoupleEntity {
-    return (this._couple ??= new CoupleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.couple` instead. */
+  // Entity access: `client.Couple().list()` / `client.Couple().load({ id })`.
   Couple(data?: any) {
     const self = this
     return new CoupleEntity(self,data)
   }
 
 
-  _dungeon?: DungeonEntity
-
-  // Idiomatic facade: `client.dungeon.list()` / `client.dungeon.load({ id })`.
-  get dungeon(): DungeonEntity {
-    return (this._dungeon ??= new DungeonEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.dungeon` instead. */
+  // Entity access: `client.Dungeon().list()` / `client.Dungeon().load({ id })`.
   Dungeon(data?: any) {
     const self = this
     return new DungeonEntity(self,data)
   }
 
 
-  _element?: ElementEntity
-
-  // Idiomatic facade: `client.element.list()` / `client.element.load({ id })`.
-  get element(): ElementEntity {
-    return (this._element ??= new ElementEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.element` instead. */
+  // Entity access: `client.Element().list()` / `client.Element().load({ id })`.
   Element(data?: any) {
     const self = this
     return new ElementEntity(self,data)
   }
 
 
-  _equipment_set?: EquipmentSetEntity
-
-  // Idiomatic facade: `client.equipment_set.list()` / `client.equipment_set.load({ id })`.
-  get equipment_set(): EquipmentSetEntity {
-    return (this._equipment_set ??= new EquipmentSetEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.equipment_set` instead. */
+  // Entity access: `client.EquipmentSet().list()` / `client.EquipmentSet().load({ id })`.
   EquipmentSet(data?: any) {
     const self = this
     return new EquipmentSetEntity(self,data)
   }
 
 
-  _exchange_menus?: ExchangeMenusEntity
-
-  // Idiomatic facade: `client.exchange_menus.list()` / `client.exchange_menus.load({ id })`.
-  get exchange_menus(): ExchangeMenusEntity {
-    return (this._exchange_menus ??= new ExchangeMenusEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.exchange_menus` instead. */
+  // Entity access: `client.ExchangeMenus().list()` / `client.ExchangeMenus().load({ id })`.
   ExchangeMenus(data?: any) {
     const self = this
     return new ExchangeMenusEntity(self,data)
   }
 
 
-  _housing_pack?: HousingPackEntity
-
-  // Idiomatic facade: `client.housing_pack.list()` / `client.housing_pack.load({ id })`.
-  get housing_pack(): HousingPackEntity {
-    return (this._housing_pack ??= new HousingPackEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.housing_pack` instead. */
+  // Entity access: `client.HousingPack().list()` / `client.HousingPack().load({ id })`.
   HousingPack(data?: any) {
     const self = this
     return new HousingPackEntity(self,data)
   }
 
 
-  _housing_template?: HousingTemplateEntity
-
-  // Idiomatic facade: `client.housing_template.list()` / `client.housing_template.load({ id })`.
-  get housing_template(): HousingTemplateEntity {
-    return (this._housing_template ??= new HousingTemplateEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.housing_template` instead. */
+  // Entity access: `client.HousingTemplate().list()` / `client.HousingTemplate().load({ id })`.
   HousingTemplate(data?: any) {
     const self = this
     return new HousingTemplateEntity(self,data)
   }
 
 
-  _item?: ItemEntity
-
-  // Idiomatic facade: `client.item.list()` / `client.item.load({ id })`.
-  get item(): ItemEntity {
-    return (this._item ??= new ItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.item` instead. */
+  // Entity access: `client.Item().list()` / `client.Item().load({ id })`.
   Item(data?: any) {
     const self = this
     return new ItemEntity(self,data)
   }
 
 
-  _language?: LanguageEntity
-
-  // Idiomatic facade: `client.language.list()` / `client.language.load({ id })`.
-  get language(): LanguageEntity {
-    return (this._language ??= new LanguageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.language` instead. */
+  // Entity access: `client.Language().list()` / `client.Language().load({ id })`.
   Language(data?: any) {
     const self = this
     return new LanguageEntity(self,data)
   }
 
 
-  _lifestyle?: LifestyleEntity
-
-  // Idiomatic facade: `client.lifestyle.list()` / `client.lifestyle.load({ id })`.
-  get lifestyle(): LifestyleEntity {
-    return (this._lifestyle ??= new LifestyleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.lifestyle` instead. */
+  // Entity access: `client.Lifestyle().list()` / `client.Lifestyle().load({ id })`.
   Lifestyle(data?: any) {
     const self = this
     return new LifestyleEntity(self,data)
   }
 
 
-  _monster?: MonsterEntity
-
-  // Idiomatic facade: `client.monster.list()` / `client.monster.load({ id })`.
-  get monster(): MonsterEntity {
-    return (this._monster ??= new MonsterEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.monster` instead. */
+  // Entity access: `client.Monster().list()` / `client.Monster().load({ id })`.
   Monster(data?: any) {
     const self = this
     return new MonsterEntity(self,data)
   }
 
 
-  _npc?: NpcEntity
-
-  // Idiomatic facade: `client.npc.list()` / `client.npc.load({ id })`.
-  get npc(): NpcEntity {
-    return (this._npc ??= new NpcEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.npc` instead. */
+  // Entity access: `client.Npc().list()` / `client.Npc().load({ id })`.
   Npc(data?: any) {
     const self = this
     return new NpcEntity(self,data)
   }
 
 
-  _party_skill?: PartySkillEntity
-
-  // Idiomatic facade: `client.party_skill.list()` / `client.party_skill.load({ id })`.
-  get party_skill(): PartySkillEntity {
-    return (this._party_skill ??= new PartySkillEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.party_skill` instead. */
+  // Entity access: `client.PartySkill().list()` / `client.PartySkill().load({ id })`.
   PartySkill(data?: any) {
     const self = this
     return new PartySkillEntity(self,data)
   }
 
 
-  _pkn?: PknEntity
-
-  // Idiomatic facade: `client.pkn.list()` / `client.pkn.load({ id })`.
-  get pkn(): PknEntity {
-    return (this._pkn ??= new PknEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.pkn` instead. */
+  // Entity access: `client.Pkn().list()` / `client.Pkn().load({ id })`.
   Pkn(data?: any) {
     const self = this
     return new PknEntity(self,data)
   }
 
 
-  _place?: PlaceEntity
-
-  // Idiomatic facade: `client.place.list()` / `client.place.load({ id })`.
-  get place(): PlaceEntity {
-    return (this._place ??= new PlaceEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.place` instead. */
+  // Entity access: `client.Place().list()` / `client.Place().load({ id })`.
   Place(data?: any) {
     const self = this
     return new PlaceEntity(self,data)
   }
 
 
-  _quest?: QuestEntity
-
-  // Idiomatic facade: `client.quest.list()` / `client.quest.load({ id })`.
-  get quest(): QuestEntity {
-    return (this._quest ??= new QuestEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.quest` instead. */
+  // Entity access: `client.Quest().list()` / `client.Quest().load({ id })`.
   Quest(data?: any) {
     const self = this
     return new QuestEntity(self,data)
   }
 
 
-  _raised_pet?: RaisedPetEntity
-
-  // Idiomatic facade: `client.raised_pet.list()` / `client.raised_pet.load({ id })`.
-  get raised_pet(): RaisedPetEntity {
-    return (this._raised_pet ??= new RaisedPetEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.raised_pet` instead. */
+  // Entity access: `client.RaisedPet().list()` / `client.RaisedPet().load({ id })`.
   RaisedPet(data?: any) {
     const self = this
     return new RaisedPetEntity(self,data)
   }
 
 
-  _recipe?: RecipeEntity
-
-  // Idiomatic facade: `client.recipe.list()` / `client.recipe.load({ id })`.
-  get recipe(): RecipeEntity {
-    return (this._recipe ??= new RecipeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.recipe` instead. */
+  // Entity access: `client.Recipe().list()` / `client.Recipe().load({ id })`.
   Recipe(data?: any) {
     const self = this
     return new RecipeEntity(self,data)
   }
 
 
-  _skill?: SkillEntity
-
-  // Idiomatic facade: `client.skill.list()` / `client.skill.load({ id })`.
-  get skill(): SkillEntity {
-    return (this._skill ??= new SkillEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.skill` instead. */
+  // Entity access: `client.Skill().list()` / `client.Skill().load({ id })`.
   Skill(data?: any) {
     const self = this
     return new SkillEntity(self,data)
   }
 
 
-  _upgrade_level_bonus?: UpgradeLevelBonusEntity
-
-  // Idiomatic facade: `client.upgrade_level_bonus.list()` / `client.upgrade_level_bonus.load({ id })`.
-  get upgrade_level_bonus(): UpgradeLevelBonusEntity {
-    return (this._upgrade_level_bonus ??= new UpgradeLevelBonusEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.upgrade_level_bonus` instead. */
+  // Entity access: `client.UpgradeLevelBonus().list()` / `client.UpgradeLevelBonus().load({ id })`.
   UpgradeLevelBonus(data?: any) {
     const self = this
     return new UpgradeLevelBonusEntity(self,data)
   }
 
 
-  _version?: VersionEntity
-
-  // Idiomatic facade: `client.version.list()` / `client.version.load({ id })`.
-  get version(): VersionEntity {
-    return (this._version ??= new VersionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.version` instead. */
+  // Entity access: `client.Version().list()` / `client.Version().load({ id })`.
   Version(data?: any) {
     const self = this
     return new VersionEntity(self,data)
   }
 
 
-  _world?: WorldEntity
-
-  // Idiomatic facade: `client.world.list()` / `client.world.load({ id })`.
-  get world(): WorldEntity {
-    return (this._world ??= new WorldEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.world` instead. */
+  // Entity access: `client.World().list()` / `client.World().load({ id })`.
   World(data?: any) {
     const self = this
     return new WorldEntity(self,data)

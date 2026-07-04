@@ -4,50 +4,47 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Achievement:
+class Achievement(TypedDict):
     pass
 
 
-@dataclass
-class AchievementLoadMatch:
+class AchievementLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class AchievementListMatch:
+class AchievementListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Awake:
+class Awake(TypedDict):
     pass
 
 
-@dataclass
-class AwakeLoadMatch:
+class AwakeLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Badge:
+class Badge(TypedDict):
     pass
 
 
-@dataclass
-class BadgeLoadMatch:
+class BadgeLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Class:
+class ClassRequired(TypedDict):
     attack_speed: float
     auto_attack_factor: dict
     block: float
@@ -68,319 +65,264 @@ class Class:
     name: dict
     tree: str
     type: str
-    parent: Optional[int] = None
 
 
-@dataclass
-class ClassLoadMatch:
+class Class(ClassRequired, total=False):
+    parent: int
+
+
+class ClassLoadMatch(TypedDict):
     file_name: str
     style: str
     id: str
 
 
-@dataclass
-class ClassListMatch:
-    attack_speed: Optional[float] = None
-    auto_attack_factor: Optional[dict] = None
-    block: Optional[float] = None
-    critical: Optional[float] = None
-    defense: Optional[float] = None
-    fp: Optional[float] = None
-    hp: Optional[float] = None
-    icon: Optional[str] = None
-    id: Optional[int] = None
-    magic_defense_int_factor: Optional[float] = None
-    magic_defense_sta_factor: Optional[float] = None
-    max_fp: Optional[str] = None
-    max_hp: Optional[str] = None
-    max_level: Optional[int] = None
-    max_mp: Optional[str] = None
-    min_level: Optional[int] = None
-    mp: Optional[float] = None
-    name: Optional[dict] = None
-    parent: Optional[int] = None
-    tree: Optional[str] = None
-    type: Optional[str] = None
+class ClassListMatch(TypedDict, total=False):
+    attack_speed: float
+    auto_attack_factor: dict
+    block: float
+    critical: float
+    defense: float
+    fp: float
+    hp: float
+    icon: str
+    id: int
+    magic_defense_int_factor: float
+    magic_defense_sta_factor: float
+    max_fp: str
+    max_hp: str
+    max_level: int
+    max_mp: str
+    min_level: int
+    mp: float
+    name: dict
+    parent: int
+    tree: str
+    type: str
 
 
-@dataclass
-class Core:
+class Core(TypedDict):
     pass
 
 
-@dataclass
-class CoreLoadMatch:
+class CoreLoadMatch(TypedDict):
     parameter_id: str
 
 
-@dataclass
-class Couple:
+class Couple(TypedDict):
     pass
 
 
-@dataclass
-class CoupleLoadMatch:
+class CoupleLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Dungeon:
+class Dungeon(TypedDict):
     pass
 
 
-@dataclass
-class DungeonLoadMatch:
+class DungeonLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Element:
+class Element(TypedDict):
     pass
 
 
-@dataclass
-class ElementLoadMatch:
+class ElementLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class EquipmentSet:
+class EquipmentSet(TypedDict):
     pass
 
 
-@dataclass
-class EquipmentSetLoadMatch:
+class EquipmentSetLoadMatch(TypedDict):
     equipment_set_id: str
 
 
-@dataclass
-class EquipmentSetListMatch:
+class EquipmentSetListMatch(TypedDict):
     pass
 
 
-@dataclass
-class ExchangeMenus:
+class ExchangeMenus(TypedDict):
     pass
 
 
-@dataclass
-class ExchangeMenusLoadMatch:
+class ExchangeMenusLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class HousingPack:
+class HousingPack(TypedDict):
     pass
 
 
-@dataclass
-class HousingPackLoadMatch:
+class HousingPackLoadMatch(TypedDict):
     housing_pack_id: str
 
 
-@dataclass
-class HousingPackListMatch:
+class HousingPackListMatch(TypedDict):
     pass
 
 
-@dataclass
-class HousingTemplate:
+class HousingTemplate(TypedDict):
     pass
 
 
-@dataclass
-class HousingTemplateLoadMatch:
+class HousingTemplateLoadMatch(TypedDict):
     file_name: str
     housing_template_id: str
 
 
-@dataclass
-class HousingTemplateListMatch:
+class HousingTemplateListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Item:
+class Item(TypedDict):
     pass
 
 
-@dataclass
-class ItemLoadMatch:
+class ItemLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ItemListMatch:
+class ItemListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Language:
+class Language(TypedDict):
     pass
 
 
-@dataclass
-class LanguageLoadMatch:
+class LanguageLoadMatch(TypedDict):
     language_code: str
 
 
-@dataclass
-class LanguageListMatch:
+class LanguageListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Lifestyle:
+class Lifestyle(TypedDict):
     pass
 
 
-@dataclass
-class LifestyleLoadMatch:
+class LifestyleLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Monster:
+class Monster(TypedDict):
     pass
 
 
-@dataclass
-class MonsterLoadMatch:
+class MonsterLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class MonsterListMatch:
+class MonsterListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Npc:
+class Npc(TypedDict):
     pass
 
 
-@dataclass
-class NpcLoadMatch:
+class NpcLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class NpcListMatch:
+class NpcListMatch(TypedDict):
     pass
 
 
-@dataclass
-class PartySkill:
+class PartySkill(TypedDict):
     pass
 
 
-@dataclass
-class PartySkillLoadMatch:
+class PartySkillLoadMatch(TypedDict):
     party_skill_id: str
 
 
-@dataclass
-class PartySkillListMatch:
+class PartySkillListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Pkn:
+class Pkn(TypedDict):
     pass
 
 
-@dataclass
-class PknLoadMatch:
+class PknLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Place:
+class Place(TypedDict):
     pass
 
 
-@dataclass
-class PlaceLoadMatch:
+class PlaceLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Quest:
+class Quest(TypedDict):
     pass
 
 
-@dataclass
-class QuestLoadMatch:
+class QuestLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class QuestListMatch:
+class QuestListMatch(TypedDict):
     pass
 
 
-@dataclass
-class RaisedPet:
+class RaisedPet(TypedDict):
     pass
 
 
-@dataclass
-class RaisedPetLoadMatch:
+class RaisedPetLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Recipe:
+class Recipe(TypedDict):
     pass
 
 
-@dataclass
-class RecipeLoadMatch:
+class RecipeLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RecipeListMatch:
+class RecipeListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Skill:
+class Skill(TypedDict):
     pass
 
 
-@dataclass
-class SkillLoadMatch:
+class SkillLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class SkillListMatch:
+class SkillListMatch(TypedDict):
     pass
 
 
-@dataclass
-class UpgradeLevelBonus:
+class UpgradeLevelBonus(TypedDict):
     pass
 
 
-@dataclass
-class UpgradeLevelBonusLoadMatch:
+class UpgradeLevelBonusLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Version:
+class Version(TypedDict):
     pass
 
 
-@dataclass
-class VersionLoadMatch:
+class VersionLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class World:
+class WorldRequired(TypedDict):
     continent: list
     flying: bool
     height: int
@@ -394,33 +336,33 @@ class World:
     tile_size: int
     type: str
     width: int
-    revival_key: Optional[str] = None
-    revival_world: Optional[int] = None
 
 
-@dataclass
-class WorldLoadMatch:
+class World(WorldRequired, total=False):
+    revival_key: str
+    revival_world: int
+
+
+class WorldLoadMatch(TypedDict):
     tile_x: int
     tile_y: int
     world_tile_name: str
     id: str
 
 
-@dataclass
-class WorldListMatch:
-    continent: Optional[list] = None
-    flying: Optional[bool] = None
-    height: Optional[int] = None
-    id: Optional[int] = None
-    in_door: Optional[bool] = None
-    lodestar: Optional[list] = None
-    name: Optional[dict] = None
-    pk: Optional[bool] = None
-    place: Optional[list] = None
-    revival_key: Optional[str] = None
-    revival_world: Optional[int] = None
-    tile_name: Optional[str] = None
-    tile_size: Optional[int] = None
-    type: Optional[str] = None
-    width: Optional[int] = None
-
+class WorldListMatch(TypedDict, total=False):
+    continent: list
+    flying: bool
+    height: int
+    id: int
+    in_door: bool
+    lodestar: list
+    name: dict
+    pk: bool
+    place: list
+    revival_key: str
+    revival_world: int
+    tile_name: str
+    tile_size: int
+    type: str
+    width: int

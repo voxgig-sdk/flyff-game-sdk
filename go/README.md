@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/flyff-game-sdk/go=../flyff-game-sdk/g
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/flyff-game-sdk/go"
-    "github.com/voxgig-sdk/flyff-game-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List achievements
-
-```go
-    result, err := client.Achievement(nil).List(nil, nil)
+    // List achievement records — the value is the array of records itself.
+    achievements, err := client.Achievement(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range achievements.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load an achievement
-
-```go
-    result, err = client.Achievement(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single achievement — the value is the loaded record.
+    achievement, err := client.Achievement(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(achievement)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Achievement(nil).Load(
+achievement, err := client.Achievement(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(achievement) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -207,19 +196,19 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Achievement` | `(data map[string]any) FlyffGameEntity` | Create a Achievement entity instance. |
-| `Awake` | `(data map[string]any) FlyffGameEntity` | Create a Awake entity instance. |
+| `Achievement` | `(data map[string]any) FlyffGameEntity` | Create an Achievement entity instance. |
+| `Awake` | `(data map[string]any) FlyffGameEntity` | Create an Awake entity instance. |
 | `Badge` | `(data map[string]any) FlyffGameEntity` | Create a Badge entity instance. |
 | `Class` | `(data map[string]any) FlyffGameEntity` | Create a Class entity instance. |
 | `Core` | `(data map[string]any) FlyffGameEntity` | Create a Core entity instance. |
 | `Couple` | `(data map[string]any) FlyffGameEntity` | Create a Couple entity instance. |
 | `Dungeon` | `(data map[string]any) FlyffGameEntity` | Create a Dungeon entity instance. |
-| `Element` | `(data map[string]any) FlyffGameEntity` | Create a Element entity instance. |
-| `EquipmentSet` | `(data map[string]any) FlyffGameEntity` | Create a EquipmentSet entity instance. |
-| `ExchangeMenus` | `(data map[string]any) FlyffGameEntity` | Create a ExchangeMenus entity instance. |
+| `Element` | `(data map[string]any) FlyffGameEntity` | Create an Element entity instance. |
+| `EquipmentSet` | `(data map[string]any) FlyffGameEntity` | Create an EquipmentSet entity instance. |
+| `ExchangeMenus` | `(data map[string]any) FlyffGameEntity` | Create an ExchangeMenus entity instance. |
 | `HousingPack` | `(data map[string]any) FlyffGameEntity` | Create a HousingPack entity instance. |
 | `HousingTemplate` | `(data map[string]any) FlyffGameEntity` | Create a HousingTemplate entity instance. |
-| `Item` | `(data map[string]any) FlyffGameEntity` | Create a Item entity instance. |
+| `Item` | `(data map[string]any) FlyffGameEntity` | Create an Item entity instance. |
 | `Language` | `(data map[string]any) FlyffGameEntity` | Create a Language entity instance. |
 | `Lifestyle` | `(data map[string]any) FlyffGameEntity` | Create a Lifestyle entity instance. |
 | `Monster` | `(data map[string]any) FlyffGameEntity` | Create a Monster entity instance. |
@@ -231,7 +220,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `RaisedPet` | `(data map[string]any) FlyffGameEntity` | Create a RaisedPet entity instance. |
 | `Recipe` | `(data map[string]any) FlyffGameEntity` | Create a Recipe entity instance. |
 | `Skill` | `(data map[string]any) FlyffGameEntity` | Create a Skill entity instance. |
-| `UpgradeLevelBonus` | `(data map[string]any) FlyffGameEntity` | Create a UpgradeLevelBonus entity instance. |
+| `UpgradeLevelBonus` | `(data map[string]any) FlyffGameEntity` | Create an UpgradeLevelBonus entity instance. |
 | `Version` | `(data map[string]any) FlyffGameEntity` | Create a Version entity instance. |
 | `World` | `(data map[string]any) FlyffGameEntity` | Create a World entity instance. |
 
@@ -253,17 +242,24 @@ All entities implement the `FlyffGameEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    achievement, err := client.Achievement(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // achievement is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -565,13 +561,21 @@ Create an instance: `achievement := client.Achievement(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Achievement(nil).Load(map[string]any{"id": "achievement_id"}, nil)
+achievement, err := client.Achievement(nil).Load(map[string]any{"id": "achievement_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(achievement) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Achievement(nil).List(nil, nil)
+achievements, err := client.Achievement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(achievements) // the array of records
 ```
 
 
@@ -588,7 +592,11 @@ Create an instance: `awake := client.Awake(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Awake(nil).Load(map[string]any{"id": "awake_id"}, nil)
+awake, err := client.Awake(nil).Load(map[string]any{"id": "awake_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(awake) // the loaded record
 ```
 
 
@@ -605,7 +613,11 @@ Create an instance: `badge := client.Badge(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Badge(nil).Load(map[string]any{"id": "badge_id"}, nil)
+badge, err := client.Badge(nil).Load(map[string]any{"id": "badge_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(badge) // the loaded record
 ```
 
 
@@ -649,13 +661,21 @@ Create an instance: `class := client.Class(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Class(nil).Load(map[string]any{"id": "class_id"}, nil)
+class, err := client.Class(nil).Load(map[string]any{"id": "class_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(class) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Class(nil).List(nil, nil)
+classs, err := client.Class(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(classs) // the array of records
 ```
 
 
@@ -672,7 +692,11 @@ Create an instance: `core := client.Core(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Core(nil).Load(map[string]any{"id": "core_id"}, nil)
+core, err := client.Core(nil).Load(map[string]any{"id": "core_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(core) // the loaded record
 ```
 
 
@@ -689,7 +713,11 @@ Create an instance: `couple := client.Couple(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Couple(nil).Load(map[string]any{"id": "couple_id"}, nil)
+couple, err := client.Couple(nil).Load(map[string]any{"id": "couple_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(couple) // the loaded record
 ```
 
 
@@ -706,7 +734,11 @@ Create an instance: `dungeon := client.Dungeon(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Dungeon(nil).Load(map[string]any{"id": "dungeon_id"}, nil)
+dungeon, err := client.Dungeon(nil).Load(map[string]any{"id": "dungeon_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(dungeon) // the loaded record
 ```
 
 
@@ -723,7 +755,11 @@ Create an instance: `element := client.Element(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Element(nil).Load(map[string]any{"id": "element_id"}, nil)
+element, err := client.Element(nil).Load(map[string]any{"id": "element_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(element) // the loaded record
 ```
 
 
@@ -741,13 +777,21 @@ Create an instance: `equipment_set := client.EquipmentSet(nil)`
 #### Example: Load
 
 ```go
-result, err := client.EquipmentSet(nil).Load(map[string]any{"id": "equipment_set_id"}, nil)
+equipment_set, err := client.EquipmentSet(nil).Load(map[string]any{"id": "equipment_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(equipment_set) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.EquipmentSet(nil).List(nil, nil)
+equipment_sets, err := client.EquipmentSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(equipment_sets) // the array of records
 ```
 
 
@@ -764,7 +808,11 @@ Create an instance: `exchange_menus := client.ExchangeMenus(nil)`
 #### Example: Load
 
 ```go
-result, err := client.ExchangeMenus(nil).Load(map[string]any{"id": "exchange_menus_id"}, nil)
+exchange_menus, err := client.ExchangeMenus(nil).Load(map[string]any{"id": "exchange_menus_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(exchange_menus) // the loaded record
 ```
 
 
@@ -782,13 +830,21 @@ Create an instance: `housing_pack := client.HousingPack(nil)`
 #### Example: Load
 
 ```go
-result, err := client.HousingPack(nil).Load(map[string]any{"id": "housing_pack_id"}, nil)
+housing_pack, err := client.HousingPack(nil).Load(map[string]any{"id": "housing_pack_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(housing_pack) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.HousingPack(nil).List(nil, nil)
+housing_packs, err := client.HousingPack(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(housing_packs) // the array of records
 ```
 
 
@@ -806,13 +862,21 @@ Create an instance: `housing_template := client.HousingTemplate(nil)`
 #### Example: Load
 
 ```go
-result, err := client.HousingTemplate(nil).Load(map[string]any{"id": "housing_template_id"}, nil)
+housing_template, err := client.HousingTemplate(nil).Load(map[string]any{"id": "housing_template_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(housing_template) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.HousingTemplate(nil).List(nil, nil)
+housing_templates, err := client.HousingTemplate(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(housing_templates) // the array of records
 ```
 
 
@@ -830,13 +894,21 @@ Create an instance: `item := client.Item(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+item, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(item) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Item(nil).List(nil, nil)
+items, err := client.Item(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(items) // the array of records
 ```
 
 
@@ -854,13 +926,21 @@ Create an instance: `language := client.Language(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Language(nil).Load(map[string]any{"id": "language_id"}, nil)
+language, err := client.Language(nil).Load(map[string]any{"id": "language_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(language) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Language(nil).List(nil, nil)
+languages, err := client.Language(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(languages) // the array of records
 ```
 
 
@@ -877,7 +957,11 @@ Create an instance: `lifestyle := client.Lifestyle(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Lifestyle(nil).Load(map[string]any{"id": "lifestyle_id"}, nil)
+lifestyle, err := client.Lifestyle(nil).Load(map[string]any{"id": "lifestyle_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(lifestyle) // the loaded record
 ```
 
 
@@ -895,13 +979,21 @@ Create an instance: `monster := client.Monster(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+monster, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(monster) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Monster(nil).List(nil, nil)
+monsters, err := client.Monster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(monsters) // the array of records
 ```
 
 
@@ -919,13 +1011,21 @@ Create an instance: `npc := client.Npc(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Npc(nil).Load(map[string]any{"id": "npc_id"}, nil)
+npc, err := client.Npc(nil).Load(map[string]any{"id": "npc_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(npc) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Npc(nil).List(nil, nil)
+npcs, err := client.Npc(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(npcs) // the array of records
 ```
 
 
@@ -943,13 +1043,21 @@ Create an instance: `party_skill := client.PartySkill(nil)`
 #### Example: Load
 
 ```go
-result, err := client.PartySkill(nil).Load(map[string]any{"id": "party_skill_id"}, nil)
+party_skill, err := client.PartySkill(nil).Load(map[string]any{"id": "party_skill_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(party_skill) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.PartySkill(nil).List(nil, nil)
+party_skills, err := client.PartySkill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(party_skills) // the array of records
 ```
 
 
@@ -966,7 +1074,11 @@ Create an instance: `pkn := client.Pkn(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Pkn(nil).Load(map[string]any{"id": "pkn_id"}, nil)
+pkn, err := client.Pkn(nil).Load(map[string]any{"id": "pkn_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pkn) // the loaded record
 ```
 
 
@@ -983,7 +1095,11 @@ Create an instance: `place := client.Place(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Place(nil).Load(map[string]any{"id": "place_id"}, nil)
+place, err := client.Place(nil).Load(map[string]any{"id": "place_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(place) // the loaded record
 ```
 
 
@@ -1001,13 +1117,21 @@ Create an instance: `quest := client.Quest(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Quest(nil).Load(map[string]any{"id": "quest_id"}, nil)
+quest, err := client.Quest(nil).Load(map[string]any{"id": "quest_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(quest) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Quest(nil).List(nil, nil)
+quests, err := client.Quest(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(quests) // the array of records
 ```
 
 
@@ -1024,7 +1148,11 @@ Create an instance: `raised_pet := client.RaisedPet(nil)`
 #### Example: Load
 
 ```go
-result, err := client.RaisedPet(nil).Load(map[string]any{"id": "raised_pet_id"}, nil)
+raised_pet, err := client.RaisedPet(nil).Load(map[string]any{"id": "raised_pet_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(raised_pet) // the loaded record
 ```
 
 
@@ -1042,13 +1170,21 @@ Create an instance: `recipe := client.Recipe(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Recipe(nil).Load(map[string]any{"id": "recipe_id"}, nil)
+recipe, err := client.Recipe(nil).Load(map[string]any{"id": "recipe_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(recipe) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Recipe(nil).List(nil, nil)
+recipes, err := client.Recipe(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(recipes) // the array of records
 ```
 
 
@@ -1066,13 +1202,21 @@ Create an instance: `skill := client.Skill(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+skill, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skill) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Skill(nil).List(nil, nil)
+skills, err := client.Skill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skills) // the array of records
 ```
 
 
@@ -1089,7 +1233,11 @@ Create an instance: `upgrade_level_bonus := client.UpgradeLevelBonus(nil)`
 #### Example: Load
 
 ```go
-result, err := client.UpgradeLevelBonus(nil).Load(map[string]any{"id": "upgrade_level_bonus_id"}, nil)
+upgrade_level_bonus, err := client.UpgradeLevelBonus(nil).Load(map[string]any{"id": "upgrade_level_bonus_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(upgrade_level_bonus) // the loaded record
 ```
 
 
@@ -1106,7 +1254,11 @@ Create an instance: `version := client.Version(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Version(nil).Load(map[string]any{"id": "version_id"}, nil)
+version, err := client.Version(nil).Load(map[string]any{"id": "version_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(version) // the loaded record
 ```
 
 
@@ -1144,13 +1296,21 @@ Create an instance: `world := client.World(nil)`
 #### Example: Load
 
 ```go
-result, err := client.World(nil).Load(map[string]any{"id": "world_id"}, nil)
+world, err := client.World(nil).Load(map[string]any{"id": "world_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(world) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.World(nil).List(nil, nil)
+worlds, err := client.World(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(worlds) // the array of records
 ```
 
 

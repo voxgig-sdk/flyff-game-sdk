@@ -233,10 +233,10 @@ class FlyffGameSDK
 
     private $_achievement = null;
 
-    // Idiomatic facade: $client->achievement()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Achievement() (PHP method
-    // names are case-insensitive).
-    public function achievement($data = null)
+    // Canonical facade: $client->Achievement()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->achievement()
+    // resolves here too.
+    public function Achievement($data = null)
     {
         require_once __DIR__ . '/entity/achievement_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class FlyffGameSDK
 
     private $_awake = null;
 
-    // Idiomatic facade: $client->awake()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Awake() (PHP method
-    // names are case-insensitive).
-    public function awake($data = null)
+    // Canonical facade: $client->Awake()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->awake()
+    // resolves here too.
+    public function Awake($data = null)
     {
         require_once __DIR__ . '/entity/awake_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class FlyffGameSDK
 
     private $_badge = null;
 
-    // Idiomatic facade: $client->badge()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Badge() (PHP method
-    // names are case-insensitive).
-    public function badge($data = null)
+    // Canonical facade: $client->Badge()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->badge()
+    // resolves here too.
+    public function Badge($data = null)
     {
         require_once __DIR__ . '/entity/badge_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class FlyffGameSDK
 
     private $_class = null;
 
-    // Idiomatic facade: $client->class()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Class() (PHP method
-    // names are case-insensitive).
-    public function class($data = null)
+    // Canonical facade: $client->Class()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->class()
+    // resolves here too.
+    public function Class($data = null)
     {
         require_once __DIR__ . '/entity/class_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class FlyffGameSDK
 
     private $_core = null;
 
-    // Idiomatic facade: $client->core()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Core() (PHP method
-    // names are case-insensitive).
-    public function core($data = null)
+    // Canonical facade: $client->Core()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->core()
+    // resolves here too.
+    public function Core($data = null)
     {
         require_once __DIR__ . '/entity/core_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class FlyffGameSDK
 
     private $_couple = null;
 
-    // Idiomatic facade: $client->couple()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Couple() (PHP method
-    // names are case-insensitive).
-    public function couple($data = null)
+    // Canonical facade: $client->Couple()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->couple()
+    // resolves here too.
+    public function Couple($data = null)
     {
         require_once __DIR__ . '/entity/couple_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class FlyffGameSDK
 
     private $_dungeon = null;
 
-    // Idiomatic facade: $client->dungeon()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Dungeon() (PHP method
-    // names are case-insensitive).
-    public function dungeon($data = null)
+    // Canonical facade: $client->Dungeon()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->dungeon()
+    // resolves here too.
+    public function Dungeon($data = null)
     {
         require_once __DIR__ . '/entity/dungeon_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class FlyffGameSDK
 
     private $_element = null;
 
-    // Idiomatic facade: $client->element()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Element() (PHP method
-    // names are case-insensitive).
-    public function element($data = null)
+    // Canonical facade: $client->Element()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->element()
+    // resolves here too.
+    public function Element($data = null)
     {
         require_once __DIR__ . '/entity/element_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class FlyffGameSDK
 
     private $_equipment_set = null;
 
-    // Idiomatic facade: $client->equipment_set()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias EquipmentSet() (PHP method
-    // names are case-insensitive).
-    public function equipment_set($data = null)
+    // Canonical facade: $client->EquipmentSet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->equipment_set()
+    // resolves here too.
+    public function EquipmentSet($data = null)
     {
         require_once __DIR__ . '/entity/equipment_set_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class FlyffGameSDK
 
     private $_exchange_menus = null;
 
-    // Idiomatic facade: $client->exchange_menus()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ExchangeMenus() (PHP method
-    // names are case-insensitive).
-    public function exchange_menus($data = null)
+    // Canonical facade: $client->ExchangeMenus()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->exchange_menus()
+    // resolves here too.
+    public function ExchangeMenus($data = null)
     {
         require_once __DIR__ . '/entity/exchange_menus_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class FlyffGameSDK
 
     private $_housing_pack = null;
 
-    // Idiomatic facade: $client->housing_pack()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias HousingPack() (PHP method
-    // names are case-insensitive).
-    public function housing_pack($data = null)
+    // Canonical facade: $client->HousingPack()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->housing_pack()
+    // resolves here too.
+    public function HousingPack($data = null)
     {
         require_once __DIR__ . '/entity/housing_pack_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class FlyffGameSDK
 
     private $_housing_template = null;
 
-    // Idiomatic facade: $client->housing_template()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias HousingTemplate() (PHP method
-    // names are case-insensitive).
-    public function housing_template($data = null)
+    // Canonical facade: $client->HousingTemplate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->housing_template()
+    // resolves here too.
+    public function HousingTemplate($data = null)
     {
         require_once __DIR__ . '/entity/housing_template_entity.php';
         if ($data === null) {
@@ -449,10 +449,10 @@ class FlyffGameSDK
 
     private $_item = null;
 
-    // Idiomatic facade: $client->item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Item() (PHP method
-    // names are case-insensitive).
-    public function item($data = null)
+    // Canonical facade: $client->Item()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->item()
+    // resolves here too.
+    public function Item($data = null)
     {
         require_once __DIR__ . '/entity/item_entity.php';
         if ($data === null) {
@@ -467,10 +467,10 @@ class FlyffGameSDK
 
     private $_language = null;
 
-    // Idiomatic facade: $client->language()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Language() (PHP method
-    // names are case-insensitive).
-    public function language($data = null)
+    // Canonical facade: $client->Language()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->language()
+    // resolves here too.
+    public function Language($data = null)
     {
         require_once __DIR__ . '/entity/language_entity.php';
         if ($data === null) {
@@ -485,10 +485,10 @@ class FlyffGameSDK
 
     private $_lifestyle = null;
 
-    // Idiomatic facade: $client->lifestyle()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Lifestyle() (PHP method
-    // names are case-insensitive).
-    public function lifestyle($data = null)
+    // Canonical facade: $client->Lifestyle()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->lifestyle()
+    // resolves here too.
+    public function Lifestyle($data = null)
     {
         require_once __DIR__ . '/entity/lifestyle_entity.php';
         if ($data === null) {
@@ -503,10 +503,10 @@ class FlyffGameSDK
 
     private $_monster = null;
 
-    // Idiomatic facade: $client->monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Monster() (PHP method
-    // names are case-insensitive).
-    public function monster($data = null)
+    // Canonical facade: $client->Monster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->monster()
+    // resolves here too.
+    public function Monster($data = null)
     {
         require_once __DIR__ . '/entity/monster_entity.php';
         if ($data === null) {
@@ -521,10 +521,10 @@ class FlyffGameSDK
 
     private $_npc = null;
 
-    // Idiomatic facade: $client->npc()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Npc() (PHP method
-    // names are case-insensitive).
-    public function npc($data = null)
+    // Canonical facade: $client->Npc()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->npc()
+    // resolves here too.
+    public function Npc($data = null)
     {
         require_once __DIR__ . '/entity/npc_entity.php';
         if ($data === null) {
@@ -539,10 +539,10 @@ class FlyffGameSDK
 
     private $_party_skill = null;
 
-    // Idiomatic facade: $client->party_skill()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PartySkill() (PHP method
-    // names are case-insensitive).
-    public function party_skill($data = null)
+    // Canonical facade: $client->PartySkill()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->party_skill()
+    // resolves here too.
+    public function PartySkill($data = null)
     {
         require_once __DIR__ . '/entity/party_skill_entity.php';
         if ($data === null) {
@@ -557,10 +557,10 @@ class FlyffGameSDK
 
     private $_pkn = null;
 
-    // Idiomatic facade: $client->pkn()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Pkn() (PHP method
-    // names are case-insensitive).
-    public function pkn($data = null)
+    // Canonical facade: $client->Pkn()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->pkn()
+    // resolves here too.
+    public function Pkn($data = null)
     {
         require_once __DIR__ . '/entity/pkn_entity.php';
         if ($data === null) {
@@ -575,10 +575,10 @@ class FlyffGameSDK
 
     private $_place = null;
 
-    // Idiomatic facade: $client->place()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Place() (PHP method
-    // names are case-insensitive).
-    public function place($data = null)
+    // Canonical facade: $client->Place()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->place()
+    // resolves here too.
+    public function Place($data = null)
     {
         require_once __DIR__ . '/entity/place_entity.php';
         if ($data === null) {
@@ -593,10 +593,10 @@ class FlyffGameSDK
 
     private $_quest = null;
 
-    // Idiomatic facade: $client->quest()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Quest() (PHP method
-    // names are case-insensitive).
-    public function quest($data = null)
+    // Canonical facade: $client->Quest()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->quest()
+    // resolves here too.
+    public function Quest($data = null)
     {
         require_once __DIR__ . '/entity/quest_entity.php';
         if ($data === null) {
@@ -611,10 +611,10 @@ class FlyffGameSDK
 
     private $_raised_pet = null;
 
-    // Idiomatic facade: $client->raised_pet()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias RaisedPet() (PHP method
-    // names are case-insensitive).
-    public function raised_pet($data = null)
+    // Canonical facade: $client->RaisedPet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->raised_pet()
+    // resolves here too.
+    public function RaisedPet($data = null)
     {
         require_once __DIR__ . '/entity/raised_pet_entity.php';
         if ($data === null) {
@@ -629,10 +629,10 @@ class FlyffGameSDK
 
     private $_recipe = null;
 
-    // Idiomatic facade: $client->recipe()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Recipe() (PHP method
-    // names are case-insensitive).
-    public function recipe($data = null)
+    // Canonical facade: $client->Recipe()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->recipe()
+    // resolves here too.
+    public function Recipe($data = null)
     {
         require_once __DIR__ . '/entity/recipe_entity.php';
         if ($data === null) {
@@ -647,10 +647,10 @@ class FlyffGameSDK
 
     private $_skill = null;
 
-    // Idiomatic facade: $client->skill()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Skill() (PHP method
-    // names are case-insensitive).
-    public function skill($data = null)
+    // Canonical facade: $client->Skill()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->skill()
+    // resolves here too.
+    public function Skill($data = null)
     {
         require_once __DIR__ . '/entity/skill_entity.php';
         if ($data === null) {
@@ -665,10 +665,10 @@ class FlyffGameSDK
 
     private $_upgrade_level_bonus = null;
 
-    // Idiomatic facade: $client->upgrade_level_bonus()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UpgradeLevelBonus() (PHP method
-    // names are case-insensitive).
-    public function upgrade_level_bonus($data = null)
+    // Canonical facade: $client->UpgradeLevelBonus()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->upgrade_level_bonus()
+    // resolves here too.
+    public function UpgradeLevelBonus($data = null)
     {
         require_once __DIR__ . '/entity/upgrade_level_bonus_entity.php';
         if ($data === null) {
@@ -683,10 +683,10 @@ class FlyffGameSDK
 
     private $_version = null;
 
-    // Idiomatic facade: $client->version()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Version() (PHP method
-    // names are case-insensitive).
-    public function version($data = null)
+    // Canonical facade: $client->Version()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->version()
+    // resolves here too.
+    public function Version($data = null)
     {
         require_once __DIR__ . '/entity/version_entity.php';
         if ($data === null) {
@@ -701,10 +701,10 @@ class FlyffGameSDK
 
     private $_world = null;
 
-    // Idiomatic facade: $client->world()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias World() (PHP method
-    // names are case-insensitive).
-    public function world($data = null)
+    // Canonical facade: $client->World()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->world()
+    // resolves here too.
+    public function World($data = null)
     {
         require_once __DIR__ . '/entity/world_entity.php';
         if ($data === null) {
