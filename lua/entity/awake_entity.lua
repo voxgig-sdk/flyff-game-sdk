@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AwakeLoadMatch
+---@param ctrl? table
+---@return Awake
+---@return string? err
 function AwakeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

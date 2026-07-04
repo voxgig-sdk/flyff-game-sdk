@@ -43,14 +43,12 @@ class PartySkillEntityTest < Minitest::Test
     party_skill_ref01_ent = client.PartySkill(nil)
     party_skill_ref01_match = {}
 
-    party_skill_ref01_list_result, err = party_skill_ref01_ent.list(party_skill_ref01_match, nil)
-    assert_nil err
+    party_skill_ref01_list_result = party_skill_ref01_ent.list(party_skill_ref01_match, nil)
     assert party_skill_ref01_list_result.is_a?(Array)
 
     # LOAD
     party_skill_ref01_match_dt0 = {}
-    party_skill_ref01_data_dt0_loaded, err = party_skill_ref01_ent.load(party_skill_ref01_match_dt0, nil)
-    assert_nil err
+    party_skill_ref01_data_dt0_loaded = party_skill_ref01_ent.load(party_skill_ref01_match_dt0, nil)
     assert !party_skill_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def party_skill_basic_setup(extra)
     "FLYFFGAME_TEST_PARTY_SKILL_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def party_skill_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

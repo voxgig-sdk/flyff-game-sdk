@@ -43,14 +43,12 @@ class EquipmentSetEntityTest < Minitest::Test
     equipment_set_ref01_ent = client.EquipmentSet(nil)
     equipment_set_ref01_match = {}
 
-    equipment_set_ref01_list_result, err = equipment_set_ref01_ent.list(equipment_set_ref01_match, nil)
-    assert_nil err
+    equipment_set_ref01_list_result = equipment_set_ref01_ent.list(equipment_set_ref01_match, nil)
     assert equipment_set_ref01_list_result.is_a?(Array)
 
     # LOAD
     equipment_set_ref01_match_dt0 = {}
-    equipment_set_ref01_data_dt0_loaded, err = equipment_set_ref01_ent.load(equipment_set_ref01_match_dt0, nil)
-    assert_nil err
+    equipment_set_ref01_data_dt0_loaded = equipment_set_ref01_ent.load(equipment_set_ref01_match_dt0, nil)
     assert !equipment_set_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def equipment_set_basic_setup(extra)
     "FLYFFGAME_TEST_EQUIPMENT_SET_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def equipment_set_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

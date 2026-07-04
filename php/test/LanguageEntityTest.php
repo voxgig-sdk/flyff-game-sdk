@@ -50,14 +50,12 @@ class LanguageEntityTest extends TestCase
         $language_ref01_ent = $client->Language(null);
         $language_ref01_match = [];
 
-        [$language_ref01_list_result, $err] = $language_ref01_ent->list($language_ref01_match, null);
-        $this->assertNull($err);
+        $language_ref01_list_result = $language_ref01_ent->list($language_ref01_match, null);
         $this->assertIsArray($language_ref01_list_result);
 
         // LOAD
         $language_ref01_match_dt0 = [];
-        [$language_ref01_data_dt0_loaded, $err] = $language_ref01_ent->load($language_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $language_ref01_data_dt0_loaded = $language_ref01_ent->load($language_ref01_match_dt0, null);
         $this->assertNotNull($language_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function language_basic_setup($extra)
         "FLYFFGAME_TEST_LANGUAGE_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function language_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

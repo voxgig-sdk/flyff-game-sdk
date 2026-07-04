@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.flyff.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -174,7 +170,8 @@ class Config {
                     "name": "id",
                     "orig": "achievement_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -210,7 +207,8 @@ class Config {
                     "name": "id",
                     "orig": "achievement_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -314,7 +312,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -538,7 +537,8 @@ class Config {
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -547,7 +547,8 @@ class Config {
                     "name": "style",
                     "orig": "style",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -587,7 +588,8 @@ class Config {
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -626,7 +628,8 @@ class Config {
                     "name": "id",
                     "orig": "class_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -663,7 +666,8 @@ class Config {
                     "name": "id",
                     "orig": "class_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -722,7 +726,8 @@ class Config {
                     "name": "parameter_id",
                     "orig": "parameter_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -758,7 +763,8 @@ class Config {
                     "name": "parameter_id",
                     "orig": "parameter_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -876,7 +882,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -951,7 +958,8 @@ class Config {
                     "name": "equipment_set_id",
                     "orig": "equipment_set_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -987,7 +995,8 @@ class Config {
                     "name": "equipment_set_id",
                     "orig": "equipment_set_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1096,7 +1105,8 @@ class Config {
                     "name": "housing_pack_id",
                     "orig": "housing_pack_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1132,7 +1142,8 @@ class Config {
                     "name": "housing_pack_id",
                     "orig": "housing_pack_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1210,7 +1221,8 @@ class Config {
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1247,7 +1259,8 @@ class Config {
                     "name": "housing_template_id",
                     "orig": "housing_template_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1283,7 +1296,8 @@ class Config {
                     "name": "housing_template_id",
                     "orig": "housing_template_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1361,7 +1375,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1398,7 +1413,8 @@ class Config {
                     "name": "id",
                     "orig": "item_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1434,7 +1450,8 @@ class Config {
                     "name": "id",
                     "orig": "item_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1508,7 +1525,8 @@ class Config {
                     "name": "language_code",
                     "orig": "language_code",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1614,7 +1632,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1651,7 +1670,8 @@ class Config {
                     "name": "id",
                     "orig": "monster_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1687,7 +1707,8 @@ class Config {
                     "name": "id",
                     "orig": "monster_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1761,7 +1782,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1798,7 +1820,8 @@ class Config {
                     "name": "id",
                     "orig": "npc_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1834,7 +1857,8 @@ class Config {
                     "name": "id",
                     "orig": "npc_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1908,7 +1932,8 @@ class Config {
                     "name": "party_skill_id",
                     "orig": "party_skill_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1944,7 +1969,8 @@ class Config {
                     "name": "party_skill_id",
                     "orig": "party_skill_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2031,7 +2057,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2106,7 +2133,8 @@ class Config {
                     "name": "id",
                     "orig": "quest_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2142,7 +2170,8 @@ class Config {
                     "name": "id",
                     "orig": "quest_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2247,7 +2276,8 @@ class Config {
                     "name": "id",
                     "orig": "recipe_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2283,7 +2313,8 @@ class Config {
                     "name": "id",
                     "orig": "recipe_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2357,7 +2388,8 @@ class Config {
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2394,7 +2426,8 @@ class Config {
                     "name": "id",
                     "orig": "skill_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2430,7 +2463,8 @@ class Config {
                     "name": "id",
                     "orig": "skill_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2693,7 +2727,8 @@ class Config {
                     "name": "tile_x",
                     "orig": "tile_x",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -2701,7 +2736,8 @@ class Config {
                     "name": "tile_y",
                     "orig": "tile_y",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   },
                   {
                     "active": true,
@@ -2710,7 +2746,8 @@ class Config {
                     "name": "world_tile_name",
                     "orig": "world_tile_name",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 2
                   }
                 ]
               },
@@ -2746,7 +2783,8 @@ class Config {
                     "name": "id",
                     "orig": "world_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2783,7 +2821,8 @@ class Config {
                     "name": "id",
                     "orig": "world_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

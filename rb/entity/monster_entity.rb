@@ -45,6 +45,7 @@ class MonsterEntity
     end
   end
 
+  # @return [Monster, Hash] the current Monster data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MonsterEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Monster fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Monster.
+  #
+  # @param reqmatch [MonsterLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Monster, Hash] the loaded Monster; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class MonsterEntity
 
 
   
+  # List Monster items matching the given filter.
+  #
+  # @param reqmatch [MonsterListMatch, Hash, nil] match filter (any subset of Monster fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Monster>, Array] the matching Monster items; raises FlyffGameError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

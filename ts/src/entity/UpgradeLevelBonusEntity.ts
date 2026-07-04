@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  UpgradeLevelBonus,
+  UpgradeLevelBonusLoadMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class UpgradeLevelBonusEntity extends FlyffGameEntityBase {
+class UpgradeLevelBonusEntity extends FlyffGameEntityBase<UpgradeLevelBonus> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class UpgradeLevelBonusEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: UpgradeLevelBonusLoadMatch, ctrl?: Control): Promise<UpgradeLevelBonus> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class UpgradeLevelBonusEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<UpgradeLevelBonus> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

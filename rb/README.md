@@ -9,21 +9,10 @@ The Ruby SDK for the FlyffGame API — an entity-oriented client using idiomatic
 
 
 ## Install
-```bash
-gem install voxgig-sdk-flyff-game
-```
+This package is not yet published to RubyGems. Install it from the
+GitHub release tag (`rb/vX.Y.Z`):
 
-Or add to your `Gemfile`:
-
-```ruby
-gem "voxgig-sdk-flyff-game"
-```
-
-Then run:
-
-```bash
-bundle install
-```
+- Releases: [https://github.com/voxgig-sdk/flyff-game-sdk/releases](https://github.com/voxgig-sdk/flyff-game-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -36,31 +25,34 @@ loading a specific record.
 ```ruby
 require_relative "FlyffGame_sdk"
 
-client = FlyffGameSDK.new({
-  "apikey" => ENV["FLYFF-GAME_APIKEY"],
-})
+client = FlyffGameSDK.new
 ```
 
 ### 2. List achievements
 
 ```ruby
-result, err = client.Achievement().list
-raise err if err
-
-if result.is_a?(Array)
-  result.each do |item|
-    d = item.data_get
-    puts "#{d["id"]} #{d["name"]}"
+begin
+  result = client.achievement.list
+  if result.is_a?(Array)
+    result.each do |item|
+      d = item.data_get
+      puts "#{d["id"]} #{d["name"]}"
+    end
   end
+rescue => err
+  warn "list failed: #{err}"
 end
 ```
 
-### 3. Load a achievement
+### 3. Load an achievement
 
 ```ruby
-result, err = client.Achievement().load({ "id" => "example_id" })
-raise err if err
-puts result
+begin
+  result = client.achievement.load({ "id" => "example_id" })
+  puts result
+rescue => err
+  warn "load failed: #{err}"
+end
 ```
 
 
@@ -71,32 +63,35 @@ puts result
 For endpoints not covered by entity methods:
 
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },
 })
-raise err if err
 
 if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
+else
+  warn result["err"]
 end
 ```
 
 ### Prepare a request without sending it
 
 ```ruby
-fetchdef, err = client.prepare({
-  "path" => "/api/resource/{id}",
-  "method" => "DELETE",
-  "params" => { "id" => "example" },
-})
-raise err if err
-
-puts fetchdef["url"]
-puts fetchdef["method"]
-puts fetchdef["headers"]
+begin
+  fetchdef = client.prepare({
+    "path" => "/api/resource/{id}",
+    "method" => "DELETE",
+    "params" => { "id" => "example" },
+  })
+  puts fetchdef["url"]
+  puts fetchdef["method"]
+  puts fetchdef["headers"]
+rescue => err
+  warn "prepare failed: #{err}"
+end
 ```
 
 ### Use test mode
@@ -106,7 +101,7 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = FlyffGameSDK.test
 
-result, err = client.FlyffGame().load({ "id" => "test01" })
+result = client.achievement.load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -137,8 +132,7 @@ client = FlyffGameSDK.new({
 Create a `.env.local` file at the project root:
 
 ```
-FLYFF-GAME_TEST_LIVE=TRUE
-FLYFF-GAME_APIKEY=<your-key>
+FLYFF_GAME_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -161,7 +155,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |
@@ -183,8 +176,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | --- | --- | --- |
 | `options_map` | `() -> Hash` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> [Hash, err]` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> [Hash, err]` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Achievement` | `(data) -> AchievementEntity` | Create a Achievement entity instance. |
 | `Awake` | `(data) -> AwakeEntity` | Create a Awake entity instance. |
 | `Badge` | `(data) -> BadgeEntity` | Create a Badge entity instance. |
@@ -219,11 +212,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> [any, err]` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> [any, err]` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> [any, err]` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> [any, err]` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> [any, err]` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -233,8 +226,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[any, err]`. The first value is a
-`Hash` with these keys:
+Entity operations return the result data directly. On failure they
+raise a `FlyffGameError` (a `StandardError` subclass), so wrap
+calls in `begin`/`rescue` where you need to handle errors.
+
+The `direct` escape hatch is the exception: it never raises and instead
+returns a result `Hash` with these keys:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -242,8 +239,7 @@ Entity operations return `[any, err]`. The first value is a
 | `status` | `Integer` | HTTP status code. |
 | `headers` | `Hash` | Response headers. |
 | `data` | `any` | Parsed JSON response body. |
-
-On error, `ok` is `false` and `err` contains the error value.
+| `err` | `Error` | Present when `ok` is `false`. |
 
 ### Entities
 
@@ -533,7 +529,7 @@ API path: `/world`
 
 ### Achievement
 
-Create an instance: `const achievement = client.Achievement()`
+Create an instance: `const achievement = client.achievement`
 
 #### Operations
 
@@ -545,19 +541,19 @@ Create an instance: `const achievement = client.Achievement()`
 #### Example: Load
 
 ```ts
-const achievement = await client.Achievement().load({ id: 'achievement_id' })
+const achievement = await client.achievement.load({ id: 'achievement_id' })
 ```
 
 #### Example: List
 
 ```ts
-const achievements = await client.Achievement().list()
+const achievements = await client.achievement.list()
 ```
 
 
 ### Awake
 
-Create an instance: `const awake = client.Awake()`
+Create an instance: `const awake = client.awake`
 
 #### Operations
 
@@ -568,13 +564,13 @@ Create an instance: `const awake = client.Awake()`
 #### Example: Load
 
 ```ts
-const awake = await client.Awake().load({ id: 'awake_id' })
+const awake = await client.awake.load({ id: 'awake_id' })
 ```
 
 
 ### Badge
 
-Create an instance: `const badge = client.Badge()`
+Create an instance: `const badge = client.badge`
 
 #### Operations
 
@@ -585,13 +581,13 @@ Create an instance: `const badge = client.Badge()`
 #### Example: Load
 
 ```ts
-const badge = await client.Badge().load({ id: 'badge_id' })
+const badge = await client.badge.load({ id: 'badge_id' })
 ```
 
 
 ### Class
 
-Create an instance: `const class = client.Class()`
+Create an instance: `const class = client.class`
 
 #### Operations
 
@@ -629,19 +625,19 @@ Create an instance: `const class = client.Class()`
 #### Example: Load
 
 ```ts
-const class = await client.Class().load({ id: 'class_id' })
+const class = await client.class.load({ id: 'class_id' })
 ```
 
 #### Example: List
 
 ```ts
-const classs = await client.Class().list()
+const classs = await client.class.list()
 ```
 
 
 ### Core
 
-Create an instance: `const core = client.Core()`
+Create an instance: `const core = client.core`
 
 #### Operations
 
@@ -652,13 +648,13 @@ Create an instance: `const core = client.Core()`
 #### Example: Load
 
 ```ts
-const core = await client.Core().load({ id: 'core_id' })
+const core = await client.core.load({ id: 'core_id' })
 ```
 
 
 ### Couple
 
-Create an instance: `const couple = client.Couple()`
+Create an instance: `const couple = client.couple`
 
 #### Operations
 
@@ -669,13 +665,13 @@ Create an instance: `const couple = client.Couple()`
 #### Example: Load
 
 ```ts
-const couple = await client.Couple().load({ id: 'couple_id' })
+const couple = await client.couple.load({ id: 'couple_id' })
 ```
 
 
 ### Dungeon
 
-Create an instance: `const dungeon = client.Dungeon()`
+Create an instance: `const dungeon = client.dungeon`
 
 #### Operations
 
@@ -686,13 +682,13 @@ Create an instance: `const dungeon = client.Dungeon()`
 #### Example: Load
 
 ```ts
-const dungeon = await client.Dungeon().load({ id: 'dungeon_id' })
+const dungeon = await client.dungeon.load({ id: 'dungeon_id' })
 ```
 
 
 ### Element
 
-Create an instance: `const element = client.Element()`
+Create an instance: `const element = client.element`
 
 #### Operations
 
@@ -703,13 +699,13 @@ Create an instance: `const element = client.Element()`
 #### Example: Load
 
 ```ts
-const element = await client.Element().load({ id: 'element_id' })
+const element = await client.element.load({ id: 'element_id' })
 ```
 
 
 ### EquipmentSet
 
-Create an instance: `const equipment_set = client.EquipmentSet()`
+Create an instance: `const equipment_set = client.equipment_set`
 
 #### Operations
 
@@ -721,19 +717,19 @@ Create an instance: `const equipment_set = client.EquipmentSet()`
 #### Example: Load
 
 ```ts
-const equipment_set = await client.EquipmentSet().load({ id: 'equipment_set_id' })
+const equipment_set = await client.equipment_set.load({ id: 'equipment_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const equipment_sets = await client.EquipmentSet().list()
+const equipment_sets = await client.equipment_set.list()
 ```
 
 
 ### ExchangeMenus
 
-Create an instance: `const exchange_menus = client.ExchangeMenus()`
+Create an instance: `const exchange_menus = client.exchange_menus`
 
 #### Operations
 
@@ -744,13 +740,13 @@ Create an instance: `const exchange_menus = client.ExchangeMenus()`
 #### Example: Load
 
 ```ts
-const exchange_menus = await client.ExchangeMenus().load({ id: 'exchange_menus_id' })
+const exchange_menus = await client.exchange_menus.load({ id: 'exchange_menus_id' })
 ```
 
 
 ### HousingPack
 
-Create an instance: `const housing_pack = client.HousingPack()`
+Create an instance: `const housing_pack = client.housing_pack`
 
 #### Operations
 
@@ -762,19 +758,19 @@ Create an instance: `const housing_pack = client.HousingPack()`
 #### Example: Load
 
 ```ts
-const housing_pack = await client.HousingPack().load({ id: 'housing_pack_id' })
+const housing_pack = await client.housing_pack.load({ id: 'housing_pack_id' })
 ```
 
 #### Example: List
 
 ```ts
-const housing_packs = await client.HousingPack().list()
+const housing_packs = await client.housing_pack.list()
 ```
 
 
 ### HousingTemplate
 
-Create an instance: `const housing_template = client.HousingTemplate()`
+Create an instance: `const housing_template = client.housing_template`
 
 #### Operations
 
@@ -786,19 +782,19 @@ Create an instance: `const housing_template = client.HousingTemplate()`
 #### Example: Load
 
 ```ts
-const housing_template = await client.HousingTemplate().load({ id: 'housing_template_id' })
+const housing_template = await client.housing_template.load({ id: 'housing_template_id' })
 ```
 
 #### Example: List
 
 ```ts
-const housing_templates = await client.HousingTemplate().list()
+const housing_templates = await client.housing_template.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -810,19 +806,19 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
 ### Language
 
-Create an instance: `const language = client.Language()`
+Create an instance: `const language = client.language`
 
 #### Operations
 
@@ -834,19 +830,19 @@ Create an instance: `const language = client.Language()`
 #### Example: Load
 
 ```ts
-const language = await client.Language().load({ id: 'language_id' })
+const language = await client.language.load({ id: 'language_id' })
 ```
 
 #### Example: List
 
 ```ts
-const languages = await client.Language().list()
+const languages = await client.language.list()
 ```
 
 
 ### Lifestyle
 
-Create an instance: `const lifestyle = client.Lifestyle()`
+Create an instance: `const lifestyle = client.lifestyle`
 
 #### Operations
 
@@ -857,13 +853,13 @@ Create an instance: `const lifestyle = client.Lifestyle()`
 #### Example: Load
 
 ```ts
-const lifestyle = await client.Lifestyle().load({ id: 'lifestyle_id' })
+const lifestyle = await client.lifestyle.load({ id: 'lifestyle_id' })
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -875,19 +871,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### Npc
 
-Create an instance: `const npc = client.Npc()`
+Create an instance: `const npc = client.npc`
 
 #### Operations
 
@@ -899,19 +895,19 @@ Create an instance: `const npc = client.Npc()`
 #### Example: Load
 
 ```ts
-const npc = await client.Npc().load({ id: 'npc_id' })
+const npc = await client.npc.load({ id: 'npc_id' })
 ```
 
 #### Example: List
 
 ```ts
-const npcs = await client.Npc().list()
+const npcs = await client.npc.list()
 ```
 
 
 ### PartySkill
 
-Create an instance: `const party_skill = client.PartySkill()`
+Create an instance: `const party_skill = client.party_skill`
 
 #### Operations
 
@@ -923,19 +919,19 @@ Create an instance: `const party_skill = client.PartySkill()`
 #### Example: Load
 
 ```ts
-const party_skill = await client.PartySkill().load({ id: 'party_skill_id' })
+const party_skill = await client.party_skill.load({ id: 'party_skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const party_skills = await client.PartySkill().list()
+const party_skills = await client.party_skill.list()
 ```
 
 
 ### Pkn
 
-Create an instance: `const pkn = client.Pkn()`
+Create an instance: `const pkn = client.pkn`
 
 #### Operations
 
@@ -946,13 +942,13 @@ Create an instance: `const pkn = client.Pkn()`
 #### Example: Load
 
 ```ts
-const pkn = await client.Pkn().load({ id: 'pkn_id' })
+const pkn = await client.pkn.load({ id: 'pkn_id' })
 ```
 
 
 ### Place
 
-Create an instance: `const place = client.Place()`
+Create an instance: `const place = client.place`
 
 #### Operations
 
@@ -963,13 +959,13 @@ Create an instance: `const place = client.Place()`
 #### Example: Load
 
 ```ts
-const place = await client.Place().load({ id: 'place_id' })
+const place = await client.place.load({ id: 'place_id' })
 ```
 
 
 ### Quest
 
-Create an instance: `const quest = client.Quest()`
+Create an instance: `const quest = client.quest`
 
 #### Operations
 
@@ -981,19 +977,19 @@ Create an instance: `const quest = client.Quest()`
 #### Example: Load
 
 ```ts
-const quest = await client.Quest().load({ id: 'quest_id' })
+const quest = await client.quest.load({ id: 'quest_id' })
 ```
 
 #### Example: List
 
 ```ts
-const quests = await client.Quest().list()
+const quests = await client.quest.list()
 ```
 
 
 ### RaisedPet
 
-Create an instance: `const raised_pet = client.RaisedPet()`
+Create an instance: `const raised_pet = client.raised_pet`
 
 #### Operations
 
@@ -1004,13 +1000,13 @@ Create an instance: `const raised_pet = client.RaisedPet()`
 #### Example: Load
 
 ```ts
-const raised_pet = await client.RaisedPet().load({ id: 'raised_pet_id' })
+const raised_pet = await client.raised_pet.load({ id: 'raised_pet_id' })
 ```
 
 
 ### Recipe
 
-Create an instance: `const recipe = client.Recipe()`
+Create an instance: `const recipe = client.recipe`
 
 #### Operations
 
@@ -1022,19 +1018,19 @@ Create an instance: `const recipe = client.Recipe()`
 #### Example: Load
 
 ```ts
-const recipe = await client.Recipe().load({ id: 'recipe_id' })
+const recipe = await client.recipe.load({ id: 'recipe_id' })
 ```
 
 #### Example: List
 
 ```ts
-const recipes = await client.Recipe().list()
+const recipes = await client.recipe.list()
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -1046,19 +1042,19 @@ Create an instance: `const skill = client.Skill()`
 #### Example: Load
 
 ```ts
-const skill = await client.Skill().load({ id: 'skill_id' })
+const skill = await client.skill.load({ id: 'skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### UpgradeLevelBonus
 
-Create an instance: `const upgrade_level_bonus = client.UpgradeLevelBonus()`
+Create an instance: `const upgrade_level_bonus = client.upgrade_level_bonus`
 
 #### Operations
 
@@ -1069,13 +1065,13 @@ Create an instance: `const upgrade_level_bonus = client.UpgradeLevelBonus()`
 #### Example: Load
 
 ```ts
-const upgrade_level_bonus = await client.UpgradeLevelBonus().load({ id: 'upgrade_level_bonus_id' })
+const upgrade_level_bonus = await client.upgrade_level_bonus.load({ id: 'upgrade_level_bonus_id' })
 ```
 
 
 ### Version
 
-Create an instance: `const version = client.Version()`
+Create an instance: `const version = client.version`
 
 #### Operations
 
@@ -1086,13 +1082,13 @@ Create an instance: `const version = client.Version()`
 #### Example: Load
 
 ```ts
-const version = await client.Version().load({ id: 'version_id' })
+const version = await client.version.load({ id: 'version_id' })
 ```
 
 
 ### World
 
-Create an instance: `const world = client.World()`
+Create an instance: `const world = client.world`
 
 #### Operations
 
@@ -1124,13 +1120,13 @@ Create an instance: `const world = client.World()`
 #### Example: Load
 
 ```ts
-const world = await client.World().load({ id: 'world_id' })
+const world = await client.world.load({ id: 'world_id' })
 ```
 
 #### Example: List
 
 ```ts
-const worlds = await client.World().list()
+const worlds = await client.world.list()
 ```
 
 
@@ -1205,11 +1201,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-moon = client.Moon
-moon.load({ "planet_id" => "earth", "id" => "luna" })
+achievement = client.achievement
+achievement.load({ "id" => "example_id" })
 
-# moon.data_get now returns the loaded moon data
-# moon.match_get returns the last match criteria
+# achievement.data_get now returns the loaded achievement data
+# achievement.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

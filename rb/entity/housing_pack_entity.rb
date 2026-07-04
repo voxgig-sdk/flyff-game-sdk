@@ -45,6 +45,7 @@ class HousingPackEntity
     end
   end
 
+  # @return [HousingPack, Hash] the current HousingPack data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class HousingPackEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of HousingPack fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single HousingPack.
+  #
+  # @param reqmatch [HousingPackLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [HousingPack, Hash] the loaded HousingPack; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class HousingPackEntity
 
 
   
+  # List HousingPack items matching the given filter.
+  #
+  # @param reqmatch [HousingPackListMatch, Hash, nil] match filter (any subset of HousingPack fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<HousingPack>, Array] the matching HousingPack items; raises FlyffGameError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

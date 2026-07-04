@@ -245,136 +245,217 @@ func (sdk *FlyffGameSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Achievement returns a Achievement entity bound to this client.
+// Idiomatic usage: client.Achievement(nil).List(nil, nil) or
+// client.Achievement(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Achievement(data map[string]any) FlyffGameEntity {
 	return NewAchievementEntityFunc(sdk, data)
 }
 
 
+// Awake returns a Awake entity bound to this client.
+// Idiomatic usage: client.Awake(nil).List(nil, nil) or
+// client.Awake(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Awake(data map[string]any) FlyffGameEntity {
 	return NewAwakeEntityFunc(sdk, data)
 }
 
 
+// Badge returns a Badge entity bound to this client.
+// Idiomatic usage: client.Badge(nil).List(nil, nil) or
+// client.Badge(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Badge(data map[string]any) FlyffGameEntity {
 	return NewBadgeEntityFunc(sdk, data)
 }
 
 
+// Class returns a Class entity bound to this client.
+// Idiomatic usage: client.Class(nil).List(nil, nil) or
+// client.Class(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Class(data map[string]any) FlyffGameEntity {
 	return NewClassEntityFunc(sdk, data)
 }
 
 
+// Core returns a Core entity bound to this client.
+// Idiomatic usage: client.Core(nil).List(nil, nil) or
+// client.Core(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Core(data map[string]any) FlyffGameEntity {
 	return NewCoreEntityFunc(sdk, data)
 }
 
 
+// Couple returns a Couple entity bound to this client.
+// Idiomatic usage: client.Couple(nil).List(nil, nil) or
+// client.Couple(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Couple(data map[string]any) FlyffGameEntity {
 	return NewCoupleEntityFunc(sdk, data)
 }
 
 
+// Dungeon returns a Dungeon entity bound to this client.
+// Idiomatic usage: client.Dungeon(nil).List(nil, nil) or
+// client.Dungeon(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Dungeon(data map[string]any) FlyffGameEntity {
 	return NewDungeonEntityFunc(sdk, data)
 }
 
 
+// Element returns a Element entity bound to this client.
+// Idiomatic usage: client.Element(nil).List(nil, nil) or
+// client.Element(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Element(data map[string]any) FlyffGameEntity {
 	return NewElementEntityFunc(sdk, data)
 }
 
 
+// EquipmentSet returns a EquipmentSet entity bound to this client.
+// Idiomatic usage: client.EquipmentSet(nil).List(nil, nil) or
+// client.EquipmentSet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) EquipmentSet(data map[string]any) FlyffGameEntity {
 	return NewEquipmentSetEntityFunc(sdk, data)
 }
 
 
+// ExchangeMenus returns a ExchangeMenus entity bound to this client.
+// Idiomatic usage: client.ExchangeMenus(nil).List(nil, nil) or
+// client.ExchangeMenus(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) ExchangeMenus(data map[string]any) FlyffGameEntity {
 	return NewExchangeMenusEntityFunc(sdk, data)
 }
 
 
+// HousingPack returns a HousingPack entity bound to this client.
+// Idiomatic usage: client.HousingPack(nil).List(nil, nil) or
+// client.HousingPack(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) HousingPack(data map[string]any) FlyffGameEntity {
 	return NewHousingPackEntityFunc(sdk, data)
 }
 
 
+// HousingTemplate returns a HousingTemplate entity bound to this client.
+// Idiomatic usage: client.HousingTemplate(nil).List(nil, nil) or
+// client.HousingTemplate(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) HousingTemplate(data map[string]any) FlyffGameEntity {
 	return NewHousingTemplateEntityFunc(sdk, data)
 }
 
 
+// Item returns a Item entity bound to this client.
+// Idiomatic usage: client.Item(nil).List(nil, nil) or
+// client.Item(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Item(data map[string]any) FlyffGameEntity {
 	return NewItemEntityFunc(sdk, data)
 }
 
 
+// Language returns a Language entity bound to this client.
+// Idiomatic usage: client.Language(nil).List(nil, nil) or
+// client.Language(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Language(data map[string]any) FlyffGameEntity {
 	return NewLanguageEntityFunc(sdk, data)
 }
 
 
+// Lifestyle returns a Lifestyle entity bound to this client.
+// Idiomatic usage: client.Lifestyle(nil).List(nil, nil) or
+// client.Lifestyle(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Lifestyle(data map[string]any) FlyffGameEntity {
 	return NewLifestyleEntityFunc(sdk, data)
 }
 
 
+// Monster returns a Monster entity bound to this client.
+// Idiomatic usage: client.Monster(nil).List(nil, nil) or
+// client.Monster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Monster(data map[string]any) FlyffGameEntity {
 	return NewMonsterEntityFunc(sdk, data)
 }
 
 
+// Npc returns a Npc entity bound to this client.
+// Idiomatic usage: client.Npc(nil).List(nil, nil) or
+// client.Npc(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Npc(data map[string]any) FlyffGameEntity {
 	return NewNpcEntityFunc(sdk, data)
 }
 
 
+// PartySkill returns a PartySkill entity bound to this client.
+// Idiomatic usage: client.PartySkill(nil).List(nil, nil) or
+// client.PartySkill(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) PartySkill(data map[string]any) FlyffGameEntity {
 	return NewPartySkillEntityFunc(sdk, data)
 }
 
 
+// Pkn returns a Pkn entity bound to this client.
+// Idiomatic usage: client.Pkn(nil).List(nil, nil) or
+// client.Pkn(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Pkn(data map[string]any) FlyffGameEntity {
 	return NewPknEntityFunc(sdk, data)
 }
 
 
+// Place returns a Place entity bound to this client.
+// Idiomatic usage: client.Place(nil).List(nil, nil) or
+// client.Place(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Place(data map[string]any) FlyffGameEntity {
 	return NewPlaceEntityFunc(sdk, data)
 }
 
 
+// Quest returns a Quest entity bound to this client.
+// Idiomatic usage: client.Quest(nil).List(nil, nil) or
+// client.Quest(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Quest(data map[string]any) FlyffGameEntity {
 	return NewQuestEntityFunc(sdk, data)
 }
 
 
+// RaisedPet returns a RaisedPet entity bound to this client.
+// Idiomatic usage: client.RaisedPet(nil).List(nil, nil) or
+// client.RaisedPet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) RaisedPet(data map[string]any) FlyffGameEntity {
 	return NewRaisedPetEntityFunc(sdk, data)
 }
 
 
+// Recipe returns a Recipe entity bound to this client.
+// Idiomatic usage: client.Recipe(nil).List(nil, nil) or
+// client.Recipe(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Recipe(data map[string]any) FlyffGameEntity {
 	return NewRecipeEntityFunc(sdk, data)
 }
 
 
+// Skill returns a Skill entity bound to this client.
+// Idiomatic usage: client.Skill(nil).List(nil, nil) or
+// client.Skill(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Skill(data map[string]any) FlyffGameEntity {
 	return NewSkillEntityFunc(sdk, data)
 }
 
 
+// UpgradeLevelBonus returns a UpgradeLevelBonus entity bound to this client.
+// Idiomatic usage: client.UpgradeLevelBonus(nil).List(nil, nil) or
+// client.UpgradeLevelBonus(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) UpgradeLevelBonus(data map[string]any) FlyffGameEntity {
 	return NewUpgradeLevelBonusEntityFunc(sdk, data)
 }
 
 
+// Version returns a Version entity bound to this client.
+// Idiomatic usage: client.Version(nil).List(nil, nil) or
+// client.Version(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) Version(data map[string]any) FlyffGameEntity {
 	return NewVersionEntityFunc(sdk, data)
 }
 
 
+// World returns a World entity bound to this client.
+// Idiomatic usage: client.World(nil).List(nil, nil) or
+// client.World(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FlyffGameSDK) World(data map[string]any) FlyffGameEntity {
 	return NewWorldEntityFunc(sdk, data)
 }

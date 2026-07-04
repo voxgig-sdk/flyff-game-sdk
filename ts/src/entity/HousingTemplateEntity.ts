@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  HousingTemplate,
+  HousingTemplateLoadMatch,
+  HousingTemplateListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class HousingTemplateEntity extends FlyffGameEntityBase {
+class HousingTemplateEntity extends FlyffGameEntityBase<HousingTemplate> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class HousingTemplateEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HousingTemplateLoadMatch, ctrl?: Control): Promise<HousingTemplate> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class HousingTemplateEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<HousingTemplate> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: HousingTemplateListMatch, ctrl?: Control): Promise<HousingTemplate[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class HousingTemplateEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<HousingTemplate[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

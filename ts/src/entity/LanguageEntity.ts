@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Language,
+  LanguageLoadMatch,
+  LanguageListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class LanguageEntity extends FlyffGameEntityBase {
+class LanguageEntity extends FlyffGameEntityBase<Language> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class LanguageEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: LanguageLoadMatch, ctrl?: Control): Promise<Language> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class LanguageEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Language> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: LanguageListMatch, ctrl?: Control): Promise<Language[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class LanguageEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Language[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -43,14 +43,12 @@ class QuestEntityTest < Minitest::Test
     quest_ref01_ent = client.Quest(nil)
     quest_ref01_match = {}
 
-    quest_ref01_list_result, err = quest_ref01_ent.list(quest_ref01_match, nil)
-    assert_nil err
+    quest_ref01_list_result = quest_ref01_ent.list(quest_ref01_match, nil)
     assert quest_ref01_list_result.is_a?(Array)
 
     # LOAD
     quest_ref01_match_dt0 = {}
-    quest_ref01_data_dt0_loaded, err = quest_ref01_ent.load(quest_ref01_match_dt0, nil)
-    assert_nil err
+    quest_ref01_data_dt0_loaded = quest_ref01_ent.load(quest_ref01_match_dt0, nil)
     assert !quest_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def quest_basic_setup(extra)
     "FLYFFGAME_TEST_QUEST_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def quest_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

@@ -42,8 +42,7 @@ class VersionEntityTest < Minitest::Test
     # LOAD
     version_ref01_ent = client.Version(nil)
     version_ref01_match_dt0 = {}
-    version_ref01_data_dt0_loaded, err = version_ref01_ent.load(version_ref01_match_dt0, nil)
-    assert_nil err
+    version_ref01_data_dt0_loaded = version_ref01_ent.load(version_ref01_match_dt0, nil)
     assert !version_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def version_basic_setup(extra)
     "FLYFFGAME_TEST_VERSION_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def version_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

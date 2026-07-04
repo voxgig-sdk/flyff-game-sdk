@@ -50,14 +50,12 @@ class TestQuestEntity:
         quest_ref01_ent = client.Quest(None)
         quest_ref01_match = {}
 
-        quest_ref01_list_result, err = quest_ref01_ent.list(quest_ref01_match, None)
-        assert err is None
+        quest_ref01_list_result = quest_ref01_ent.list(quest_ref01_match, None)
         assert isinstance(quest_ref01_list_result, list)
 
         # LOAD
         quest_ref01_match_dt0 = {}
-        quest_ref01_data_dt0_loaded, err = quest_ref01_ent.load(quest_ref01_match_dt0, None)
-        assert err is None
+        quest_ref01_data_dt0_loaded = quest_ref01_ent.load(quest_ref01_match_dt0, None)
         assert quest_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _quest_basic_setup(extra):
         "FLYFFGAME_TEST_QUEST_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _quest_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

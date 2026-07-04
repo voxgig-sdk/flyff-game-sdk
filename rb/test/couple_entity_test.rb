@@ -42,8 +42,7 @@ class CoupleEntityTest < Minitest::Test
     # LOAD
     couple_ref01_ent = client.Couple(nil)
     couple_ref01_match_dt0 = {}
-    couple_ref01_data_dt0_loaded, err = couple_ref01_ent.load(couple_ref01_match_dt0, nil)
-    assert_nil err
+    couple_ref01_data_dt0_loaded = couple_ref01_ent.load(couple_ref01_match_dt0, nil)
     assert !couple_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def couple_basic_setup(extra)
     "FLYFFGAME_TEST_COUPLE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def couple_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

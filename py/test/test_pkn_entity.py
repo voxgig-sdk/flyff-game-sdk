@@ -49,8 +49,7 @@ class TestPknEntity:
         # LOAD
         pkn_ref01_ent = client.Pkn(None)
         pkn_ref01_match_dt0 = {}
-        pkn_ref01_data_dt0_loaded, err = pkn_ref01_ent.load(pkn_ref01_match_dt0, None)
-        assert err is None
+        pkn_ref01_data_dt0_loaded = pkn_ref01_ent.load(pkn_ref01_match_dt0, None)
         assert pkn_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _pkn_basic_setup(extra):
         "FLYFFGAME_TEST_PKN_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _pkn_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

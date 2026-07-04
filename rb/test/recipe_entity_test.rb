@@ -43,14 +43,12 @@ class RecipeEntityTest < Minitest::Test
     recipe_ref01_ent = client.Recipe(nil)
     recipe_ref01_match = {}
 
-    recipe_ref01_list_result, err = recipe_ref01_ent.list(recipe_ref01_match, nil)
-    assert_nil err
+    recipe_ref01_list_result = recipe_ref01_ent.list(recipe_ref01_match, nil)
     assert recipe_ref01_list_result.is_a?(Array)
 
     # LOAD
     recipe_ref01_match_dt0 = {}
-    recipe_ref01_data_dt0_loaded, err = recipe_ref01_ent.load(recipe_ref01_match_dt0, nil)
-    assert_nil err
+    recipe_ref01_data_dt0_loaded = recipe_ref01_ent.load(recipe_ref01_match_dt0, nil)
     assert !recipe_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def recipe_basic_setup(extra)
     "FLYFFGAME_TEST_RECIPE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def recipe_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

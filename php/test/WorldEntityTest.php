@@ -50,16 +50,14 @@ class WorldEntityTest extends TestCase
         $world_ref01_ent = $client->World(null);
         $world_ref01_match = [];
 
-        [$world_ref01_list_result, $err] = $world_ref01_ent->list($world_ref01_match, null);
-        $this->assertNull($err);
+        $world_ref01_list_result = $world_ref01_ent->list($world_ref01_match, null);
         $this->assertIsArray($world_ref01_list_result);
 
         // LOAD
         $world_ref01_match_dt0 = [
             "id" => $world_ref01_data["id"],
         ];
-        [$world_ref01_data_dt0_loaded, $err] = $world_ref01_ent->load($world_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $world_ref01_data_dt0_loaded = $world_ref01_ent->load($world_ref01_match_dt0, null);
         $world_ref01_data_dt0_load_result = Helpers::to_map($world_ref01_data_dt0_loaded);
         $this->assertNotNull($world_ref01_data_dt0_load_result);
         $this->assertEquals($world_ref01_data_dt0_load_result["id"], $world_ref01_data["id"]);
@@ -96,7 +94,6 @@ function world_basic_setup($extra)
         "FLYFFGAME_TEST_WORLD_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function world_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

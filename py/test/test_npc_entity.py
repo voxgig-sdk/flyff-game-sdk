@@ -50,14 +50,12 @@ class TestNpcEntity:
         npc_ref01_ent = client.Npc(None)
         npc_ref01_match = {}
 
-        npc_ref01_list_result, err = npc_ref01_ent.list(npc_ref01_match, None)
-        assert err is None
+        npc_ref01_list_result = npc_ref01_ent.list(npc_ref01_match, None)
         assert isinstance(npc_ref01_list_result, list)
 
         # LOAD
         npc_ref01_match_dt0 = {}
-        npc_ref01_data_dt0_loaded, err = npc_ref01_ent.load(npc_ref01_match_dt0, None)
-        assert err is None
+        npc_ref01_data_dt0_loaded = npc_ref01_ent.load(npc_ref01_match_dt0, None)
         assert npc_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _npc_basic_setup(extra):
         "FLYFFGAME_TEST_NPC_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _npc_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

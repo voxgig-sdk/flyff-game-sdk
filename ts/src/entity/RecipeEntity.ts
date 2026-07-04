@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Recipe,
+  RecipeLoadMatch,
+  RecipeListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class RecipeEntity extends FlyffGameEntityBase {
+class RecipeEntity extends FlyffGameEntityBase<Recipe> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class RecipeEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RecipeLoadMatch, ctrl?: Control): Promise<Recipe> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class RecipeEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Recipe> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RecipeListMatch, ctrl?: Control): Promise<Recipe[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class RecipeEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Recipe[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

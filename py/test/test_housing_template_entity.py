@@ -50,14 +50,12 @@ class TestHousingTemplateEntity:
         housing_template_ref01_ent = client.HousingTemplate(None)
         housing_template_ref01_match = {}
 
-        housing_template_ref01_list_result, err = housing_template_ref01_ent.list(housing_template_ref01_match, None)
-        assert err is None
+        housing_template_ref01_list_result = housing_template_ref01_ent.list(housing_template_ref01_match, None)
         assert isinstance(housing_template_ref01_list_result, list)
 
         # LOAD
         housing_template_ref01_match_dt0 = {}
-        housing_template_ref01_data_dt0_loaded, err = housing_template_ref01_ent.load(housing_template_ref01_match_dt0, None)
-        assert err is None
+        housing_template_ref01_data_dt0_loaded = housing_template_ref01_ent.load(housing_template_ref01_match_dt0, None)
         assert housing_template_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _housing_template_basic_setup(extra):
         "FLYFFGAME_TEST_HOUSING_TEMPLATE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _housing_template_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

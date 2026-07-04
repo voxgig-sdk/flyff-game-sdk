@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  EquipmentSet,
+  EquipmentSetLoadMatch,
+  EquipmentSetListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class EquipmentSetEntity extends FlyffGameEntityBase {
+class EquipmentSetEntity extends FlyffGameEntityBase<EquipmentSet> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class EquipmentSetEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: EquipmentSetLoadMatch, ctrl?: Control): Promise<EquipmentSet> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class EquipmentSetEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<EquipmentSet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: EquipmentSetListMatch, ctrl?: Control): Promise<EquipmentSet[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class EquipmentSetEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<EquipmentSet[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

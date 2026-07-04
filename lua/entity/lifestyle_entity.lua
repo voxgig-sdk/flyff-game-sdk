@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch LifestyleLoadMatch
+---@param ctrl? table
+---@return Lifestyle
+---@return string? err
 function LifestyleEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch UpgradeLevelBonusLoadMatch
+---@param ctrl? table
+---@return UpgradeLevelBonus
+---@return string? err
 function UpgradeLevelBonusEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

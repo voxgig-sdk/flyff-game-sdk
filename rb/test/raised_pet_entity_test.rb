@@ -42,8 +42,7 @@ class RaisedPetEntityTest < Minitest::Test
     # LOAD
     raised_pet_ref01_ent = client.RaisedPet(nil)
     raised_pet_ref01_match_dt0 = {}
-    raised_pet_ref01_data_dt0_loaded, err = raised_pet_ref01_ent.load(raised_pet_ref01_match_dt0, nil)
-    assert_nil err
+    raised_pet_ref01_data_dt0_loaded = raised_pet_ref01_ent.load(raised_pet_ref01_match_dt0, nil)
     assert !raised_pet_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def raised_pet_basic_setup(extra)
     "FLYFFGAME_TEST_RAISED_PET_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def raised_pet_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BadgeLoadMatch
+---@param ctrl? table
+---@return Badge
+---@return string? err
 function BadgeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -49,8 +49,7 @@ class TestUpgradeLevelBonusEntity:
         # LOAD
         upgrade_level_bonus_ref01_ent = client.UpgradeLevelBonus(None)
         upgrade_level_bonus_ref01_match_dt0 = {}
-        upgrade_level_bonus_ref01_data_dt0_loaded, err = upgrade_level_bonus_ref01_ent.load(upgrade_level_bonus_ref01_match_dt0, None)
-        assert err is None
+        upgrade_level_bonus_ref01_data_dt0_loaded = upgrade_level_bonus_ref01_ent.load(upgrade_level_bonus_ref01_match_dt0, None)
         assert upgrade_level_bonus_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _upgrade_level_bonus_basic_setup(extra):
         "FLYFFGAME_TEST_UPGRADE_LEVEL_BONUS_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _upgrade_level_bonus_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

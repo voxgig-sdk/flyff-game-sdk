@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch PartySkillLoadMatch
+---@param ctrl? table
+---@return PartySkill
+---@return string? err
 function PartySkillEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch PartySkillListMatch
+---@param ctrl? table
+---@return PartySkill[]
+---@return string? err
 function PartySkillEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

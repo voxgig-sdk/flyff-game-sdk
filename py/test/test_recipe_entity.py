@@ -50,14 +50,12 @@ class TestRecipeEntity:
         recipe_ref01_ent = client.Recipe(None)
         recipe_ref01_match = {}
 
-        recipe_ref01_list_result, err = recipe_ref01_ent.list(recipe_ref01_match, None)
-        assert err is None
+        recipe_ref01_list_result = recipe_ref01_ent.list(recipe_ref01_match, None)
         assert isinstance(recipe_ref01_list_result, list)
 
         # LOAD
         recipe_ref01_match_dt0 = {}
-        recipe_ref01_data_dt0_loaded, err = recipe_ref01_ent.load(recipe_ref01_match_dt0, None)
-        assert err is None
+        recipe_ref01_data_dt0_loaded = recipe_ref01_ent.load(recipe_ref01_match_dt0, None)
         assert recipe_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _recipe_basic_setup(extra):
         "FLYFFGAME_TEST_RECIPE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _recipe_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

@@ -50,14 +50,12 @@ class TestEquipmentSetEntity:
         equipment_set_ref01_ent = client.EquipmentSet(None)
         equipment_set_ref01_match = {}
 
-        equipment_set_ref01_list_result, err = equipment_set_ref01_ent.list(equipment_set_ref01_match, None)
-        assert err is None
+        equipment_set_ref01_list_result = equipment_set_ref01_ent.list(equipment_set_ref01_match, None)
         assert isinstance(equipment_set_ref01_list_result, list)
 
         # LOAD
         equipment_set_ref01_match_dt0 = {}
-        equipment_set_ref01_data_dt0_loaded, err = equipment_set_ref01_ent.load(equipment_set_ref01_match_dt0, None)
-        assert err is None
+        equipment_set_ref01_data_dt0_loaded = equipment_set_ref01_ent.load(equipment_set_ref01_match_dt0, None)
         assert equipment_set_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _equipment_set_basic_setup(extra):
         "FLYFFGAME_TEST_EQUIPMENT_SET_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _equipment_set_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

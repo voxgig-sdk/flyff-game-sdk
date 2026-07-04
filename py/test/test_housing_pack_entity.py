@@ -50,14 +50,12 @@ class TestHousingPackEntity:
         housing_pack_ref01_ent = client.HousingPack(None)
         housing_pack_ref01_match = {}
 
-        housing_pack_ref01_list_result, err = housing_pack_ref01_ent.list(housing_pack_ref01_match, None)
-        assert err is None
+        housing_pack_ref01_list_result = housing_pack_ref01_ent.list(housing_pack_ref01_match, None)
         assert isinstance(housing_pack_ref01_list_result, list)
 
         # LOAD
         housing_pack_ref01_match_dt0 = {}
-        housing_pack_ref01_data_dt0_loaded, err = housing_pack_ref01_ent.load(housing_pack_ref01_match_dt0, None)
-        assert err is None
+        housing_pack_ref01_data_dt0_loaded = housing_pack_ref01_ent.load(housing_pack_ref01_match_dt0, None)
         assert housing_pack_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _housing_pack_basic_setup(extra):
         "FLYFFGAME_TEST_HOUSING_PACK_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _housing_pack_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

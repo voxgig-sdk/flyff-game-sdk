@@ -85,6 +85,27 @@ func (e *WorldEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an World; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *WorldEntity) DataTyped(data ...World) World {
+	if len(data) > 0 {
+		return typedFrom[World](e.Data(asMap(data[0])))
+	}
+	return typedFrom[World](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through World (all fields
+// optional at the wire level).
+func (e *WorldEntity) MatchTyped(match ...World) World {
+	if len(match) > 0 {
+		return typedFrom[World](e.Match(asMap(match[0])))
+	}
+	return typedFrom[World](e.Match())
+}
+
 
 func (e *WorldEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *WorldEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, e
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// WorldLoadMatch and returns an World. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *WorldEntity) LoadTyped(reqmatch WorldLoadMatch, ctrl map[string]any) (World, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return World{}, err
+	}
+	return typedFrom[World](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *WorldEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// WorldListMatch and returns []World. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *WorldEntity) ListTyped(reqmatch WorldListMatch, ctrl map[string]any) ([]World, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[World](res), nil
 }
 
 

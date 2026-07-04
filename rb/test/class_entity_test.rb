@@ -43,16 +43,14 @@ class ClassEntityTest < Minitest::Test
     class_ref01_ent = client.Class(nil)
     class_ref01_match = {}
 
-    class_ref01_list_result, err = class_ref01_ent.list(class_ref01_match, nil)
-    assert_nil err
+    class_ref01_list_result = class_ref01_ent.list(class_ref01_match, nil)
     assert class_ref01_list_result.is_a?(Array)
 
     # LOAD
     class_ref01_match_dt0 = {
       "id" => class_ref01_data["id"],
     }
-    class_ref01_data_dt0_loaded, err = class_ref01_ent.load(class_ref01_match_dt0, nil)
-    assert_nil err
+    class_ref01_data_dt0_loaded = class_ref01_ent.load(class_ref01_match_dt0, nil)
     class_ref01_data_dt0_load_result = Helpers.to_map(class_ref01_data_dt0_loaded)
     assert !class_ref01_data_dt0_load_result.nil?
     assert_equal class_ref01_data_dt0_load_result["id"], class_ref01_data["id"]
@@ -93,7 +91,6 @@ def class_basic_setup(extra)
     "FLYFFGAME_TEST_CLASS_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def class_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

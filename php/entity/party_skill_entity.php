@@ -55,6 +55,9 @@ class PartySkillEntity
         return new PartySkillEntity($this->_client, $opts);
     }
 
+    /**
+     * @param PartySkill|array $args PartySkill data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class PartySkillEntity
         }
     }
 
+    /**
+     * @return PartySkill|array The current PartySkill data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of PartySkill fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class PartySkillEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of PartySkill fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class PartySkillEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single PartySkill.
+     *
+     * @param PartySkillLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed PartySkillLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return PartySkill|array The loaded PartySkill as an assoc-array at the
+     *   SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class PartySkillEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List PartySkill items matching the given filter.
+     *
+     * @param PartySkillListMatch|array|null $reqmatch Match filter (any subset
+     *   of PartySkill fields) as an assoc-array; PartySkillListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return PartySkill[]|array A list of PartySkill items as assoc-arrays at
+     *   the SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class PartySkillEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

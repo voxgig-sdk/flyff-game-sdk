@@ -43,14 +43,12 @@ class HousingTemplateEntityTest < Minitest::Test
     housing_template_ref01_ent = client.HousingTemplate(nil)
     housing_template_ref01_match = {}
 
-    housing_template_ref01_list_result, err = housing_template_ref01_ent.list(housing_template_ref01_match, nil)
-    assert_nil err
+    housing_template_ref01_list_result = housing_template_ref01_ent.list(housing_template_ref01_match, nil)
     assert housing_template_ref01_list_result.is_a?(Array)
 
     # LOAD
     housing_template_ref01_match_dt0 = {}
-    housing_template_ref01_data_dt0_loaded, err = housing_template_ref01_ent.load(housing_template_ref01_match_dt0, nil)
-    assert_nil err
+    housing_template_ref01_data_dt0_loaded = housing_template_ref01_ent.load(housing_template_ref01_match_dt0, nil)
     assert !housing_template_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def housing_template_basic_setup(extra)
     "FLYFFGAME_TEST_HOUSING_TEMPLATE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def housing_template_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

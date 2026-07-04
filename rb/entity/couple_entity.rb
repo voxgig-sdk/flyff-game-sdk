@@ -45,6 +45,7 @@ class CoupleEntity
     end
   end
 
+  # @return [Couple, Hash] the current Couple data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class CoupleEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Couple fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Couple.
+  #
+  # @param reqmatch [CoupleLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Couple, Hash] the loaded Couple; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

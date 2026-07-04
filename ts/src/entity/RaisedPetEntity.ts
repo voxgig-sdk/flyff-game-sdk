@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  RaisedPet,
+  RaisedPetLoadMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class RaisedPetEntity extends FlyffGameEntityBase {
+class RaisedPetEntity extends FlyffGameEntityBase<RaisedPet> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class RaisedPetEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RaisedPetLoadMatch, ctrl?: Control): Promise<RaisedPet> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class RaisedPetEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<RaisedPet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -42,8 +42,7 @@ class PlaceEntityTest < Minitest::Test
     # LOAD
     place_ref01_ent = client.Place(nil)
     place_ref01_match_dt0 = {}
-    place_ref01_data_dt0_loaded, err = place_ref01_ent.load(place_ref01_match_dt0, nil)
-    assert_nil err
+    place_ref01_data_dt0_loaded = place_ref01_ent.load(place_ref01_match_dt0, nil)
     assert !place_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def place_basic_setup(extra)
     "FLYFFGAME_TEST_PLACE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def place_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

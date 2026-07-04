@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ClassLoadMatch
+---@param ctrl? table
+---@return Class
+---@return string? err
 function ClassEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ClassListMatch
+---@param ctrl? table
+---@return Class[]
+---@return string? err
 function ClassEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,14 +50,12 @@ class EquipmentSetEntityTest extends TestCase
         $equipment_set_ref01_ent = $client->EquipmentSet(null);
         $equipment_set_ref01_match = [];
 
-        [$equipment_set_ref01_list_result, $err] = $equipment_set_ref01_ent->list($equipment_set_ref01_match, null);
-        $this->assertNull($err);
+        $equipment_set_ref01_list_result = $equipment_set_ref01_ent->list($equipment_set_ref01_match, null);
         $this->assertIsArray($equipment_set_ref01_list_result);
 
         // LOAD
         $equipment_set_ref01_match_dt0 = [];
-        [$equipment_set_ref01_data_dt0_loaded, $err] = $equipment_set_ref01_ent->load($equipment_set_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $equipment_set_ref01_data_dt0_loaded = $equipment_set_ref01_ent->load($equipment_set_ref01_match_dt0, null);
         $this->assertNotNull($equipment_set_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function equipment_set_basic_setup($extra)
         "FLYFFGAME_TEST_EQUIPMENT_SET_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function equipment_set_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

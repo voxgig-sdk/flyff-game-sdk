@@ -85,6 +85,27 @@ func (e *MonsterEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Monster; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *MonsterEntity) DataTyped(data ...Monster) Monster {
+	if len(data) > 0 {
+		return typedFrom[Monster](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Monster](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Monster (all fields
+// optional at the wire level).
+func (e *MonsterEntity) MatchTyped(match ...Monster) Monster {
+	if len(match) > 0 {
+		return typedFrom[Monster](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Monster](e.Match())
+}
+
 
 func (e *MonsterEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *MonsterEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// MonsterLoadMatch and returns an Monster. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *MonsterEntity) LoadTyped(reqmatch MonsterLoadMatch, ctrl map[string]any) (Monster, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Monster{}, err
+	}
+	return typedFrom[Monster](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *MonsterEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// MonsterListMatch and returns []Monster. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *MonsterEntity) ListTyped(reqmatch MonsterListMatch, ctrl map[string]any) ([]Monster, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Monster](res), nil
 }
 
 

@@ -49,8 +49,7 @@ class VersionEntityTest extends TestCase
         // LOAD
         $version_ref01_ent = $client->Version(null);
         $version_ref01_match_dt0 = [];
-        [$version_ref01_data_dt0_loaded, $err] = $version_ref01_ent->load($version_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $version_ref01_data_dt0_loaded = $version_ref01_ent->load($version_ref01_match_dt0, null);
         $this->assertNotNull($version_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function version_basic_setup($extra)
         "FLYFFGAME_TEST_VERSION_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function version_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -50,14 +50,12 @@ class AchievementEntityTest extends TestCase
         $achievement_ref01_ent = $client->Achievement(null);
         $achievement_ref01_match = [];
 
-        [$achievement_ref01_list_result, $err] = $achievement_ref01_ent->list($achievement_ref01_match, null);
-        $this->assertNull($err);
+        $achievement_ref01_list_result = $achievement_ref01_ent->list($achievement_ref01_match, null);
         $this->assertIsArray($achievement_ref01_list_result);
 
         // LOAD
         $achievement_ref01_match_dt0 = [];
-        [$achievement_ref01_data_dt0_loaded, $err] = $achievement_ref01_ent->load($achievement_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $achievement_ref01_data_dt0_loaded = $achievement_ref01_ent->load($achievement_ref01_match_dt0, null);
         $this->assertNotNull($achievement_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function achievement_basic_setup($extra)
         "FLYFFGAME_TEST_ACHIEVEMENT_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function achievement_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

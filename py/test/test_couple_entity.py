@@ -49,8 +49,7 @@ class TestCoupleEntity:
         # LOAD
         couple_ref01_ent = client.Couple(None)
         couple_ref01_match_dt0 = {}
-        couple_ref01_data_dt0_loaded, err = couple_ref01_ent.load(couple_ref01_match_dt0, None)
-        assert err is None
+        couple_ref01_data_dt0_loaded = couple_ref01_ent.load(couple_ref01_match_dt0, None)
         assert couple_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _couple_basic_setup(extra):
         "FLYFFGAME_TEST_COUPLE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _couple_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

@@ -49,8 +49,7 @@ class TestExchangeMenusEntity:
         # LOAD
         exchange_menus_ref01_ent = client.ExchangeMenus(None)
         exchange_menus_ref01_match_dt0 = {}
-        exchange_menus_ref01_data_dt0_loaded, err = exchange_menus_ref01_ent.load(exchange_menus_ref01_match_dt0, None)
-        assert err is None
+        exchange_menus_ref01_data_dt0_loaded = exchange_menus_ref01_ent.load(exchange_menus_ref01_match_dt0, None)
         assert exchange_menus_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _exchange_menus_basic_setup(extra):
         "FLYFFGAME_TEST_EXCHANGE_MENUS_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _exchange_menus_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

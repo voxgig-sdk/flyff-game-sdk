@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch EquipmentSetLoadMatch
+---@param ctrl? table
+---@return EquipmentSet
+---@return string? err
 function EquipmentSetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch EquipmentSetListMatch
+---@param ctrl? table
+---@return EquipmentSet[]
+---@return string? err
 function EquipmentSetEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -45,6 +45,7 @@ class WorldEntity
     end
   end
 
+  # @return [World, Hash] the current World data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class WorldEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of World fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single World.
+  #
+  # @param reqmatch [WorldLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [World, Hash] the loaded World; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class WorldEntity
 
 
   
+  # List World items matching the given filter.
+  #
+  # @param reqmatch [WorldListMatch, Hash, nil] match filter (any subset of World fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<World>, Array] the matching World items; raises FlyffGameError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

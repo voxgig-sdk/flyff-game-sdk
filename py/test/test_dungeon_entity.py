@@ -49,8 +49,7 @@ class TestDungeonEntity:
         # LOAD
         dungeon_ref01_ent = client.Dungeon(None)
         dungeon_ref01_match_dt0 = {}
-        dungeon_ref01_data_dt0_loaded, err = dungeon_ref01_ent.load(dungeon_ref01_match_dt0, None)
-        assert err is None
+        dungeon_ref01_data_dt0_loaded = dungeon_ref01_ent.load(dungeon_ref01_match_dt0, None)
         assert dungeon_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _dungeon_basic_setup(extra):
         "FLYFFGAME_TEST_DUNGEON_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _dungeon_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

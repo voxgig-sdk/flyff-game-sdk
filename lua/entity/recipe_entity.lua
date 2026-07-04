@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RecipeLoadMatch
+---@param ctrl? table
+---@return Recipe
+---@return string? err
 function RecipeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RecipeListMatch
+---@param ctrl? table
+---@return Recipe[]
+---@return string? err
 function RecipeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

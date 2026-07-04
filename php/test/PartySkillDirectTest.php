@@ -24,7 +24,7 @@ class PartySkillDirectTest extends TestCase
         $client = $setup["client"];
 
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "partyskill",
             "method" => "GET",
             "params" => [],
@@ -33,8 +33,8 @@ class PartySkillDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx and the
             // list-response shape varies wildly across public APIs. Skip
             // rather than fail when the call doesn't return a usable list.
-            if ($err !== null) {
-                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -47,7 +47,7 @@ class PartySkillDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertIsArray($result["data"]);
@@ -76,7 +76,7 @@ class PartySkillDirectTest extends TestCase
             $params["party_skill_id"] = "direct01";
         }
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "partyskill/{party_skill_id}",
             "method" => "GET",
             "params" => $params,
@@ -86,8 +86,8 @@ class PartySkillDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx. Skip
             // rather than fail when the load endpoint isn't reachable
             // with the IDs we can construct from setup.idmap.
-            if ($err !== null) {
-                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -100,7 +100,7 @@ class PartySkillDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertNotNull($result["data"]);
@@ -123,14 +123,12 @@ function party_skill_direct_setup($mockres)
     $env = Runner::env_override([
         "FLYFFGAME_TEST_PARTY_SKILL_ENTID" => [],
         "FLYFFGAME_TEST_LIVE" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $live = $env["FLYFFGAME_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["FLYFFGAME_APIKEY"],
         ];
         $client = new FlyffGameSDK($merged_opts);
         return [

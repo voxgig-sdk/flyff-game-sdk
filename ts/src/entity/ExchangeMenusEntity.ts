@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ExchangeMenus,
+  ExchangeMenusLoadMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class ExchangeMenusEntity extends FlyffGameEntityBase {
+class ExchangeMenusEntity extends FlyffGameEntityBase<ExchangeMenus> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class ExchangeMenusEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ExchangeMenusLoadMatch, ctrl?: Control): Promise<ExchangeMenus> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class ExchangeMenusEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ExchangeMenus> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

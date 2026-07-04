@@ -55,6 +55,9 @@ class HousingPackEntity
         return new HousingPackEntity($this->_client, $opts);
     }
 
+    /**
+     * @param HousingPack|array $args HousingPack data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class HousingPackEntity
         }
     }
 
+    /**
+     * @return HousingPack|array The current HousingPack data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of HousingPack fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class HousingPackEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of HousingPack fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class HousingPackEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single HousingPack.
+     *
+     * @param HousingPackLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed HousingPackLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return HousingPack|array The loaded HousingPack as an assoc-array at the
+     *   SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class HousingPackEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List HousingPack items matching the given filter.
+     *
+     * @param HousingPackListMatch|array|null $reqmatch Match filter (any subset
+     *   of HousingPack fields) as an assoc-array; HousingPackListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return HousingPack[]|array A list of HousingPack items as assoc-arrays at
+     *   the SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class HousingPackEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

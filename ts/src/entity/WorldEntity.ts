@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  World,
+  WorldLoadMatch,
+  WorldListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class WorldEntity extends FlyffGameEntityBase {
+class WorldEntity extends FlyffGameEntityBase<World> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class WorldEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: WorldLoadMatch, ctrl?: Control): Promise<World> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class WorldEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<World> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: WorldListMatch, ctrl?: Control): Promise<World[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class WorldEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<World[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

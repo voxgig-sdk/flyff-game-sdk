@@ -45,6 +45,7 @@ class PknEntity
     end
   end
 
+  # @return [Pkn, Hash] the current Pkn data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class PknEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Pkn fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Pkn.
+  #
+  # @param reqmatch [PknLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Pkn, Hash] the loaded Pkn; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

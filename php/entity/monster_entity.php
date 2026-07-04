@@ -55,6 +55,9 @@ class MonsterEntity
         return new MonsterEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Monster|array $args Monster data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class MonsterEntity
         }
     }
 
+    /**
+     * @return Monster|array The current Monster data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Monster fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class MonsterEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Monster fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class MonsterEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Monster.
+     *
+     * @param MonsterLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed MonsterLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Monster|array The loaded Monster as an assoc-array at the
+     *   SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class MonsterEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Monster items matching the given filter.
+     *
+     * @param MonsterListMatch|array|null $reqmatch Match filter (any subset
+     *   of Monster fields) as an assoc-array; MonsterListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Monster[]|array A list of Monster items as assoc-arrays at
+     *   the SDK boundary; throws FlyffGameError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class MonsterEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

@@ -45,6 +45,7 @@ class ClassEntity
     end
   end
 
+  # @return [Class, Hash] the current Class data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ClassEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Class fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Class.
+  #
+  # @param reqmatch [ClassLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Class, Hash] the loaded Class; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ClassEntity
 
 
   
+  # List Class items matching the given filter.
+  #
+  # @param reqmatch [ClassListMatch, Hash, nil] match filter (any subset of Class fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Class>, Array] the matching Class items; raises FlyffGameError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

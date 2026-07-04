@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RaisedPetLoadMatch
+---@param ctrl? table
+---@return RaisedPet
+---@return string? err
 function RaisedPetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

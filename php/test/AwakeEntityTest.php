@@ -49,8 +49,7 @@ class AwakeEntityTest extends TestCase
         // LOAD
         $awake_ref01_ent = $client->Awake(null);
         $awake_ref01_match_dt0 = [];
-        [$awake_ref01_data_dt0_loaded, $err] = $awake_ref01_ent->load($awake_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $awake_ref01_data_dt0_loaded = $awake_ref01_ent->load($awake_ref01_match_dt0, null);
         $this->assertNotNull($awake_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function awake_basic_setup($extra)
         "FLYFFGAME_TEST_AWAKE_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function awake_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

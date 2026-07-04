@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  PartySkill,
+  PartySkillLoadMatch,
+  PartySkillListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class PartySkillEntity extends FlyffGameEntityBase {
+class PartySkillEntity extends FlyffGameEntityBase<PartySkill> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class PartySkillEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: PartySkillLoadMatch, ctrl?: Control): Promise<PartySkill> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class PartySkillEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<PartySkill> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: PartySkillListMatch, ctrl?: Control): Promise<PartySkill[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class PartySkillEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<PartySkill[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

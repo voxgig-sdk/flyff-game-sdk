@@ -50,14 +50,12 @@ class TestMonsterEntity:
         monster_ref01_ent = client.Monster(None)
         monster_ref01_match = {}
 
-        monster_ref01_list_result, err = monster_ref01_ent.list(monster_ref01_match, None)
-        assert err is None
+        monster_ref01_list_result = monster_ref01_ent.list(monster_ref01_match, None)
         assert isinstance(monster_ref01_list_result, list)
 
         # LOAD
         monster_ref01_match_dt0 = {}
-        monster_ref01_data_dt0_loaded, err = monster_ref01_ent.load(monster_ref01_match_dt0, None)
-        assert err is None
+        monster_ref01_data_dt0_loaded = monster_ref01_ent.load(monster_ref01_match_dt0, None)
         assert monster_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _monster_basic_setup(extra):
         "FLYFFGAME_TEST_MONSTER_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _monster_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

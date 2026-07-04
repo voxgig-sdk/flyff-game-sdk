@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CoupleLoadMatch
+---@param ctrl? table
+---@return Couple
+---@return string? err
 function CoupleEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

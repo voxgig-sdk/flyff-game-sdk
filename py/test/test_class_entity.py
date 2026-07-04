@@ -50,16 +50,14 @@ class TestClassEntity:
         class_ref01_ent = client.Class(None)
         class_ref01_match = {}
 
-        class_ref01_list_result, err = class_ref01_ent.list(class_ref01_match, None)
-        assert err is None
+        class_ref01_list_result = class_ref01_ent.list(class_ref01_match, None)
         assert isinstance(class_ref01_list_result, list)
 
         # LOAD
         class_ref01_match_dt0 = {
             "id": class_ref01_data["id"],
         }
-        class_ref01_data_dt0_loaded, err = class_ref01_ent.load(class_ref01_match_dt0, None)
-        assert err is None
+        class_ref01_data_dt0_loaded = class_ref01_ent.load(class_ref01_match_dt0, None)
         class_ref01_data_dt0_load_result = helpers.to_map(class_ref01_data_dt0_loaded)
         assert class_ref01_data_dt0_load_result is not None
         assert class_ref01_data_dt0_load_result["id"] == class_ref01_data["id"]
@@ -102,7 +100,6 @@ def _class_basic_setup(extra):
         "FLYFFGAME_TEST_CLASS_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _class_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch QuestLoadMatch
+---@param ctrl? table
+---@return Quest
+---@return string? err
 function QuestEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch QuestListMatch
+---@param ctrl? table
+---@return Quest[]
+---@return string? err
 function QuestEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

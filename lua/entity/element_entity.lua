@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ElementLoadMatch
+---@param ctrl? table
+---@return Element
+---@return string? err
 function ElementEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,16 +50,14 @@ class ClassEntityTest extends TestCase
         $class_ref01_ent = $client->Class(null);
         $class_ref01_match = [];
 
-        [$class_ref01_list_result, $err] = $class_ref01_ent->list($class_ref01_match, null);
-        $this->assertNull($err);
+        $class_ref01_list_result = $class_ref01_ent->list($class_ref01_match, null);
         $this->assertIsArray($class_ref01_list_result);
 
         // LOAD
         $class_ref01_match_dt0 = [
             "id" => $class_ref01_data["id"],
         ];
-        [$class_ref01_data_dt0_loaded, $err] = $class_ref01_ent->load($class_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $class_ref01_data_dt0_loaded = $class_ref01_ent->load($class_ref01_match_dt0, null);
         $class_ref01_data_dt0_load_result = Helpers::to_map($class_ref01_data_dt0_loaded);
         $this->assertNotNull($class_ref01_data_dt0_load_result);
         $this->assertEquals($class_ref01_data_dt0_load_result["id"], $class_ref01_data["id"]);
@@ -96,7 +94,6 @@ function class_basic_setup($extra)
         "FLYFFGAME_TEST_CLASS_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function class_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

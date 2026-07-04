@@ -1,7 +1,13 @@
 # FlyffGame SDK Element entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from flyffgame_types import (
+    Element,
+    ElementLoadMatch,
+)
 
 
 class ElementEntity:
@@ -44,7 +50,7 @@ class ElementEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Element:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class ElementEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Element:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: ElementLoadMatch, ctrl=None) -> Element:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

@@ -42,8 +42,7 @@ class BadgeEntityTest < Minitest::Test
     # LOAD
     badge_ref01_ent = client.Badge(nil)
     badge_ref01_match_dt0 = {}
-    badge_ref01_data_dt0_loaded, err = badge_ref01_ent.load(badge_ref01_match_dt0, nil)
-    assert_nil err
+    badge_ref01_data_dt0_loaded = badge_ref01_ent.load(badge_ref01_match_dt0, nil)
     assert !badge_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def badge_basic_setup(extra)
     "FLYFFGAME_TEST_BADGE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def badge_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

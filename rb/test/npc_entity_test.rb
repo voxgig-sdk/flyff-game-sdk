@@ -43,14 +43,12 @@ class NpcEntityTest < Minitest::Test
     npc_ref01_ent = client.Npc(nil)
     npc_ref01_match = {}
 
-    npc_ref01_list_result, err = npc_ref01_ent.list(npc_ref01_match, nil)
-    assert_nil err
+    npc_ref01_list_result = npc_ref01_ent.list(npc_ref01_match, nil)
     assert npc_ref01_list_result.is_a?(Array)
 
     # LOAD
     npc_ref01_match_dt0 = {}
-    npc_ref01_data_dt0_loaded, err = npc_ref01_ent.load(npc_ref01_match_dt0, nil)
-    assert_nil err
+    npc_ref01_data_dt0_loaded = npc_ref01_ent.load(npc_ref01_match_dt0, nil)
     assert !npc_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def npc_basic_setup(extra)
     "FLYFFGAME_TEST_NPC_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def npc_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

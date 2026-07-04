@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Quest,
+  QuestLoadMatch,
+  QuestListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class QuestEntity extends FlyffGameEntityBase {
+class QuestEntity extends FlyffGameEntityBase<Quest> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class QuestEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: QuestLoadMatch, ctrl?: Control): Promise<Quest> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class QuestEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Quest> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: QuestListMatch, ctrl?: Control): Promise<Quest[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class QuestEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Quest[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

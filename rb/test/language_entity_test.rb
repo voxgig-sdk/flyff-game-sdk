@@ -43,14 +43,12 @@ class LanguageEntityTest < Minitest::Test
     language_ref01_ent = client.Language(nil)
     language_ref01_match = {}
 
-    language_ref01_list_result, err = language_ref01_ent.list(language_ref01_match, nil)
-    assert_nil err
+    language_ref01_list_result = language_ref01_ent.list(language_ref01_match, nil)
     assert language_ref01_list_result.is_a?(Array)
 
     # LOAD
     language_ref01_match_dt0 = {}
-    language_ref01_data_dt0_loaded, err = language_ref01_ent.load(language_ref01_match_dt0, nil)
-    assert_nil err
+    language_ref01_data_dt0_loaded = language_ref01_ent.load(language_ref01_match_dt0, nil)
     assert !language_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def language_basic_setup(extra)
     "FLYFFGAME_TEST_LANGUAGE_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def language_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

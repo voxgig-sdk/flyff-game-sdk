@@ -42,8 +42,7 @@ class PknEntityTest < Minitest::Test
     # LOAD
     pkn_ref01_ent = client.Pkn(nil)
     pkn_ref01_match_dt0 = {}
-    pkn_ref01_data_dt0_loaded, err = pkn_ref01_ent.load(pkn_ref01_match_dt0, nil)
-    assert_nil err
+    pkn_ref01_data_dt0_loaded = pkn_ref01_ent.load(pkn_ref01_match_dt0, nil)
     assert !pkn_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def pkn_basic_setup(extra)
     "FLYFFGAME_TEST_PKN_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def pkn_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

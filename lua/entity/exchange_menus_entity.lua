@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ExchangeMenusLoadMatch
+---@param ctrl? table
+---@return ExchangeMenus
+---@return string? err
 function ExchangeMenusEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'FLYFF_GAME_TEST_UPGRADE_LEVEL_BONUS_ENTID': idmap,
     'FLYFF_GAME_TEST_LIVE': 'FALSE',
     'FLYFF_GAME_TEST_EXPLAIN': 'FALSE',
-    'FLYFF_GAME_APIKEY': 'NONE',
   })
 
   idmap = env['FLYFF_GAME_TEST_UPGRADE_LEVEL_BONUS_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FlyffGameSDK(merge([
       {
-        apikey: env.FLYFF_GAME_APIKEY,
       },
       extra
     ]))

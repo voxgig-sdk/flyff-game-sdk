@@ -49,8 +49,7 @@ class TestPlaceEntity:
         # LOAD
         place_ref01_ent = client.Place(None)
         place_ref01_match_dt0 = {}
-        place_ref01_data_dt0_loaded, err = place_ref01_ent.load(place_ref01_match_dt0, None)
-        assert err is None
+        place_ref01_data_dt0_loaded = place_ref01_ent.load(place_ref01_match_dt0, None)
         assert place_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _place_basic_setup(extra):
         "FLYFFGAME_TEST_PLACE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _place_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

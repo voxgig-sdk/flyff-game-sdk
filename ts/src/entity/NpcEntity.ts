@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Npc,
+  NpcLoadMatch,
+  NpcListMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class NpcEntity extends FlyffGameEntityBase {
+class NpcEntity extends FlyffGameEntityBase<Npc> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class NpcEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: NpcLoadMatch, ctrl?: Control): Promise<Npc> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class NpcEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Npc> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: NpcListMatch, ctrl?: Control): Promise<Npc[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class NpcEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Npc[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

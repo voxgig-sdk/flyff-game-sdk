@@ -42,8 +42,7 @@ class ElementEntityTest < Minitest::Test
     # LOAD
     element_ref01_ent = client.Element(nil)
     element_ref01_match_dt0 = {}
-    element_ref01_data_dt0_loaded, err = element_ref01_ent.load(element_ref01_match_dt0, nil)
-    assert_nil err
+    element_ref01_data_dt0_loaded = element_ref01_ent.load(element_ref01_match_dt0, nil)
     assert !element_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def element_basic_setup(extra)
     "FLYFFGAME_TEST_ELEMENT_ENTID" => idmap,
     "FLYFFGAME_TEST_LIVE" => "FALSE",
     "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-    "FLYFFGAME_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def element_basic_setup(extra)
   if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FLYFFGAME_APIKEY"],
       },
       extra || {},
     ])

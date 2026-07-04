@@ -49,8 +49,7 @@ class TestBadgeEntity:
         # LOAD
         badge_ref01_ent = client.Badge(None)
         badge_ref01_match_dt0 = {}
-        badge_ref01_data_dt0_loaded, err = badge_ref01_ent.load(badge_ref01_match_dt0, None)
-        assert err is None
+        badge_ref01_data_dt0_loaded = badge_ref01_ent.load(badge_ref01_match_dt0, None)
         assert badge_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _badge_basic_setup(extra):
         "FLYFFGAME_TEST_BADGE_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _badge_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Dungeon,
+  DungeonLoadMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class DungeonEntity extends FlyffGameEntityBase {
+class DungeonEntity extends FlyffGameEntityBase<Dungeon> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class DungeonEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DungeonLoadMatch, ctrl?: Control): Promise<Dungeon> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class DungeonEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Dungeon> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

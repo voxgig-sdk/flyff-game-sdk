@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Awake,
+  AwakeLoadMatch,
+} from '../FlyffGameTypes'
 
 // TODO: needs Entity superclass
-class AwakeEntity extends FlyffGameEntityBase {
+class AwakeEntity extends FlyffGameEntityBase<Awake> {
 
   constructor(client: FlyffGameSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AwakeEntity extends FlyffGameEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AwakeLoadMatch, ctrl?: Control): Promise<Awake> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AwakeEntity extends FlyffGameEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Awake> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

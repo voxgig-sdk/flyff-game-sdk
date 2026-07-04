@@ -50,14 +50,12 @@ class TestSkillEntity:
         skill_ref01_ent = client.Skill(None)
         skill_ref01_match = {}
 
-        skill_ref01_list_result, err = skill_ref01_ent.list(skill_ref01_match, None)
-        assert err is None
+        skill_ref01_list_result = skill_ref01_ent.list(skill_ref01_match, None)
         assert isinstance(skill_ref01_list_result, list)
 
         # LOAD
         skill_ref01_match_dt0 = {}
-        skill_ref01_data_dt0_loaded, err = skill_ref01_ent.load(skill_ref01_match_dt0, None)
-        assert err is None
+        skill_ref01_data_dt0_loaded = skill_ref01_ent.load(skill_ref01_match_dt0, None)
         assert skill_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _skill_basic_setup(extra):
         "FLYFFGAME_TEST_SKILL_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _skill_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

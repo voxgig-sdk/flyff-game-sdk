@@ -45,6 +45,7 @@ class UpgradeLevelBonusEntity
     end
   end
 
+  # @return [UpgradeLevelBonus, Hash] the current UpgradeLevelBonus data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class UpgradeLevelBonusEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of UpgradeLevelBonus fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single UpgradeLevelBonus.
+  #
+  # @param reqmatch [UpgradeLevelBonusLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [UpgradeLevelBonus, Hash] the loaded UpgradeLevelBonus; raises FlyffGameError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

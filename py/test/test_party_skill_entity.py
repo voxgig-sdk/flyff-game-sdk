@@ -50,14 +50,12 @@ class TestPartySkillEntity:
         party_skill_ref01_ent = client.PartySkill(None)
         party_skill_ref01_match = {}
 
-        party_skill_ref01_list_result, err = party_skill_ref01_ent.list(party_skill_ref01_match, None)
-        assert err is None
+        party_skill_ref01_list_result = party_skill_ref01_ent.list(party_skill_ref01_match, None)
         assert isinstance(party_skill_ref01_list_result, list)
 
         # LOAD
         party_skill_ref01_match_dt0 = {}
-        party_skill_ref01_data_dt0_loaded, err = party_skill_ref01_ent.load(party_skill_ref01_match_dt0, None)
-        assert err is None
+        party_skill_ref01_data_dt0_loaded = party_skill_ref01_ent.load(party_skill_ref01_match_dt0, None)
         assert party_skill_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _party_skill_basic_setup(extra):
         "FLYFFGAME_TEST_PARTY_SKILL_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _party_skill_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])

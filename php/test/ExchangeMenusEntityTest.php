@@ -49,8 +49,7 @@ class ExchangeMenusEntityTest extends TestCase
         // LOAD
         $exchange_menus_ref01_ent = $client->ExchangeMenus(null);
         $exchange_menus_ref01_match_dt0 = [];
-        [$exchange_menus_ref01_data_dt0_loaded, $err] = $exchange_menus_ref01_ent->load($exchange_menus_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $exchange_menus_ref01_data_dt0_loaded = $exchange_menus_ref01_ent->load($exchange_menus_ref01_match_dt0, null);
         $this->assertNotNull($exchange_menus_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function exchange_menus_basic_setup($extra)
         "FLYFFGAME_TEST_EXCHANGE_MENUS_ENTID" => $idmap,
         "FLYFFGAME_TEST_LIVE" => "FALSE",
         "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
-        "FLYFFGAME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function exchange_menus_basic_setup($extra)
     if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FLYFFGAME_APIKEY"],
             ],
             $extra ?? [],
         ]);

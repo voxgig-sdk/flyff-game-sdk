@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MonsterLoadMatch
+---@param ctrl? table
+---@return Monster
+---@return string? err
 function MonsterEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch MonsterListMatch
+---@param ctrl? table
+---@return Monster[]
+---@return string? err
 function MonsterEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

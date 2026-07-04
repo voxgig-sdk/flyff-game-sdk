@@ -50,14 +50,12 @@ class TestAchievementEntity:
         achievement_ref01_ent = client.Achievement(None)
         achievement_ref01_match = {}
 
-        achievement_ref01_list_result, err = achievement_ref01_ent.list(achievement_ref01_match, None)
-        assert err is None
+        achievement_ref01_list_result = achievement_ref01_ent.list(achievement_ref01_match, None)
         assert isinstance(achievement_ref01_list_result, list)
 
         # LOAD
         achievement_ref01_match_dt0 = {}
-        achievement_ref01_data_dt0_loaded, err = achievement_ref01_ent.load(achievement_ref01_match_dt0, None)
-        assert err is None
+        achievement_ref01_data_dt0_loaded = achievement_ref01_ent.load(achievement_ref01_match_dt0, None)
         assert achievement_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _achievement_basic_setup(extra):
         "FLYFFGAME_TEST_ACHIEVEMENT_ENTID": idmap,
         "FLYFFGAME_TEST_LIVE": "FALSE",
         "FLYFFGAME_TEST_EXPLAIN": "FALSE",
-        "FLYFFGAME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _achievement_basic_setup(extra):
     if env.get("FLYFFGAME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FLYFFGAME_APIKEY"),
             },
             extra or {},
         ])
