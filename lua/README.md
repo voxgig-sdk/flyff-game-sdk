@@ -4,6 +4,8 @@
 
 The Lua SDK for the FlyffGame API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Achievement()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local achievements, err = client:Achievement():list()
 if err then error(err) end
 
 for _, item in ipairs(achievements) do
-  print(item["id"], item["name"])
+  print(item)
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local achievement, err = client:Achievement():load({ id = "example_id" })
 if err then error(err) end
 print(achievement)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local achievements, err = client:Achievement():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Achievement():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Achievement():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -211,9 +235,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -228,7 +249,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -563,7 +584,7 @@ Create an instance: `local awake = client:Awake(nil)`
 #### Example: Load
 
 ```lua
-local awake, err = client:Awake():load({ id = "awake_id" })
+local awake, err = client:Awake():load()
 ```
 
 
@@ -599,27 +620,27 @@ Create an instance: `local class = client:Class(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` |  |
-| `auto_attack_factor` | ``$OBJECT`` |  |
-| `block` | ``$NUMBER`` |  |
-| `critical` | ``$NUMBER`` |  |
-| `defense` | ``$NUMBER`` |  |
-| `fp` | ``$NUMBER`` |  |
-| `hp` | ``$NUMBER`` |  |
-| `icon` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `magic_defense_int_factor` | ``$NUMBER`` |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` |  |
-| `max_fp` | ``$STRING`` |  |
-| `max_hp` | ``$STRING`` |  |
-| `max_level` | ``$INTEGER`` |  |
-| `max_mp` | ``$STRING`` |  |
-| `min_level` | ``$INTEGER`` |  |
-| `mp` | ``$NUMBER`` |  |
-| `name` | ``$OBJECT`` |  |
-| `parent` | ``$INTEGER`` |  |
-| `tree` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `attack_speed` | `number` |  |
+| `auto_attack_factor` | `table` |  |
+| `block` | `number` |  |
+| `critical` | `number` |  |
+| `defense` | `number` |  |
+| `fp` | `number` |  |
+| `hp` | `number` |  |
+| `icon` | `string` |  |
+| `id` | `number` |  |
+| `magic_defense_int_factor` | `number` |  |
+| `magic_defense_sta_factor` | `number` |  |
+| `max_fp` | `string` |  |
+| `max_hp` | `string` |  |
+| `max_level` | `number` |  |
+| `max_mp` | `string` |  |
+| `min_level` | `number` |  |
+| `mp` | `number` |  |
+| `name` | `table` |  |
+| `parent` | `number` |  |
+| `tree` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -647,7 +668,7 @@ Create an instance: `local core = client:Core(nil)`
 #### Example: Load
 
 ```lua
-local core, err = client:Core():load({ id = "core_id" })
+local core, err = client:Core():load()
 ```
 
 
@@ -664,7 +685,7 @@ Create an instance: `local couple = client:Couple(nil)`
 #### Example: Load
 
 ```lua
-local couple, err = client:Couple():load({ id = "couple_id" })
+local couple, err = client:Couple():load()
 ```
 
 
@@ -681,7 +702,7 @@ Create an instance: `local dungeon = client:Dungeon(nil)`
 #### Example: Load
 
 ```lua
-local dungeon, err = client:Dungeon():load({ id = "dungeon_id" })
+local dungeon, err = client:Dungeon():load()
 ```
 
 
@@ -716,7 +737,7 @@ Create an instance: `local equipment_set = client:EquipmentSet(nil)`
 #### Example: Load
 
 ```lua
-local equipment_set, err = client:EquipmentSet():load({ id = "equipment_set_id" })
+local equipment_set, err = client:EquipmentSet():load()
 ```
 
 #### Example: List
@@ -739,7 +760,7 @@ Create an instance: `local exchange_menus = client:ExchangeMenus(nil)`
 #### Example: Load
 
 ```lua
-local exchange_menus, err = client:ExchangeMenus():load({ id = "exchange_menus_id" })
+local exchange_menus, err = client:ExchangeMenus():load()
 ```
 
 
@@ -757,7 +778,7 @@ Create an instance: `local housing_pack = client:HousingPack(nil)`
 #### Example: Load
 
 ```lua
-local housing_pack, err = client:HousingPack():load({ id = "housing_pack_id" })
+local housing_pack, err = client:HousingPack():load()
 ```
 
 #### Example: List
@@ -781,7 +802,7 @@ Create an instance: `local housing_template = client:HousingTemplate(nil)`
 #### Example: Load
 
 ```lua
-local housing_template, err = client:HousingTemplate():load({ id = "housing_template_id" })
+local housing_template, err = client:HousingTemplate():load()
 ```
 
 #### Example: List
@@ -829,7 +850,7 @@ Create an instance: `local language = client:Language(nil)`
 #### Example: Load
 
 ```lua
-local language, err = client:Language():load({ id = "language_id" })
+local language, err = client:Language():load()
 ```
 
 #### Example: List
@@ -852,7 +873,7 @@ Create an instance: `local lifestyle = client:Lifestyle(nil)`
 #### Example: Load
 
 ```lua
-local lifestyle, err = client:Lifestyle():load({ id = "lifestyle_id" })
+local lifestyle, err = client:Lifestyle():load()
 ```
 
 
@@ -918,7 +939,7 @@ Create an instance: `local party_skill = client:PartySkill(nil)`
 #### Example: Load
 
 ```lua
-local party_skill, err = client:PartySkill():load({ id = "party_skill_id" })
+local party_skill, err = client:PartySkill():load()
 ```
 
 #### Example: List
@@ -941,7 +962,7 @@ Create an instance: `local pkn = client:Pkn(nil)`
 #### Example: Load
 
 ```lua
-local pkn, err = client:Pkn():load({ id = "pkn_id" })
+local pkn, err = client:Pkn():load()
 ```
 
 
@@ -999,7 +1020,7 @@ Create an instance: `local raised_pet = client:RaisedPet(nil)`
 #### Example: Load
 
 ```lua
-local raised_pet, err = client:RaisedPet():load({ id = "raised_pet_id" })
+local raised_pet, err = client:RaisedPet():load()
 ```
 
 
@@ -1064,7 +1085,7 @@ Create an instance: `local upgrade_level_bonus = client:UpgradeLevelBonus(nil)`
 #### Example: Load
 
 ```lua
-local upgrade_level_bonus, err = client:UpgradeLevelBonus():load({ id = "upgrade_level_bonus_id" })
+local upgrade_level_bonus, err = client:UpgradeLevelBonus():load()
 ```
 
 
@@ -1081,7 +1102,7 @@ Create an instance: `local version = client:Version(nil)`
 #### Example: Load
 
 ```lua
-local version, err = client:Version():load({ id = "version_id" })
+local version, err = client:Version():load()
 ```
 
 
@@ -1100,21 +1121,21 @@ Create an instance: `local world = client:World(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | ``$ARRAY`` |  |
-| `flying` | ``$BOOLEAN`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `in_door` | ``$BOOLEAN`` |  |
-| `lodestar` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
-| `pk` | ``$BOOLEAN`` |  |
-| `place` | ``$ARRAY`` |  |
-| `revival_key` | ``$STRING`` |  |
-| `revival_world` | ``$INTEGER`` |  |
-| `tile_name` | ``$STRING`` |  |
-| `tile_size` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `continent` | `table` |  |
+| `flying` | `boolean` |  |
+| `height` | `number` |  |
+| `id` | `number` |  |
+| `in_door` | `boolean` |  |
+| `lodestar` | `table` |  |
+| `name` | `table` |  |
+| `pk` | `boolean` |  |
+| `place` | `table` |  |
+| `revival_key` | `string` |  |
+| `revival_world` | `number` |  |
+| `tile_name` | `string` |  |
+| `tile_size` | `number` |  |
+| `type` | `string` |  |
+| `width` | `number` |  |
 
 #### Example: Load
 
@@ -1129,12 +1150,16 @@ local worlds, err = client:World():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1151,8 +1176,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1196,14 +1222,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local achievement = client:Achievement()
-achievement:load({ id = "example_id" })
+achievement:list()
 
--- achievement:data_get() now returns the loaded achievement data
+-- achievement:data_get() now returns the achievement data from the last list
 -- achievement:match_get() returns the last match criteria
 ```
 

@@ -23,7 +23,7 @@ class AchievementLoadMatch
     public string $id;
 }
 
-/** Match filter for Achievement#list (any subset of Achievement fields). */
+/** Request payload for Achievement#list. */
 class AchievementListMatch
 {
 }
@@ -33,7 +33,7 @@ class Awake
 {
 }
 
-/** Match filter for Awake#load (any subset of Awake fields). */
+/** Request payload for Awake#load. */
 class AwakeLoadMatch
 {
 }
@@ -83,7 +83,7 @@ class ClassLoadMatch
     public string $id;
 }
 
-/** Match filter for Class#list (any subset of Class fields). */
+/** Request payload for Class#list. */
 class ClassListMatch
 {
     public ?float $attack_speed = null;
@@ -125,7 +125,7 @@ class Couple
 {
 }
 
-/** Match filter for Couple#load (any subset of Couple fields). */
+/** Request payload for Couple#load. */
 class CoupleLoadMatch
 {
 }
@@ -135,7 +135,7 @@ class Dungeon
 {
 }
 
-/** Match filter for Dungeon#load (any subset of Dungeon fields). */
+/** Request payload for Dungeon#load. */
 class DungeonLoadMatch
 {
 }
@@ -162,7 +162,7 @@ class EquipmentSetLoadMatch
     public string $equipment_set_id;
 }
 
-/** Match filter for EquipmentSet#list (any subset of EquipmentSet fields). */
+/** Request payload for EquipmentSet#list. */
 class EquipmentSetListMatch
 {
 }
@@ -172,7 +172,7 @@ class ExchangeMenus
 {
 }
 
-/** Match filter for ExchangeMenus#load (any subset of ExchangeMenus fields). */
+/** Request payload for ExchangeMenus#load. */
 class ExchangeMenusLoadMatch
 {
 }
@@ -188,7 +188,7 @@ class HousingPackLoadMatch
     public string $housing_pack_id;
 }
 
-/** Match filter for HousingPack#list (any subset of HousingPack fields). */
+/** Request payload for HousingPack#list. */
 class HousingPackListMatch
 {
 }
@@ -205,7 +205,7 @@ class HousingTemplateLoadMatch
     public string $housing_template_id;
 }
 
-/** Match filter for HousingTemplate#list (any subset of HousingTemplate fields). */
+/** Request payload for HousingTemplate#list. */
 class HousingTemplateListMatch
 {
 }
@@ -221,7 +221,7 @@ class ItemLoadMatch
     public string $id;
 }
 
-/** Match filter for Item#list (any subset of Item fields). */
+/** Request payload for Item#list. */
 class ItemListMatch
 {
 }
@@ -237,7 +237,7 @@ class LanguageLoadMatch
     public string $language_code;
 }
 
-/** Match filter for Language#list (any subset of Language fields). */
+/** Request payload for Language#list. */
 class LanguageListMatch
 {
 }
@@ -247,7 +247,7 @@ class Lifestyle
 {
 }
 
-/** Match filter for Lifestyle#load (any subset of Lifestyle fields). */
+/** Request payload for Lifestyle#load. */
 class LifestyleLoadMatch
 {
 }
@@ -263,7 +263,7 @@ class MonsterLoadMatch
     public string $id;
 }
 
-/** Match filter for Monster#list (any subset of Monster fields). */
+/** Request payload for Monster#list. */
 class MonsterListMatch
 {
 }
@@ -279,7 +279,7 @@ class NpcLoadMatch
     public string $id;
 }
 
-/** Match filter for Npc#list (any subset of Npc fields). */
+/** Request payload for Npc#list. */
 class NpcListMatch
 {
 }
@@ -295,7 +295,7 @@ class PartySkillLoadMatch
     public string $party_skill_id;
 }
 
-/** Match filter for PartySkill#list (any subset of PartySkill fields). */
+/** Request payload for PartySkill#list. */
 class PartySkillListMatch
 {
 }
@@ -305,7 +305,7 @@ class Pkn
 {
 }
 
-/** Match filter for Pkn#load (any subset of Pkn fields). */
+/** Request payload for Pkn#load. */
 class PknLoadMatch
 {
 }
@@ -332,7 +332,7 @@ class QuestLoadMatch
     public string $id;
 }
 
-/** Match filter for Quest#list (any subset of Quest fields). */
+/** Request payload for Quest#list. */
 class QuestListMatch
 {
 }
@@ -342,7 +342,7 @@ class RaisedPet
 {
 }
 
-/** Match filter for RaisedPet#load (any subset of RaisedPet fields). */
+/** Request payload for RaisedPet#load. */
 class RaisedPetLoadMatch
 {
 }
@@ -358,7 +358,7 @@ class RecipeLoadMatch
     public string $id;
 }
 
-/** Match filter for Recipe#list (any subset of Recipe fields). */
+/** Request payload for Recipe#list. */
 class RecipeListMatch
 {
 }
@@ -374,7 +374,7 @@ class SkillLoadMatch
     public string $id;
 }
 
-/** Match filter for Skill#list (any subset of Skill fields). */
+/** Request payload for Skill#list. */
 class SkillListMatch
 {
 }
@@ -384,7 +384,7 @@ class UpgradeLevelBonus
 {
 }
 
-/** Match filter for UpgradeLevelBonus#load (any subset of UpgradeLevelBonus fields). */
+/** Request payload for UpgradeLevelBonus#load. */
 class UpgradeLevelBonusLoadMatch
 {
 }
@@ -394,7 +394,7 @@ class Version
 {
 }
 
-/** Match filter for Version#load (any subset of Version fields). */
+/** Request payload for Version#load. */
 class VersionLoadMatch
 {
 }
@@ -428,7 +428,7 @@ class WorldLoadMatch
     public string $id;
 }
 
-/** Match filter for World#list (any subset of World fields). */
+/** Request payload for World#list. */
 class WorldListMatch
 {
     public ?array $continent = null;

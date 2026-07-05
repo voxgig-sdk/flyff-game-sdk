@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the FlyffGame API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Achievement()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -54,6 +59,35 @@ try {
 ```
 
 
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const achievements = await client.Achievement().list()
+  console.log(achievements)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
+}
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FlyffGameSDK.test()
 
-const achievement = await client.Achievement().load({ id: 'test01' })
+const achievement = await client.Achievement().list()
 // achievement is a bare entity populated with mock response data
 console.log(achievement)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Achievement()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -238,11 +272,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): FlyffGameSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -252,10 +283,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -612,7 +642,7 @@ Create an instance: `const awake = client.Awake()`
 #### Example: Load
 
 ```ts
-const awake = await client.Awake().load({ id: 'awake_id' })
+const awake = await client.Awake().load()
 ```
 
 
@@ -635,7 +665,7 @@ const badge = await client.Badge().load({ id: 'badge_id' })
 
 ### Class
 
-Create an instance: `const class = client.Class()`
+Create an instance: `const class_ = client.Class()`
 
 #### Operations
 
@@ -648,38 +678,38 @@ Create an instance: `const class = client.Class()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` |  |
-| `auto_attack_factor` | ``$OBJECT`` |  |
-| `block` | ``$NUMBER`` |  |
-| `critical` | ``$NUMBER`` |  |
-| `defense` | ``$NUMBER`` |  |
-| `fp` | ``$NUMBER`` |  |
-| `hp` | ``$NUMBER`` |  |
-| `icon` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `magic_defense_int_factor` | ``$NUMBER`` |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` |  |
-| `max_fp` | ``$STRING`` |  |
-| `max_hp` | ``$STRING`` |  |
-| `max_level` | ``$INTEGER`` |  |
-| `max_mp` | ``$STRING`` |  |
-| `min_level` | ``$INTEGER`` |  |
-| `mp` | ``$NUMBER`` |  |
-| `name` | ``$OBJECT`` |  |
-| `parent` | ``$INTEGER`` |  |
-| `tree` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `attack_speed` | `number` |  |
+| `auto_attack_factor` | `Record<string, any>` |  |
+| `block` | `number` |  |
+| `critical` | `number` |  |
+| `defense` | `number` |  |
+| `fp` | `number` |  |
+| `hp` | `number` |  |
+| `icon` | `string` |  |
+| `id` | `number` |  |
+| `magic_defense_int_factor` | `number` |  |
+| `magic_defense_sta_factor` | `number` |  |
+| `max_fp` | `string` |  |
+| `max_hp` | `string` |  |
+| `max_level` | `number` |  |
+| `max_mp` | `string` |  |
+| `min_level` | `number` |  |
+| `mp` | `number` |  |
+| `name` | `Record<string, any>` |  |
+| `parent` | `number` |  |
+| `tree` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const class = await client.Class().load({ id: 'class_id' })
+const class_ = await client.Class().load({ id: 'class_id' })
 ```
 
 #### Example: List
 
 ```ts
-const classs = await client.Class().list()
+const class_s = await client.Class().list()
 ```
 
 
@@ -696,7 +726,7 @@ Create an instance: `const core = client.Core()`
 #### Example: Load
 
 ```ts
-const core = await client.Core().load({ id: 'core_id' })
+const core = await client.Core().load()
 ```
 
 
@@ -713,7 +743,7 @@ Create an instance: `const couple = client.Couple()`
 #### Example: Load
 
 ```ts
-const couple = await client.Couple().load({ id: 'couple_id' })
+const couple = await client.Couple().load()
 ```
 
 
@@ -730,7 +760,7 @@ Create an instance: `const dungeon = client.Dungeon()`
 #### Example: Load
 
 ```ts
-const dungeon = await client.Dungeon().load({ id: 'dungeon_id' })
+const dungeon = await client.Dungeon().load()
 ```
 
 
@@ -765,7 +795,7 @@ Create an instance: `const equipment_set = client.EquipmentSet()`
 #### Example: Load
 
 ```ts
-const equipment_set = await client.EquipmentSet().load({ id: 'equipment_set_id' })
+const equipment_set = await client.EquipmentSet().load()
 ```
 
 #### Example: List
@@ -788,7 +818,7 @@ Create an instance: `const exchange_menus = client.ExchangeMenus()`
 #### Example: Load
 
 ```ts
-const exchange_menus = await client.ExchangeMenus().load({ id: 'exchange_menus_id' })
+const exchange_menus = await client.ExchangeMenus().load()
 ```
 
 
@@ -806,7 +836,7 @@ Create an instance: `const housing_pack = client.HousingPack()`
 #### Example: Load
 
 ```ts
-const housing_pack = await client.HousingPack().load({ id: 'housing_pack_id' })
+const housing_pack = await client.HousingPack().load()
 ```
 
 #### Example: List
@@ -830,7 +860,7 @@ Create an instance: `const housing_template = client.HousingTemplate()`
 #### Example: Load
 
 ```ts
-const housing_template = await client.HousingTemplate().load({ id: 'housing_template_id' })
+const housing_template = await client.HousingTemplate().load()
 ```
 
 #### Example: List
@@ -878,7 +908,7 @@ Create an instance: `const language = client.Language()`
 #### Example: Load
 
 ```ts
-const language = await client.Language().load({ id: 'language_id' })
+const language = await client.Language().load()
 ```
 
 #### Example: List
@@ -901,7 +931,7 @@ Create an instance: `const lifestyle = client.Lifestyle()`
 #### Example: Load
 
 ```ts
-const lifestyle = await client.Lifestyle().load({ id: 'lifestyle_id' })
+const lifestyle = await client.Lifestyle().load()
 ```
 
 
@@ -967,7 +997,7 @@ Create an instance: `const party_skill = client.PartySkill()`
 #### Example: Load
 
 ```ts
-const party_skill = await client.PartySkill().load({ id: 'party_skill_id' })
+const party_skill = await client.PartySkill().load()
 ```
 
 #### Example: List
@@ -990,7 +1020,7 @@ Create an instance: `const pkn = client.Pkn()`
 #### Example: Load
 
 ```ts
-const pkn = await client.Pkn().load({ id: 'pkn_id' })
+const pkn = await client.Pkn().load()
 ```
 
 
@@ -1048,7 +1078,7 @@ Create an instance: `const raised_pet = client.RaisedPet()`
 #### Example: Load
 
 ```ts
-const raised_pet = await client.RaisedPet().load({ id: 'raised_pet_id' })
+const raised_pet = await client.RaisedPet().load()
 ```
 
 
@@ -1113,7 +1143,7 @@ Create an instance: `const upgrade_level_bonus = client.UpgradeLevelBonus()`
 #### Example: Load
 
 ```ts
-const upgrade_level_bonus = await client.UpgradeLevelBonus().load({ id: 'upgrade_level_bonus_id' })
+const upgrade_level_bonus = await client.UpgradeLevelBonus().load()
 ```
 
 
@@ -1130,7 +1160,7 @@ Create an instance: `const version = client.Version()`
 #### Example: Load
 
 ```ts
-const version = await client.Version().load({ id: 'version_id' })
+const version = await client.Version().load()
 ```
 
 
@@ -1149,21 +1179,21 @@ Create an instance: `const world = client.World()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | ``$ARRAY`` |  |
-| `flying` | ``$BOOLEAN`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `in_door` | ``$BOOLEAN`` |  |
-| `lodestar` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
-| `pk` | ``$BOOLEAN`` |  |
-| `place` | ``$ARRAY`` |  |
-| `revival_key` | ``$STRING`` |  |
-| `revival_world` | ``$INTEGER`` |  |
-| `tile_name` | ``$STRING`` |  |
-| `tile_size` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `continent` | `any[]` |  |
+| `flying` | `boolean` |  |
+| `height` | `number` |  |
+| `id` | `number` |  |
+| `in_door` | `boolean` |  |
+| `lodestar` | `any[]` |  |
+| `name` | `Record<string, any>` |  |
+| `pk` | `boolean` |  |
+| `place` | `any[]` |  |
+| `revival_key` | `string` |  |
+| `revival_world` | `number` |  |
+| `tile_name` | `string` |  |
+| `tile_size` | `number` |  |
+| `type` | `string` |  |
+| `width` | `number` |  |
 
 #### Example: Load
 
@@ -1178,12 +1208,16 @@ const worlds = await client.World().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1200,11 +1234,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1240,16 +1272,16 @@ import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const achievement = client.Achievement()
-await achievement.load({ id: "example_id" })
+await achievement.list()
 
-// achievement.data() now returns the loaded achievement data
-// achievement.match() returns { id: "example_id" }
+// achievement.data() now returns the achievement data from the last `list`
+// achievement.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

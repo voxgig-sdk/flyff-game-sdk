@@ -67,10 +67,12 @@ class CoupleEntity
   
   # Load a single Couple.
   #
-  # @param reqmatch [CoupleLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [CoupleLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Couple.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Couple, Hash] the loaded Couple; raises FlyffGameError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

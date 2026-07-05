@@ -65,8 +65,13 @@ class MonsterEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: MonsterLoadMatch, ctrl=None) -> Monster:
+    def load(self, reqmatch=None, ctrl=None) -> Monster:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Monster().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class MonsterEntity:
 
 
     
-    def list(self, reqmatch: MonsterListMatch, ctrl=None) -> list[Monster]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Monster]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Monster().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

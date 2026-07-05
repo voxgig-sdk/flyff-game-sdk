@@ -483,7 +483,7 @@ const awake = client.Awake()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Awake().load({ id: 'awake_id' })
+const result = await client.Awake().load()
 ```
 
 ### Common Methods
@@ -561,34 +561,34 @@ Return a copy of the entity options.
 ## ClassEntity
 
 ```ts
-const class = client.Class()
+const class_ = client.Class()
 ```
 
 ### Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` | Yes |  |
-| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
-| `block` | ``$NUMBER`` | Yes |  |
-| `critical` | ``$NUMBER`` | Yes |  |
-| `defense` | ``$NUMBER`` | Yes |  |
-| `fp` | ``$NUMBER`` | Yes |  |
-| `hp` | ``$NUMBER`` | Yes |  |
-| `icon` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
-| `max_fp` | ``$STRING`` | Yes |  |
-| `max_hp` | ``$STRING`` | Yes |  |
-| `max_level` | ``$INTEGER`` | Yes |  |
-| `max_mp` | ``$STRING`` | Yes |  |
-| `min_level` | ``$INTEGER`` | Yes |  |
-| `mp` | ``$NUMBER`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `parent` | ``$INTEGER`` | No |  |
-| `tree` | ``$STRING`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
+| `attack_speed` | `number` | Yes |  |
+| `auto_attack_factor` | `Record<string, any>` | Yes |  |
+| `block` | `number` | Yes |  |
+| `critical` | `number` | Yes |  |
+| `defense` | `number` | Yes |  |
+| `fp` | `number` | Yes |  |
+| `hp` | `number` | Yes |  |
+| `icon` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `magic_defense_int_factor` | `number` | Yes |  |
+| `magic_defense_sta_factor` | `number` | Yes |  |
+| `max_fp` | `string` | Yes |  |
+| `max_hp` | `string` | Yes |  |
+| `max_level` | `number` | Yes |  |
+| `max_mp` | `string` | Yes |  |
+| `min_level` | `number` | Yes |  |
+| `mp` | `number` | Yes |  |
+| `name` | `Record<string, any>` | Yes |  |
+| `parent` | `number` | No |  |
+| `tree` | `string` | Yes |  |
+| `type` | `string` | Yes |  |
 
 ### Operations
 
@@ -649,7 +649,7 @@ const core = client.Core()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Core().load({ id: 'core_id' })
+const result = await client.Core().load()
 ```
 
 ### Common Methods
@@ -693,7 +693,7 @@ const couple = client.Couple()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Couple().load({ id: 'couple_id' })
+const result = await client.Couple().load()
 ```
 
 ### Common Methods
@@ -737,7 +737,7 @@ const dungeon = client.Dungeon()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Dungeon().load({ id: 'dungeon_id' })
+const result = await client.Dungeon().load()
 ```
 
 ### Common Methods
@@ -833,7 +833,7 @@ const results = await client.EquipmentSet().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.EquipmentSet().load({ id: 'equipment_set_id' })
+const result = await client.EquipmentSet().load()
 ```
 
 ### Common Methods
@@ -877,7 +877,7 @@ const exchange_menus = client.ExchangeMenus()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ExchangeMenus().load({ id: 'exchange_menus_id' })
+const result = await client.ExchangeMenus().load()
 ```
 
 ### Common Methods
@@ -929,7 +929,7 @@ const results = await client.HousingPack().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HousingPack().load({ id: 'housing_pack_id' })
+const result = await client.HousingPack().load()
 ```
 
 ### Common Methods
@@ -981,7 +981,7 @@ const results = await client.HousingTemplate().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HousingTemplate().load({ id: 'housing_template_id' })
+const result = await client.HousingTemplate().load()
 ```
 
 ### Common Methods
@@ -1085,7 +1085,7 @@ const results = await client.Language().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Language().load({ id: 'language_id' })
+const result = await client.Language().load()
 ```
 
 ### Common Methods
@@ -1129,7 +1129,7 @@ const lifestyle = client.Lifestyle()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Lifestyle().load({ id: 'lifestyle_id' })
+const result = await client.Lifestyle().load()
 ```
 
 ### Common Methods
@@ -1285,7 +1285,7 @@ const results = await client.PartySkill().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PartySkill().load({ id: 'party_skill_id' })
+const result = await client.PartySkill().load()
 ```
 
 ### Common Methods
@@ -1329,7 +1329,7 @@ const pkn = client.Pkn()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Pkn().load({ id: 'pkn_id' })
+const result = await client.Pkn().load()
 ```
 
 ### Common Methods
@@ -1469,7 +1469,7 @@ const raised_pet = client.RaisedPet()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RaisedPet().load({ id: 'raised_pet_id' })
+const result = await client.RaisedPet().load()
 ```
 
 ### Common Methods
@@ -1617,7 +1617,7 @@ const upgrade_level_bonus = client.UpgradeLevelBonus()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.UpgradeLevelBonus().load({ id: 'upgrade_level_bonus_id' })
+const result = await client.UpgradeLevelBonus().load()
 ```
 
 ### Common Methods
@@ -1661,7 +1661,7 @@ const version = client.Version()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Version().load({ id: 'version_id' })
+const result = await client.Version().load()
 ```
 
 ### Common Methods
@@ -1702,21 +1702,21 @@ const world = client.World()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | ``$ARRAY`` | Yes |  |
-| `flying` | ``$BOOLEAN`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `in_door` | ``$BOOLEAN`` | Yes |  |
-| `lodestar` | ``$ARRAY`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `pk` | ``$BOOLEAN`` | Yes |  |
-| `place` | ``$ARRAY`` | Yes |  |
-| `revival_key` | ``$STRING`` | No |  |
-| `revival_world` | ``$INTEGER`` | No |  |
-| `tile_name` | ``$STRING`` | Yes |  |
-| `tile_size` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `continent` | `any[]` | Yes |  |
+| `flying` | `boolean` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `number` | Yes |  |
+| `in_door` | `boolean` | Yes |  |
+| `lodestar` | `any[]` | Yes |  |
+| `name` | `Record<string, any>` | Yes |  |
+| `pk` | `boolean` | Yes |  |
+| `place` | `any[]` | Yes |  |
+| `revival_key` | `string` | No |  |
+| `revival_world` | `number` | No |  |
+| `tile_name` | `string` | Yes |  |
+| `tile_size` | `number` | Yes |  |
+| `type` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 

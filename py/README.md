@@ -4,6 +4,11 @@
 
 The Python SDK for the FlyffGame API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Achievement()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    achievements = client.Achievement().list({})
+    achievements = client.Achievement().list()
     for achievement in achievements:
         print(achievement)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(achievement)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    achievements = client.Achievement().list()
+    print(achievements)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = FlyffGameSDK.test()
 
 # Entity ops return the bare record and raise on error.
-achievement = client.Achievement().load({"id": "test01"})
+achievement = client.Achievement().list()
 # achievement contains the mock response record
 ```
 
@@ -214,9 +250,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -536,7 +569,7 @@ Create an instance: `achievement = client.Achievement()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -548,7 +581,7 @@ achievement = client.Achievement().load({"id": "achievement_id"})
 #### Example: List
 
 ```python
-achievements = client.Achievement().list({})
+achievements = client.Achievement().list()
 ```
 
 
@@ -565,7 +598,7 @@ Create an instance: `awake = client.Awake()`
 #### Example: Load
 
 ```python
-awake = client.Awake().load({"id": "awake_id"})
+awake = client.Awake().load()
 ```
 
 
@@ -594,34 +627,34 @@ Create an instance: `class = client.Class()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` |  |
-| `auto_attack_factor` | ``$OBJECT`` |  |
-| `block` | ``$NUMBER`` |  |
-| `critical` | ``$NUMBER`` |  |
-| `defense` | ``$NUMBER`` |  |
-| `fp` | ``$NUMBER`` |  |
-| `hp` | ``$NUMBER`` |  |
-| `icon` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `magic_defense_int_factor` | ``$NUMBER`` |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` |  |
-| `max_fp` | ``$STRING`` |  |
-| `max_hp` | ``$STRING`` |  |
-| `max_level` | ``$INTEGER`` |  |
-| `max_mp` | ``$STRING`` |  |
-| `min_level` | ``$INTEGER`` |  |
-| `mp` | ``$NUMBER`` |  |
-| `name` | ``$OBJECT`` |  |
-| `parent` | ``$INTEGER`` |  |
-| `tree` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `attack_speed` | `float` |  |
+| `auto_attack_factor` | `dict` |  |
+| `block` | `float` |  |
+| `critical` | `float` |  |
+| `defense` | `float` |  |
+| `fp` | `float` |  |
+| `hp` | `float` |  |
+| `icon` | `str` |  |
+| `id` | `int` |  |
+| `magic_defense_int_factor` | `float` |  |
+| `magic_defense_sta_factor` | `float` |  |
+| `max_fp` | `str` |  |
+| `max_hp` | `str` |  |
+| `max_level` | `int` |  |
+| `max_mp` | `str` |  |
+| `min_level` | `int` |  |
+| `mp` | `float` |  |
+| `name` | `dict` |  |
+| `parent` | `int` |  |
+| `tree` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -632,7 +665,7 @@ class = client.Class().load({"id": "class_id"})
 #### Example: List
 
 ```python
-classs = client.Class().list({})
+classs = client.Class().list()
 ```
 
 
@@ -649,7 +682,7 @@ Create an instance: `core = client.Core()`
 #### Example: Load
 
 ```python
-core = client.Core().load({"id": "core_id"})
+core = client.Core().load()
 ```
 
 
@@ -666,7 +699,7 @@ Create an instance: `couple = client.Couple()`
 #### Example: Load
 
 ```python
-couple = client.Couple().load({"id": "couple_id"})
+couple = client.Couple().load()
 ```
 
 
@@ -683,7 +716,7 @@ Create an instance: `dungeon = client.Dungeon()`
 #### Example: Load
 
 ```python
-dungeon = client.Dungeon().load({"id": "dungeon_id"})
+dungeon = client.Dungeon().load()
 ```
 
 
@@ -712,19 +745,19 @@ Create an instance: `equipment_set = client.EquipmentSet()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
 
 ```python
-equipment_set = client.EquipmentSet().load({"id": "equipment_set_id"})
+equipment_set = client.EquipmentSet().load()
 ```
 
 #### Example: List
 
 ```python
-equipment_sets = client.EquipmentSet().list({})
+equipment_sets = client.EquipmentSet().list()
 ```
 
 
@@ -741,7 +774,7 @@ Create an instance: `exchange_menus = client.ExchangeMenus()`
 #### Example: Load
 
 ```python
-exchange_menus = client.ExchangeMenus().load({"id": "exchange_menus_id"})
+exchange_menus = client.ExchangeMenus().load()
 ```
 
 
@@ -753,19 +786,19 @@ Create an instance: `housing_pack = client.HousingPack()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
 
 ```python
-housing_pack = client.HousingPack().load({"id": "housing_pack_id"})
+housing_pack = client.HousingPack().load()
 ```
 
 #### Example: List
 
 ```python
-housing_packs = client.HousingPack().list({})
+housing_packs = client.HousingPack().list()
 ```
 
 
@@ -777,19 +810,19 @@ Create an instance: `housing_template = client.HousingTemplate()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
 
 ```python
-housing_template = client.HousingTemplate().load({"id": "housing_template_id"})
+housing_template = client.HousingTemplate().load()
 ```
 
 #### Example: List
 
 ```python
-housing_templates = client.HousingTemplate().list({})
+housing_templates = client.HousingTemplate().list()
 ```
 
 
@@ -801,7 +834,7 @@ Create an instance: `item = client.Item()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -813,7 +846,7 @@ item = client.Item().load({"id": "item_id"})
 #### Example: List
 
 ```python
-items = client.Item().list({})
+items = client.Item().list()
 ```
 
 
@@ -825,19 +858,19 @@ Create an instance: `language = client.Language()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
 
 ```python
-language = client.Language().load({"id": "language_id"})
+language = client.Language().load()
 ```
 
 #### Example: List
 
 ```python
-languages = client.Language().list({})
+languages = client.Language().list()
 ```
 
 
@@ -854,7 +887,7 @@ Create an instance: `lifestyle = client.Lifestyle()`
 #### Example: Load
 
 ```python
-lifestyle = client.Lifestyle().load({"id": "lifestyle_id"})
+lifestyle = client.Lifestyle().load()
 ```
 
 
@@ -866,7 +899,7 @@ Create an instance: `monster = client.Monster()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -878,7 +911,7 @@ monster = client.Monster().load({"id": "monster_id"})
 #### Example: List
 
 ```python
-monsters = client.Monster().list({})
+monsters = client.Monster().list()
 ```
 
 
@@ -890,7 +923,7 @@ Create an instance: `npc = client.Npc()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -902,7 +935,7 @@ npc = client.Npc().load({"id": "npc_id"})
 #### Example: List
 
 ```python
-npcs = client.Npc().list({})
+npcs = client.Npc().list()
 ```
 
 
@@ -914,19 +947,19 @@ Create an instance: `party_skill = client.PartySkill()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
 
 ```python
-party_skill = client.PartySkill().load({"id": "party_skill_id"})
+party_skill = client.PartySkill().load()
 ```
 
 #### Example: List
 
 ```python
-party_skills = client.PartySkill().list({})
+party_skills = client.PartySkill().list()
 ```
 
 
@@ -943,7 +976,7 @@ Create an instance: `pkn = client.Pkn()`
 #### Example: Load
 
 ```python
-pkn = client.Pkn().load({"id": "pkn_id"})
+pkn = client.Pkn().load()
 ```
 
 
@@ -972,7 +1005,7 @@ Create an instance: `quest = client.Quest()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -984,7 +1017,7 @@ quest = client.Quest().load({"id": "quest_id"})
 #### Example: List
 
 ```python
-quests = client.Quest().list({})
+quests = client.Quest().list()
 ```
 
 
@@ -1001,7 +1034,7 @@ Create an instance: `raised_pet = client.RaisedPet()`
 #### Example: Load
 
 ```python
-raised_pet = client.RaisedPet().load({"id": "raised_pet_id"})
+raised_pet = client.RaisedPet().load()
 ```
 
 
@@ -1013,7 +1046,7 @@ Create an instance: `recipe = client.Recipe()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -1025,7 +1058,7 @@ recipe = client.Recipe().load({"id": "recipe_id"})
 #### Example: List
 
 ```python
-recipes = client.Recipe().list({})
+recipes = client.Recipe().list()
 ```
 
 
@@ -1037,7 +1070,7 @@ Create an instance: `skill = client.Skill()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Example: Load
@@ -1049,7 +1082,7 @@ skill = client.Skill().load({"id": "skill_id"})
 #### Example: List
 
 ```python
-skills = client.Skill().list({})
+skills = client.Skill().list()
 ```
 
 
@@ -1066,7 +1099,7 @@ Create an instance: `upgrade_level_bonus = client.UpgradeLevelBonus()`
 #### Example: Load
 
 ```python
-upgrade_level_bonus = client.UpgradeLevelBonus().load({"id": "upgrade_level_bonus_id"})
+upgrade_level_bonus = client.UpgradeLevelBonus().load()
 ```
 
 
@@ -1083,7 +1116,7 @@ Create an instance: `version = client.Version()`
 #### Example: Load
 
 ```python
-version = client.Version().load({"id": "version_id"})
+version = client.Version().load()
 ```
 
 
@@ -1095,28 +1128,28 @@ Create an instance: `world = client.World()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | ``$ARRAY`` |  |
-| `flying` | ``$BOOLEAN`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `in_door` | ``$BOOLEAN`` |  |
-| `lodestar` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
-| `pk` | ``$BOOLEAN`` |  |
-| `place` | ``$ARRAY`` |  |
-| `revival_key` | ``$STRING`` |  |
-| `revival_world` | ``$INTEGER`` |  |
-| `tile_name` | ``$STRING`` |  |
-| `tile_size` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `continent` | `list` |  |
+| `flying` | `bool` |  |
+| `height` | `int` |  |
+| `id` | `int` |  |
+| `in_door` | `bool` |  |
+| `lodestar` | `list` |  |
+| `name` | `dict` |  |
+| `pk` | `bool` |  |
+| `place` | `list` |  |
+| `revival_key` | `str` |  |
+| `revival_world` | `int` |  |
+| `tile_name` | `str` |  |
+| `tile_size` | `int` |  |
+| `type` | `str` |  |
+| `width` | `int` |  |
 
 #### Example: Load
 
@@ -1127,16 +1160,20 @@ world = client.World().load({"id": "world_id"})
 #### Example: List
 
 ```python
-worlds = client.World().list({})
+worlds = client.World().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1153,8 +1190,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1197,14 +1235,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 achievement = client.Achievement()
-achievement.load({"id": "example_id"})
+achievement.list()
 
-# achievement.data_get() now returns the loaded achievement data
+# achievement.data_get() now returns the achievement data from the last list
 # achievement.match_get() returns the last match criteria
 ```
 

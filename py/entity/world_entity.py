@@ -65,8 +65,13 @@ class WorldEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: WorldLoadMatch, ctrl=None) -> World:
+    def load(self, reqmatch=None, ctrl=None) -> World:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.World().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class WorldEntity:
 
 
     
-    def list(self, reqmatch: WorldListMatch, ctrl=None) -> list[World]:
+    def list(self, reqmatch=None, ctrl=None) -> list[World]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.World().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

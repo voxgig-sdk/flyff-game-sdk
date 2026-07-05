@@ -21,7 +21,7 @@ AchievementLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Achievement#list (any subset of Achievement fields).
+# Request payload for Achievement#list.
 class AchievementListMatch
 end
 
@@ -29,7 +29,7 @@ end
 class Awake
 end
 
-# Match filter for Awake#load (any subset of Awake fields).
+# Request payload for Awake#load.
 class AwakeLoadMatch
 end
 
@@ -152,7 +152,7 @@ ClassLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Class#list (any subset of Class fields).
+# Request payload for Class#list.
 #
 # @!attribute [rw] attack_speed
 #   @return [Float, nil]
@@ -258,7 +258,7 @@ CoreLoadMatch = Struct.new(
 class Couple
 end
 
-# Match filter for Couple#load (any subset of Couple fields).
+# Request payload for Couple#load.
 class CoupleLoadMatch
 end
 
@@ -266,7 +266,7 @@ end
 class Dungeon
 end
 
-# Match filter for Dungeon#load (any subset of Dungeon fields).
+# Request payload for Dungeon#load.
 class DungeonLoadMatch
 end
 
@@ -296,7 +296,7 @@ EquipmentSetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for EquipmentSet#list (any subset of EquipmentSet fields).
+# Request payload for EquipmentSet#list.
 class EquipmentSetListMatch
 end
 
@@ -304,7 +304,7 @@ end
 class ExchangeMenus
 end
 
-# Match filter for ExchangeMenus#load (any subset of ExchangeMenus fields).
+# Request payload for ExchangeMenus#load.
 class ExchangeMenusLoadMatch
 end
 
@@ -321,7 +321,7 @@ HousingPackLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for HousingPack#list (any subset of HousingPack fields).
+# Request payload for HousingPack#list.
 class HousingPackListMatch
 end
 
@@ -342,7 +342,7 @@ HousingTemplateLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for HousingTemplate#list (any subset of HousingTemplate fields).
+# Request payload for HousingTemplate#list.
 class HousingTemplateListMatch
 end
 
@@ -359,7 +359,7 @@ ItemLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Item#list (any subset of Item fields).
+# Request payload for Item#list.
 class ItemListMatch
 end
 
@@ -376,7 +376,7 @@ LanguageLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Language#list (any subset of Language fields).
+# Request payload for Language#list.
 class LanguageListMatch
 end
 
@@ -384,7 +384,7 @@ end
 class Lifestyle
 end
 
-# Match filter for Lifestyle#load (any subset of Lifestyle fields).
+# Request payload for Lifestyle#load.
 class LifestyleLoadMatch
 end
 
@@ -401,7 +401,7 @@ MonsterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Monster#list (any subset of Monster fields).
+# Request payload for Monster#list.
 class MonsterListMatch
 end
 
@@ -418,7 +418,7 @@ NpcLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Npc#list (any subset of Npc fields).
+# Request payload for Npc#list.
 class NpcListMatch
 end
 
@@ -435,7 +435,7 @@ PartySkillLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for PartySkill#list (any subset of PartySkill fields).
+# Request payload for PartySkill#list.
 class PartySkillListMatch
 end
 
@@ -443,7 +443,7 @@ end
 class Pkn
 end
 
-# Match filter for Pkn#load (any subset of Pkn fields).
+# Request payload for Pkn#load.
 class PknLoadMatch
 end
 
@@ -473,7 +473,7 @@ QuestLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Quest#list (any subset of Quest fields).
+# Request payload for Quest#list.
 class QuestListMatch
 end
 
@@ -481,7 +481,7 @@ end
 class RaisedPet
 end
 
-# Match filter for RaisedPet#load (any subset of RaisedPet fields).
+# Request payload for RaisedPet#load.
 class RaisedPetLoadMatch
 end
 
@@ -498,7 +498,7 @@ RecipeLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Recipe#list (any subset of Recipe fields).
+# Request payload for Recipe#list.
 class RecipeListMatch
 end
 
@@ -515,7 +515,7 @@ SkillLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Skill#list (any subset of Skill fields).
+# Request payload for Skill#list.
 class SkillListMatch
 end
 
@@ -523,7 +523,7 @@ end
 class UpgradeLevelBonus
 end
 
-# Match filter for UpgradeLevelBonus#load (any subset of UpgradeLevelBonus fields).
+# Request payload for UpgradeLevelBonus#load.
 class UpgradeLevelBonusLoadMatch
 end
 
@@ -531,7 +531,7 @@ end
 class Version
 end
 
-# Match filter for Version#load (any subset of Version fields).
+# Request payload for Version#load.
 class VersionLoadMatch
 end
 
@@ -621,7 +621,7 @@ WorldLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for World#list (any subset of World fields).
+# Request payload for World#list.
 #
 # @!attribute [rw] continent
 #   @return [Array, nil]

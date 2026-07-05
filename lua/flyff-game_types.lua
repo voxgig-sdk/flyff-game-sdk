@@ -51,6 +51,27 @@
 ---@field id string
 
 ---@class ClassListMatch
+---@field attack_speed? number
+---@field auto_attack_factor? table
+---@field block? number
+---@field critical? number
+---@field defense? number
+---@field fp? number
+---@field hp? number
+---@field icon? string
+---@field id? number
+---@field magic_defense_int_factor? number
+---@field magic_defense_sta_factor? number
+---@field max_fp? string
+---@field max_hp? string
+---@field max_level? number
+---@field max_mp? string
+---@field min_level? number
+---@field mp? number
+---@field name? table
+---@field parent? number
+---@field tree? string
+---@field type? string
 
 ---@class Core
 
@@ -201,6 +222,21 @@
 ---@field id string
 
 ---@class WorldListMatch
+---@field continent? table
+---@field flying? boolean
+---@field height? number
+---@field id? number
+---@field in_door? boolean
+---@field lodestar? table
+---@field name? table
+---@field pk? boolean
+---@field place? table
+---@field revival_key? string
+---@field revival_world? number
+---@field tile_name? string
+---@field tile_size? number
+---@field type? string
+---@field width? number
 
 local M = {}
 

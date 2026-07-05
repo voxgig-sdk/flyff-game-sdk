@@ -8,7 +8,7 @@ Complete API reference for the FlyffGame Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'flyff-game_sdk'
+require_relative 'FlyffGame_sdk'
 
 client = FlyffGameSDK.new(options)
 ```
@@ -195,12 +195,12 @@ achievement = client.Achievement
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Achievement.list(nil)
+results = client.Achievement.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -254,7 +254,7 @@ awake = client.Awake
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Awake.load({ "id" => "awake_id" })
+result = client.Awake.load()
 ```
 
 ### Common Methods
@@ -343,36 +343,36 @@ class = client.Class
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` | Yes |  |
-| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
-| `block` | ``$NUMBER`` | Yes |  |
-| `critical` | ``$NUMBER`` | Yes |  |
-| `defense` | ``$NUMBER`` | Yes |  |
-| `fp` | ``$NUMBER`` | Yes |  |
-| `hp` | ``$NUMBER`` | Yes |  |
-| `icon` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
-| `max_fp` | ``$STRING`` | Yes |  |
-| `max_hp` | ``$STRING`` | Yes |  |
-| `max_level` | ``$INTEGER`` | Yes |  |
-| `max_mp` | ``$STRING`` | Yes |  |
-| `min_level` | ``$INTEGER`` | Yes |  |
-| `mp` | ``$NUMBER`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `parent` | ``$INTEGER`` | No |  |
-| `tree` | ``$STRING`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
+| `attack_speed` | `Float` | Yes |  |
+| `auto_attack_factor` | `Hash` | Yes |  |
+| `block` | `Float` | Yes |  |
+| `critical` | `Float` | Yes |  |
+| `defense` | `Float` | Yes |  |
+| `fp` | `Float` | Yes |  |
+| `hp` | `Float` | Yes |  |
+| `icon` | `String` | Yes |  |
+| `id` | `Integer` | Yes |  |
+| `magic_defense_int_factor` | `Float` | Yes |  |
+| `magic_defense_sta_factor` | `Float` | Yes |  |
+| `max_fp` | `String` | Yes |  |
+| `max_hp` | `String` | Yes |  |
+| `max_level` | `Integer` | Yes |  |
+| `max_mp` | `String` | Yes |  |
+| `min_level` | `Integer` | Yes |  |
+| `mp` | `Float` | Yes |  |
+| `name` | `Hash` | Yes |  |
+| `parent` | `Integer` | No |  |
+| `tree` | `String` | Yes |  |
+| `type` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Class.list(nil)
+results = client.Class.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -426,7 +426,7 @@ core = client.Core
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Core.load({ "id" => "core_id" })
+result = client.Core.load()
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ couple = client.Couple
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Couple.load({ "id" => "couple_id" })
+result = client.Couple.load()
 ```
 
 ### Common Methods
@@ -518,7 +518,7 @@ dungeon = client.Dungeon
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Dungeon.load({ "id" => "dungeon_id" })
+result = client.Dungeon.load()
 ```
 
 ### Common Methods
@@ -605,12 +605,12 @@ equipment_set = client.EquipmentSet
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.EquipmentSet.list(nil)
+results = client.EquipmentSet.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -618,7 +618,7 @@ results = client.EquipmentSet.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.EquipmentSet.load({ "id" => "equipment_set_id" })
+result = client.EquipmentSet.load()
 ```
 
 ### Common Methods
@@ -664,7 +664,7 @@ exchange_menus = client.ExchangeMenus
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ExchangeMenus.load({ "id" => "exchange_menus_id" })
+result = client.ExchangeMenus.load()
 ```
 
 ### Common Methods
@@ -705,12 +705,12 @@ housing_pack = client.HousingPack
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.HousingPack.list(nil)
+results = client.HousingPack.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -718,7 +718,7 @@ results = client.HousingPack.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.HousingPack.load({ "id" => "housing_pack_id" })
+result = client.HousingPack.load()
 ```
 
 ### Common Methods
@@ -759,12 +759,12 @@ housing_template = client.HousingTemplate
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.HousingTemplate.list(nil)
+results = client.HousingTemplate.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -772,7 +772,7 @@ results = client.HousingTemplate.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.HousingTemplate.load({ "id" => "housing_template_id" })
+result = client.HousingTemplate.load()
 ```
 
 ### Common Methods
@@ -813,12 +813,12 @@ item = client.Item
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Item.list(nil)
+results = client.Item.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -867,12 +867,12 @@ language = client.Language
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Language.list(nil)
+results = client.Language.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -880,7 +880,7 @@ results = client.Language.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Language.load({ "id" => "language_id" })
+result = client.Language.load()
 ```
 
 ### Common Methods
@@ -926,7 +926,7 @@ lifestyle = client.Lifestyle
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Lifestyle.load({ "id" => "lifestyle_id" })
+result = client.Lifestyle.load()
 ```
 
 ### Common Methods
@@ -967,12 +967,12 @@ monster = client.Monster
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Monster.list(nil)
+results = client.Monster.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1021,12 +1021,12 @@ npc = client.Npc
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Npc.list(nil)
+results = client.Npc.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1075,12 +1075,12 @@ party_skill = client.PartySkill
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.PartySkill.list(nil)
+results = client.PartySkill.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1088,7 +1088,7 @@ results = client.PartySkill.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PartySkill.load({ "id" => "party_skill_id" })
+result = client.PartySkill.load()
 ```
 
 ### Common Methods
@@ -1134,7 +1134,7 @@ pkn = client.Pkn
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Pkn.load({ "id" => "pkn_id" })
+result = client.Pkn.load()
 ```
 
 ### Common Methods
@@ -1221,12 +1221,12 @@ quest = client.Quest
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Quest.list(nil)
+results = client.Quest.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1280,7 +1280,7 @@ raised_pet = client.RaisedPet
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.RaisedPet.load({ "id" => "raised_pet_id" })
+result = client.RaisedPet.load()
 ```
 
 ### Common Methods
@@ -1321,12 +1321,12 @@ recipe = client.Recipe
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Recipe.list(nil)
+results = client.Recipe.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1375,12 +1375,12 @@ skill = client.Skill
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Skill.list(nil)
+results = client.Skill.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1434,7 +1434,7 @@ upgrade_level_bonus = client.UpgradeLevelBonus
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.UpgradeLevelBonus.load({ "id" => "upgrade_level_bonus_id" })
+result = client.UpgradeLevelBonus.load()
 ```
 
 ### Common Methods
@@ -1480,7 +1480,7 @@ version = client.Version
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Version.load({ "id" => "version_id" })
+result = client.Version.load()
 ```
 
 ### Common Methods
@@ -1523,30 +1523,30 @@ world = client.World
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | ``$ARRAY`` | Yes |  |
-| `flying` | ``$BOOLEAN`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `in_door` | ``$BOOLEAN`` | Yes |  |
-| `lodestar` | ``$ARRAY`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `pk` | ``$BOOLEAN`` | Yes |  |
-| `place` | ``$ARRAY`` | Yes |  |
-| `revival_key` | ``$STRING`` | No |  |
-| `revival_world` | ``$INTEGER`` | No |  |
-| `tile_name` | ``$STRING`` | Yes |  |
-| `tile_size` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `continent` | `Array` | Yes |  |
+| `flying` | `Boolean` | Yes |  |
+| `height` | `Integer` | Yes |  |
+| `id` | `Integer` | Yes |  |
+| `in_door` | `Boolean` | Yes |  |
+| `lodestar` | `Array` | Yes |  |
+| `name` | `Hash` | Yes |  |
+| `pk` | `Boolean` | Yes |  |
+| `place` | `Array` | Yes |  |
+| `revival_key` | `String` | No |  |
+| `revival_world` | `Integer` | No |  |
+| `tile_name` | `String` | Yes |  |
+| `tile_size` | `Integer` | Yes |  |
+| `type` | `String` | Yes |  |
+| `width` | `Integer` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.World.list(nil)
+results = client.World.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

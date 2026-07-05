@@ -221,163 +221,163 @@ class FlyffGameSDK:
 
 
     def Achievement(self, data=None) -> "AchievementEntity":
-        """Entity factory: client.Achievement().list({}) / client.Achievement().load({"id": ...})."""
+        """Entity factory: client.Achievement().list() / client.Achievement().load({"id": ...})."""
         from entity.achievement_entity import AchievementEntity
         return AchievementEntity(self, data)
 
 
     def Awake(self, data=None) -> "AwakeEntity":
-        """Entity factory: client.Awake().list({}) / client.Awake().load({"id": ...})."""
+        """Entity factory: client.Awake().list() / client.Awake().load({"id": ...})."""
         from entity.awake_entity import AwakeEntity
         return AwakeEntity(self, data)
 
 
     def Badge(self, data=None) -> "BadgeEntity":
-        """Entity factory: client.Badge().list({}) / client.Badge().load({"id": ...})."""
+        """Entity factory: client.Badge().list() / client.Badge().load({"id": ...})."""
         from entity.badge_entity import BadgeEntity
         return BadgeEntity(self, data)
 
 
     def Class(self, data=None) -> "ClassEntity":
-        """Entity factory: client.Class().list({}) / client.Class().load({"id": ...})."""
+        """Entity factory: client.Class().list() / client.Class().load({"id": ...})."""
         from entity.class_entity import ClassEntity
         return ClassEntity(self, data)
 
 
     def Core(self, data=None) -> "CoreEntity":
-        """Entity factory: client.Core().list({}) / client.Core().load({"id": ...})."""
+        """Entity factory: client.Core().list() / client.Core().load({"id": ...})."""
         from entity.core_entity import CoreEntity
         return CoreEntity(self, data)
 
 
     def Couple(self, data=None) -> "CoupleEntity":
-        """Entity factory: client.Couple().list({}) / client.Couple().load({"id": ...})."""
+        """Entity factory: client.Couple().list() / client.Couple().load({"id": ...})."""
         from entity.couple_entity import CoupleEntity
         return CoupleEntity(self, data)
 
 
     def Dungeon(self, data=None) -> "DungeonEntity":
-        """Entity factory: client.Dungeon().list({}) / client.Dungeon().load({"id": ...})."""
+        """Entity factory: client.Dungeon().list() / client.Dungeon().load({"id": ...})."""
         from entity.dungeon_entity import DungeonEntity
         return DungeonEntity(self, data)
 
 
     def Element(self, data=None) -> "ElementEntity":
-        """Entity factory: client.Element().list({}) / client.Element().load({"id": ...})."""
+        """Entity factory: client.Element().list() / client.Element().load({"id": ...})."""
         from entity.element_entity import ElementEntity
         return ElementEntity(self, data)
 
 
     def EquipmentSet(self, data=None) -> "EquipmentSetEntity":
-        """Entity factory: client.EquipmentSet().list({}) / client.EquipmentSet().load({"id": ...})."""
+        """Entity factory: client.EquipmentSet().list() / client.EquipmentSet().load({"id": ...})."""
         from entity.equipment_set_entity import EquipmentSetEntity
         return EquipmentSetEntity(self, data)
 
 
     def ExchangeMenus(self, data=None) -> "ExchangeMenusEntity":
-        """Entity factory: client.ExchangeMenus().list({}) / client.ExchangeMenus().load({"id": ...})."""
+        """Entity factory: client.ExchangeMenus().list() / client.ExchangeMenus().load({"id": ...})."""
         from entity.exchange_menus_entity import ExchangeMenusEntity
         return ExchangeMenusEntity(self, data)
 
 
     def HousingPack(self, data=None) -> "HousingPackEntity":
-        """Entity factory: client.HousingPack().list({}) / client.HousingPack().load({"id": ...})."""
+        """Entity factory: client.HousingPack().list() / client.HousingPack().load({"id": ...})."""
         from entity.housing_pack_entity import HousingPackEntity
         return HousingPackEntity(self, data)
 
 
     def HousingTemplate(self, data=None) -> "HousingTemplateEntity":
-        """Entity factory: client.HousingTemplate().list({}) / client.HousingTemplate().load({"id": ...})."""
+        """Entity factory: client.HousingTemplate().list() / client.HousingTemplate().load({"id": ...})."""
         from entity.housing_template_entity import HousingTemplateEntity
         return HousingTemplateEntity(self, data)
 
 
     def Item(self, data=None) -> "ItemEntity":
-        """Entity factory: client.Item().list({}) / client.Item().load({"id": ...})."""
+        """Entity factory: client.Item().list() / client.Item().load({"id": ...})."""
         from entity.item_entity import ItemEntity
         return ItemEntity(self, data)
 
 
     def Language(self, data=None) -> "LanguageEntity":
-        """Entity factory: client.Language().list({}) / client.Language().load({"id": ...})."""
+        """Entity factory: client.Language().list() / client.Language().load({"id": ...})."""
         from entity.language_entity import LanguageEntity
         return LanguageEntity(self, data)
 
 
     def Lifestyle(self, data=None) -> "LifestyleEntity":
-        """Entity factory: client.Lifestyle().list({}) / client.Lifestyle().load({"id": ...})."""
+        """Entity factory: client.Lifestyle().list() / client.Lifestyle().load({"id": ...})."""
         from entity.lifestyle_entity import LifestyleEntity
         return LifestyleEntity(self, data)
 
 
     def Monster(self, data=None) -> "MonsterEntity":
-        """Entity factory: client.Monster().list({}) / client.Monster().load({"id": ...})."""
+        """Entity factory: client.Monster().list() / client.Monster().load({"id": ...})."""
         from entity.monster_entity import MonsterEntity
         return MonsterEntity(self, data)
 
 
     def Npc(self, data=None) -> "NpcEntity":
-        """Entity factory: client.Npc().list({}) / client.Npc().load({"id": ...})."""
+        """Entity factory: client.Npc().list() / client.Npc().load({"id": ...})."""
         from entity.npc_entity import NpcEntity
         return NpcEntity(self, data)
 
 
     def PartySkill(self, data=None) -> "PartySkillEntity":
-        """Entity factory: client.PartySkill().list({}) / client.PartySkill().load({"id": ...})."""
+        """Entity factory: client.PartySkill().list() / client.PartySkill().load({"id": ...})."""
         from entity.party_skill_entity import PartySkillEntity
         return PartySkillEntity(self, data)
 
 
     def Pkn(self, data=None) -> "PknEntity":
-        """Entity factory: client.Pkn().list({}) / client.Pkn().load({"id": ...})."""
+        """Entity factory: client.Pkn().list() / client.Pkn().load({"id": ...})."""
         from entity.pkn_entity import PknEntity
         return PknEntity(self, data)
 
 
     def Place(self, data=None) -> "PlaceEntity":
-        """Entity factory: client.Place().list({}) / client.Place().load({"id": ...})."""
+        """Entity factory: client.Place().list() / client.Place().load({"id": ...})."""
         from entity.place_entity import PlaceEntity
         return PlaceEntity(self, data)
 
 
     def Quest(self, data=None) -> "QuestEntity":
-        """Entity factory: client.Quest().list({}) / client.Quest().load({"id": ...})."""
+        """Entity factory: client.Quest().list() / client.Quest().load({"id": ...})."""
         from entity.quest_entity import QuestEntity
         return QuestEntity(self, data)
 
 
     def RaisedPet(self, data=None) -> "RaisedPetEntity":
-        """Entity factory: client.RaisedPet().list({}) / client.RaisedPet().load({"id": ...})."""
+        """Entity factory: client.RaisedPet().list() / client.RaisedPet().load({"id": ...})."""
         from entity.raised_pet_entity import RaisedPetEntity
         return RaisedPetEntity(self, data)
 
 
     def Recipe(self, data=None) -> "RecipeEntity":
-        """Entity factory: client.Recipe().list({}) / client.Recipe().load({"id": ...})."""
+        """Entity factory: client.Recipe().list() / client.Recipe().load({"id": ...})."""
         from entity.recipe_entity import RecipeEntity
         return RecipeEntity(self, data)
 
 
     def Skill(self, data=None) -> "SkillEntity":
-        """Entity factory: client.Skill().list({}) / client.Skill().load({"id": ...})."""
+        """Entity factory: client.Skill().list() / client.Skill().load({"id": ...})."""
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
     def UpgradeLevelBonus(self, data=None) -> "UpgradeLevelBonusEntity":
-        """Entity factory: client.UpgradeLevelBonus().list({}) / client.UpgradeLevelBonus().load({"id": ...})."""
+        """Entity factory: client.UpgradeLevelBonus().list() / client.UpgradeLevelBonus().load({"id": ...})."""
         from entity.upgrade_level_bonus_entity import UpgradeLevelBonusEntity
         return UpgradeLevelBonusEntity(self, data)
 
 
     def Version(self, data=None) -> "VersionEntity":
-        """Entity factory: client.Version().list({}) / client.Version().load({"id": ...})."""
+        """Entity factory: client.Version().list() / client.Version().load({"id": ...})."""
         from entity.version_entity import VersionEntity
         return VersionEntity(self, data)
 
 
     def World(self, data=None) -> "WorldEntity":
-        """Entity factory: client.World().list({}) / client.World().load({"id": ...})."""
+        """Entity factory: client.World().list() / client.World().load({"id": ...})."""
         from entity.world_entity import WorldEntity
         return WorldEntity(self, data)
 

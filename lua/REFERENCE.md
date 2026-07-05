@@ -251,7 +251,7 @@ local awake = client:Awake(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Awake():load({ id = "awake_id" })
+local result, err = client:Awake():load()
 ```
 
 ### Common Methods
@@ -340,27 +340,27 @@ local class = client:Class(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` | Yes |  |
-| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
-| `block` | ``$NUMBER`` | Yes |  |
-| `critical` | ``$NUMBER`` | Yes |  |
-| `defense` | ``$NUMBER`` | Yes |  |
-| `fp` | ``$NUMBER`` | Yes |  |
-| `hp` | ``$NUMBER`` | Yes |  |
-| `icon` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
-| `max_fp` | ``$STRING`` | Yes |  |
-| `max_hp` | ``$STRING`` | Yes |  |
-| `max_level` | ``$INTEGER`` | Yes |  |
-| `max_mp` | ``$STRING`` | Yes |  |
-| `min_level` | ``$INTEGER`` | Yes |  |
-| `mp` | ``$NUMBER`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `parent` | ``$INTEGER`` | No |  |
-| `tree` | ``$STRING`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
+| `attack_speed` | `number` | Yes |  |
+| `auto_attack_factor` | `table` | Yes |  |
+| `block` | `number` | Yes |  |
+| `critical` | `number` | Yes |  |
+| `defense` | `number` | Yes |  |
+| `fp` | `number` | Yes |  |
+| `hp` | `number` | Yes |  |
+| `icon` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `magic_defense_int_factor` | `number` | Yes |  |
+| `magic_defense_sta_factor` | `number` | Yes |  |
+| `max_fp` | `string` | Yes |  |
+| `max_hp` | `string` | Yes |  |
+| `max_level` | `number` | Yes |  |
+| `max_mp` | `string` | Yes |  |
+| `min_level` | `number` | Yes |  |
+| `mp` | `number` | Yes |  |
+| `name` | `table` | Yes |  |
+| `parent` | `number` | No |  |
+| `tree` | `string` | Yes |  |
+| `type` | `string` | Yes |  |
 
 ### Operations
 
@@ -423,7 +423,7 @@ local core = client:Core(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Core():load({ id = "core_id" })
+local result, err = client:Core():load()
 ```
 
 ### Common Methods
@@ -469,7 +469,7 @@ local couple = client:Couple(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Couple():load({ id = "couple_id" })
+local result, err = client:Couple():load()
 ```
 
 ### Common Methods
@@ -515,7 +515,7 @@ local dungeon = client:Dungeon(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dungeon():load({ id = "dungeon_id" })
+local result, err = client:Dungeon():load()
 ```
 
 ### Common Methods
@@ -615,7 +615,7 @@ local results, err = client:EquipmentSet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:EquipmentSet():load({ id = "equipment_set_id" })
+local result, err = client:EquipmentSet():load()
 ```
 
 ### Common Methods
@@ -661,7 +661,7 @@ local exchange_menus = client:ExchangeMenus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ExchangeMenus():load({ id = "exchange_menus_id" })
+local result, err = client:ExchangeMenus():load()
 ```
 
 ### Common Methods
@@ -715,7 +715,7 @@ local results, err = client:HousingPack():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingPack():load({ id = "housing_pack_id" })
+local result, err = client:HousingPack():load()
 ```
 
 ### Common Methods
@@ -769,7 +769,7 @@ local results, err = client:HousingTemplate():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingTemplate():load({ id = "housing_template_id" })
+local result, err = client:HousingTemplate():load()
 ```
 
 ### Common Methods
@@ -877,7 +877,7 @@ local results, err = client:Language():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Language():load({ id = "language_id" })
+local result, err = client:Language():load()
 ```
 
 ### Common Methods
@@ -923,7 +923,7 @@ local lifestyle = client:Lifestyle(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Lifestyle():load({ id = "lifestyle_id" })
+local result, err = client:Lifestyle():load()
 ```
 
 ### Common Methods
@@ -1085,7 +1085,7 @@ local results, err = client:PartySkill():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PartySkill():load({ id = "party_skill_id" })
+local result, err = client:PartySkill():load()
 ```
 
 ### Common Methods
@@ -1131,7 +1131,7 @@ local pkn = client:Pkn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Pkn():load({ id = "pkn_id" })
+local result, err = client:Pkn():load()
 ```
 
 ### Common Methods
@@ -1277,7 +1277,7 @@ local raised_pet = client:RaisedPet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RaisedPet():load({ id = "raised_pet_id" })
+local result, err = client:RaisedPet():load()
 ```
 
 ### Common Methods
@@ -1431,7 +1431,7 @@ local upgrade_level_bonus = client:UpgradeLevelBonus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:UpgradeLevelBonus():load({ id = "upgrade_level_bonus_id" })
+local result, err = client:UpgradeLevelBonus():load()
 ```
 
 ### Common Methods
@@ -1477,7 +1477,7 @@ local version = client:Version(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Version():load({ id = "version_id" })
+local result, err = client:Version():load()
 ```
 
 ### Common Methods
@@ -1520,21 +1520,21 @@ local world = client:World(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | ``$ARRAY`` | Yes |  |
-| `flying` | ``$BOOLEAN`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `in_door` | ``$BOOLEAN`` | Yes |  |
-| `lodestar` | ``$ARRAY`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `pk` | ``$BOOLEAN`` | Yes |  |
-| `place` | ``$ARRAY`` | Yes |  |
-| `revival_key` | ``$STRING`` | No |  |
-| `revival_world` | ``$INTEGER`` | No |  |
-| `tile_name` | ``$STRING`` | Yes |  |
-| `tile_size` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `continent` | `table` | Yes |  |
+| `flying` | `boolean` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `number` | Yes |  |
+| `in_door` | `boolean` | Yes |  |
+| `lodestar` | `table` | Yes |  |
+| `name` | `table` | Yes |  |
+| `pk` | `boolean` | Yes |  |
+| `place` | `table` | Yes |  |
+| `revival_key` | `string` | No |  |
+| `revival_world` | `number` | No |  |
+| `tile_name` | `string` | Yes |  |
+| `tile_size` | `number` | Yes |  |
+| `type` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 

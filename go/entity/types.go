@@ -17,8 +17,7 @@ type AchievementLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// AchievementListMatch mirrors the achievement fields as an all-optional match
-// filter (Go analog of Partial<Achievement>).
+// AchievementListMatch is the typed request payload for Achievement.ListTyped.
 type AchievementListMatch struct {
 }
 
@@ -26,8 +25,7 @@ type AchievementListMatch struct {
 type Awake struct {
 }
 
-// AwakeLoadMatch mirrors the awake fields as an all-optional match
-// filter (Go analog of Partial<Awake>).
+// AwakeLoadMatch is the typed request payload for Awake.LoadTyped.
 type AwakeLoadMatch struct {
 }
 
@@ -72,8 +70,7 @@ type ClassLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ClassListMatch mirrors the class fields as an all-optional match
-// filter (Go analog of Partial<Class>).
+// ClassListMatch is the typed request payload for Class.ListTyped.
 type ClassListMatch struct {
 	AttackSpeed *float64 `json:"attack_speed,omitempty"`
 	AutoAttackFactor *map[string]any `json:"auto_attack_factor,omitempty"`
@@ -111,8 +108,7 @@ type CoreLoadMatch struct {
 type Couple struct {
 }
 
-// CoupleLoadMatch mirrors the couple fields as an all-optional match
-// filter (Go analog of Partial<Couple>).
+// CoupleLoadMatch is the typed request payload for Couple.LoadTyped.
 type CoupleLoadMatch struct {
 }
 
@@ -120,8 +116,7 @@ type CoupleLoadMatch struct {
 type Dungeon struct {
 }
 
-// DungeonLoadMatch mirrors the dungeon fields as an all-optional match
-// filter (Go analog of Partial<Dungeon>).
+// DungeonLoadMatch is the typed request payload for Dungeon.LoadTyped.
 type DungeonLoadMatch struct {
 }
 
@@ -143,8 +138,7 @@ type EquipmentSetLoadMatch struct {
 	EquipmentSetId string `json:"equipment_set_id"`
 }
 
-// EquipmentSetListMatch mirrors the equipment_set fields as an all-optional match
-// filter (Go analog of Partial<EquipmentSet>).
+// EquipmentSetListMatch is the typed request payload for EquipmentSet.ListTyped.
 type EquipmentSetListMatch struct {
 }
 
@@ -152,8 +146,7 @@ type EquipmentSetListMatch struct {
 type ExchangeMenus struct {
 }
 
-// ExchangeMenusLoadMatch mirrors the exchange_menus fields as an all-optional match
-// filter (Go analog of Partial<ExchangeMenus>).
+// ExchangeMenusLoadMatch is the typed request payload for ExchangeMenus.LoadTyped.
 type ExchangeMenusLoadMatch struct {
 }
 
@@ -166,8 +159,7 @@ type HousingPackLoadMatch struct {
 	HousingPackId string `json:"housing_pack_id"`
 }
 
-// HousingPackListMatch mirrors the housing_pack fields as an all-optional match
-// filter (Go analog of Partial<HousingPack>).
+// HousingPackListMatch is the typed request payload for HousingPack.ListTyped.
 type HousingPackListMatch struct {
 }
 
@@ -181,8 +173,7 @@ type HousingTemplateLoadMatch struct {
 	HousingTemplateId string `json:"housing_template_id"`
 }
 
-// HousingTemplateListMatch mirrors the housing_template fields as an all-optional match
-// filter (Go analog of Partial<HousingTemplate>).
+// HousingTemplateListMatch is the typed request payload for HousingTemplate.ListTyped.
 type HousingTemplateListMatch struct {
 }
 
@@ -195,8 +186,7 @@ type ItemLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ItemListMatch mirrors the item fields as an all-optional match
-// filter (Go analog of Partial<Item>).
+// ItemListMatch is the typed request payload for Item.ListTyped.
 type ItemListMatch struct {
 }
 
@@ -209,8 +199,7 @@ type LanguageLoadMatch struct {
 	LanguageCode string `json:"language_code"`
 }
 
-// LanguageListMatch mirrors the language fields as an all-optional match
-// filter (Go analog of Partial<Language>).
+// LanguageListMatch is the typed request payload for Language.ListTyped.
 type LanguageListMatch struct {
 }
 
@@ -218,8 +207,7 @@ type LanguageListMatch struct {
 type Lifestyle struct {
 }
 
-// LifestyleLoadMatch mirrors the lifestyle fields as an all-optional match
-// filter (Go analog of Partial<Lifestyle>).
+// LifestyleLoadMatch is the typed request payload for Lifestyle.LoadTyped.
 type LifestyleLoadMatch struct {
 }
 
@@ -232,8 +220,7 @@ type MonsterLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// MonsterListMatch mirrors the monster fields as an all-optional match
-// filter (Go analog of Partial<Monster>).
+// MonsterListMatch is the typed request payload for Monster.ListTyped.
 type MonsterListMatch struct {
 }
 
@@ -246,8 +233,7 @@ type NpcLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// NpcListMatch mirrors the npc fields as an all-optional match
-// filter (Go analog of Partial<Npc>).
+// NpcListMatch is the typed request payload for Npc.ListTyped.
 type NpcListMatch struct {
 }
 
@@ -260,8 +246,7 @@ type PartySkillLoadMatch struct {
 	PartySkillId string `json:"party_skill_id"`
 }
 
-// PartySkillListMatch mirrors the party_skill fields as an all-optional match
-// filter (Go analog of Partial<PartySkill>).
+// PartySkillListMatch is the typed request payload for PartySkill.ListTyped.
 type PartySkillListMatch struct {
 }
 
@@ -269,8 +254,7 @@ type PartySkillListMatch struct {
 type Pkn struct {
 }
 
-// PknLoadMatch mirrors the pkn fields as an all-optional match
-// filter (Go analog of Partial<Pkn>).
+// PknLoadMatch is the typed request payload for Pkn.LoadTyped.
 type PknLoadMatch struct {
 }
 
@@ -292,8 +276,7 @@ type QuestLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// QuestListMatch mirrors the quest fields as an all-optional match
-// filter (Go analog of Partial<Quest>).
+// QuestListMatch is the typed request payload for Quest.ListTyped.
 type QuestListMatch struct {
 }
 
@@ -301,8 +284,7 @@ type QuestListMatch struct {
 type RaisedPet struct {
 }
 
-// RaisedPetLoadMatch mirrors the raised_pet fields as an all-optional match
-// filter (Go analog of Partial<RaisedPet>).
+// RaisedPetLoadMatch is the typed request payload for RaisedPet.LoadTyped.
 type RaisedPetLoadMatch struct {
 }
 
@@ -315,8 +297,7 @@ type RecipeLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// RecipeListMatch mirrors the recipe fields as an all-optional match
-// filter (Go analog of Partial<Recipe>).
+// RecipeListMatch is the typed request payload for Recipe.ListTyped.
 type RecipeListMatch struct {
 }
 
@@ -329,8 +310,7 @@ type SkillLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// SkillListMatch mirrors the skill fields as an all-optional match
-// filter (Go analog of Partial<Skill>).
+// SkillListMatch is the typed request payload for Skill.ListTyped.
 type SkillListMatch struct {
 }
 
@@ -338,8 +318,7 @@ type SkillListMatch struct {
 type UpgradeLevelBonus struct {
 }
 
-// UpgradeLevelBonusLoadMatch mirrors the upgrade_level_bonus fields as an all-optional match
-// filter (Go analog of Partial<UpgradeLevelBonus>).
+// UpgradeLevelBonusLoadMatch is the typed request payload for UpgradeLevelBonus.LoadTyped.
 type UpgradeLevelBonusLoadMatch struct {
 }
 
@@ -347,8 +326,7 @@ type UpgradeLevelBonusLoadMatch struct {
 type Version struct {
 }
 
-// VersionLoadMatch mirrors the version fields as an all-optional match
-// filter (Go analog of Partial<Version>).
+// VersionLoadMatch is the typed request payload for Version.LoadTyped.
 type VersionLoadMatch struct {
 }
 
@@ -379,8 +357,7 @@ type WorldLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// WorldListMatch mirrors the world fields as an all-optional match
-// filter (Go analog of Partial<World>).
+// WorldListMatch is the typed request payload for World.ListTyped.
 type WorldListMatch struct {
 	Continent *[]any `json:"continent,omitempty"`
 	Flying *bool `json:"flying,omitempty"`

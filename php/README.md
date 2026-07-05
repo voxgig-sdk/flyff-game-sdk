@@ -4,6 +4,8 @@
 
 The PHP SDK for the FlyffGame API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Achievement()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Achievement records — iterate directly.
     $achievements = $client->Achievement()->list();
     foreach ($achievements as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo json_encode($item) . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($achievement);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $achievements = $client->Achievement()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = FlyffGameSDK::test([
     "entity" => ["achievement" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$achievement = $client->Achievement()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$achievement = $client->Achievement()->list();
 print_r($achievement);
 ```
 
@@ -220,10 +256,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -575,7 +608,7 @@ Create an instance: `$awake = $client->Awake();`
 
 ```php
 // load() returns the bare Awake record (throws on error).
-$awake = $client->Awake()->load(["id" => "awake_id"]);
+$awake = $client->Awake()->load();
 ```
 
 
@@ -612,27 +645,27 @@ Create an instance: `$class = $client->Class();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` |  |
-| `auto_attack_factor` | ``$OBJECT`` |  |
-| `block` | ``$NUMBER`` |  |
-| `critical` | ``$NUMBER`` |  |
-| `defense` | ``$NUMBER`` |  |
-| `fp` | ``$NUMBER`` |  |
-| `hp` | ``$NUMBER`` |  |
-| `icon` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `magic_defense_int_factor` | ``$NUMBER`` |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` |  |
-| `max_fp` | ``$STRING`` |  |
-| `max_hp` | ``$STRING`` |  |
-| `max_level` | ``$INTEGER`` |  |
-| `max_mp` | ``$STRING`` |  |
-| `min_level` | ``$INTEGER`` |  |
-| `mp` | ``$NUMBER`` |  |
-| `name` | ``$OBJECT`` |  |
-| `parent` | ``$INTEGER`` |  |
-| `tree` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `attack_speed` | `float` |  |
+| `auto_attack_factor` | `array` |  |
+| `block` | `float` |  |
+| `critical` | `float` |  |
+| `defense` | `float` |  |
+| `fp` | `float` |  |
+| `hp` | `float` |  |
+| `icon` | `string` |  |
+| `id` | `int` |  |
+| `magic_defense_int_factor` | `float` |  |
+| `magic_defense_sta_factor` | `float` |  |
+| `max_fp` | `string` |  |
+| `max_hp` | `string` |  |
+| `max_level` | `int` |  |
+| `max_mp` | `string` |  |
+| `min_level` | `int` |  |
+| `mp` | `float` |  |
+| `name` | `array` |  |
+| `parent` | `int` |  |
+| `tree` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -663,7 +696,7 @@ Create an instance: `$core = $client->Core();`
 
 ```php
 // load() returns the bare Core record (throws on error).
-$core = $client->Core()->load(["id" => "core_id"]);
+$core = $client->Core()->load();
 ```
 
 
@@ -681,7 +714,7 @@ Create an instance: `$couple = $client->Couple();`
 
 ```php
 // load() returns the bare Couple record (throws on error).
-$couple = $client->Couple()->load(["id" => "couple_id"]);
+$couple = $client->Couple()->load();
 ```
 
 
@@ -699,7 +732,7 @@ Create an instance: `$dungeon = $client->Dungeon();`
 
 ```php
 // load() returns the bare Dungeon record (throws on error).
-$dungeon = $client->Dungeon()->load(["id" => "dungeon_id"]);
+$dungeon = $client->Dungeon()->load();
 ```
 
 
@@ -736,7 +769,7 @@ Create an instance: `$equipment_set = $client->EquipmentSet();`
 
 ```php
 // load() returns the bare EquipmentSet record (throws on error).
-$equipment_set = $client->EquipmentSet()->load(["id" => "equipment_set_id"]);
+$equipment_set = $client->EquipmentSet()->load();
 ```
 
 #### Example: List
@@ -761,7 +794,7 @@ Create an instance: `$exchange_menus = $client->ExchangeMenus();`
 
 ```php
 // load() returns the bare ExchangeMenus record (throws on error).
-$exchange_menus = $client->ExchangeMenus()->load(["id" => "exchange_menus_id"]);
+$exchange_menus = $client->ExchangeMenus()->load();
 ```
 
 
@@ -780,7 +813,7 @@ Create an instance: `$housing_pack = $client->HousingPack();`
 
 ```php
 // load() returns the bare HousingPack record (throws on error).
-$housing_pack = $client->HousingPack()->load(["id" => "housing_pack_id"]);
+$housing_pack = $client->HousingPack()->load();
 ```
 
 #### Example: List
@@ -806,7 +839,7 @@ Create an instance: `$housing_template = $client->HousingTemplate();`
 
 ```php
 // load() returns the bare HousingTemplate record (throws on error).
-$housing_template = $client->HousingTemplate()->load(["id" => "housing_template_id"]);
+$housing_template = $client->HousingTemplate()->load();
 ```
 
 #### Example: List
@@ -858,7 +891,7 @@ Create an instance: `$language = $client->Language();`
 
 ```php
 // load() returns the bare Language record (throws on error).
-$language = $client->Language()->load(["id" => "language_id"]);
+$language = $client->Language()->load();
 ```
 
 #### Example: List
@@ -883,7 +916,7 @@ Create an instance: `$lifestyle = $client->Lifestyle();`
 
 ```php
 // load() returns the bare Lifestyle record (throws on error).
-$lifestyle = $client->Lifestyle()->load(["id" => "lifestyle_id"]);
+$lifestyle = $client->Lifestyle()->load();
 ```
 
 
@@ -954,7 +987,7 @@ Create an instance: `$party_skill = $client->PartySkill();`
 
 ```php
 // load() returns the bare PartySkill record (throws on error).
-$party_skill = $client->PartySkill()->load(["id" => "party_skill_id"]);
+$party_skill = $client->PartySkill()->load();
 ```
 
 #### Example: List
@@ -979,7 +1012,7 @@ Create an instance: `$pkn = $client->Pkn();`
 
 ```php
 // load() returns the bare Pkn record (throws on error).
-$pkn = $client->Pkn()->load(["id" => "pkn_id"]);
+$pkn = $client->Pkn()->load();
 ```
 
 
@@ -1041,7 +1074,7 @@ Create an instance: `$raised_pet = $client->RaisedPet();`
 
 ```php
 // load() returns the bare RaisedPet record (throws on error).
-$raised_pet = $client->RaisedPet()->load(["id" => "raised_pet_id"]);
+$raised_pet = $client->RaisedPet()->load();
 ```
 
 
@@ -1111,7 +1144,7 @@ Create an instance: `$upgrade_level_bonus = $client->UpgradeLevelBonus();`
 
 ```php
 // load() returns the bare UpgradeLevelBonus record (throws on error).
-$upgrade_level_bonus = $client->UpgradeLevelBonus()->load(["id" => "upgrade_level_bonus_id"]);
+$upgrade_level_bonus = $client->UpgradeLevelBonus()->load();
 ```
 
 
@@ -1129,7 +1162,7 @@ Create an instance: `$version = $client->Version();`
 
 ```php
 // load() returns the bare Version record (throws on error).
-$version = $client->Version()->load(["id" => "version_id"]);
+$version = $client->Version()->load();
 ```
 
 
@@ -1148,21 +1181,21 @@ Create an instance: `$world = $client->World();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | ``$ARRAY`` |  |
-| `flying` | ``$BOOLEAN`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `in_door` | ``$BOOLEAN`` |  |
-| `lodestar` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
-| `pk` | ``$BOOLEAN`` |  |
-| `place` | ``$ARRAY`` |  |
-| `revival_key` | ``$STRING`` |  |
-| `revival_world` | ``$INTEGER`` |  |
-| `tile_name` | ``$STRING`` |  |
-| `tile_size` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `continent` | `array` |  |
+| `flying` | `bool` |  |
+| `height` | `int` |  |
+| `id` | `int` |  |
+| `in_door` | `bool` |  |
+| `lodestar` | `array` |  |
+| `name` | `array` |  |
+| `pk` | `bool` |  |
+| `place` | `array` |  |
+| `revival_key` | `string` |  |
+| `revival_world` | `int` |  |
+| `tile_name` | `string` |  |
+| `tile_size` | `int` |  |
+| `type` | `string` |  |
+| `width` | `int` |  |
 
 #### Example: Load
 
@@ -1179,12 +1212,16 @@ $worlds = $client->World()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1201,8 +1238,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1246,15 +1284,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $achievement = $client->Achievement();
-$achievement->load(["id" => "example_id"]);
+$achievement->list();
 
-// $achievement->dataGet() now returns the loaded achievement data
-// $achievement->matchGet() returns the last match criteria
+// $achievement->data_get() now returns the achievement data from the last list
+// $achievement->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -252,7 +252,7 @@ awake := client.Awake(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Awake(nil).Load(map[string]any{"id": "awake_id"}, nil)
+result, err := client.Awake(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -329,27 +329,27 @@ class := client.Class(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` | Yes |  |
-| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
-| `block` | ``$NUMBER`` | Yes |  |
-| `critical` | ``$NUMBER`` | Yes |  |
-| `defense` | ``$NUMBER`` | Yes |  |
-| `fp` | ``$NUMBER`` | Yes |  |
-| `hp` | ``$NUMBER`` | Yes |  |
-| `icon` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
-| `max_fp` | ``$STRING`` | Yes |  |
-| `max_hp` | ``$STRING`` | Yes |  |
-| `max_level` | ``$INTEGER`` | Yes |  |
-| `max_mp` | ``$STRING`` | Yes |  |
-| `min_level` | ``$INTEGER`` | Yes |  |
-| `mp` | ``$NUMBER`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `parent` | ``$INTEGER`` | No |  |
-| `tree` | ``$STRING`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
+| `attack_speed` | `float64` | Yes |  |
+| `auto_attack_factor` | `map[string]any` | Yes |  |
+| `block` | `float64` | Yes |  |
+| `critical` | `float64` | Yes |  |
+| `defense` | `float64` | Yes |  |
+| `fp` | `float64` | Yes |  |
+| `hp` | `float64` | Yes |  |
+| `icon` | `string` | Yes |  |
+| `id` | `int` | Yes |  |
+| `magic_defense_int_factor` | `float64` | Yes |  |
+| `magic_defense_sta_factor` | `float64` | Yes |  |
+| `max_fp` | `string` | Yes |  |
+| `max_hp` | `string` | Yes |  |
+| `max_level` | `int` | Yes |  |
+| `max_mp` | `string` | Yes |  |
+| `min_level` | `int` | Yes |  |
+| `mp` | `float64` | Yes |  |
+| `name` | `map[string]any` | Yes |  |
+| `parent` | `int` | No |  |
+| `tree` | `string` | Yes |  |
+| `type` | `string` | Yes |  |
 
 ### Operations
 
@@ -406,7 +406,7 @@ core := client.Core(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Core(nil).Load(map[string]any{"id": "core_id"}, nil)
+result, err := client.Core(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -446,7 +446,7 @@ couple := client.Couple(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Couple(nil).Load(map[string]any{"id": "couple_id"}, nil)
+result, err := client.Couple(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -486,7 +486,7 @@ dungeon := client.Dungeon(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Dungeon(nil).Load(map[string]any{"id": "dungeon_id"}, nil)
+result, err := client.Dungeon(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -574,7 +574,7 @@ results, err := client.EquipmentSet(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.EquipmentSet(nil).Load(map[string]any{"id": "equipment_set_id"}, nil)
+result, err := client.EquipmentSet(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -614,7 +614,7 @@ exchange_menus := client.ExchangeMenus(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ExchangeMenus(nil).Load(map[string]any{"id": "exchange_menus_id"}, nil)
+result, err := client.ExchangeMenus(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -662,7 +662,7 @@ results, err := client.HousingPack(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HousingPack(nil).Load(map[string]any{"id": "housing_pack_id"}, nil)
+result, err := client.HousingPack(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -710,7 +710,7 @@ results, err := client.HousingTemplate(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HousingTemplate(nil).Load(map[string]any{"id": "housing_template_id"}, nil)
+result, err := client.HousingTemplate(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -806,7 +806,7 @@ results, err := client.Language(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Language(nil).Load(map[string]any{"id": "language_id"}, nil)
+result, err := client.Language(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -846,7 +846,7 @@ lifestyle := client.Lifestyle(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Lifestyle(nil).Load(map[string]any{"id": "lifestyle_id"}, nil)
+result, err := client.Lifestyle(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -990,7 +990,7 @@ results, err := client.PartySkill(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PartySkill(nil).Load(map[string]any{"id": "party_skill_id"}, nil)
+result, err := client.PartySkill(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1030,7 +1030,7 @@ pkn := client.Pkn(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Pkn(nil).Load(map[string]any{"id": "pkn_id"}, nil)
+result, err := client.Pkn(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1158,7 +1158,7 @@ raised_pet := client.RaisedPet(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.RaisedPet(nil).Load(map[string]any{"id": "raised_pet_id"}, nil)
+result, err := client.RaisedPet(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1294,7 +1294,7 @@ upgrade_level_bonus := client.UpgradeLevelBonus(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.UpgradeLevelBonus(nil).Load(map[string]any{"id": "upgrade_level_bonus_id"}, nil)
+result, err := client.UpgradeLevelBonus(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1334,7 +1334,7 @@ version := client.Version(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Version(nil).Load(map[string]any{"id": "version_id"}, nil)
+result, err := client.Version(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1371,21 +1371,21 @@ world := client.World(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | ``$ARRAY`` | Yes |  |
-| `flying` | ``$BOOLEAN`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `in_door` | ``$BOOLEAN`` | Yes |  |
-| `lodestar` | ``$ARRAY`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `pk` | ``$BOOLEAN`` | Yes |  |
-| `place` | ``$ARRAY`` | Yes |  |
-| `revival_key` | ``$STRING`` | No |  |
-| `revival_world` | ``$INTEGER`` | No |  |
-| `tile_name` | ``$STRING`` | Yes |  |
-| `tile_size` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `continent` | `[]any` | Yes |  |
+| `flying` | `bool` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `int` | Yes |  |
+| `in_door` | `bool` | Yes |  |
+| `lodestar` | `[]any` | Yes |  |
+| `name` | `map[string]any` | Yes |  |
+| `pk` | `bool` | Yes |  |
+| `place` | `[]any` | Yes |  |
+| `revival_key` | `string` | No |  |
+| `revival_world` | `int` | No |  |
+| `tile_name` | `string` | Yes |  |
+| `tile_size` | `int` | Yes |  |
+| `type` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 

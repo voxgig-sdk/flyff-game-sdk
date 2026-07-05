@@ -8,7 +8,7 @@ Complete API reference for the FlyffGame Python SDK.
 ### Constructor
 
 ```python
-from flyff-game_sdk import FlyffGameSDK
+from flyffgame_sdk import FlyffGameSDK
 
 client = FlyffGameSDK(options)
 ```
@@ -189,12 +189,12 @@ achievement = client.Achievement()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Achievement().list({})
+results = client.Achievement().list()
 for achievement in results:
     print(achievement)
 ```
@@ -249,7 +249,7 @@ awake = client.Awake()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Awake().load({"id": "awake_id"})
+result = client.Awake().load()
 ```
 
 ### Common Methods
@@ -336,36 +336,36 @@ class = client.Class()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | ``$NUMBER`` | Yes |  |
-| `auto_attack_factor` | ``$OBJECT`` | Yes |  |
-| `block` | ``$NUMBER`` | Yes |  |
-| `critical` | ``$NUMBER`` | Yes |  |
-| `defense` | ``$NUMBER`` | Yes |  |
-| `fp` | ``$NUMBER`` | Yes |  |
-| `hp` | ``$NUMBER`` | Yes |  |
-| `icon` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `magic_defense_int_factor` | ``$NUMBER`` | Yes |  |
-| `magic_defense_sta_factor` | ``$NUMBER`` | Yes |  |
-| `max_fp` | ``$STRING`` | Yes |  |
-| `max_hp` | ``$STRING`` | Yes |  |
-| `max_level` | ``$INTEGER`` | Yes |  |
-| `max_mp` | ``$STRING`` | Yes |  |
-| `min_level` | ``$INTEGER`` | Yes |  |
-| `mp` | ``$NUMBER`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `parent` | ``$INTEGER`` | No |  |
-| `tree` | ``$STRING`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
+| `attack_speed` | `float` | Yes |  |
+| `auto_attack_factor` | `dict` | Yes |  |
+| `block` | `float` | Yes |  |
+| `critical` | `float` | Yes |  |
+| `defense` | `float` | Yes |  |
+| `fp` | `float` | Yes |  |
+| `hp` | `float` | Yes |  |
+| `icon` | `str` | Yes |  |
+| `id` | `int` | Yes |  |
+| `magic_defense_int_factor` | `float` | Yes |  |
+| `magic_defense_sta_factor` | `float` | Yes |  |
+| `max_fp` | `str` | Yes |  |
+| `max_hp` | `str` | Yes |  |
+| `max_level` | `int` | Yes |  |
+| `max_mp` | `str` | Yes |  |
+| `min_level` | `int` | Yes |  |
+| `mp` | `float` | Yes |  |
+| `name` | `dict` | Yes |  |
+| `parent` | `int` | No |  |
+| `tree` | `str` | Yes |  |
+| `type` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Class().list({})
+results = client.Class().list()
 for class in results:
     print(class)
 ```
@@ -420,7 +420,7 @@ core = client.Core()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Core().load({"id": "core_id"})
+result = client.Core().load()
 ```
 
 ### Common Methods
@@ -465,7 +465,7 @@ couple = client.Couple()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Couple().load({"id": "couple_id"})
+result = client.Couple().load()
 ```
 
 ### Common Methods
@@ -510,7 +510,7 @@ dungeon = client.Dungeon()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Dungeon().load({"id": "dungeon_id"})
+result = client.Dungeon().load()
 ```
 
 ### Common Methods
@@ -595,12 +595,12 @@ equipment_set = client.EquipmentSet()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EquipmentSet().list({})
+results = client.EquipmentSet().list()
 for equipment_set in results:
     print(equipment_set)
 ```
@@ -610,7 +610,7 @@ for equipment_set in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.EquipmentSet().load({"id": "equipment_set_id"})
+result = client.EquipmentSet().load()
 ```
 
 ### Common Methods
@@ -655,7 +655,7 @@ exchange_menus = client.ExchangeMenus()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ExchangeMenus().load({"id": "exchange_menus_id"})
+result = client.ExchangeMenus().load()
 ```
 
 ### Common Methods
@@ -695,12 +695,12 @@ housing_pack = client.HousingPack()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.HousingPack().list({})
+results = client.HousingPack().list()
 for housing_pack in results:
     print(housing_pack)
 ```
@@ -710,7 +710,7 @@ for housing_pack in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HousingPack().load({"id": "housing_pack_id"})
+result = client.HousingPack().load()
 ```
 
 ### Common Methods
@@ -750,12 +750,12 @@ housing_template = client.HousingTemplate()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.HousingTemplate().list({})
+results = client.HousingTemplate().list()
 for housing_template in results:
     print(housing_template)
 ```
@@ -765,7 +765,7 @@ for housing_template in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HousingTemplate().load({"id": "housing_template_id"})
+result = client.HousingTemplate().load()
 ```
 
 ### Common Methods
@@ -805,12 +805,12 @@ item = client.Item()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Item().list({})
+results = client.Item().list()
 for item in results:
     print(item)
 ```
@@ -860,12 +860,12 @@ language = client.Language()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Language().list({})
+results = client.Language().list()
 for language in results:
     print(language)
 ```
@@ -875,7 +875,7 @@ for language in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Language().load({"id": "language_id"})
+result = client.Language().load()
 ```
 
 ### Common Methods
@@ -920,7 +920,7 @@ lifestyle = client.Lifestyle()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Lifestyle().load({"id": "lifestyle_id"})
+result = client.Lifestyle().load()
 ```
 
 ### Common Methods
@@ -960,12 +960,12 @@ monster = client.Monster()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Monster().list({})
+results = client.Monster().list()
 for monster in results:
     print(monster)
 ```
@@ -1015,12 +1015,12 @@ npc = client.Npc()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Npc().list({})
+results = client.Npc().list()
 for npc in results:
     print(npc)
 ```
@@ -1070,12 +1070,12 @@ party_skill = client.PartySkill()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.PartySkill().list({})
+results = client.PartySkill().list()
 for party_skill in results:
     print(party_skill)
 ```
@@ -1085,7 +1085,7 @@ for party_skill in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PartySkill().load({"id": "party_skill_id"})
+result = client.PartySkill().load()
 ```
 
 ### Common Methods
@@ -1130,7 +1130,7 @@ pkn = client.Pkn()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Pkn().load({"id": "pkn_id"})
+result = client.Pkn().load()
 ```
 
 ### Common Methods
@@ -1215,12 +1215,12 @@ quest = client.Quest()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Quest().list({})
+results = client.Quest().list()
 for quest in results:
     print(quest)
 ```
@@ -1275,7 +1275,7 @@ raised_pet = client.RaisedPet()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.RaisedPet().load({"id": "raised_pet_id"})
+result = client.RaisedPet().load()
 ```
 
 ### Common Methods
@@ -1315,12 +1315,12 @@ recipe = client.Recipe()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Recipe().list({})
+results = client.Recipe().list()
 for recipe in results:
     print(recipe)
 ```
@@ -1370,12 +1370,12 @@ skill = client.Skill()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Skill().list({})
+results = client.Skill().list()
 for skill in results:
     print(skill)
 ```
@@ -1430,7 +1430,7 @@ upgrade_level_bonus = client.UpgradeLevelBonus()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.UpgradeLevelBonus().load({"id": "upgrade_level_bonus_id"})
+result = client.UpgradeLevelBonus().load()
 ```
 
 ### Common Methods
@@ -1475,7 +1475,7 @@ version = client.Version()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Version().load({"id": "version_id"})
+result = client.Version().load()
 ```
 
 ### Common Methods
@@ -1517,30 +1517,30 @@ world = client.World()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | ``$ARRAY`` | Yes |  |
-| `flying` | ``$BOOLEAN`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `in_door` | ``$BOOLEAN`` | Yes |  |
-| `lodestar` | ``$ARRAY`` | Yes |  |
-| `name` | ``$OBJECT`` | Yes |  |
-| `pk` | ``$BOOLEAN`` | Yes |  |
-| `place` | ``$ARRAY`` | Yes |  |
-| `revival_key` | ``$STRING`` | No |  |
-| `revival_world` | ``$INTEGER`` | No |  |
-| `tile_name` | ``$STRING`` | Yes |  |
-| `tile_size` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `continent` | `list` | Yes |  |
+| `flying` | `bool` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `int` | Yes |  |
+| `in_door` | `bool` | Yes |  |
+| `lodestar` | `list` | Yes |  |
+| `name` | `dict` | Yes |  |
+| `pk` | `bool` | Yes |  |
+| `place` | `list` | Yes |  |
+| `revival_key` | `str` | No |  |
+| `revival_world` | `int` | No |  |
+| `tile_name` | `str` | Yes |  |
+| `tile_size` | `int` | Yes |  |
+| `type` | `str` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.World().list({})
+results = client.World().list()
 for world in results:
     print(world)
 ```
