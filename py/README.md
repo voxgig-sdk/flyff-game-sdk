@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load an achievement
+### 3. Load a core
 
+Core is nested under parameter, so provide the `parameter_id`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    achievement = client.Achievement().load({"id": "example_id"})
-    print(achievement)
+    core = client.Core().load({"parameter_id": "example_parameter_id"})
+    print(core)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -621,7 +622,7 @@ badge = client.Badge().load({"id": "badge_id"})
 
 ### Class
 
-Create an instance: `class = client.Class()`
+Create an instance: `class_ = client.Class()`
 
 #### Operations
 
@@ -659,13 +660,13 @@ Create an instance: `class = client.Class()`
 #### Example: Load
 
 ```python
-class = client.Class().load({"id": "class_id"})
+class_ = client.Class().load({"id": "class_id"})
 ```
 
 #### Example: List
 
 ```python
-classs = client.Class().list()
+class_s = client.Class().list()
 ```
 
 
@@ -682,7 +683,7 @@ Create an instance: `core = client.Core()`
 #### Example: Load
 
 ```python
-core = client.Core().load()
+core = client.Core().load({"parameter_id": "parameter_id"})
 ```
 
 
@@ -751,7 +752,7 @@ Create an instance: `equipment_set = client.EquipmentSet()`
 #### Example: Load
 
 ```python
-equipment_set = client.EquipmentSet().load()
+equipment_set = client.EquipmentSet().load({"equipment_set_id": "equipment_set_id"})
 ```
 
 #### Example: List
@@ -792,7 +793,7 @@ Create an instance: `housing_pack = client.HousingPack()`
 #### Example: Load
 
 ```python
-housing_pack = client.HousingPack().load()
+housing_pack = client.HousingPack().load({"housing_pack_id": "housing_pack_id"})
 ```
 
 #### Example: List
@@ -864,7 +865,7 @@ Create an instance: `language = client.Language()`
 #### Example: Load
 
 ```python
-language = client.Language().load()
+language = client.Language().load({"language_code": "language_code"})
 ```
 
 #### Example: List
@@ -953,7 +954,7 @@ Create an instance: `party_skill = client.PartySkill()`
 #### Example: Load
 
 ```python
-party_skill = client.PartySkill().load()
+party_skill = client.PartySkill().load({"party_skill_id": "party_skill_id"})
 ```
 
 #### Example: List

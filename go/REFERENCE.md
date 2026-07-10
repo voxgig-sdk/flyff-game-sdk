@@ -195,6 +195,7 @@ same parameters as `Direct()`.
 
 ```go
 achievement := client.Achievement(nil)
+fmt.Println(achievement.GetName()) // "achievement"
 ```
 
 ### Operations
@@ -205,6 +206,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Achievement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -213,6 +218,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Achievement(nil).Load(map[string]any{"id": "achievement_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -243,6 +252,7 @@ Return the entity name.
 
 ```go
 awake := client.Awake(nil)
+fmt.Println(awake.GetName()) // "awake"
 ```
 
 ### Operations
@@ -253,6 +263,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Awake(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -283,6 +297,7 @@ Return the entity name.
 
 ```go
 badge := client.Badge(nil)
+fmt.Println(badge.GetName()) // "badge"
 ```
 
 ### Operations
@@ -293,6 +308,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Badge(nil).Load(map[string]any{"id": "badge_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -323,6 +342,7 @@ Return the entity name.
 
 ```go
 class := client.Class(nil)
+fmt.Println(class.GetName()) // "class"
 ```
 
 ### Fields
@@ -359,6 +379,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Class(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -367,6 +391,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Class(nil).Load(map[string]any{"id": "class_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -397,6 +425,7 @@ Return the entity name.
 
 ```go
 core := client.Core(nil)
+fmt.Println(core.GetName()) // "core"
 ```
 
 ### Operations
@@ -406,7 +435,11 @@ core := client.Core(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Core(nil).Load(nil, nil)
+result, err := client.Core(nil).Load(map[string]any{"parameter_id": "parameter_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -437,6 +470,7 @@ Return the entity name.
 
 ```go
 couple := client.Couple(nil)
+fmt.Println(couple.GetName()) // "couple"
 ```
 
 ### Operations
@@ -447,6 +481,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Couple(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -477,6 +515,7 @@ Return the entity name.
 
 ```go
 dungeon := client.Dungeon(nil)
+fmt.Println(dungeon.GetName()) // "dungeon"
 ```
 
 ### Operations
@@ -487,6 +526,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Dungeon(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -517,6 +560,7 @@ Return the entity name.
 
 ```go
 element := client.Element(nil)
+fmt.Println(element.GetName()) // "element"
 ```
 
 ### Operations
@@ -527,6 +571,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Element(nil).Load(map[string]any{"id": "element_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -556,7 +604,8 @@ Return the entity name.
 ## EquipmentSetEntity
 
 ```go
-equipment_set := client.EquipmentSet(nil)
+equipmentSet := client.EquipmentSet(nil)
+fmt.Println(equipmentSet.GetName()) // "equipment_set"
 ```
 
 ### Operations
@@ -567,6 +616,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.EquipmentSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -574,7 +627,11 @@ results, err := client.EquipmentSet(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.EquipmentSet(nil).Load(nil, nil)
+result, err := client.EquipmentSet(nil).Load(map[string]any{"equipment_set_id": "equipment_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -604,7 +661,8 @@ Return the entity name.
 ## ExchangeMenusEntity
 
 ```go
-exchange_menus := client.ExchangeMenus(nil)
+exchangeMenus := client.ExchangeMenus(nil)
+fmt.Println(exchangeMenus.GetName()) // "exchange_menus"
 ```
 
 ### Operations
@@ -615,6 +673,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.ExchangeMenus(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -644,7 +706,8 @@ Return the entity name.
 ## HousingPackEntity
 
 ```go
-housing_pack := client.HousingPack(nil)
+housingPack := client.HousingPack(nil)
+fmt.Println(housingPack.GetName()) // "housing_pack"
 ```
 
 ### Operations
@@ -655,6 +718,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.HousingPack(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -662,7 +729,11 @@ results, err := client.HousingPack(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HousingPack(nil).Load(nil, nil)
+result, err := client.HousingPack(nil).Load(map[string]any{"housing_pack_id": "housing_pack_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -692,7 +763,8 @@ Return the entity name.
 ## HousingTemplateEntity
 
 ```go
-housing_template := client.HousingTemplate(nil)
+housingTemplate := client.HousingTemplate(nil)
+fmt.Println(housingTemplate.GetName()) // "housing_template"
 ```
 
 ### Operations
@@ -703,6 +775,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.HousingTemplate(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -711,6 +787,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.HousingTemplate(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -741,6 +821,7 @@ Return the entity name.
 
 ```go
 item := client.Item(nil)
+fmt.Println(item.GetName()) // "item"
 ```
 
 ### Operations
@@ -751,6 +832,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Item(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -759,6 +844,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -789,6 +878,7 @@ Return the entity name.
 
 ```go
 language := client.Language(nil)
+fmt.Println(language.GetName()) // "language"
 ```
 
 ### Operations
@@ -799,6 +889,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Language(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -806,7 +900,11 @@ results, err := client.Language(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Language(nil).Load(nil, nil)
+result, err := client.Language(nil).Load(map[string]any{"language_code": "language_code"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -837,6 +935,7 @@ Return the entity name.
 
 ```go
 lifestyle := client.Lifestyle(nil)
+fmt.Println(lifestyle.GetName()) // "lifestyle"
 ```
 
 ### Operations
@@ -847,6 +946,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Lifestyle(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -877,6 +980,7 @@ Return the entity name.
 
 ```go
 monster := client.Monster(nil)
+fmt.Println(monster.GetName()) // "monster"
 ```
 
 ### Operations
@@ -887,6 +991,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Monster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -895,6 +1003,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -925,6 +1037,7 @@ Return the entity name.
 
 ```go
 npc := client.Npc(nil)
+fmt.Println(npc.GetName()) // "npc"
 ```
 
 ### Operations
@@ -935,6 +1048,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Npc(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -943,6 +1060,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Npc(nil).Load(map[string]any{"id": "npc_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -972,7 +1093,8 @@ Return the entity name.
 ## PartySkillEntity
 
 ```go
-party_skill := client.PartySkill(nil)
+partySkill := client.PartySkill(nil)
+fmt.Println(partySkill.GetName()) // "party_skill"
 ```
 
 ### Operations
@@ -983,6 +1105,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.PartySkill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -990,7 +1116,11 @@ results, err := client.PartySkill(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PartySkill(nil).Load(nil, nil)
+result, err := client.PartySkill(nil).Load(map[string]any{"party_skill_id": "party_skill_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1021,6 +1151,7 @@ Return the entity name.
 
 ```go
 pkn := client.Pkn(nil)
+fmt.Println(pkn.GetName()) // "pkn"
 ```
 
 ### Operations
@@ -1031,6 +1162,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Pkn(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1061,6 +1196,7 @@ Return the entity name.
 
 ```go
 place := client.Place(nil)
+fmt.Println(place.GetName()) // "place"
 ```
 
 ### Operations
@@ -1071,6 +1207,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Place(nil).Load(map[string]any{"id": "place_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1101,6 +1241,7 @@ Return the entity name.
 
 ```go
 quest := client.Quest(nil)
+fmt.Println(quest.GetName()) // "quest"
 ```
 
 ### Operations
@@ -1111,6 +1252,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Quest(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1119,6 +1264,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Quest(nil).Load(map[string]any{"id": "quest_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1148,7 +1297,8 @@ Return the entity name.
 ## RaisedPetEntity
 
 ```go
-raised_pet := client.RaisedPet(nil)
+raisedPet := client.RaisedPet(nil)
+fmt.Println(raisedPet.GetName()) // "raised_pet"
 ```
 
 ### Operations
@@ -1159,6 +1309,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.RaisedPet(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1189,6 +1343,7 @@ Return the entity name.
 
 ```go
 recipe := client.Recipe(nil)
+fmt.Println(recipe.GetName()) // "recipe"
 ```
 
 ### Operations
@@ -1199,6 +1354,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Recipe(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1207,6 +1366,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Recipe(nil).Load(map[string]any{"id": "recipe_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1237,6 +1400,7 @@ Return the entity name.
 
 ```go
 skill := client.Skill(nil)
+fmt.Println(skill.GetName()) // "skill"
 ```
 
 ### Operations
@@ -1247,6 +1411,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Skill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1255,6 +1423,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1284,7 +1456,8 @@ Return the entity name.
 ## UpgradeLevelBonusEntity
 
 ```go
-upgrade_level_bonus := client.UpgradeLevelBonus(nil)
+upgradeLevelBonus := client.UpgradeLevelBonus(nil)
+fmt.Println(upgradeLevelBonus.GetName()) // "upgrade_level_bonus"
 ```
 
 ### Operations
@@ -1295,6 +1468,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.UpgradeLevelBonus(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1325,6 +1502,7 @@ Return the entity name.
 
 ```go
 version := client.Version(nil)
+fmt.Println(version.GetName()) // "version"
 ```
 
 ### Operations
@@ -1335,6 +1513,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Version(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1365,6 +1547,7 @@ Return the entity name.
 
 ```go
 world := client.World(nil)
+fmt.Println(world.GetName()) // "world"
 ```
 
 ### Fields
@@ -1395,6 +1578,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.World(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1403,6 +1590,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.World(nil).Load(map[string]any{"id": "world_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

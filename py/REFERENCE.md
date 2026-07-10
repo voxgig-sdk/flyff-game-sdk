@@ -329,7 +329,7 @@ Return the entity name.
 ## ClassEntity
 
 ```python
-class = client.Class()
+class_ = client.Class()
 ```
 
 ### Fields
@@ -366,8 +366,8 @@ List entities matching the given criteria. The match is optional — call `list(
 
 ```python
 results = client.Class().list()
-for class in results:
-    print(class)
+for class_ in results:
+    print(class_)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -420,7 +420,7 @@ core = client.Core()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Core().load()
+result = client.Core().load({"parameter_id": "parameter_id"})
 ```
 
 ### Common Methods
@@ -610,7 +610,7 @@ for equipment_set in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.EquipmentSet().load()
+result = client.EquipmentSet().load({"equipment_set_id": "equipment_set_id"})
 ```
 
 ### Common Methods
@@ -710,7 +710,7 @@ for housing_pack in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HousingPack().load()
+result = client.HousingPack().load({"housing_pack_id": "housing_pack_id"})
 ```
 
 ### Common Methods
@@ -875,7 +875,7 @@ for language in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Language().load()
+result = client.Language().load({"language_code": "language_code"})
 ```
 
 ### Common Methods
@@ -1085,7 +1085,7 @@ for party_skill in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PartySkill().load()
+result = client.PartySkill().load({"party_skill_id": "party_skill_id"})
 ```
 
 ### Common Methods

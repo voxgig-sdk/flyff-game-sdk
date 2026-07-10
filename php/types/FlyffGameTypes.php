@@ -78,9 +78,9 @@ class Class
 /** Request payload for Class#load. */
 class ClassLoadMatch
 {
-    public string $file_name;
-    public string $style;
-    public string $id;
+    public ?string $file_name = null;
+    public ?string $style = null;
+    public ?string $id = null;
 }
 
 /** Request payload for Class#list. */
@@ -201,8 +201,8 @@ class HousingTemplate
 /** Request payload for HousingTemplate#load. */
 class HousingTemplateLoadMatch
 {
-    public string $file_name;
-    public string $housing_template_id;
+    public ?string $file_name = null;
+    public ?string $housing_template_id = null;
 }
 
 /** Request payload for HousingTemplate#list. */
@@ -422,9 +422,6 @@ class World
 /** Request payload for World#load. */
 class WorldLoadMatch
 {
-    public int $tile_x;
-    public int $tile_y;
-    public string $world_tile_name;
     public string $id;
 }
 

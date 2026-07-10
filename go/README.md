@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single achievement — the value is the loaded record.
-    achievement, err := client.Achievement(nil).Load(map[string]any{"id": "example"}, nil)
+    achievement, err := client.Achievement(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -720,7 +720,7 @@ Create an instance: `core := client.Core(nil)`
 #### Example: Load
 
 ```go
-core, err := client.Core(nil).Load(nil, nil)
+core, err := client.Core(nil).Load(map[string]any{"parameter_id": "parameter_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -793,7 +793,7 @@ fmt.Println(element) // the loaded record
 
 ### EquipmentSet
 
-Create an instance: `equipment_set := client.EquipmentSet(nil)`
+Create an instance: `equipmentSet := client.EquipmentSet(nil)`
 
 #### Operations
 
@@ -805,27 +805,27 @@ Create an instance: `equipment_set := client.EquipmentSet(nil)`
 #### Example: Load
 
 ```go
-equipment_set, err := client.EquipmentSet(nil).Load(nil, nil)
+equipmentSet, err := client.EquipmentSet(nil).Load(map[string]any{"equipment_set_id": "equipment_set_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(equipment_set) // the loaded record
+fmt.Println(equipmentSet) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-equipment_sets, err := client.EquipmentSet(nil).List(nil, nil)
+equipmentSets, err := client.EquipmentSet(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(equipment_sets) // the array of records
+fmt.Println(equipmentSets) // the array of records
 ```
 
 
 ### ExchangeMenus
 
-Create an instance: `exchange_menus := client.ExchangeMenus(nil)`
+Create an instance: `exchangeMenus := client.ExchangeMenus(nil)`
 
 #### Operations
 
@@ -836,17 +836,17 @@ Create an instance: `exchange_menus := client.ExchangeMenus(nil)`
 #### Example: Load
 
 ```go
-exchange_menus, err := client.ExchangeMenus(nil).Load(nil, nil)
+exchangeMenus, err := client.ExchangeMenus(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(exchange_menus) // the loaded record
+fmt.Println(exchangeMenus) // the loaded record
 ```
 
 
 ### HousingPack
 
-Create an instance: `housing_pack := client.HousingPack(nil)`
+Create an instance: `housingPack := client.HousingPack(nil)`
 
 #### Operations
 
@@ -858,27 +858,27 @@ Create an instance: `housing_pack := client.HousingPack(nil)`
 #### Example: Load
 
 ```go
-housing_pack, err := client.HousingPack(nil).Load(nil, nil)
+housingPack, err := client.HousingPack(nil).Load(map[string]any{"housing_pack_id": "housing_pack_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(housing_pack) // the loaded record
+fmt.Println(housingPack) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-housing_packs, err := client.HousingPack(nil).List(nil, nil)
+housingPacks, err := client.HousingPack(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(housing_packs) // the array of records
+fmt.Println(housingPacks) // the array of records
 ```
 
 
 ### HousingTemplate
 
-Create an instance: `housing_template := client.HousingTemplate(nil)`
+Create an instance: `housingTemplate := client.HousingTemplate(nil)`
 
 #### Operations
 
@@ -890,21 +890,21 @@ Create an instance: `housing_template := client.HousingTemplate(nil)`
 #### Example: Load
 
 ```go
-housing_template, err := client.HousingTemplate(nil).Load(nil, nil)
+housingTemplate, err := client.HousingTemplate(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(housing_template) // the loaded record
+fmt.Println(housingTemplate) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-housing_templates, err := client.HousingTemplate(nil).List(nil, nil)
+housingTemplates, err := client.HousingTemplate(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(housing_templates) // the array of records
+fmt.Println(housingTemplates) // the array of records
 ```
 
 
@@ -954,7 +954,7 @@ Create an instance: `language := client.Language(nil)`
 #### Example: Load
 
 ```go
-language, err := client.Language(nil).Load(nil, nil)
+language, err := client.Language(nil).Load(map[string]any{"language_code": "language_code"}, nil)
 if err != nil {
     panic(err)
 }
@@ -1059,7 +1059,7 @@ fmt.Println(npcs) // the array of records
 
 ### PartySkill
 
-Create an instance: `party_skill := client.PartySkill(nil)`
+Create an instance: `partySkill := client.PartySkill(nil)`
 
 #### Operations
 
@@ -1071,21 +1071,21 @@ Create an instance: `party_skill := client.PartySkill(nil)`
 #### Example: Load
 
 ```go
-party_skill, err := client.PartySkill(nil).Load(nil, nil)
+partySkill, err := client.PartySkill(nil).Load(map[string]any{"party_skill_id": "party_skill_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(party_skill) // the loaded record
+fmt.Println(partySkill) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-party_skills, err := client.PartySkill(nil).List(nil, nil)
+partySkills, err := client.PartySkill(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(party_skills) // the array of records
+fmt.Println(partySkills) // the array of records
 ```
 
 
@@ -1165,7 +1165,7 @@ fmt.Println(quests) // the array of records
 
 ### RaisedPet
 
-Create an instance: `raised_pet := client.RaisedPet(nil)`
+Create an instance: `raisedPet := client.RaisedPet(nil)`
 
 #### Operations
 
@@ -1176,11 +1176,11 @@ Create an instance: `raised_pet := client.RaisedPet(nil)`
 #### Example: Load
 
 ```go
-raised_pet, err := client.RaisedPet(nil).Load(nil, nil)
+raisedPet, err := client.RaisedPet(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(raised_pet) // the loaded record
+fmt.Println(raisedPet) // the loaded record
 ```
 
 
@@ -1250,7 +1250,7 @@ fmt.Println(skills) // the array of records
 
 ### UpgradeLevelBonus
 
-Create an instance: `upgrade_level_bonus := client.UpgradeLevelBonus(nil)`
+Create an instance: `upgradeLevelBonus := client.UpgradeLevelBonus(nil)`
 
 #### Operations
 
@@ -1261,11 +1261,11 @@ Create an instance: `upgrade_level_bonus := client.UpgradeLevelBonus(nil)`
 #### Example: Load
 
 ```go
-upgrade_level_bonus, err := client.UpgradeLevelBonus(nil).Load(nil, nil)
+upgradeLevelBonus, err := client.UpgradeLevelBonus(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(upgrade_level_bonus) // the loaded record
+fmt.Println(upgradeLevelBonus) // the loaded record
 ```
 
 

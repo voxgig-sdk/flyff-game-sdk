@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -3861,15 +3858,18 @@
           "name": "Proprietary",
           "url": "https://api.flyff.com/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Main server",
             "url": "https://api.flyff.com"
           }
         ],
+        "summary": "All Game Data from Flyff Universe.",
         "termsOfService": "https://api.flyff.com/",
         "title": "Flyff Game API",
-        "version": "1.9.2"
+        "version": "1.9.2",
+        "website": "https://flyff.com"
       },
       "option": {},
       "target": {
@@ -3922,6 +3922,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -3972,6 +3975,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

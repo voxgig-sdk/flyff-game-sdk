@@ -65,9 +65,9 @@ type Class struct {
 
 // ClassLoadMatch is the typed request payload for Class.LoadTyped.
 type ClassLoadMatch struct {
-	FileName string `json:"file_name"`
-	Style string `json:"style"`
-	Id string `json:"id"`
+	FileName *string `json:"file_name,omitempty"`
+	Style *string `json:"style,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // ClassListMatch is the typed request payload for Class.ListTyped.
@@ -169,8 +169,8 @@ type HousingTemplate struct {
 
 // HousingTemplateLoadMatch is the typed request payload for HousingTemplate.LoadTyped.
 type HousingTemplateLoadMatch struct {
-	FileName string `json:"file_name"`
-	HousingTemplateId string `json:"housing_template_id"`
+	FileName *string `json:"file_name,omitempty"`
+	HousingTemplateId *string `json:"housing_template_id,omitempty"`
 }
 
 // HousingTemplateListMatch is the typed request payload for HousingTemplate.ListTyped.
@@ -351,9 +351,6 @@ type World struct {
 
 // WorldLoadMatch is the typed request payload for World.LoadTyped.
 type WorldLoadMatch struct {
-	TileX int `json:"tile_x"`
-	TileY int `json:"tile_y"`
-	WorldTileName string `json:"world_tile_name"`
 	Id string `json:"id"`
 }
 

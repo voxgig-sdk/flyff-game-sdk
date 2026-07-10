@@ -44,13 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load an achievement
+### 3. Load a core
+
+Core is nested under parameter, so provide the `parameter_id`.
 
 ```ruby
 begin
-  # load returns the bare Achievement record (raises on error).
-  achievement = client.Achievement.load({ "id" => "example_id" })
-  puts achievement
+  # load returns the bare Core record (raises on error).
+  core = client.Core.load({ "parameter_id" => "example_parameter_id" })
+  puts core
 rescue => err
   warn "load failed: #{err}"
 end
@@ -622,7 +624,7 @@ badge = client.Badge.load({ "id" => "badge_id" })
 
 ### Class
 
-Create an instance: `class = client.Class`
+Create an instance: `class_ = client.Class`
 
 #### Operations
 
@@ -661,14 +663,14 @@ Create an instance: `class = client.Class`
 
 ```ruby
 # load returns the bare Class record (raises on error).
-class = client.Class.load({ "id" => "class_id" })
+class_ = client.Class.load({ "id" => "class_id" })
 ```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of Class records (raises on error).
-classs = client.Class.list
+class_s = client.Class.list
 ```
 
 
@@ -686,7 +688,7 @@ Create an instance: `core = client.Core`
 
 ```ruby
 # load returns the bare Core record (raises on error).
-core = client.Core.load()
+core = client.Core.load({ "parameter_id" => "parameter_id" })
 ```
 
 
@@ -759,7 +761,7 @@ Create an instance: `equipment_set = client.EquipmentSet`
 
 ```ruby
 # load returns the bare EquipmentSet record (raises on error).
-equipment_set = client.EquipmentSet.load()
+equipment_set = client.EquipmentSet.load({ "equipment_set_id" => "equipment_set_id" })
 ```
 
 #### Example: List
@@ -803,7 +805,7 @@ Create an instance: `housing_pack = client.HousingPack`
 
 ```ruby
 # load returns the bare HousingPack record (raises on error).
-housing_pack = client.HousingPack.load()
+housing_pack = client.HousingPack.load({ "housing_pack_id" => "housing_pack_id" })
 ```
 
 #### Example: List
@@ -881,7 +883,7 @@ Create an instance: `language = client.Language`
 
 ```ruby
 # load returns the bare Language record (raises on error).
-language = client.Language.load()
+language = client.Language.load({ "language_code" => "language_code" })
 ```
 
 #### Example: List
@@ -977,7 +979,7 @@ Create an instance: `party_skill = client.PartySkill`
 
 ```ruby
 # load returns the bare PartySkill record (raises on error).
-party_skill = client.PartySkill.load()
+party_skill = client.PartySkill.load({ "party_skill_id" => "party_skill_id" })
 ```
 
 #### Example: List

@@ -45,14 +45,17 @@ for (const achievement of achievements) {
 }
 ```
 
-### 3. Load an achievement
+### 3. Load a core
 
+Core is nested under parameter, so provide the `parameter_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const achievement = await client.Achievement().load({ id: 'example_id' })
-  console.log(achievement)
+  const core = await client.Core().load({
+    parameter_id: 'example_parameter_id',
+  })
+  console.log(core)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -726,7 +729,7 @@ Create an instance: `const core = client.Core()`
 #### Example: Load
 
 ```ts
-const core = await client.Core().load()
+const core = await client.Core().load({ parameter_id: 'parameter_id' })
 ```
 
 
@@ -795,7 +798,7 @@ Create an instance: `const equipment_set = client.EquipmentSet()`
 #### Example: Load
 
 ```ts
-const equipment_set = await client.EquipmentSet().load()
+const equipment_set = await client.EquipmentSet().load({ equipment_set_id: 'equipment_set_id' })
 ```
 
 #### Example: List
@@ -836,7 +839,7 @@ Create an instance: `const housing_pack = client.HousingPack()`
 #### Example: Load
 
 ```ts
-const housing_pack = await client.HousingPack().load()
+const housing_pack = await client.HousingPack().load({ housing_pack_id: 'housing_pack_id' })
 ```
 
 #### Example: List
@@ -908,7 +911,7 @@ Create an instance: `const language = client.Language()`
 #### Example: Load
 
 ```ts
-const language = await client.Language().load()
+const language = await client.Language().load({ language_code: 'language_code' })
 ```
 
 #### Example: List
@@ -997,7 +1000,7 @@ Create an instance: `const party_skill = client.PartySkill()`
 #### Example: Load
 
 ```ts
-const party_skill = await client.PartySkill().load()
+const party_skill = await client.PartySkill().load({ party_skill_id: 'party_skill_id' })
 ```
 
 #### Example: List

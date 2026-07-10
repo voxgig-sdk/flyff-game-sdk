@@ -53,9 +53,9 @@ export interface Class {
 }
 
 export interface ClassLoadMatch {
-  file_name: string
-  style: string
-  id: string
+  file_name?: string
+  style?: string
+  id?: string
 }
 
 export interface ClassListMatch {
@@ -138,8 +138,8 @@ export interface HousingTemplate {
 }
 
 export interface HousingTemplateLoadMatch {
-  file_name: string
-  housing_template_id: string
+  file_name?: string
+  housing_template_id?: string
 }
 
 export interface HousingTemplateListMatch {
@@ -281,9 +281,6 @@ export interface World {
 }
 
 export interface WorldLoadMatch {
-  tile_x: number
-  tile_y: number
-  world_tile_name: string
   id: string
 }
 

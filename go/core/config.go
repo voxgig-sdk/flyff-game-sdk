@@ -2646,7 +2646,6 @@ func MakeConfig() map[string]any {
 											"orig": "tile_x",
 											"reqd": true,
 											"type": "`$INTEGER`",
-											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -2655,7 +2654,6 @@ func MakeConfig() map[string]any {
 											"orig": "tile_y",
 											"reqd": true,
 											"type": "`$INTEGER`",
-											"index$": 1,
 										},
 										map[string]any{
 											"active": true,
@@ -2665,7 +2663,6 @@ func MakeConfig() map[string]any {
 											"orig": "world_tile_name",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 2,
 										},
 									},
 								},

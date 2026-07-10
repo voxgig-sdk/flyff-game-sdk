@@ -336,7 +336,7 @@ Return the entity name.
 ## ClassEntity
 
 ```ruby
-class = client.Class
+class_ = client.Class
 ```
 
 ### Fields
@@ -426,7 +426,7 @@ core = client.Core
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Core.load()
+result = client.Core.load({ "parameter_id" => "parameter_id" })
 ```
 
 ### Common Methods
@@ -618,7 +618,7 @@ results = client.EquipmentSet.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.EquipmentSet.load()
+result = client.EquipmentSet.load({ "equipment_set_id" => "equipment_set_id" })
 ```
 
 ### Common Methods
@@ -718,7 +718,7 @@ results = client.HousingPack.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.HousingPack.load()
+result = client.HousingPack.load({ "housing_pack_id" => "housing_pack_id" })
 ```
 
 ### Common Methods
@@ -880,7 +880,7 @@ results = client.Language.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Language.load()
+result = client.Language.load({ "language_code" => "language_code" })
 ```
 
 ### Common Methods
@@ -1088,7 +1088,7 @@ results = client.PartySkill.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PartySkill.load()
+result = client.PartySkill.load({ "party_skill_id" => "party_skill_id" })
 ```
 
 ### Common Methods

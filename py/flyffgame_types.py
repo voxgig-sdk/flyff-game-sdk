@@ -71,7 +71,7 @@ class Class(ClassRequired, total=False):
     parent: int
 
 
-class ClassLoadMatch(TypedDict):
+class ClassLoadMatch(TypedDict, total=False):
     file_name: str
     style: str
     id: str
@@ -169,7 +169,7 @@ class HousingTemplate(TypedDict):
     pass
 
 
-class HousingTemplateLoadMatch(TypedDict):
+class HousingTemplateLoadMatch(TypedDict, total=False):
     file_name: str
     housing_template_id: str
 
@@ -344,9 +344,6 @@ class World(WorldRequired, total=False):
 
 
 class WorldLoadMatch(TypedDict):
-    tile_x: int
-    tile_y: int
-    world_tile_name: str
     id: str
 
 

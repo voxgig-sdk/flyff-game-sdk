@@ -47,12 +47,14 @@ for _, item in ipairs(achievements) do
 end
 ```
 
-### 3. Load an achievement
+### 3. Load a core
+
+Core is nested under parameter, so provide the `parameter_id`.
 
 ```lua
-local achievement, err = client:Achievement():load({ id = "example_id" })
+local core, err = client:Core():load({ parameter_id = "example_parameter_id" })
 if err then error(err) end
-print(achievement)
+print(core)
 ```
 
 
@@ -668,7 +670,7 @@ Create an instance: `local core = client:Core(nil)`
 #### Example: Load
 
 ```lua
-local core, err = client:Core():load()
+local core, err = client:Core():load({ parameter_id = "parameter_id" })
 ```
 
 
@@ -737,7 +739,7 @@ Create an instance: `local equipment_set = client:EquipmentSet(nil)`
 #### Example: Load
 
 ```lua
-local equipment_set, err = client:EquipmentSet():load()
+local equipment_set, err = client:EquipmentSet():load({ equipment_set_id = "equipment_set_id" })
 ```
 
 #### Example: List
@@ -778,7 +780,7 @@ Create an instance: `local housing_pack = client:HousingPack(nil)`
 #### Example: Load
 
 ```lua
-local housing_pack, err = client:HousingPack():load()
+local housing_pack, err = client:HousingPack():load({ housing_pack_id = "housing_pack_id" })
 ```
 
 #### Example: List
@@ -850,7 +852,7 @@ Create an instance: `local language = client:Language(nil)`
 #### Example: Load
 
 ```lua
-local language, err = client:Language():load()
+local language, err = client:Language():load({ language_code = "language_code" })
 ```
 
 #### Example: List
@@ -939,7 +941,7 @@ Create an instance: `local party_skill = client:PartySkill(nil)`
 #### Example: Load
 
 ```lua
-local party_skill, err = client:PartySkill():load()
+local party_skill, err = client:PartySkill():load({ party_skill_id = "party_skill_id" })
 ```
 
 #### Example: List

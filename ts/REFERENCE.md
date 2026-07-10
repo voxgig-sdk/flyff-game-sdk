@@ -649,7 +649,7 @@ const core = client.Core()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Core().load()
+const result = await client.Core().load({ parameter_id: 'parameter_id' })
 ```
 
 ### Common Methods
@@ -833,7 +833,7 @@ const results = await client.EquipmentSet().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.EquipmentSet().load()
+const result = await client.EquipmentSet().load({ equipment_set_id: 'equipment_set_id' })
 ```
 
 ### Common Methods
@@ -929,7 +929,7 @@ const results = await client.HousingPack().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HousingPack().load()
+const result = await client.HousingPack().load({ housing_pack_id: 'housing_pack_id' })
 ```
 
 ### Common Methods
@@ -1085,7 +1085,7 @@ const results = await client.Language().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Language().load()
+const result = await client.Language().load({ language_code: 'language_code' })
 ```
 
 ### Common Methods
@@ -1285,7 +1285,7 @@ const results = await client.PartySkill().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PartySkill().load()
+const result = await client.PartySkill().load({ party_skill_id: 'party_skill_id' })
 ```
 
 ### Common Methods

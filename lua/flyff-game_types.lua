@@ -46,9 +46,9 @@
 ---@field type string
 
 ---@class ClassLoadMatch
----@field file_name string
----@field style string
----@field id string
+---@field file_name? string
+---@field style? string
+---@field id? string
 
 ---@class ClassListMatch
 ---@field attack_speed? number
@@ -112,8 +112,8 @@
 ---@class HousingTemplate
 
 ---@class HousingTemplateLoadMatch
----@field file_name string
----@field housing_template_id string
+---@field file_name? string
+---@field housing_template_id? string
 
 ---@class HousingTemplateListMatch
 
@@ -216,9 +216,6 @@
 ---@field width number
 
 ---@class WorldLoadMatch
----@field tile_x number
----@field tile_y number
----@field world_tile_name string
 ---@field id string
 
 ---@class WorldListMatch

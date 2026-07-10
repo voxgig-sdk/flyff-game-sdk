@@ -423,7 +423,7 @@ local core = client:Core(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Core():load()
+local result, err = client:Core():load({ parameter_id = "parameter_id" })
 ```
 
 ### Common Methods
@@ -615,7 +615,7 @@ local results, err = client:EquipmentSet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:EquipmentSet():load()
+local result, err = client:EquipmentSet():load({ equipment_set_id = "equipment_set_id" })
 ```
 
 ### Common Methods
@@ -715,7 +715,7 @@ local results, err = client:HousingPack():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingPack():load()
+local result, err = client:HousingPack():load({ housing_pack_id = "housing_pack_id" })
 ```
 
 ### Common Methods
@@ -877,7 +877,7 @@ local results, err = client:Language():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Language():load()
+local result, err = client:Language():load({ language_code = "language_code" })
 ```
 
 ### Common Methods
@@ -1085,7 +1085,7 @@ local results, err = client:PartySkill():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PartySkill():load()
+local result, err = client:PartySkill():load({ party_skill_id = "party_skill_id" })
 ```
 
 ### Common Methods

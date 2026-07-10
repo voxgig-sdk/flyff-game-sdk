@@ -21,10 +21,10 @@ main: {
           url: "https://api.flyff.com"
         }
       ]
+      summary: "All Game Data from Flyff Universe."
       termsOfService: "https://api.flyff.com/"
       title: "Flyff Game API"
       version: "1.9.2"
+      website: "https://flyff.com"
     }
   }
-}
-

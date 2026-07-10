@@ -138,13 +138,13 @@ Class = Struct.new(
 # Request payload for Class#load.
 #
 # @!attribute [rw] file_name
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] style
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 ClassLoadMatch = Struct.new(
   :file_name,
   :style,
@@ -332,10 +332,10 @@ end
 # Request payload for HousingTemplate#load.
 #
 # @!attribute [rw] file_name
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] housing_template_id
-#   @return [String]
+#   @return [String, nil]
 HousingTemplateLoadMatch = Struct.new(
   :file_name,
   :housing_template_id,
@@ -602,21 +602,9 @@ World = Struct.new(
 
 # Request payload for World#load.
 #
-# @!attribute [rw] tile_x
-#   @return [Integer]
-#
-# @!attribute [rw] tile_y
-#   @return [Integer]
-#
-# @!attribute [rw] world_tile_name
-#   @return [String]
-#
 # @!attribute [rw] id
 #   @return [String]
 WorldLoadMatch = Struct.new(
-  :tile_x,
-  :tile_y,
-  :world_tile_name,
   :id,
   keyword_init: true
 )
