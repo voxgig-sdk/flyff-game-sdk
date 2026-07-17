@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FlyffGame SDK exists test
 
 local sdk = require("flyff-game_sdk")
 
