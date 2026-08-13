@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local achievements, err = client:Achievement():list()
+local dungeon, err = client:Dungeon():load()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Achievement():list()
+local result, err = client:Dungeon():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -296,8 +296,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attack_speed` |  |
-| `auto_attack_factor` |  |
+| `attackSpeed` |  |
+| `autoAttackFactors` |  |
 | `block` |  |
 | `critical` |  |
 | `defense` |  |
@@ -305,13 +305,13 @@ API path: `/image/badge/{fileName}`
 | `hp` |  |
 | `icon` |  |
 | `id` |  |
-| `magic_defense_int_factor` |  |
-| `magic_defense_sta_factor` |  |
-| `max_fp` |  |
-| `max_hp` |  |
-| `max_level` |  |
-| `max_mp` |  |
-| `min_level` |  |
+| `magicDefenseIntFactor` |  |
+| `magicDefenseStaFactor` |  |
+| `maxFP` |  |
+| `maxHP` |  |
+| `maxLevel` |  |
+| `maxMP` |  |
+| `minLevel` |  |
 | `mp` |  |
 | `name` |  |
 | `parent` |  |
@@ -524,19 +524,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continent` |  |
+| `continents` |  |
 | `flying` |  |
 | `height` |  |
 | `id` |  |
-| `in_door` |  |
-| `lodestar` |  |
+| `inDoor` |  |
+| `lodestars` |  |
 | `name` |  |
 | `pk` |  |
-| `place` |  |
-| `revival_key` |  |
-| `revival_world` |  |
-| `tile_name` |  |
-| `tile_size` |  |
+| `places` |  |
+| `revivalKey` |  |
+| `revivalWorld` |  |
+| `tileName` |  |
+| `tileSize` |  |
 | `type` |  |
 | `width` |  |
 
@@ -622,8 +622,8 @@ Create an instance: `local class = client:Class(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `number` |  |
-| `auto_attack_factor` | `table` |  |
+| `attackSpeed` | `number` |  |
+| `autoAttackFactors` | `table` |  |
 | `block` | `number` |  |
 | `critical` | `number` |  |
 | `defense` | `number` |  |
@@ -631,13 +631,13 @@ Create an instance: `local class = client:Class(nil)`
 | `hp` | `number` |  |
 | `icon` | `string` |  |
 | `id` | `number` |  |
-| `magic_defense_int_factor` | `number` |  |
-| `magic_defense_sta_factor` | `number` |  |
-| `max_fp` | `string` |  |
-| `max_hp` | `string` |  |
-| `max_level` | `number` |  |
-| `max_mp` | `string` |  |
-| `min_level` | `number` |  |
+| `magicDefenseIntFactor` | `number` |  |
+| `magicDefenseStaFactor` | `number` |  |
+| `maxFP` | `string` |  |
+| `maxHP` | `string` |  |
+| `maxLevel` | `number` |  |
+| `maxMP` | `string` |  |
+| `minLevel` | `number` |  |
 | `mp` | `number` |  |
 | `name` | `table` |  |
 | `parent` | `number` |  |
@@ -1123,19 +1123,19 @@ Create an instance: `local world = client:World(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `table` |  |
+| `continents` | `table` |  |
 | `flying` | `boolean` |  |
 | `height` | `number` |  |
 | `id` | `number` |  |
-| `in_door` | `boolean` |  |
-| `lodestar` | `table` |  |
+| `inDoor` | `boolean` |  |
+| `lodestars` | `table` |  |
 | `name` | `table` |  |
 | `pk` | `boolean` |  |
-| `place` | `table` |  |
-| `revival_key` | `string` |  |
-| `revival_world` | `number` |  |
-| `tile_name` | `string` |  |
-| `tile_size` | `number` |  |
+| `places` | `table` |  |
+| `revivalKey` | `string` |  |
+| `revivalWorld` | `number` |  |
+| `tileName` | `string` |  |
+| `tileSize` | `number` |  |
 | `type` | `string` |  |
 | `width` | `number` |  |
 
@@ -1224,15 +1224,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local achievement = client:Achievement()
-achievement:list()
+local dungeon = client:Dungeon()
+dungeon:load()
 
--- achievement:data_get() now returns the achievement data from the last list
--- achievement:match_get() returns the last match criteria
+-- dungeon:data_get() now returns the dungeon data from the last load
+-- dungeon:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -72,7 +72,7 @@ class ClassEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FLYFFGAME_TEST_CLASS_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FLYFF_GAME_TEST_CLASS_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class ClassEntityTest extends TestCase
             "id" => $class_ref01_data["id"],
         ];
         $class_ref01_data_dt0_loaded = $class_ref01_ent->load($class_ref01_match_dt0, null);
-        $class_ref01_data_dt0_load_result = Helpers::to_map($class_ref01_data_dt0_loaded);
+        $class_ref01_data_dt0_load_result = Helpers::to_map(is_object($class_ref01_data_dt0_loaded) && method_exists($class_ref01_data_dt0_loaded, 'data_get') ? $class_ref01_data_dt0_loaded->data_get() : $class_ref01_data_dt0_loaded);
         $this->assertNotNull($class_ref01_data_dt0_load_result);
         $this->assertEquals($class_ref01_data_dt0_load_result["id"], $class_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function class_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("FLYFFGAME_TEST_CLASS_ENTID");
+    $entid_env_raw = getenv("FLYFF_GAME_TEST_CLASS_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "FLYFFGAME_TEST_CLASS_ENTID" => $idmap,
-        "FLYFFGAME_TEST_LIVE" => "FALSE",
-        "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
+        "FLYFF_GAME_TEST_CLASS_ENTID" => $idmap,
+        "FLYFF_GAME_TEST_LIVE" => "FALSE",
+        "FLYFF_GAME_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["FLYFFGAME_TEST_CLASS_ENTID"]);
+        $env["FLYFF_GAME_TEST_CLASS_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["FLYFFGAME_TEST_LIVE"] === "TRUE") {
+    if ($env["FLYFF_GAME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function class_basic_setup($extra)
         $client = new FlyffGameSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["FLYFFGAME_TEST_LIVE"] === "TRUE";
+    $live = $env["FLYFF_GAME_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["FLYFFGAME_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["FLYFF_GAME_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

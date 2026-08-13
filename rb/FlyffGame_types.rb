@@ -48,10 +48,10 @@ BadgeLoadMatch = Struct.new(
 
 # Class entity data model.
 #
-# @!attribute [rw] attack_speed
+# @!attribute [rw] attackSpeed
 #   @return [Float]
 #
-# @!attribute [rw] auto_attack_factor
+# @!attribute [rw] autoAttackFactors
 #   @return [Hash]
 #
 # @!attribute [rw] block
@@ -75,25 +75,25 @@ BadgeLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer]
 #
-# @!attribute [rw] magic_defense_int_factor
+# @!attribute [rw] magicDefenseIntFactor
 #   @return [Float]
 #
-# @!attribute [rw] magic_defense_sta_factor
+# @!attribute [rw] magicDefenseStaFactor
 #   @return [Float]
 #
-# @!attribute [rw] max_fp
+# @!attribute [rw] maxFP
 #   @return [String]
 #
-# @!attribute [rw] max_hp
+# @!attribute [rw] maxHP
 #   @return [String]
 #
-# @!attribute [rw] max_level
+# @!attribute [rw] maxLevel
 #   @return [Integer]
 #
-# @!attribute [rw] max_mp
+# @!attribute [rw] maxMP
 #   @return [String]
 #
-# @!attribute [rw] min_level
+# @!attribute [rw] minLevel
 #   @return [Integer]
 #
 # @!attribute [rw] mp
@@ -110,9 +110,9 @@ BadgeLoadMatch = Struct.new(
 #
 # @!attribute [rw] type
 #   @return [String]
-Class = Struct.new(
-  :attack_speed,
-  :auto_attack_factor,
+ClassType = Struct.new(
+  :attackSpeed,
+  :autoAttackFactors,
   :block,
   :critical,
   :defense,
@@ -120,13 +120,13 @@ Class = Struct.new(
   :hp,
   :icon,
   :id,
-  :magic_defense_int_factor,
-  :magic_defense_sta_factor,
-  :max_fp,
-  :max_hp,
-  :max_level,
-  :max_mp,
-  :min_level,
+  :magicDefenseIntFactor,
+  :magicDefenseStaFactor,
+  :maxFP,
+  :maxHP,
+  :maxLevel,
+  :maxMP,
+  :minLevel,
   :mp,
   :name,
   :parent,
@@ -154,10 +154,10 @@ ClassLoadMatch = Struct.new(
 
 # Request payload for Class#list.
 #
-# @!attribute [rw] attack_speed
+# @!attribute [rw] attackSpeed
 #   @return [Float, nil]
 #
-# @!attribute [rw] auto_attack_factor
+# @!attribute [rw] autoAttackFactors
 #   @return [Hash, nil]
 #
 # @!attribute [rw] block
@@ -181,25 +181,25 @@ ClassLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] magic_defense_int_factor
+# @!attribute [rw] magicDefenseIntFactor
 #   @return [Float, nil]
 #
-# @!attribute [rw] magic_defense_sta_factor
+# @!attribute [rw] magicDefenseStaFactor
 #   @return [Float, nil]
 #
-# @!attribute [rw] max_fp
+# @!attribute [rw] maxFP
 #   @return [String, nil]
 #
-# @!attribute [rw] max_hp
+# @!attribute [rw] maxHP
 #   @return [String, nil]
 #
-# @!attribute [rw] max_level
+# @!attribute [rw] maxLevel
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_mp
+# @!attribute [rw] maxMP
 #   @return [String, nil]
 #
-# @!attribute [rw] min_level
+# @!attribute [rw] minLevel
 #   @return [Integer, nil]
 #
 # @!attribute [rw] mp
@@ -217,8 +217,8 @@ ClassLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 ClassListMatch = Struct.new(
-  :attack_speed,
-  :auto_attack_factor,
+  :attackSpeed,
+  :autoAttackFactors,
   :block,
   :critical,
   :defense,
@@ -226,13 +226,13 @@ ClassListMatch = Struct.new(
   :hp,
   :icon,
   :id,
-  :magic_defense_int_factor,
-  :magic_defense_sta_factor,
-  :max_fp,
-  :max_hp,
-  :max_level,
-  :max_mp,
-  :min_level,
+  :magicDefenseIntFactor,
+  :magicDefenseStaFactor,
+  :maxFP,
+  :maxHP,
+  :maxLevel,
+  :maxMP,
+  :minLevel,
   :mp,
   :name,
   :parent,
@@ -537,7 +537,7 @@ end
 
 # World entity data model.
 #
-# @!attribute [rw] continent
+# @!attribute [rw] continents
 #   @return [Array]
 #
 # @!attribute [rw] flying
@@ -549,10 +549,10 @@ end
 # @!attribute [rw] id
 #   @return [Integer]
 #
-# @!attribute [rw] in_door
+# @!attribute [rw] inDoor
 #   @return [Boolean]
 #
-# @!attribute [rw] lodestar
+# @!attribute [rw] lodestars
 #   @return [Array]
 #
 # @!attribute [rw] name
@@ -561,19 +561,19 @@ end
 # @!attribute [rw] pk
 #   @return [Boolean]
 #
-# @!attribute [rw] place
+# @!attribute [rw] places
 #   @return [Array]
 #
-# @!attribute [rw] revival_key
+# @!attribute [rw] revivalKey
 #   @return [String, nil]
 #
-# @!attribute [rw] revival_world
+# @!attribute [rw] revivalWorld
 #   @return [Integer, nil]
 #
-# @!attribute [rw] tile_name
+# @!attribute [rw] tileName
 #   @return [String]
 #
-# @!attribute [rw] tile_size
+# @!attribute [rw] tileSize
 #   @return [Integer]
 #
 # @!attribute [rw] type
@@ -582,19 +582,19 @@ end
 # @!attribute [rw] width
 #   @return [Integer]
 World = Struct.new(
-  :continent,
+  :continents,
   :flying,
   :height,
   :id,
-  :in_door,
-  :lodestar,
+  :inDoor,
+  :lodestars,
   :name,
   :pk,
-  :place,
-  :revival_key,
-  :revival_world,
-  :tile_name,
-  :tile_size,
+  :places,
+  :revivalKey,
+  :revivalWorld,
+  :tileName,
+  :tileSize,
   :type,
   :width,
   keyword_init: true
@@ -611,7 +611,7 @@ WorldLoadMatch = Struct.new(
 
 # Request payload for World#list.
 #
-# @!attribute [rw] continent
+# @!attribute [rw] continents
 #   @return [Array, nil]
 #
 # @!attribute [rw] flying
@@ -623,10 +623,10 @@ WorldLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] in_door
+# @!attribute [rw] inDoor
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] lodestar
+# @!attribute [rw] lodestars
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -635,19 +635,19 @@ WorldLoadMatch = Struct.new(
 # @!attribute [rw] pk
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] place
+# @!attribute [rw] places
 #   @return [Array, nil]
 #
-# @!attribute [rw] revival_key
+# @!attribute [rw] revivalKey
 #   @return [String, nil]
 #
-# @!attribute [rw] revival_world
+# @!attribute [rw] revivalWorld
 #   @return [Integer, nil]
 #
-# @!attribute [rw] tile_name
+# @!attribute [rw] tileName
 #   @return [String, nil]
 #
-# @!attribute [rw] tile_size
+# @!attribute [rw] tileSize
 #   @return [Integer, nil]
 #
 # @!attribute [rw] type
@@ -656,19 +656,19 @@ WorldLoadMatch = Struct.new(
 # @!attribute [rw] width
 #   @return [Integer, nil]
 WorldListMatch = Struct.new(
-  :continent,
+  :continents,
   :flying,
   :height,
   :id,
-  :in_door,
-  :lodestar,
+  :inDoor,
+  :lodestars,
   :name,
   :pk,
-  :place,
-  :revival_key,
-  :revival_world,
-  :tile_name,
-  :tile_size,
+  :places,
+  :revivalKey,
+  :revivalWorld,
+  :tileName,
+  :tileSize,
   :type,
   :width,
   keyword_init: true

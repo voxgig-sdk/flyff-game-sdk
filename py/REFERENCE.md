@@ -336,8 +336,8 @@ class_ = client.Class()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `float` | Yes |  |
-| `auto_attack_factor` | `dict` | Yes |  |
+| `attackSpeed` | `float` | Yes |  |
+| `autoAttackFactors` | `dict` | Yes |  |
 | `block` | `float` | Yes |  |
 | `critical` | `float` | Yes |  |
 | `defense` | `float` | Yes |  |
@@ -345,13 +345,13 @@ class_ = client.Class()
 | `hp` | `float` | Yes |  |
 | `icon` | `str` | Yes |  |
 | `id` | `int` | Yes |  |
-| `magic_defense_int_factor` | `float` | Yes |  |
-| `magic_defense_sta_factor` | `float` | Yes |  |
-| `max_fp` | `str` | Yes |  |
-| `max_hp` | `str` | Yes |  |
-| `max_level` | `int` | Yes |  |
-| `max_mp` | `str` | Yes |  |
-| `min_level` | `int` | Yes |  |
+| `magicDefenseIntFactor` | `float` | Yes |  |
+| `magicDefenseStaFactor` | `float` | Yes |  |
+| `maxFP` | `str` | Yes |  |
+| `maxHP` | `str` | Yes |  |
+| `maxLevel` | `int` | Yes |  |
+| `maxMP` | `str` | Yes |  |
+| `minLevel` | `int` | Yes |  |
 | `mp` | `float` | Yes |  |
 | `name` | `dict` | Yes |  |
 | `parent` | `int` | No |  |
@@ -1517,19 +1517,19 @@ world = client.World()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `list` | Yes |  |
+| `continents` | `list` | Yes |  |
 | `flying` | `bool` | Yes |  |
 | `height` | `int` | Yes |  |
 | `id` | `int` | Yes |  |
-| `in_door` | `bool` | Yes |  |
-| `lodestar` | `list` | Yes |  |
+| `inDoor` | `bool` | Yes |  |
+| `lodestars` | `list` | Yes |  |
 | `name` | `dict` | Yes |  |
 | `pk` | `bool` | Yes |  |
-| `place` | `list` | Yes |  |
-| `revival_key` | `str` | No |  |
-| `revival_world` | `int` | No |  |
-| `tile_name` | `str` | Yes |  |
-| `tile_size` | `int` | Yes |  |
+| `places` | `list` | Yes |  |
+| `revivalKey` | `str` | No |  |
+| `revivalWorld` | `int` | No |  |
+| `tileName` | `str` | Yes |  |
+| `tileSize` | `int` | Yes |  |
 | `type` | `str` | Yes |  |
 | `width` | `int` | Yes |  |
 

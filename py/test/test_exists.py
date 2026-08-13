@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# FlyffGame SDK exists test
 
 import pytest
 from flyffgame_sdk import FlyffGameSDK

@@ -343,8 +343,8 @@ class_ = client.Class
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `Float` | Yes |  |
-| `auto_attack_factor` | `Hash` | Yes |  |
+| `attackSpeed` | `Float` | Yes |  |
+| `autoAttackFactors` | `Hash` | Yes |  |
 | `block` | `Float` | Yes |  |
 | `critical` | `Float` | Yes |  |
 | `defense` | `Float` | Yes |  |
@@ -352,13 +352,13 @@ class_ = client.Class
 | `hp` | `Float` | Yes |  |
 | `icon` | `String` | Yes |  |
 | `id` | `Integer` | Yes |  |
-| `magic_defense_int_factor` | `Float` | Yes |  |
-| `magic_defense_sta_factor` | `Float` | Yes |  |
-| `max_fp` | `String` | Yes |  |
-| `max_hp` | `String` | Yes |  |
-| `max_level` | `Integer` | Yes |  |
-| `max_mp` | `String` | Yes |  |
-| `min_level` | `Integer` | Yes |  |
+| `magicDefenseIntFactor` | `Float` | Yes |  |
+| `magicDefenseStaFactor` | `Float` | Yes |  |
+| `maxFP` | `String` | Yes |  |
+| `maxHP` | `String` | Yes |  |
+| `maxLevel` | `Integer` | Yes |  |
+| `maxMP` | `String` | Yes |  |
+| `minLevel` | `Integer` | Yes |  |
 | `mp` | `Float` | Yes |  |
 | `name` | `Hash` | Yes |  |
 | `parent` | `Integer` | No |  |
@@ -1523,19 +1523,19 @@ world = client.World
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `Array` | Yes |  |
+| `continents` | `Array` | Yes |  |
 | `flying` | `Boolean` | Yes |  |
 | `height` | `Integer` | Yes |  |
 | `id` | `Integer` | Yes |  |
-| `in_door` | `Boolean` | Yes |  |
-| `lodestar` | `Array` | Yes |  |
+| `inDoor` | `Boolean` | Yes |  |
+| `lodestars` | `Array` | Yes |  |
 | `name` | `Hash` | Yes |  |
 | `pk` | `Boolean` | Yes |  |
-| `place` | `Array` | Yes |  |
-| `revival_key` | `String` | No |  |
-| `revival_world` | `Integer` | No |  |
-| `tile_name` | `String` | Yes |  |
-| `tile_size` | `Integer` | Yes |  |
+| `places` | `Array` | Yes |  |
+| `revivalKey` | `String` | No |  |
+| `revivalWorld` | `Integer` | No |  |
+| `tileName` | `String` | Yes |  |
+| `tileSize` | `Integer` | Yes |  |
 | `type` | `String` | Yes |  |
 | `width` | `Integer` | Yes |  |
 

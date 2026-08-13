@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FlyffGame',
   }
 
 
@@ -141,6 +141,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/achievement",
               "parts": [
@@ -175,6 +176,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/achievement/{achievementIds}",
               "parts": [
@@ -212,6 +214,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/achievement/{achievementId}",
               "parts": [
@@ -253,6 +256,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/awake/skill",
               "parts": [
@@ -271,6 +275,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/awake/stat",
               "parts": [
@@ -317,6 +322,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/badge/{fileName}",
               "parts": [
@@ -352,14 +358,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "attack_speed",
+          "name": "attackSpeed",
           "req": true,
           "type": "`$NUMBER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "auto_attack_factor",
+          "name": "autoAttackFactors",
           "req": true,
           "type": "`$OBJECT`",
           "index$": 1
@@ -415,49 +421,49 @@ class Config {
         },
         {
           "active": true,
-          "name": "magic_defense_int_factor",
+          "name": "magicDefenseIntFactor",
           "req": true,
           "type": "`$NUMBER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "magic_defense_sta_factor",
+          "name": "magicDefenseStaFactor",
           "req": true,
           "type": "`$NUMBER`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "max_fp",
+          "name": "maxFP",
           "req": true,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "max_hp",
+          "name": "maxHP",
           "req": true,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "max_level",
+          "name": "maxLevel",
           "req": true,
           "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "max_mp",
+          "name": "maxMP",
           "req": true,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "min_level",
+          "name": "minLevel",
           "req": true,
           "type": "`$INTEGER`",
           "index$": 15
@@ -507,6 +513,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/class",
               "parts": [
@@ -552,6 +559,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/class/{style}/{fileName}",
               "parts": [
@@ -593,6 +601,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/class/tree/{fileName}",
               "parts": [
@@ -633,6 +642,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/class/{classIds}",
               "parts": [
@@ -671,6 +681,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/class/{classId}",
               "parts": [
@@ -731,6 +742,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/parameter/{parameterIds}",
               "parts": [
@@ -768,6 +780,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/parameter/{parameterId}",
               "parts": [
@@ -813,6 +826,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/couple",
               "parts": [
@@ -844,6 +858,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/dungeon",
               "parts": [
@@ -887,6 +902,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/element/{fileName}",
               "parts": [
@@ -929,6 +945,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/equipmentset",
               "parts": [
@@ -963,6 +980,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/equipmentset/{equipmentSetIds}",
               "parts": [
@@ -1000,6 +1018,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/equipmentset/{equipmentSetId}",
               "parts": [
@@ -1045,6 +1064,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/exchangemenu",
               "parts": [
@@ -1076,6 +1096,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/housingpack",
               "parts": [
@@ -1110,6 +1131,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/housingpack/{housingPackIds}",
               "parts": [
@@ -1147,6 +1169,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/housingpack/{housingPackId}",
               "parts": [
@@ -1192,6 +1215,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/housingtemplate",
               "parts": [
@@ -1226,6 +1250,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/housingtemplate/{fileName}",
               "parts": [
@@ -1264,6 +1289,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/housingtemplate/{housingTemplateIds}",
               "parts": [
@@ -1301,6 +1327,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/housingtemplate/{housingTemplateId}",
               "parts": [
@@ -1346,6 +1373,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/item",
               "parts": [
@@ -1380,6 +1408,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/item/{fileName}",
               "parts": [
@@ -1418,6 +1447,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/item/{itemIds}",
               "parts": [
@@ -1455,6 +1485,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/item/{itemId}",
               "parts": [
@@ -1496,6 +1527,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/language",
               "parts": [
@@ -1530,6 +1562,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/language/{languageCode}.png",
               "parts": [
@@ -1572,6 +1605,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/lifestyle",
               "parts": [
@@ -1603,6 +1637,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/monster",
               "parts": [
@@ -1637,6 +1672,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/monster/{fileName}",
               "parts": [
@@ -1675,6 +1711,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/monster/{monsterIds}",
               "parts": [
@@ -1712,6 +1749,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/monster/{monsterId}",
               "parts": [
@@ -1753,6 +1791,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/npc",
               "parts": [
@@ -1787,6 +1826,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/npc/{fileName}",
               "parts": [
@@ -1825,6 +1865,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/npc/{npcIds}",
               "parts": [
@@ -1862,6 +1903,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/npc/{npcId}",
               "parts": [
@@ -1903,6 +1945,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/partyskill",
               "parts": [
@@ -1937,6 +1980,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partyskill/{partySkillIds}",
               "parts": [
@@ -1974,6 +2018,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partyskill/{partySkillId}",
               "parts": [
@@ -2019,6 +2064,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/pk",
               "parts": [
@@ -2062,6 +2108,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/place/{fileName}",
               "parts": [
@@ -2104,6 +2151,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/quest",
               "parts": [
@@ -2138,6 +2186,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/quest/{questIds}",
               "parts": [
@@ -2175,6 +2224,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/quest/{questId}",
               "parts": [
@@ -2216,6 +2266,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/raisedpet",
               "parts": [
@@ -2247,6 +2298,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/recipe",
               "parts": [
@@ -2281,6 +2333,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/recipe/{recipeIds}",
               "parts": [
@@ -2318,6 +2371,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/recipe/{recipeId}",
               "parts": [
@@ -2359,6 +2413,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/skill",
               "parts": [
@@ -2393,6 +2448,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/skill/{fileName}",
               "parts": [
@@ -2431,6 +2487,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/skill/{skillIds}",
               "parts": [
@@ -2468,6 +2525,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/skill/{skillId}",
               "parts": [
@@ -2509,6 +2567,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/upgradelevelbonus",
               "parts": [
@@ -2540,6 +2599,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/version/api",
               "parts": [
@@ -2558,6 +2618,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/version/data",
               "parts": [
@@ -2585,7 +2646,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "continent",
+          "name": "continents",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 0
@@ -2613,14 +2674,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "in_door",
+          "name": "inDoor",
           "req": true,
           "type": "`$BOOLEAN`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "lodestar",
+          "name": "lodestars",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 5
@@ -2641,35 +2702,35 @@ class Config {
         },
         {
           "active": true,
-          "name": "place",
+          "name": "places",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "revival_key",
+          "name": "revivalKey",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "revival_world",
+          "name": "revivalWorld",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "tile_name",
+          "name": "tileName",
           "req": true,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "tile_size",
+          "name": "tileSize",
           "req": true,
           "type": "`$INTEGER`",
           "index$": 12
@@ -2698,6 +2759,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/world",
               "parts": [
@@ -2751,6 +2813,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
               "parts": [
@@ -2788,6 +2851,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/world/{worldIds}",
               "parts": [
@@ -2826,6 +2890,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/world/{worldId}",
               "parts": [

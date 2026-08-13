@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "achievement": {
           "active": true,
@@ -34,6 +39,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/achievement",
                   "parts": [
@@ -65,6 +71,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/achievement/{achievementIds}",
                   "parts": [
@@ -100,6 +107,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/achievement/{achievementId}",
                   "parts": [
@@ -143,6 +151,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/awake/skill",
                   "parts": [
@@ -160,6 +169,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/awake/stat",
                   "parts": [
@@ -207,6 +217,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/badge/{fileName}",
                   "parts": [
@@ -244,13 +255,13 @@
           "fields": [
             {
               "active": true,
-              "name": "attack_speed",
+              "name": "attackSpeed",
               "req": true,
               "type": "`$NUMBER`"
             },
             {
               "active": true,
-              "name": "auto_attack_factor",
+              "name": "autoAttackFactors",
               "req": true,
               "type": "`$OBJECT`"
             },
@@ -298,43 +309,43 @@
             },
             {
               "active": true,
-              "name": "magic_defense_int_factor",
+              "name": "magicDefenseIntFactor",
               "req": true,
               "type": "`$NUMBER`"
             },
             {
               "active": true,
-              "name": "magic_defense_sta_factor",
+              "name": "magicDefenseStaFactor",
               "req": true,
               "type": "`$NUMBER`"
             },
             {
               "active": true,
-              "name": "max_fp",
+              "name": "maxFP",
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "max_hp",
+              "name": "maxHP",
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "max_level",
+              "name": "maxLevel",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "max_mp",
+              "name": "maxMP",
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "min_level",
+              "name": "minLevel",
               "req": true,
               "type": "`$INTEGER`"
             },
@@ -382,6 +393,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/class",
                   "parts": [
@@ -423,6 +435,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/class/{style}/{fileName}",
                   "parts": [
@@ -462,6 +475,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/class/tree/{fileName}",
                   "parts": [
@@ -500,6 +514,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/class/{classIds}",
                   "parts": [
@@ -536,6 +551,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/class/{classId}",
                   "parts": [
@@ -597,6 +613,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/parameter/{parameterIds}",
                   "parts": [
@@ -632,6 +649,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/parameter/{parameterId}",
                   "parts": [
@@ -679,6 +697,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/couple",
                   "parts": [
@@ -712,6 +731,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/dungeon",
                   "parts": [
@@ -756,6 +776,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/element/{fileName}",
                   "parts": [
@@ -800,6 +821,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/equipmentset",
                   "parts": [
@@ -831,6 +853,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/equipmentset/{equipmentSetIds}",
                   "parts": [
@@ -866,6 +889,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/equipmentset/{equipmentSetId}",
                   "parts": [
@@ -913,6 +937,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/exchangemenu",
                   "parts": [
@@ -946,6 +971,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingpack",
                   "parts": [
@@ -977,6 +1003,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingpack/{housingPackIds}",
                   "parts": [
@@ -1012,6 +1039,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingpack/{housingPackId}",
                   "parts": [
@@ -1059,6 +1087,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingtemplate",
                   "parts": [
@@ -1090,6 +1119,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/housingtemplate/{fileName}",
                   "parts": [
@@ -1126,6 +1156,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingtemplate/{housingTemplateIds}",
                   "parts": [
@@ -1161,6 +1192,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/housingtemplate/{housingTemplateId}",
                   "parts": [
@@ -1208,6 +1240,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/item",
                   "parts": [
@@ -1239,6 +1272,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/item/{fileName}",
                   "parts": [
@@ -1275,6 +1309,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/item/{itemIds}",
                   "parts": [
@@ -1310,6 +1345,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/item/{itemId}",
                   "parts": [
@@ -1353,6 +1389,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/language",
                   "parts": [
@@ -1384,6 +1421,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/language/{languageCode}.png",
                   "parts": [
@@ -1428,6 +1466,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/lifestyle",
                   "parts": [
@@ -1461,6 +1500,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/monster",
                   "parts": [
@@ -1492,6 +1532,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/monster/{fileName}",
                   "parts": [
@@ -1528,6 +1569,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/monster/{monsterIds}",
                   "parts": [
@@ -1563,6 +1605,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/monster/{monsterId}",
                   "parts": [
@@ -1606,6 +1649,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/npc",
                   "parts": [
@@ -1637,6 +1681,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/npc/{fileName}",
                   "parts": [
@@ -1673,6 +1718,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/npc/{npcIds}",
                   "parts": [
@@ -1708,6 +1754,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/npc/{npcId}",
                   "parts": [
@@ -1751,6 +1798,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/partyskill",
                   "parts": [
@@ -1782,6 +1830,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/partyskill/{partySkillIds}",
                   "parts": [
@@ -1817,6 +1866,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/partyskill/{partySkillId}",
                   "parts": [
@@ -1864,6 +1914,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/pk",
                   "parts": [
@@ -1908,6 +1959,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/place/{fileName}",
                   "parts": [
@@ -1952,6 +2004,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/quest",
                   "parts": [
@@ -1983,6 +2036,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/quest/{questIds}",
                   "parts": [
@@ -2018,6 +2072,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/quest/{questId}",
                   "parts": [
@@ -2061,6 +2116,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/raisedpet",
                   "parts": [
@@ -2094,6 +2150,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/recipe",
                   "parts": [
@@ -2125,6 +2182,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/recipe/{recipeIds}",
                   "parts": [
@@ -2160,6 +2218,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/recipe/{recipeId}",
                   "parts": [
@@ -2203,6 +2262,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/skill",
                   "parts": [
@@ -2234,6 +2294,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/skill/{fileName}",
                   "parts": [
@@ -2270,6 +2331,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/skill/{skillIds}",
                   "parts": [
@@ -2305,6 +2367,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/skill/{skillId}",
                   "parts": [
@@ -2348,6 +2411,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/upgradelevelbonus",
                   "parts": [
@@ -2381,6 +2445,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/version/api",
                   "parts": [
@@ -2398,6 +2463,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/version/data",
                   "parts": [
@@ -2427,7 +2493,7 @@
           "fields": [
             {
               "active": true,
-              "name": "continent",
+              "name": "continents",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -2451,13 +2517,13 @@
             },
             {
               "active": true,
-              "name": "in_door",
+              "name": "inDoor",
               "req": true,
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
-              "name": "lodestar",
+              "name": "lodestars",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -2475,31 +2541,31 @@
             },
             {
               "active": true,
-              "name": "place",
+              "name": "places",
               "req": true,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "revival_key",
+              "name": "revivalKey",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "revival_world",
+              "name": "revivalWorld",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "tile_name",
+              "name": "tileName",
               "req": true,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "tile_size",
+              "name": "tileSize",
               "req": true,
               "type": "`$INTEGER`"
             },
@@ -2529,6 +2595,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/world",
                   "parts": [
@@ -2577,6 +2644,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
                   "parts": [
@@ -2612,6 +2680,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/world/{worldIds}",
                   "parts": [
@@ -2648,6 +2717,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/world/{worldId}",
                   "parts": [
@@ -3872,18 +3942,41 @@
         "website": "https://flyff.com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3905,22 +3998,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -3959,21 +4070,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -4012,12 +4141,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -4029,10 +4163,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4054,22 +4201,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4091,13 +4256,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -4109,10 +4279,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4134,13 +4317,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -4157,10 +4345,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4182,13 +4383,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -4211,10 +4417,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "flyff-game"
+            "goversion": "",
+            "name": "flyff-game",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4236,9 +4455,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

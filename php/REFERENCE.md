@@ -342,8 +342,8 @@ $class = $client->Class();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `float` | Yes |  |
-| `auto_attack_factor` | `array` | Yes |  |
+| `attackSpeed` | `float` | Yes |  |
+| `autoAttackFactors` | `array` | Yes |  |
 | `block` | `float` | Yes |  |
 | `critical` | `float` | Yes |  |
 | `defense` | `float` | Yes |  |
@@ -351,13 +351,13 @@ $class = $client->Class();
 | `hp` | `float` | Yes |  |
 | `icon` | `string` | Yes |  |
 | `id` | `int` | Yes |  |
-| `magic_defense_int_factor` | `float` | Yes |  |
-| `magic_defense_sta_factor` | `float` | Yes |  |
-| `max_fp` | `string` | Yes |  |
-| `max_hp` | `string` | Yes |  |
-| `max_level` | `int` | Yes |  |
-| `max_mp` | `string` | Yes |  |
-| `min_level` | `int` | Yes |  |
+| `magicDefenseIntFactor` | `float` | Yes |  |
+| `magicDefenseStaFactor` | `float` | Yes |  |
+| `maxFP` | `string` | Yes |  |
+| `maxHP` | `string` | Yes |  |
+| `maxLevel` | `int` | Yes |  |
+| `maxMP` | `string` | Yes |  |
+| `minLevel` | `int` | Yes |  |
 | `mp` | `float` | Yes |  |
 | `name` | `array` | Yes |  |
 | `parent` | `int` | No |  |
@@ -1522,19 +1522,19 @@ $world = $client->World();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `array` | Yes |  |
+| `continents` | `array` | Yes |  |
 | `flying` | `bool` | Yes |  |
 | `height` | `int` | Yes |  |
 | `id` | `int` | Yes |  |
-| `in_door` | `bool` | Yes |  |
-| `lodestar` | `array` | Yes |  |
+| `inDoor` | `bool` | Yes |  |
+| `lodestars` | `array` | Yes |  |
 | `name` | `array` | Yes |  |
 | `pk` | `bool` | Yes |  |
-| `place` | `array` | Yes |  |
-| `revival_key` | `string` | No |  |
-| `revival_world` | `int` | No |  |
-| `tile_name` | `string` | Yes |  |
-| `tile_size` | `int` | Yes |  |
+| `places` | `array` | Yes |  |
+| `revivalKey` | `string` | No |  |
+| `revivalWorld` | `int` | No |  |
+| `tileName` | `string` | Yes |  |
+| `tileSize` | `int` | Yes |  |
 | `type` | `string` | Yes |  |
 | `width` | `int` | Yes |  |
 

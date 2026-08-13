@@ -53,7 +53,7 @@ except Exception as err:
 ### 3. Load a core
 
 Core is nested under parameter, so provide the `parameter_id`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -70,10 +70,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    achievements = client.Achievement().list()
-    print(achievements)
+    dungeon = client.Dungeon().load()
+    print(dungeon)
 except Exception as err:
-    print(f"list failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -137,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FlyffGameSDK.test()
 
-# Entity ops return the bare record and raise on error.
-achievement = client.Achievement().list()
-# achievement contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+dungeon = client.Dungeon().load()
+# dungeon contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -260,7 +261,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -309,8 +310,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attack_speed` |  |
-| `auto_attack_factor` |  |
+| `attackSpeed` |  |
+| `autoAttackFactors` |  |
 | `block` |  |
 | `critical` |  |
 | `defense` |  |
@@ -318,13 +319,13 @@ API path: `/image/badge/{fileName}`
 | `hp` |  |
 | `icon` |  |
 | `id` |  |
-| `magic_defense_int_factor` |  |
-| `magic_defense_sta_factor` |  |
-| `max_fp` |  |
-| `max_hp` |  |
-| `max_level` |  |
-| `max_mp` |  |
-| `min_level` |  |
+| `magicDefenseIntFactor` |  |
+| `magicDefenseStaFactor` |  |
+| `maxFP` |  |
+| `maxHP` |  |
+| `maxLevel` |  |
+| `maxMP` |  |
+| `minLevel` |  |
 | `mp` |  |
 | `name` |  |
 | `parent` |  |
@@ -537,19 +538,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continent` |  |
+| `continents` |  |
 | `flying` |  |
 | `height` |  |
 | `id` |  |
-| `in_door` |  |
-| `lodestar` |  |
+| `inDoor` |  |
+| `lodestars` |  |
 | `name` |  |
 | `pk` |  |
-| `place` |  |
-| `revival_key` |  |
-| `revival_world` |  |
-| `tile_name` |  |
-| `tile_size` |  |
+| `places` |  |
+| `revivalKey` |  |
+| `revivalWorld` |  |
+| `tileName` |  |
+| `tileSize` |  |
 | `type` |  |
 | `width` |  |
 
@@ -635,8 +636,8 @@ Create an instance: `class_ = client.Class()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `float` |  |
-| `auto_attack_factor` | `dict` |  |
+| `attackSpeed` | `float` |  |
+| `autoAttackFactors` | `dict` |  |
 | `block` | `float` |  |
 | `critical` | `float` |  |
 | `defense` | `float` |  |
@@ -644,13 +645,13 @@ Create an instance: `class_ = client.Class()`
 | `hp` | `float` |  |
 | `icon` | `str` |  |
 | `id` | `int` |  |
-| `magic_defense_int_factor` | `float` |  |
-| `magic_defense_sta_factor` | `float` |  |
-| `max_fp` | `str` |  |
-| `max_hp` | `str` |  |
-| `max_level` | `int` |  |
-| `max_mp` | `str` |  |
-| `min_level` | `int` |  |
+| `magicDefenseIntFactor` | `float` |  |
+| `magicDefenseStaFactor` | `float` |  |
+| `maxFP` | `str` |  |
+| `maxHP` | `str` |  |
+| `maxLevel` | `int` |  |
+| `maxMP` | `str` |  |
+| `minLevel` | `int` |  |
 | `mp` | `float` |  |
 | `name` | `dict` |  |
 | `parent` | `int` |  |
@@ -1136,19 +1137,19 @@ Create an instance: `world = client.World()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `list` |  |
+| `continents` | `list` |  |
 | `flying` | `bool` |  |
 | `height` | `int` |  |
 | `id` | `int` |  |
-| `in_door` | `bool` |  |
-| `lodestar` | `list` |  |
+| `inDoor` | `bool` |  |
+| `lodestars` | `list` |  |
 | `name` | `dict` |  |
 | `pk` | `bool` |  |
-| `place` | `list` |  |
-| `revival_key` | `str` |  |
-| `revival_world` | `int` |  |
-| `tile_name` | `str` |  |
-| `tile_size` | `int` |  |
+| `places` | `list` |  |
+| `revivalKey` | `str` |  |
+| `revivalWorld` | `int` |  |
+| `tileName` | `str` |  |
+| `tileSize` | `int` |  |
 | `type` | `str` |  |
 | `width` | `int` |  |
 
@@ -1236,15 +1237,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-achievement = client.Achievement()
-achievement.list()
+dungeon = client.Dungeon()
+dungeon.load()
 
-# achievement.data_get() now returns the achievement data from the last list
-# achievement.match_get() returns the last match criteria
+# dungeon.data_get() now returns the dungeon data from the last load
+# dungeon.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

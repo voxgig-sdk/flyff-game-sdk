@@ -50,7 +50,7 @@ Core is nested under parameter, so provide the `parameter_id`.
 
 ```ruby
 begin
-  # load returns the bare Core record (raises on error).
+  # load returns the ENTITY — call data_get for the Core record (raises on error).
   core = client.Core.load({ "parameter_id" => "example_parameter_id" })
   puts core
 rescue => err
@@ -65,9 +65,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  achievements = client.Achievement.list()
+  dungeon = client.Dungeon.load()
 rescue => err
-  warn "list failed: #{err}"
+  warn "load failed: #{err}"
 end
 ```
 
@@ -128,17 +128,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = FlyffGameSDK.test({
-  "entity" => { "achievement" => { "test01" => { "id" => "test01" } } },
-})
+client = FlyffGameSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-achievement = client.Achievement.list()
-puts achievement
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+dungeon = client.Dungeon.load()
+puts dungeon
 ```
 
 ### Use a custom fetch function
@@ -307,8 +305,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attack_speed` |  |
-| `auto_attack_factor` |  |
+| `attackSpeed` |  |
+| `autoAttackFactors` |  |
 | `block` |  |
 | `critical` |  |
 | `defense` |  |
@@ -316,13 +314,13 @@ API path: `/image/badge/{fileName}`
 | `hp` |  |
 | `icon` |  |
 | `id` |  |
-| `magic_defense_int_factor` |  |
-| `magic_defense_sta_factor` |  |
-| `max_fp` |  |
-| `max_hp` |  |
-| `max_level` |  |
-| `max_mp` |  |
-| `min_level` |  |
+| `magicDefenseIntFactor` |  |
+| `magicDefenseStaFactor` |  |
+| `maxFP` |  |
+| `maxHP` |  |
+| `maxLevel` |  |
+| `maxMP` |  |
+| `minLevel` |  |
 | `mp` |  |
 | `name` |  |
 | `parent` |  |
@@ -535,19 +533,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continent` |  |
+| `continents` |  |
 | `flying` |  |
 | `height` |  |
 | `id` |  |
-| `in_door` |  |
-| `lodestar` |  |
+| `inDoor` |  |
+| `lodestars` |  |
 | `name` |  |
 | `pk` |  |
-| `place` |  |
-| `revival_key` |  |
-| `revival_world` |  |
-| `tile_name` |  |
-| `tile_size` |  |
+| `places` |  |
+| `revivalKey` |  |
+| `revivalWorld` |  |
+| `tileName` |  |
+| `tileSize` |  |
 | `type` |  |
 | `width` |  |
 
@@ -574,7 +572,7 @@ Create an instance: `achievement = client.Achievement`
 #### Example: Load
 
 ```ruby
-# load returns the bare Achievement record (raises on error).
+# load returns the ENTITY — call data_get for the Achievement record (raises on error).
 achievement = client.Achievement.load({ "id" => "achievement_id" })
 ```
 
@@ -599,7 +597,7 @@ Create an instance: `awake = client.Awake`
 #### Example: Load
 
 ```ruby
-# load returns the bare Awake record (raises on error).
+# load returns the ENTITY — call data_get for the Awake record (raises on error).
 awake = client.Awake.load()
 ```
 
@@ -617,7 +615,7 @@ Create an instance: `badge = client.Badge`
 #### Example: Load
 
 ```ruby
-# load returns the bare Badge record (raises on error).
+# load returns the ENTITY — call data_get for the Badge record (raises on error).
 badge = client.Badge.load({ "id" => "badge_id" })
 ```
 
@@ -637,8 +635,8 @@ Create an instance: `class_ = client.Class`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `Float` |  |
-| `auto_attack_factor` | `Hash` |  |
+| `attackSpeed` | `Float` |  |
+| `autoAttackFactors` | `Hash` |  |
 | `block` | `Float` |  |
 | `critical` | `Float` |  |
 | `defense` | `Float` |  |
@@ -646,13 +644,13 @@ Create an instance: `class_ = client.Class`
 | `hp` | `Float` |  |
 | `icon` | `String` |  |
 | `id` | `Integer` |  |
-| `magic_defense_int_factor` | `Float` |  |
-| `magic_defense_sta_factor` | `Float` |  |
-| `max_fp` | `String` |  |
-| `max_hp` | `String` |  |
-| `max_level` | `Integer` |  |
-| `max_mp` | `String` |  |
-| `min_level` | `Integer` |  |
+| `magicDefenseIntFactor` | `Float` |  |
+| `magicDefenseStaFactor` | `Float` |  |
+| `maxFP` | `String` |  |
+| `maxHP` | `String` |  |
+| `maxLevel` | `Integer` |  |
+| `maxMP` | `String` |  |
+| `minLevel` | `Integer` |  |
 | `mp` | `Float` |  |
 | `name` | `Hash` |  |
 | `parent` | `Integer` |  |
@@ -662,7 +660,7 @@ Create an instance: `class_ = client.Class`
 #### Example: Load
 
 ```ruby
-# load returns the bare Class record (raises on error).
+# load returns the ENTITY — call data_get for the Class record (raises on error).
 class_ = client.Class.load({ "id" => "class_id" })
 ```
 
@@ -687,7 +685,7 @@ Create an instance: `core = client.Core`
 #### Example: Load
 
 ```ruby
-# load returns the bare Core record (raises on error).
+# load returns the ENTITY — call data_get for the Core record (raises on error).
 core = client.Core.load({ "parameter_id" => "parameter_id" })
 ```
 
@@ -705,7 +703,7 @@ Create an instance: `couple = client.Couple`
 #### Example: Load
 
 ```ruby
-# load returns the bare Couple record (raises on error).
+# load returns the ENTITY — call data_get for the Couple record (raises on error).
 couple = client.Couple.load()
 ```
 
@@ -723,7 +721,7 @@ Create an instance: `dungeon = client.Dungeon`
 #### Example: Load
 
 ```ruby
-# load returns the bare Dungeon record (raises on error).
+# load returns the ENTITY — call data_get for the Dungeon record (raises on error).
 dungeon = client.Dungeon.load()
 ```
 
@@ -741,7 +739,7 @@ Create an instance: `element = client.Element`
 #### Example: Load
 
 ```ruby
-# load returns the bare Element record (raises on error).
+# load returns the ENTITY — call data_get for the Element record (raises on error).
 element = client.Element.load({ "id" => "element_id" })
 ```
 
@@ -760,7 +758,7 @@ Create an instance: `equipment_set = client.EquipmentSet`
 #### Example: Load
 
 ```ruby
-# load returns the bare EquipmentSet record (raises on error).
+# load returns the ENTITY — call data_get for the EquipmentSet record (raises on error).
 equipment_set = client.EquipmentSet.load({ "equipment_set_id" => "equipment_set_id" })
 ```
 
@@ -785,7 +783,7 @@ Create an instance: `exchange_menus = client.ExchangeMenus`
 #### Example: Load
 
 ```ruby
-# load returns the bare ExchangeMenus record (raises on error).
+# load returns the ENTITY — call data_get for the ExchangeMenus record (raises on error).
 exchange_menus = client.ExchangeMenus.load()
 ```
 
@@ -804,7 +802,7 @@ Create an instance: `housing_pack = client.HousingPack`
 #### Example: Load
 
 ```ruby
-# load returns the bare HousingPack record (raises on error).
+# load returns the ENTITY — call data_get for the HousingPack record (raises on error).
 housing_pack = client.HousingPack.load({ "housing_pack_id" => "housing_pack_id" })
 ```
 
@@ -830,7 +828,7 @@ Create an instance: `housing_template = client.HousingTemplate`
 #### Example: Load
 
 ```ruby
-# load returns the bare HousingTemplate record (raises on error).
+# load returns the ENTITY — call data_get for the HousingTemplate record (raises on error).
 housing_template = client.HousingTemplate.load()
 ```
 
@@ -856,7 +854,7 @@ Create an instance: `item = client.Item`
 #### Example: Load
 
 ```ruby
-# load returns the bare Item record (raises on error).
+# load returns the ENTITY — call data_get for the Item record (raises on error).
 item = client.Item.load({ "id" => "item_id" })
 ```
 
@@ -882,7 +880,7 @@ Create an instance: `language = client.Language`
 #### Example: Load
 
 ```ruby
-# load returns the bare Language record (raises on error).
+# load returns the ENTITY — call data_get for the Language record (raises on error).
 language = client.Language.load({ "language_code" => "language_code" })
 ```
 
@@ -907,7 +905,7 @@ Create an instance: `lifestyle = client.Lifestyle`
 #### Example: Load
 
 ```ruby
-# load returns the bare Lifestyle record (raises on error).
+# load returns the ENTITY — call data_get for the Lifestyle record (raises on error).
 lifestyle = client.Lifestyle.load()
 ```
 
@@ -926,7 +924,7 @@ Create an instance: `monster = client.Monster`
 #### Example: Load
 
 ```ruby
-# load returns the bare Monster record (raises on error).
+# load returns the ENTITY — call data_get for the Monster record (raises on error).
 monster = client.Monster.load({ "id" => "monster_id" })
 ```
 
@@ -952,7 +950,7 @@ Create an instance: `npc = client.Npc`
 #### Example: Load
 
 ```ruby
-# load returns the bare Npc record (raises on error).
+# load returns the ENTITY — call data_get for the Npc record (raises on error).
 npc = client.Npc.load({ "id" => "npc_id" })
 ```
 
@@ -978,7 +976,7 @@ Create an instance: `party_skill = client.PartySkill`
 #### Example: Load
 
 ```ruby
-# load returns the bare PartySkill record (raises on error).
+# load returns the ENTITY — call data_get for the PartySkill record (raises on error).
 party_skill = client.PartySkill.load({ "party_skill_id" => "party_skill_id" })
 ```
 
@@ -1003,7 +1001,7 @@ Create an instance: `pkn = client.Pkn`
 #### Example: Load
 
 ```ruby
-# load returns the bare Pkn record (raises on error).
+# load returns the ENTITY — call data_get for the Pkn record (raises on error).
 pkn = client.Pkn.load()
 ```
 
@@ -1021,7 +1019,7 @@ Create an instance: `place = client.Place`
 #### Example: Load
 
 ```ruby
-# load returns the bare Place record (raises on error).
+# load returns the ENTITY — call data_get for the Place record (raises on error).
 place = client.Place.load({ "id" => "place_id" })
 ```
 
@@ -1040,7 +1038,7 @@ Create an instance: `quest = client.Quest`
 #### Example: Load
 
 ```ruby
-# load returns the bare Quest record (raises on error).
+# load returns the ENTITY — call data_get for the Quest record (raises on error).
 quest = client.Quest.load({ "id" => "quest_id" })
 ```
 
@@ -1065,7 +1063,7 @@ Create an instance: `raised_pet = client.RaisedPet`
 #### Example: Load
 
 ```ruby
-# load returns the bare RaisedPet record (raises on error).
+# load returns the ENTITY — call data_get for the RaisedPet record (raises on error).
 raised_pet = client.RaisedPet.load()
 ```
 
@@ -1084,7 +1082,7 @@ Create an instance: `recipe = client.Recipe`
 #### Example: Load
 
 ```ruby
-# load returns the bare Recipe record (raises on error).
+# load returns the ENTITY — call data_get for the Recipe record (raises on error).
 recipe = client.Recipe.load({ "id" => "recipe_id" })
 ```
 
@@ -1110,7 +1108,7 @@ Create an instance: `skill = client.Skill`
 #### Example: Load
 
 ```ruby
-# load returns the bare Skill record (raises on error).
+# load returns the ENTITY — call data_get for the Skill record (raises on error).
 skill = client.Skill.load({ "id" => "skill_id" })
 ```
 
@@ -1135,7 +1133,7 @@ Create an instance: `upgrade_level_bonus = client.UpgradeLevelBonus`
 #### Example: Load
 
 ```ruby
-# load returns the bare UpgradeLevelBonus record (raises on error).
+# load returns the ENTITY — call data_get for the UpgradeLevelBonus record (raises on error).
 upgrade_level_bonus = client.UpgradeLevelBonus.load()
 ```
 
@@ -1153,7 +1151,7 @@ Create an instance: `version = client.Version`
 #### Example: Load
 
 ```ruby
-# load returns the bare Version record (raises on error).
+# load returns the ENTITY — call data_get for the Version record (raises on error).
 version = client.Version.load()
 ```
 
@@ -1173,26 +1171,26 @@ Create an instance: `world = client.World`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `Array` |  |
+| `continents` | `Array` |  |
 | `flying` | `Boolean` |  |
 | `height` | `Integer` |  |
 | `id` | `Integer` |  |
-| `in_door` | `Boolean` |  |
-| `lodestar` | `Array` |  |
+| `inDoor` | `Boolean` |  |
+| `lodestars` | `Array` |  |
 | `name` | `Hash` |  |
 | `pk` | `Boolean` |  |
-| `place` | `Array` |  |
-| `revival_key` | `String` |  |
-| `revival_world` | `Integer` |  |
-| `tile_name` | `String` |  |
-| `tile_size` | `Integer` |  |
+| `places` | `Array` |  |
+| `revivalKey` | `String` |  |
+| `revivalWorld` | `Integer` |  |
+| `tileName` | `String` |  |
+| `tileSize` | `Integer` |  |
 | `type` | `String` |  |
 | `width` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare World record (raises on error).
+# load returns the ENTITY — call data_get for the World record (raises on error).
 world = client.World.load({ "id" => "world_id" })
 ```
 
@@ -1276,15 +1274,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-achievement = client.Achievement
-achievement.list()
+dungeon = client.Dungeon
+dungeon.load()
 
-# achievement.data_get now returns the achievement data from the last list
-# achievement.match_get returns the last match criteria
+# dungeon.data_get now returns the dungeon data from the last load
+# dungeon.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

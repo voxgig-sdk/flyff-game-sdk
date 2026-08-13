@@ -26,8 +26,8 @@ import {
 describe('PknEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FLYFFGAME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FLYFFGAME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FLYFF_GAME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FLYFF_GAME_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FlyffGameSDK.test()
@@ -62,7 +62,7 @@ describe('PknEntity', async () => {
     // LOAD
     const pkn_ref01_ent = client.Pkn()
     const pkn_ref01_match_dt0: any = {}
-    const pkn_ref01_data_dt0 = await pkn_ref01_ent.load(pkn_ref01_match_dt0)
+    const pkn_ref01_data_dt0 = (await pkn_ref01_ent.load(pkn_ref01_match_dt0)).data()
     assert(null != pkn_ref01_data_dt0)
 
 

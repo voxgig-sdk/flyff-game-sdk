@@ -60,6 +60,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/achievement",
                   "parts" => [
@@ -94,6 +95,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/achievement/{achievementIds}",
                   "parts" => [
@@ -131,6 +133,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/achievement/{achievementId}",
                   "parts" => [
@@ -172,6 +175,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/awake/skill",
                   "parts" => [
@@ -190,6 +194,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/awake/stat",
                   "parts" => [
@@ -236,6 +241,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/badge/{fileName}",
                   "parts" => [
@@ -271,14 +277,14 @@ module FlyffGameConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "attack_speed",
+              "name" => "attackSpeed",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "auto_attack_factor",
+              "name" => "autoAttackFactors",
               "req" => true,
               "type" => "`$OBJECT`",
               "index$" => 1,
@@ -334,49 +340,49 @@ module FlyffGameConfig
             },
             {
               "active" => true,
-              "name" => "magic_defense_int_factor",
+              "name" => "magicDefenseIntFactor",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 9,
             },
             {
               "active" => true,
-              "name" => "magic_defense_sta_factor",
+              "name" => "magicDefenseStaFactor",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "max_fp",
+              "name" => "maxFP",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "max_hp",
+              "name" => "maxHP",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 12,
             },
             {
               "active" => true,
-              "name" => "max_level",
+              "name" => "maxLevel",
               "req" => true,
               "type" => "`$INTEGER`",
               "index$" => 13,
             },
             {
               "active" => true,
-              "name" => "max_mp",
+              "name" => "maxMP",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 14,
             },
             {
               "active" => true,
-              "name" => "min_level",
+              "name" => "minLevel",
               "req" => true,
               "type" => "`$INTEGER`",
               "index$" => 15,
@@ -426,6 +432,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/class",
                   "parts" => [
@@ -471,6 +478,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/class/{style}/{fileName}",
                   "parts" => [
@@ -512,6 +520,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/class/tree/{fileName}",
                   "parts" => [
@@ -552,6 +561,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/class/{classIds}",
                   "parts" => [
@@ -590,6 +600,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/class/{classId}",
                   "parts" => [
@@ -650,6 +661,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/parameter/{parameterIds}",
                   "parts" => [
@@ -687,6 +699,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/parameter/{parameterId}",
                   "parts" => [
@@ -732,6 +745,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/couple",
                   "parts" => [
@@ -763,6 +777,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dungeon",
                   "parts" => [
@@ -806,6 +821,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/element/{fileName}",
                   "parts" => [
@@ -848,6 +864,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/equipmentset",
                   "parts" => [
@@ -882,6 +899,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/equipmentset/{equipmentSetIds}",
                   "parts" => [
@@ -919,6 +937,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/equipmentset/{equipmentSetId}",
                   "parts" => [
@@ -964,6 +983,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/exchangemenu",
                   "parts" => [
@@ -995,6 +1015,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingpack",
                   "parts" => [
@@ -1029,6 +1050,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingpack/{housingPackIds}",
                   "parts" => [
@@ -1066,6 +1088,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingpack/{housingPackId}",
                   "parts" => [
@@ -1111,6 +1134,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingtemplate",
                   "parts" => [
@@ -1145,6 +1169,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/housingtemplate/{fileName}",
                   "parts" => [
@@ -1183,6 +1208,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingtemplate/{housingTemplateIds}",
                   "parts" => [
@@ -1220,6 +1246,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/housingtemplate/{housingTemplateId}",
                   "parts" => [
@@ -1265,6 +1292,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/item",
                   "parts" => [
@@ -1299,6 +1327,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/item/{fileName}",
                   "parts" => [
@@ -1337,6 +1366,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/item/{itemIds}",
                   "parts" => [
@@ -1374,6 +1404,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/item/{itemId}",
                   "parts" => [
@@ -1415,6 +1446,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/language",
                   "parts" => [
@@ -1449,6 +1481,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/language/{languageCode}.png",
                   "parts" => [
@@ -1491,6 +1524,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/lifestyle",
                   "parts" => [
@@ -1522,6 +1556,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monster",
                   "parts" => [
@@ -1556,6 +1591,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/monster/{fileName}",
                   "parts" => [
@@ -1594,6 +1630,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monster/{monsterIds}",
                   "parts" => [
@@ -1631,6 +1668,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monster/{monsterId}",
                   "parts" => [
@@ -1672,6 +1710,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/npc",
                   "parts" => [
@@ -1706,6 +1745,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/npc/{fileName}",
                   "parts" => [
@@ -1744,6 +1784,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/npc/{npcIds}",
                   "parts" => [
@@ -1781,6 +1822,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/npc/{npcId}",
                   "parts" => [
@@ -1822,6 +1864,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/partyskill",
                   "parts" => [
@@ -1856,6 +1899,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/partyskill/{partySkillIds}",
                   "parts" => [
@@ -1893,6 +1937,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/partyskill/{partySkillId}",
                   "parts" => [
@@ -1938,6 +1983,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/pk",
                   "parts" => [
@@ -1981,6 +2027,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/place/{fileName}",
                   "parts" => [
@@ -2023,6 +2070,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quest",
                   "parts" => [
@@ -2057,6 +2105,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quest/{questIds}",
                   "parts" => [
@@ -2094,6 +2143,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quest/{questId}",
                   "parts" => [
@@ -2135,6 +2185,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/raisedpet",
                   "parts" => [
@@ -2166,6 +2217,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/recipe",
                   "parts" => [
@@ -2200,6 +2252,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/recipe/{recipeIds}",
                   "parts" => [
@@ -2237,6 +2290,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/recipe/{recipeId}",
                   "parts" => [
@@ -2278,6 +2332,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skill",
                   "parts" => [
@@ -2312,6 +2367,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/skill/{fileName}",
                   "parts" => [
@@ -2350,6 +2406,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skill/{skillIds}",
                   "parts" => [
@@ -2387,6 +2444,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skill/{skillId}",
                   "parts" => [
@@ -2428,6 +2486,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/upgradelevelbonus",
                   "parts" => [
@@ -2459,6 +2518,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/version/api",
                   "parts" => [
@@ -2477,6 +2537,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/version/data",
                   "parts" => [
@@ -2504,7 +2565,7 @@ module FlyffGameConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "continent",
+              "name" => "continents",
               "req" => true,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -2532,14 +2593,14 @@ module FlyffGameConfig
             },
             {
               "active" => true,
-              "name" => "in_door",
+              "name" => "inDoor",
               "req" => true,
               "type" => "`$BOOLEAN`",
               "index$" => 4,
             },
             {
               "active" => true,
-              "name" => "lodestar",
+              "name" => "lodestars",
               "req" => true,
               "type" => "`$ARRAY`",
               "index$" => 5,
@@ -2560,35 +2621,35 @@ module FlyffGameConfig
             },
             {
               "active" => true,
-              "name" => "place",
+              "name" => "places",
               "req" => true,
               "type" => "`$ARRAY`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "revival_key",
+              "name" => "revivalKey",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 9,
             },
             {
               "active" => true,
-              "name" => "revival_world",
+              "name" => "revivalWorld",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "tile_name",
+              "name" => "tileName",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "tile_size",
+              "name" => "tileSize",
               "req" => true,
               "type" => "`$INTEGER`",
               "index$" => 12,
@@ -2617,6 +2678,7 @@ module FlyffGameConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/world",
                   "parts" => [
@@ -2670,6 +2732,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
                   "parts" => [
@@ -2707,6 +2770,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/world/{worldIds}",
                   "parts" => [
@@ -2745,6 +2809,7 @@ module FlyffGameConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/world/{worldId}",
                   "parts" => [

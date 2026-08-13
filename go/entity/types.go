@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/flyff-game-sdk/go/core"
+)
 
 // Achievement is the typed data model for the achievement entity.
 type Achievement struct {
@@ -40,8 +44,8 @@ type BadgeLoadMatch struct {
 
 // Class is the typed data model for the class entity.
 type Class struct {
-	AttackSpeed float64 `json:"attack_speed"`
-	AutoAttackFactor map[string]any `json:"auto_attack_factor"`
+	AttackSpeed float64 `json:"attackSpeed"`
+	AutoAttackFactors map[string]any `json:"autoAttackFactors"`
 	Block float64 `json:"block"`
 	Critical float64 `json:"critical"`
 	Defense float64 `json:"defense"`
@@ -49,13 +53,13 @@ type Class struct {
 	Hp float64 `json:"hp"`
 	Icon string `json:"icon"`
 	Id int `json:"id"`
-	MagicDefenseIntFactor float64 `json:"magic_defense_int_factor"`
-	MagicDefenseStaFactor float64 `json:"magic_defense_sta_factor"`
-	MaxFp string `json:"max_fp"`
-	MaxHp string `json:"max_hp"`
-	MaxLevel int `json:"max_level"`
-	MaxMp string `json:"max_mp"`
-	MinLevel int `json:"min_level"`
+	MagicDefenseIntFactor float64 `json:"magicDefenseIntFactor"`
+	MagicDefenseStaFactor float64 `json:"magicDefenseStaFactor"`
+	MaxFP string `json:"maxFP"`
+	MaxHP string `json:"maxHP"`
+	MaxLevel int `json:"maxLevel"`
+	MaxMP string `json:"maxMP"`
+	MinLevel int `json:"minLevel"`
 	Mp float64 `json:"mp"`
 	Name map[string]any `json:"name"`
 	Parent *int `json:"parent,omitempty"`
@@ -72,8 +76,8 @@ type ClassLoadMatch struct {
 
 // ClassListMatch is the typed request payload for Class.ListTyped.
 type ClassListMatch struct {
-	AttackSpeed *float64 `json:"attack_speed,omitempty"`
-	AutoAttackFactor *map[string]any `json:"auto_attack_factor,omitempty"`
+	AttackSpeed *float64 `json:"attackSpeed,omitempty"`
+	AutoAttackFactors *map[string]any `json:"autoAttackFactors,omitempty"`
 	Block *float64 `json:"block,omitempty"`
 	Critical *float64 `json:"critical,omitempty"`
 	Defense *float64 `json:"defense,omitempty"`
@@ -81,13 +85,13 @@ type ClassListMatch struct {
 	Hp *float64 `json:"hp,omitempty"`
 	Icon *string `json:"icon,omitempty"`
 	Id *int `json:"id,omitempty"`
-	MagicDefenseIntFactor *float64 `json:"magic_defense_int_factor,omitempty"`
-	MagicDefenseStaFactor *float64 `json:"magic_defense_sta_factor,omitempty"`
-	MaxFp *string `json:"max_fp,omitempty"`
-	MaxHp *string `json:"max_hp,omitempty"`
-	MaxLevel *int `json:"max_level,omitempty"`
-	MaxMp *string `json:"max_mp,omitempty"`
-	MinLevel *int `json:"min_level,omitempty"`
+	MagicDefenseIntFactor *float64 `json:"magicDefenseIntFactor,omitempty"`
+	MagicDefenseStaFactor *float64 `json:"magicDefenseStaFactor,omitempty"`
+	MaxFP *string `json:"maxFP,omitempty"`
+	MaxHP *string `json:"maxHP,omitempty"`
+	MaxLevel *int `json:"maxLevel,omitempty"`
+	MaxMP *string `json:"maxMP,omitempty"`
+	MinLevel *int `json:"minLevel,omitempty"`
 	Mp *float64 `json:"mp,omitempty"`
 	Name *map[string]any `json:"name,omitempty"`
 	Parent *int `json:"parent,omitempty"`
@@ -332,19 +336,19 @@ type VersionLoadMatch struct {
 
 // World is the typed data model for the world entity.
 type World struct {
-	Continent []any `json:"continent"`
+	Continents []any `json:"continents"`
 	Flying bool `json:"flying"`
 	Height int `json:"height"`
 	Id int `json:"id"`
-	InDoor bool `json:"in_door"`
-	Lodestar []any `json:"lodestar"`
+	InDoor bool `json:"inDoor"`
+	Lodestars []any `json:"lodestars"`
 	Name map[string]any `json:"name"`
 	Pk bool `json:"pk"`
-	Place []any `json:"place"`
-	RevivalKey *string `json:"revival_key,omitempty"`
-	RevivalWorld *int `json:"revival_world,omitempty"`
-	TileName string `json:"tile_name"`
-	TileSize int `json:"tile_size"`
+	Places []any `json:"places"`
+	RevivalKey *string `json:"revivalKey,omitempty"`
+	RevivalWorld *int `json:"revivalWorld,omitempty"`
+	TileName string `json:"tileName"`
+	TileSize int `json:"tileSize"`
 	Type string `json:"type"`
 	Width int `json:"width"`
 }
@@ -356,19 +360,19 @@ type WorldLoadMatch struct {
 
 // WorldListMatch is the typed request payload for World.ListTyped.
 type WorldListMatch struct {
-	Continent *[]any `json:"continent,omitempty"`
+	Continents *[]any `json:"continents,omitempty"`
 	Flying *bool `json:"flying,omitempty"`
 	Height *int `json:"height,omitempty"`
 	Id *int `json:"id,omitempty"`
-	InDoor *bool `json:"in_door,omitempty"`
-	Lodestar *[]any `json:"lodestar,omitempty"`
+	InDoor *bool `json:"inDoor,omitempty"`
+	Lodestars *[]any `json:"lodestars,omitempty"`
 	Name *map[string]any `json:"name,omitempty"`
 	Pk *bool `json:"pk,omitempty"`
-	Place *[]any `json:"place,omitempty"`
-	RevivalKey *string `json:"revival_key,omitempty"`
-	RevivalWorld *int `json:"revival_world,omitempty"`
-	TileName *string `json:"tile_name,omitempty"`
-	TileSize *int `json:"tile_size,omitempty"`
+	Places *[]any `json:"places,omitempty"`
+	RevivalKey *string `json:"revivalKey,omitempty"`
+	RevivalWorld *int `json:"revivalWorld,omitempty"`
+	TileName *string `json:"tileName,omitempty"`
+	TileSize *int `json:"tileSize,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Width *int `json:"width,omitempty"`
 }
@@ -385,12 +389,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -402,12 +420,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

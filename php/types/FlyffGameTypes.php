@@ -52,8 +52,8 @@ class BadgeLoadMatch
 /** Class entity data model. */
 class Class
 {
-    public float $attack_speed;
-    public array $auto_attack_factor;
+    public float $attackSpeed;
+    public array $autoAttackFactors;
     public float $block;
     public float $critical;
     public float $defense;
@@ -61,13 +61,13 @@ class Class
     public float $hp;
     public string $icon;
     public int $id;
-    public float $magic_defense_int_factor;
-    public float $magic_defense_sta_factor;
-    public string $max_fp;
-    public string $max_hp;
-    public int $max_level;
-    public string $max_mp;
-    public int $min_level;
+    public float $magicDefenseIntFactor;
+    public float $magicDefenseStaFactor;
+    public string $maxFP;
+    public string $maxHP;
+    public int $maxLevel;
+    public string $maxMP;
+    public int $minLevel;
     public float $mp;
     public array $name;
     public ?int $parent = null;
@@ -86,8 +86,8 @@ class ClassLoadMatch
 /** Request payload for Class#list. */
 class ClassListMatch
 {
-    public ?float $attack_speed = null;
-    public ?array $auto_attack_factor = null;
+    public ?float $attackSpeed = null;
+    public ?array $autoAttackFactors = null;
     public ?float $block = null;
     public ?float $critical = null;
     public ?float $defense = null;
@@ -95,13 +95,13 @@ class ClassListMatch
     public ?float $hp = null;
     public ?string $icon = null;
     public ?int $id = null;
-    public ?float $magic_defense_int_factor = null;
-    public ?float $magic_defense_sta_factor = null;
-    public ?string $max_fp = null;
-    public ?string $max_hp = null;
-    public ?int $max_level = null;
-    public ?string $max_mp = null;
-    public ?int $min_level = null;
+    public ?float $magicDefenseIntFactor = null;
+    public ?float $magicDefenseStaFactor = null;
+    public ?string $maxFP = null;
+    public ?string $maxHP = null;
+    public ?int $maxLevel = null;
+    public ?string $maxMP = null;
+    public ?int $minLevel = null;
     public ?float $mp = null;
     public ?array $name = null;
     public ?int $parent = null;
@@ -402,19 +402,19 @@ class VersionLoadMatch
 /** World entity data model. */
 class World
 {
-    public array $continent;
+    public array $continents;
     public bool $flying;
     public int $height;
     public int $id;
-    public bool $in_door;
-    public array $lodestar;
+    public bool $inDoor;
+    public array $lodestars;
     public array $name;
     public bool $pk;
-    public array $place;
-    public ?string $revival_key = null;
-    public ?int $revival_world = null;
-    public string $tile_name;
-    public int $tile_size;
+    public array $places;
+    public ?string $revivalKey = null;
+    public ?int $revivalWorld = null;
+    public string $tileName;
+    public int $tileSize;
     public string $type;
     public int $width;
 }
@@ -428,19 +428,19 @@ class WorldLoadMatch
 /** Request payload for World#list. */
 class WorldListMatch
 {
-    public ?array $continent = null;
+    public ?array $continents = null;
     public ?bool $flying = null;
     public ?int $height = null;
     public ?int $id = null;
-    public ?bool $in_door = null;
-    public ?array $lodestar = null;
+    public ?bool $inDoor = null;
+    public ?array $lodestars = null;
     public ?array $name = null;
     public ?bool $pk = null;
-    public ?array $place = null;
-    public ?string $revival_key = null;
-    public ?int $revival_world = null;
-    public ?string $tile_name = null;
-    public ?int $tile_size = null;
+    public ?array $places = null;
+    public ?string $revivalKey = null;
+    public ?int $revivalWorld = null;
+    public ?string $tileName = null;
+    public ?int $tileSize = null;
     public ?string $type = null;
     public ?int $width = null;
 }

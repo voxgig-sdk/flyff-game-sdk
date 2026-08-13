@@ -340,8 +340,8 @@ local class = client:Class(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `number` | Yes |  |
-| `auto_attack_factor` | `table` | Yes |  |
+| `attackSpeed` | `number` | Yes |  |
+| `autoAttackFactors` | `table` | Yes |  |
 | `block` | `number` | Yes |  |
 | `critical` | `number` | Yes |  |
 | `defense` | `number` | Yes |  |
@@ -349,13 +349,13 @@ local class = client:Class(nil)
 | `hp` | `number` | Yes |  |
 | `icon` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
-| `magic_defense_int_factor` | `number` | Yes |  |
-| `magic_defense_sta_factor` | `number` | Yes |  |
-| `max_fp` | `string` | Yes |  |
-| `max_hp` | `string` | Yes |  |
-| `max_level` | `number` | Yes |  |
-| `max_mp` | `string` | Yes |  |
-| `min_level` | `number` | Yes |  |
+| `magicDefenseIntFactor` | `number` | Yes |  |
+| `magicDefenseStaFactor` | `number` | Yes |  |
+| `maxFP` | `string` | Yes |  |
+| `maxHP` | `string` | Yes |  |
+| `maxLevel` | `number` | Yes |  |
+| `maxMP` | `string` | Yes |  |
+| `minLevel` | `number` | Yes |  |
 | `mp` | `number` | Yes |  |
 | `name` | `table` | Yes |  |
 | `parent` | `number` | No |  |
@@ -1520,19 +1520,19 @@ local world = client:World(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `table` | Yes |  |
+| `continents` | `table` | Yes |  |
 | `flying` | `boolean` | Yes |  |
 | `height` | `number` | Yes |  |
 | `id` | `number` | Yes |  |
-| `in_door` | `boolean` | Yes |  |
-| `lodestar` | `table` | Yes |  |
+| `inDoor` | `boolean` | Yes |  |
+| `lodestars` | `table` | Yes |  |
 | `name` | `table` | Yes |  |
 | `pk` | `boolean` | Yes |  |
-| `place` | `table` | Yes |  |
-| `revival_key` | `string` | No |  |
-| `revival_world` | `number` | No |  |
-| `tile_name` | `string` | Yes |  |
-| `tile_size` | `number` | Yes |  |
+| `places` | `table` | Yes |  |
+| `revivalKey` | `string` | No |  |
+| `revivalWorld` | `number` | No |  |
+| `tileName` | `string` | Yes |  |
+| `tileSize` | `number` | Yes |  |
 | `type` | `string` | Yes |  |
 | `width` | `number` | Yes |  |
 

@@ -43,8 +43,8 @@ class FlyffGameTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('FLYFFGAME_TEST_LIVE');
-        $override = self::getenv('FLYFFGAME_TEST_OVERRIDE');
+        $live = self::getenv('FLYFF_GAME_TEST_LIVE');
+        $override = self::getenv('FLYFF_GAME_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class FlyffGameTestRunner
             }
         }
 
-        $explain = self::getenv('FLYFFGAME_TEST_EXPLAIN');
+        $explain = self::getenv('FLYFF_GAME_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['FLYFFGAME_TEST_EXPLAIN'] = $explain;
+            $m['FLYFF_GAME_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

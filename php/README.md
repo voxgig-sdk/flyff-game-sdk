@@ -51,7 +51,7 @@ Core is nested under parameter, so provide the `parameter_id`.
 
 ```php
 try {
-    // load() returns the bare Core record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Core record (throws on error).
     $core = $client->Core()->load(["parameter_id" => "example_parameter_id"]);
     print_r($core);
 } catch (\Throwable $err) {
@@ -67,7 +67,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $achievements = $client->Achievement()->list();
+    $dungeon = $client->Dungeon()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -134,17 +134,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = FlyffGameSDK::test([
-    "entity" => ["achievement" => ["test01" => ["id" => "test01"]]],
-]);
+$client = FlyffGameSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$achievement = $client->Achievement()->list();
-print_r($achievement);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$dungeon = $client->Dungeon()->load();
+print_r($dungeon);
 ```
 
 ### Use a custom fetch function
@@ -268,7 +266,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -317,8 +315,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attack_speed` |  |
-| `auto_attack_factor` |  |
+| `attackSpeed` |  |
+| `autoAttackFactors` |  |
 | `block` |  |
 | `critical` |  |
 | `defense` |  |
@@ -326,13 +324,13 @@ API path: `/image/badge/{fileName}`
 | `hp` |  |
 | `icon` |  |
 | `id` |  |
-| `magic_defense_int_factor` |  |
-| `magic_defense_sta_factor` |  |
-| `max_fp` |  |
-| `max_hp` |  |
-| `max_level` |  |
-| `max_mp` |  |
-| `min_level` |  |
+| `magicDefenseIntFactor` |  |
+| `magicDefenseStaFactor` |  |
+| `maxFP` |  |
+| `maxHP` |  |
+| `maxLevel` |  |
+| `maxMP` |  |
+| `minLevel` |  |
 | `mp` |  |
 | `name` |  |
 | `parent` |  |
@@ -545,19 +543,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continent` |  |
+| `continents` |  |
 | `flying` |  |
 | `height` |  |
 | `id` |  |
-| `in_door` |  |
-| `lodestar` |  |
+| `inDoor` |  |
+| `lodestars` |  |
 | `name` |  |
 | `pk` |  |
-| `place` |  |
-| `revival_key` |  |
-| `revival_world` |  |
-| `tile_name` |  |
-| `tile_size` |  |
+| `places` |  |
+| `revivalKey` |  |
+| `revivalWorld` |  |
+| `tileName` |  |
+| `tileSize` |  |
 | `type` |  |
 | `width` |  |
 
@@ -584,7 +582,7 @@ Create an instance: `$achievement = $client->Achievement();`
 #### Example: Load
 
 ```php
-// load() returns the bare Achievement record (throws on error).
+// load() returns the ENTITY — call data_get() for the Achievement record (throws on error).
 $achievement = $client->Achievement()->load(["id" => "achievement_id"]);
 ```
 
@@ -609,7 +607,7 @@ Create an instance: `$awake = $client->Awake();`
 #### Example: Load
 
 ```php
-// load() returns the bare Awake record (throws on error).
+// load() returns the ENTITY — call data_get() for the Awake record (throws on error).
 $awake = $client->Awake()->load();
 ```
 
@@ -627,7 +625,7 @@ Create an instance: `$badge = $client->Badge();`
 #### Example: Load
 
 ```php
-// load() returns the bare Badge record (throws on error).
+// load() returns the ENTITY — call data_get() for the Badge record (throws on error).
 $badge = $client->Badge()->load(["id" => "badge_id"]);
 ```
 
@@ -647,8 +645,8 @@ Create an instance: `$class = $client->Class();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `float` |  |
-| `auto_attack_factor` | `array` |  |
+| `attackSpeed` | `float` |  |
+| `autoAttackFactors` | `array` |  |
 | `block` | `float` |  |
 | `critical` | `float` |  |
 | `defense` | `float` |  |
@@ -656,13 +654,13 @@ Create an instance: `$class = $client->Class();`
 | `hp` | `float` |  |
 | `icon` | `string` |  |
 | `id` | `int` |  |
-| `magic_defense_int_factor` | `float` |  |
-| `magic_defense_sta_factor` | `float` |  |
-| `max_fp` | `string` |  |
-| `max_hp` | `string` |  |
-| `max_level` | `int` |  |
-| `max_mp` | `string` |  |
-| `min_level` | `int` |  |
+| `magicDefenseIntFactor` | `float` |  |
+| `magicDefenseStaFactor` | `float` |  |
+| `maxFP` | `string` |  |
+| `maxHP` | `string` |  |
+| `maxLevel` | `int` |  |
+| `maxMP` | `string` |  |
+| `minLevel` | `int` |  |
 | `mp` | `float` |  |
 | `name` | `array` |  |
 | `parent` | `int` |  |
@@ -672,7 +670,7 @@ Create an instance: `$class = $client->Class();`
 #### Example: Load
 
 ```php
-// load() returns the bare Class record (throws on error).
+// load() returns the ENTITY — call data_get() for the Class record (throws on error).
 $class = $client->Class()->load(["id" => "class_id"]);
 ```
 
@@ -697,7 +695,7 @@ Create an instance: `$core = $client->Core();`
 #### Example: Load
 
 ```php
-// load() returns the bare Core record (throws on error).
+// load() returns the ENTITY — call data_get() for the Core record (throws on error).
 $core = $client->Core()->load(["parameter_id" => "parameter_id"]);
 ```
 
@@ -715,7 +713,7 @@ Create an instance: `$couple = $client->Couple();`
 #### Example: Load
 
 ```php
-// load() returns the bare Couple record (throws on error).
+// load() returns the ENTITY — call data_get() for the Couple record (throws on error).
 $couple = $client->Couple()->load();
 ```
 
@@ -733,7 +731,7 @@ Create an instance: `$dungeon = $client->Dungeon();`
 #### Example: Load
 
 ```php
-// load() returns the bare Dungeon record (throws on error).
+// load() returns the ENTITY — call data_get() for the Dungeon record (throws on error).
 $dungeon = $client->Dungeon()->load();
 ```
 
@@ -751,7 +749,7 @@ Create an instance: `$element = $client->Element();`
 #### Example: Load
 
 ```php
-// load() returns the bare Element record (throws on error).
+// load() returns the ENTITY — call data_get() for the Element record (throws on error).
 $element = $client->Element()->load(["id" => "element_id"]);
 ```
 
@@ -770,7 +768,7 @@ Create an instance: `$equipment_set = $client->EquipmentSet();`
 #### Example: Load
 
 ```php
-// load() returns the bare EquipmentSet record (throws on error).
+// load() returns the ENTITY — call data_get() for the EquipmentSet record (throws on error).
 $equipment_set = $client->EquipmentSet()->load(["equipment_set_id" => "equipment_set_id"]);
 ```
 
@@ -795,7 +793,7 @@ Create an instance: `$exchange_menus = $client->ExchangeMenus();`
 #### Example: Load
 
 ```php
-// load() returns the bare ExchangeMenus record (throws on error).
+// load() returns the ENTITY — call data_get() for the ExchangeMenus record (throws on error).
 $exchange_menus = $client->ExchangeMenus()->load();
 ```
 
@@ -814,7 +812,7 @@ Create an instance: `$housing_pack = $client->HousingPack();`
 #### Example: Load
 
 ```php
-// load() returns the bare HousingPack record (throws on error).
+// load() returns the ENTITY — call data_get() for the HousingPack record (throws on error).
 $housing_pack = $client->HousingPack()->load(["housing_pack_id" => "housing_pack_id"]);
 ```
 
@@ -840,7 +838,7 @@ Create an instance: `$housing_template = $client->HousingTemplate();`
 #### Example: Load
 
 ```php
-// load() returns the bare HousingTemplate record (throws on error).
+// load() returns the ENTITY — call data_get() for the HousingTemplate record (throws on error).
 $housing_template = $client->HousingTemplate()->load();
 ```
 
@@ -866,7 +864,7 @@ Create an instance: `$item = $client->Item();`
 #### Example: Load
 
 ```php
-// load() returns the bare Item record (throws on error).
+// load() returns the ENTITY — call data_get() for the Item record (throws on error).
 $item = $client->Item()->load(["id" => "item_id"]);
 ```
 
@@ -892,7 +890,7 @@ Create an instance: `$language = $client->Language();`
 #### Example: Load
 
 ```php
-// load() returns the bare Language record (throws on error).
+// load() returns the ENTITY — call data_get() for the Language record (throws on error).
 $language = $client->Language()->load(["language_code" => "language_code"]);
 ```
 
@@ -917,7 +915,7 @@ Create an instance: `$lifestyle = $client->Lifestyle();`
 #### Example: Load
 
 ```php
-// load() returns the bare Lifestyle record (throws on error).
+// load() returns the ENTITY — call data_get() for the Lifestyle record (throws on error).
 $lifestyle = $client->Lifestyle()->load();
 ```
 
@@ -936,7 +934,7 @@ Create an instance: `$monster = $client->Monster();`
 #### Example: Load
 
 ```php
-// load() returns the bare Monster record (throws on error).
+// load() returns the ENTITY — call data_get() for the Monster record (throws on error).
 $monster = $client->Monster()->load(["id" => "monster_id"]);
 ```
 
@@ -962,7 +960,7 @@ Create an instance: `$npc = $client->Npc();`
 #### Example: Load
 
 ```php
-// load() returns the bare Npc record (throws on error).
+// load() returns the ENTITY — call data_get() for the Npc record (throws on error).
 $npc = $client->Npc()->load(["id" => "npc_id"]);
 ```
 
@@ -988,7 +986,7 @@ Create an instance: `$party_skill = $client->PartySkill();`
 #### Example: Load
 
 ```php
-// load() returns the bare PartySkill record (throws on error).
+// load() returns the ENTITY — call data_get() for the PartySkill record (throws on error).
 $party_skill = $client->PartySkill()->load(["party_skill_id" => "party_skill_id"]);
 ```
 
@@ -1013,7 +1011,7 @@ Create an instance: `$pkn = $client->Pkn();`
 #### Example: Load
 
 ```php
-// load() returns the bare Pkn record (throws on error).
+// load() returns the ENTITY — call data_get() for the Pkn record (throws on error).
 $pkn = $client->Pkn()->load();
 ```
 
@@ -1031,7 +1029,7 @@ Create an instance: `$place = $client->Place();`
 #### Example: Load
 
 ```php
-// load() returns the bare Place record (throws on error).
+// load() returns the ENTITY — call data_get() for the Place record (throws on error).
 $place = $client->Place()->load(["id" => "place_id"]);
 ```
 
@@ -1050,7 +1048,7 @@ Create an instance: `$quest = $client->Quest();`
 #### Example: Load
 
 ```php
-// load() returns the bare Quest record (throws on error).
+// load() returns the ENTITY — call data_get() for the Quest record (throws on error).
 $quest = $client->Quest()->load(["id" => "quest_id"]);
 ```
 
@@ -1075,7 +1073,7 @@ Create an instance: `$raised_pet = $client->RaisedPet();`
 #### Example: Load
 
 ```php
-// load() returns the bare RaisedPet record (throws on error).
+// load() returns the ENTITY — call data_get() for the RaisedPet record (throws on error).
 $raised_pet = $client->RaisedPet()->load();
 ```
 
@@ -1094,7 +1092,7 @@ Create an instance: `$recipe = $client->Recipe();`
 #### Example: Load
 
 ```php
-// load() returns the bare Recipe record (throws on error).
+// load() returns the ENTITY — call data_get() for the Recipe record (throws on error).
 $recipe = $client->Recipe()->load(["id" => "recipe_id"]);
 ```
 
@@ -1120,7 +1118,7 @@ Create an instance: `$skill = $client->Skill();`
 #### Example: Load
 
 ```php
-// load() returns the bare Skill record (throws on error).
+// load() returns the ENTITY — call data_get() for the Skill record (throws on error).
 $skill = $client->Skill()->load(["id" => "skill_id"]);
 ```
 
@@ -1145,7 +1143,7 @@ Create an instance: `$upgrade_level_bonus = $client->UpgradeLevelBonus();`
 #### Example: Load
 
 ```php
-// load() returns the bare UpgradeLevelBonus record (throws on error).
+// load() returns the ENTITY — call data_get() for the UpgradeLevelBonus record (throws on error).
 $upgrade_level_bonus = $client->UpgradeLevelBonus()->load();
 ```
 
@@ -1163,7 +1161,7 @@ Create an instance: `$version = $client->Version();`
 #### Example: Load
 
 ```php
-// load() returns the bare Version record (throws on error).
+// load() returns the ENTITY — call data_get() for the Version record (throws on error).
 $version = $client->Version()->load();
 ```
 
@@ -1183,26 +1181,26 @@ Create an instance: `$world = $client->World();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `array` |  |
+| `continents` | `array` |  |
 | `flying` | `bool` |  |
 | `height` | `int` |  |
 | `id` | `int` |  |
-| `in_door` | `bool` |  |
-| `lodestar` | `array` |  |
+| `inDoor` | `bool` |  |
+| `lodestars` | `array` |  |
 | `name` | `array` |  |
 | `pk` | `bool` |  |
-| `place` | `array` |  |
-| `revival_key` | `string` |  |
-| `revival_world` | `int` |  |
-| `tile_name` | `string` |  |
-| `tile_size` | `int` |  |
+| `places` | `array` |  |
+| `revivalKey` | `string` |  |
+| `revivalWorld` | `int` |  |
+| `tileName` | `string` |  |
+| `tileSize` | `int` |  |
 | `type` | `string` |  |
 | `width` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare World record (throws on error).
+// load() returns the ENTITY — call data_get() for the World record (throws on error).
 $world = $client->World()->load(["id" => "world_id"]);
 ```
 
@@ -1286,15 +1284,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$achievement = $client->Achievement();
-$achievement->list();
+$dungeon = $client->Dungeon();
+$dungeon->load();
 
-// $achievement->data_get() now returns the achievement data from the last list
-// $achievement->match_get() returns the last match criteria
+// $dungeon->data_get() now returns the dungeon data from the last load
+// $dungeon->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

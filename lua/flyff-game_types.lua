@@ -23,8 +23,8 @@
 ---@field id string
 
 ---@class Class
----@field attack_speed number
----@field auto_attack_factor table
+---@field attackSpeed number
+---@field autoAttackFactors table
 ---@field block number
 ---@field critical number
 ---@field defense number
@@ -32,13 +32,13 @@
 ---@field hp number
 ---@field icon string
 ---@field id number
----@field magic_defense_int_factor number
----@field magic_defense_sta_factor number
----@field max_fp string
----@field max_hp string
----@field max_level number
----@field max_mp string
----@field min_level number
+---@field magicDefenseIntFactor number
+---@field magicDefenseStaFactor number
+---@field maxFP string
+---@field maxHP string
+---@field maxLevel number
+---@field maxMP string
+---@field minLevel number
 ---@field mp number
 ---@field name table
 ---@field parent? number
@@ -51,8 +51,8 @@
 ---@field id? string
 
 ---@class ClassListMatch
----@field attack_speed? number
----@field auto_attack_factor? table
+---@field attackSpeed? number
+---@field autoAttackFactors? table
 ---@field block? number
 ---@field critical? number
 ---@field defense? number
@@ -60,13 +60,13 @@
 ---@field hp? number
 ---@field icon? string
 ---@field id? number
----@field magic_defense_int_factor? number
----@field magic_defense_sta_factor? number
----@field max_fp? string
----@field max_hp? string
----@field max_level? number
----@field max_mp? string
----@field min_level? number
+---@field magicDefenseIntFactor? number
+---@field magicDefenseStaFactor? number
+---@field maxFP? string
+---@field maxHP? string
+---@field maxLevel? number
+---@field maxMP? string
+---@field minLevel? number
 ---@field mp? number
 ---@field name? table
 ---@field parent? number
@@ -199,19 +199,19 @@
 ---@class VersionLoadMatch
 
 ---@class World
----@field continent table
+---@field continents table
 ---@field flying boolean
 ---@field height number
 ---@field id number
----@field in_door boolean
----@field lodestar table
+---@field inDoor boolean
+---@field lodestars table
 ---@field name table
 ---@field pk boolean
----@field place table
----@field revival_key? string
----@field revival_world? number
----@field tile_name string
----@field tile_size number
+---@field places table
+---@field revivalKey? string
+---@field revivalWorld? number
+---@field tileName string
+---@field tileSize number
 ---@field type string
 ---@field width number
 
@@ -219,19 +219,19 @@
 ---@field id string
 
 ---@class WorldListMatch
----@field continent? table
+---@field continents? table
 ---@field flying? boolean
 ---@field height? number
 ---@field id? number
----@field in_door? boolean
----@field lodestar? table
+---@field inDoor? boolean
+---@field lodestars? table
 ---@field name? table
 ---@field pk? boolean
----@field place? table
----@field revival_key? string
----@field revival_world? number
----@field tile_name? string
----@field tile_size? number
+---@field places? table
+---@field revivalKey? string
+---@field revivalWorld? number
+---@field tileName? string
+---@field tileSize? number
 ---@field type? string
 ---@field width? number
 

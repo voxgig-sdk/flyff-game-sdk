@@ -26,8 +26,8 @@ import {
 describe('ClassEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FLYFFGAME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FLYFFGAME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FLYFF_GAME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FLYFF_GAME_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FlyffGameSDK.test()
@@ -63,13 +63,13 @@ describe('ClassEntity', async () => {
     const class_ref01_ent = client.Class()
     const class_ref01_match: any = {}
 
-    const class_ref01_list = await class_ref01_ent.list(class_ref01_match)
+    const class_ref01_list = (await class_ref01_ent.list(class_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const class_ref01_match_dt0: any = {}
     class_ref01_match_dt0.id = class_ref01_data.id
-    const class_ref01_data_dt0 = await class_ref01_ent.load(class_ref01_match_dt0)
+    const class_ref01_data_dt0 = (await class_ref01_ent.load(class_ref01_match_dt0)).data()
     assert(class_ref01_data_dt0.id === class_ref01_data.id)
 
 

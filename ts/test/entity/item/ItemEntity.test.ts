@@ -26,8 +26,8 @@ import {
 describe('ItemEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FLYFFGAME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FLYFFGAME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FLYFF_GAME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FLYFF_GAME_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FlyffGameSDK.test()
@@ -63,7 +63,7 @@ describe('ItemEntity', async () => {
     const item_ref01_ent = client.Item()
     const item_ref01_match: any = {}
 
-    const item_ref01_list = await item_ref01_ent.list(item_ref01_match)
+    const item_ref01_list = (await item_ref01_ent.list(item_ref01_match)).map((e: any) => e.data())
 
 
 

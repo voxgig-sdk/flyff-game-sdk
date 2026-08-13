@@ -476,6 +476,27 @@ Return a copy of the entity options.
 const awake = client.Awake()
 ```
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `skill` | `/awake/skill` | `client.Awake().load({ $action: 'skill', ... })` |
+| `stat` | `/awake/stat` | `client.Awake().load({ $action: 'stat', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Awake record — check the API definition for its shape.
+
+```ts
+const result = await client.Awake().load({
+  $action: 'skill',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -568,8 +589,8 @@ const class_ = client.Class()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `number` | Yes |  |
-| `auto_attack_factor` | `Record<string, any>` | Yes |  |
+| `attackSpeed` | `number` | Yes |  |
+| `autoAttackFactors` | `Record<string, any>` | Yes |  |
 | `block` | `number` | Yes |  |
 | `critical` | `number` | Yes |  |
 | `defense` | `number` | Yes |  |
@@ -577,13 +598,13 @@ const class_ = client.Class()
 | `hp` | `number` | Yes |  |
 | `icon` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
-| `magic_defense_int_factor` | `number` | Yes |  |
-| `magic_defense_sta_factor` | `number` | Yes |  |
-| `max_fp` | `string` | Yes |  |
-| `max_hp` | `string` | Yes |  |
-| `max_level` | `number` | Yes |  |
-| `max_mp` | `string` | Yes |  |
-| `min_level` | `number` | Yes |  |
+| `magicDefenseIntFactor` | `number` | Yes |  |
+| `magicDefenseStaFactor` | `number` | Yes |  |
+| `maxFP` | `string` | Yes |  |
+| `maxHP` | `string` | Yes |  |
+| `maxLevel` | `number` | Yes |  |
+| `maxMP` | `string` | Yes |  |
+| `minLevel` | `number` | Yes |  |
 | `mp` | `number` | Yes |  |
 | `name` | `Record<string, any>` | Yes |  |
 | `parent` | `number` | No |  |
@@ -1068,6 +1089,26 @@ Return a copy of the entity options.
 
 ```ts
 const language = client.Language()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `language_code` | `/image/language/{languageCode}.png` | `client.Language().load({ $action: 'language_code', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Language record — check the API definition for its shape.
+
+```ts
+const result = await client.Language().load({
+  $action: 'language_code',
+  /* ...the action's own arguments */
+})
 ```
 
 ### Operations
@@ -1654,6 +1695,27 @@ Return a copy of the entity options.
 const version = client.Version()
 ```
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `api` | `/version/api` | `client.Version().load({ $action: 'api', ... })` |
+| `data` | `/version/data` | `client.Version().load({ $action: 'data', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Version record — check the API definition for its shape.
+
+```ts
+const result = await client.Version().load({
+  $action: 'api',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -1702,21 +1764,41 @@ const world = client.World()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `any[]` | Yes |  |
+| `continents` | `any[]` | Yes |  |
 | `flying` | `boolean` | Yes |  |
 | `height` | `number` | Yes |  |
 | `id` | `number` | Yes |  |
-| `in_door` | `boolean` | Yes |  |
-| `lodestar` | `any[]` | Yes |  |
+| `inDoor` | `boolean` | Yes |  |
+| `lodestars` | `any[]` | Yes |  |
 | `name` | `Record<string, any>` | Yes |  |
 | `pk` | `boolean` | Yes |  |
-| `place` | `any[]` | Yes |  |
-| `revival_key` | `string` | No |  |
-| `revival_world` | `number` | No |  |
-| `tile_name` | `string` | Yes |  |
-| `tile_size` | `number` | Yes |  |
+| `places` | `any[]` | Yes |  |
+| `revivalKey` | `string` | No |  |
+| `revivalWorld` | `number` | No |  |
+| `tileName` | `string` | Yes |  |
+| `tileSize` | `number` | Yes |  |
 | `type` | `string` | Yes |  |
 | `width` | `number` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `world_tile_nametile_x_tile_y_0` | `/image/world/{worldTileName}{tileX}-{tileY}-0.png` | `client.World().load({ $action: 'world_tile_nametile_x_tile_y_0', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+World record — check the API definition for its shape.
+
+```ts
+const result = await client.World().load({
+  $action: 'world_tile_nametile_x_tile_y_0',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

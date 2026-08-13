@@ -70,7 +70,7 @@ describe("WorldEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set FLYFFGAME_TEST_WORLD_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set FLYFF_GAME_TEST_WORLD_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("WorldEntity", function()
     }
     local world_ref01_data_dt0_loaded, err = world_ref01_ent:load(world_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local world_ref01_data_dt0_load_result = helpers.to_map(world_ref01_data_dt0_loaded)
+    local world_ref01_data_dt0_load_result = helpers.to_map(type(world_ref01_data_dt0_loaded) == 'table' and world_ref01_data_dt0_loaded.data_get and world_ref01_data_dt0_loaded:data_get() or world_ref01_data_dt0_loaded)
     assert.is_not_nil(world_ref01_data_dt0_load_result)
     assert.are.equal(world_ref01_data_dt0_load_result["id"], world_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function world_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("FLYFFGAME_TEST_WORLD_ENTID")
+  local entid_env_raw = os.getenv("FLYFF_GAME_TEST_WORLD_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["FLYFFGAME_TEST_WORLD_ENTID"] = idmap,
-    ["FLYFFGAME_TEST_LIVE"] = "FALSE",
-    ["FLYFFGAME_TEST_EXPLAIN"] = "FALSE",
+    ["FLYFF_GAME_TEST_WORLD_ENTID"] = idmap,
+    ["FLYFF_GAME_TEST_LIVE"] = "FALSE",
+    ["FLYFF_GAME_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["FLYFFGAME_TEST_WORLD_ENTID"])
+    env["FLYFF_GAME_TEST_WORLD_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["FLYFFGAME_TEST_LIVE"] == "TRUE" then
+  if env["FLYFF_GAME_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function world_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
+  local live = env["FLYFF_GAME_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["FLYFFGAME_TEST_EXPLAIN"] == "TRUE",
+    explain = env["FLYFF_GAME_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

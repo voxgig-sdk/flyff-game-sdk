@@ -62,7 +62,7 @@ class ClassEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set FLYFFGAME_TEST_CLASS_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set FLYFF_GAME_TEST_CLASS_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class ClassEntityTest < Minitest::Test
       "id" => class_ref01_data["id"],
     }
     class_ref01_data_dt0_loaded = class_ref01_ent.load(class_ref01_match_dt0, nil)
-    class_ref01_data_dt0_load_result = Helpers.to_map(class_ref01_data_dt0_loaded)
+    class_ref01_data_dt0_load_result = Helpers.to_map(class_ref01_data_dt0_loaded.respond_to?(:data_get) ? class_ref01_data_dt0_loaded.data_get : class_ref01_data_dt0_loaded)
     assert !class_ref01_data_dt0_load_result.nil?
     assert_equal class_ref01_data_dt0_load_result["id"], class_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def class_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["FLYFFGAME_TEST_CLASS_ENTID"]
+  entid_env_raw = ENV["FLYFF_GAME_TEST_CLASS_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "FLYFFGAME_TEST_CLASS_ENTID" => idmap,
-    "FLYFFGAME_TEST_LIVE" => "FALSE",
-    "FLYFFGAME_TEST_EXPLAIN" => "FALSE",
+    "FLYFF_GAME_TEST_CLASS_ENTID" => idmap,
+    "FLYFF_GAME_TEST_LIVE" => "FALSE",
+    "FLYFF_GAME_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["FLYFFGAME_TEST_CLASS_ENTID"])
+    env["FLYFF_GAME_TEST_CLASS_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["FLYFFGAME_TEST_LIVE"] == "TRUE"
+  if env["FLYFF_GAME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def class_basic_setup(extra)
     client = FlyffGameSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
+  live = env["FLYFF_GAME_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["FLYFFGAME_TEST_EXPLAIN"] == "TRUE",
+    explain: env["FLYFF_GAME_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

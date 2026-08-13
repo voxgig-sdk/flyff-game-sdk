@@ -172,8 +172,29 @@ class FlyffGameSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('FlyffGameSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -234,192 +255,300 @@ class FlyffGameSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('FlyffGameSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('FlyffGameSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Achievement().list()` / `client.Achievement().load({ id })`.
-  Achievement(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Achievement(entopts?: Record<string, any>) {
     const self = this
-    return new AchievementEntity(self,data)
+    return new AchievementEntity(self, entopts)
   }
 
 
   // Entity access: `client.Awake().list()` / `client.Awake().load({ id })`.
-  Awake(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Awake(entopts?: Record<string, any>) {
     const self = this
-    return new AwakeEntity(self,data)
+    return new AwakeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Badge().list()` / `client.Badge().load({ id })`.
-  Badge(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Badge(entopts?: Record<string, any>) {
     const self = this
-    return new BadgeEntity(self,data)
+    return new BadgeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Class().list()` / `client.Class().load({ id })`.
-  Class(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Class(entopts?: Record<string, any>) {
     const self = this
-    return new ClassEntity(self,data)
+    return new ClassEntity(self, entopts)
   }
 
 
   // Entity access: `client.Core().list()` / `client.Core().load({ id })`.
-  Core(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Core(entopts?: Record<string, any>) {
     const self = this
-    return new CoreEntity(self,data)
+    return new CoreEntity(self, entopts)
   }
 
 
   // Entity access: `client.Couple().list()` / `client.Couple().load({ id })`.
-  Couple(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Couple(entopts?: Record<string, any>) {
     const self = this
-    return new CoupleEntity(self,data)
+    return new CoupleEntity(self, entopts)
   }
 
 
   // Entity access: `client.Dungeon().list()` / `client.Dungeon().load({ id })`.
-  Dungeon(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Dungeon(entopts?: Record<string, any>) {
     const self = this
-    return new DungeonEntity(self,data)
+    return new DungeonEntity(self, entopts)
   }
 
 
   // Entity access: `client.Element().list()` / `client.Element().load({ id })`.
-  Element(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Element(entopts?: Record<string, any>) {
     const self = this
-    return new ElementEntity(self,data)
+    return new ElementEntity(self, entopts)
   }
 
 
   // Entity access: `client.EquipmentSet().list()` / `client.EquipmentSet().load({ id })`.
-  EquipmentSet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EquipmentSet(entopts?: Record<string, any>) {
     const self = this
-    return new EquipmentSetEntity(self,data)
+    return new EquipmentSetEntity(self, entopts)
   }
 
 
   // Entity access: `client.ExchangeMenus().list()` / `client.ExchangeMenus().load({ id })`.
-  ExchangeMenus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ExchangeMenus(entopts?: Record<string, any>) {
     const self = this
-    return new ExchangeMenusEntity(self,data)
+    return new ExchangeMenusEntity(self, entopts)
   }
 
 
   // Entity access: `client.HousingPack().list()` / `client.HousingPack().load({ id })`.
-  HousingPack(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  HousingPack(entopts?: Record<string, any>) {
     const self = this
-    return new HousingPackEntity(self,data)
+    return new HousingPackEntity(self, entopts)
   }
 
 
   // Entity access: `client.HousingTemplate().list()` / `client.HousingTemplate().load({ id })`.
-  HousingTemplate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  HousingTemplate(entopts?: Record<string, any>) {
     const self = this
-    return new HousingTemplateEntity(self,data)
+    return new HousingTemplateEntity(self, entopts)
   }
 
 
   // Entity access: `client.Item().list()` / `client.Item().load({ id })`.
-  Item(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Item(entopts?: Record<string, any>) {
     const self = this
-    return new ItemEntity(self,data)
+    return new ItemEntity(self, entopts)
   }
 
 
   // Entity access: `client.Language().list()` / `client.Language().load({ id })`.
-  Language(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Language(entopts?: Record<string, any>) {
     const self = this
-    return new LanguageEntity(self,data)
+    return new LanguageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Lifestyle().list()` / `client.Lifestyle().load({ id })`.
-  Lifestyle(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Lifestyle(entopts?: Record<string, any>) {
     const self = this
-    return new LifestyleEntity(self,data)
+    return new LifestyleEntity(self, entopts)
   }
 
 
   // Entity access: `client.Monster().list()` / `client.Monster().load({ id })`.
-  Monster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Monster(entopts?: Record<string, any>) {
     const self = this
-    return new MonsterEntity(self,data)
+    return new MonsterEntity(self, entopts)
   }
 
 
   // Entity access: `client.Npc().list()` / `client.Npc().load({ id })`.
-  Npc(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Npc(entopts?: Record<string, any>) {
     const self = this
-    return new NpcEntity(self,data)
+    return new NpcEntity(self, entopts)
   }
 
 
   // Entity access: `client.PartySkill().list()` / `client.PartySkill().load({ id })`.
-  PartySkill(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PartySkill(entopts?: Record<string, any>) {
     const self = this
-    return new PartySkillEntity(self,data)
+    return new PartySkillEntity(self, entopts)
   }
 
 
   // Entity access: `client.Pkn().list()` / `client.Pkn().load({ id })`.
-  Pkn(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Pkn(entopts?: Record<string, any>) {
     const self = this
-    return new PknEntity(self,data)
+    return new PknEntity(self, entopts)
   }
 
 
   // Entity access: `client.Place().list()` / `client.Place().load({ id })`.
-  Place(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Place(entopts?: Record<string, any>) {
     const self = this
-    return new PlaceEntity(self,data)
+    return new PlaceEntity(self, entopts)
   }
 
 
   // Entity access: `client.Quest().list()` / `client.Quest().load({ id })`.
-  Quest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Quest(entopts?: Record<string, any>) {
     const self = this
-    return new QuestEntity(self,data)
+    return new QuestEntity(self, entopts)
   }
 
 
   // Entity access: `client.RaisedPet().list()` / `client.RaisedPet().load({ id })`.
-  RaisedPet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RaisedPet(entopts?: Record<string, any>) {
     const self = this
-    return new RaisedPetEntity(self,data)
+    return new RaisedPetEntity(self, entopts)
   }
 
 
   // Entity access: `client.Recipe().list()` / `client.Recipe().load({ id })`.
-  Recipe(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Recipe(entopts?: Record<string, any>) {
     const self = this
-    return new RecipeEntity(self,data)
+    return new RecipeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Skill().list()` / `client.Skill().load({ id })`.
-  Skill(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Skill(entopts?: Record<string, any>) {
     const self = this
-    return new SkillEntity(self,data)
+    return new SkillEntity(self, entopts)
   }
 
 
   // Entity access: `client.UpgradeLevelBonus().list()` / `client.UpgradeLevelBonus().load({ id })`.
-  UpgradeLevelBonus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UpgradeLevelBonus(entopts?: Record<string, any>) {
     const self = this
-    return new UpgradeLevelBonusEntity(self,data)
+    return new UpgradeLevelBonusEntity(self, entopts)
   }
 
 
   // Entity access: `client.Version().list()` / `client.Version().load({ id })`.
-  Version(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Version(entopts?: Record<string, any>) {
     const self = this
-    return new VersionEntity(self,data)
+    return new VersionEntity(self, entopts)
   }
 
 
   // Entity access: `client.World().list()` / `client.World().load({ id })`.
-  World(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  World(entopts?: Record<string, any>) {
     const self = this
-    return new WorldEntity(self,data)
+    return new WorldEntity(self, entopts)
   }
 
 

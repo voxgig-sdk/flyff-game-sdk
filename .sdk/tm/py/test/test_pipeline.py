@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import FlyffGameSDK
-from core.error import FlyffGameError
-from core.result import FlyffGameResult
-from core.response import FlyffGameResponse
-from core.spec import FlyffGameSpec
-from feature.base_feature import FlyffGameBaseFeature
+from projectname_sdk.core.error import FlyffGameError
+from projectname_sdk.core.result import FlyffGameResult
+from projectname_sdk.core.response import FlyffGameResponse
+from projectname_sdk.core.spec import FlyffGameSpec
+from projectname_sdk.feature.base_feature import FlyffGameBaseFeature
 
 
 def _client():

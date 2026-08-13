@@ -115,11 +115,11 @@ function monster_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FLYFFGAME_TEST_MONSTER_ENTID"] = {},
-    ["FLYFFGAME_TEST_LIVE"] = "FALSE",
+    ["FLYFF_GAME_TEST_MONSTER_ENTID"] = {},
+    ["FLYFF_GAME_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
+  local live = env["FLYFF_GAME_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

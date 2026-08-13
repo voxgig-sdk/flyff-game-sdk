@@ -19,6 +19,12 @@ export interface Awake {
 }
 
 export interface AwakeLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'skill' | 'stat'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Badge {
@@ -29,8 +35,8 @@ export interface BadgeLoadMatch {
 }
 
 export interface Class {
-  attack_speed: number
-  auto_attack_factor: Record<string, any>
+  attackSpeed: number
+  autoAttackFactors: Record<string, any>
   block: number
   critical: number
   defense: number
@@ -38,13 +44,13 @@ export interface Class {
   hp: number
   icon: string
   id: number
-  magic_defense_int_factor: number
-  magic_defense_sta_factor: number
-  max_fp: string
-  max_hp: string
-  max_level: number
-  max_mp: string
-  min_level: number
+  magicDefenseIntFactor: number
+  magicDefenseStaFactor: number
+  maxFP: string
+  maxHP: string
+  maxLevel: number
+  maxMP: string
+  minLevel: number
   mp: number
   name: Record<string, any>
   parent?: number
@@ -59,8 +65,8 @@ export interface ClassLoadMatch {
 }
 
 export interface ClassListMatch {
-  attack_speed?: number
-  auto_attack_factor?: Record<string, any>
+  attackSpeed?: number
+  autoAttackFactors?: Record<string, any>
   block?: number
   critical?: number
   defense?: number
@@ -68,13 +74,13 @@ export interface ClassListMatch {
   hp?: number
   icon?: string
   id?: number
-  magic_defense_int_factor?: number
-  magic_defense_sta_factor?: number
-  max_fp?: string
-  max_hp?: string
-  max_level?: number
-  max_mp?: string
-  min_level?: number
+  magicDefenseIntFactor?: number
+  magicDefenseStaFactor?: number
+  maxFP?: string
+  maxHP?: string
+  maxLevel?: number
+  maxMP?: string
+  minLevel?: number
   mp?: number
   name?: Record<string, any>
   parent?: number
@@ -160,6 +166,12 @@ export interface Language {
 
 export interface LanguageLoadMatch {
   language_code: string
+
+  // Selects a custom action instead of the plain load:
+  //   'language_code'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface LanguageListMatch {
@@ -260,44 +272,56 @@ export interface Version {
 }
 
 export interface VersionLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'api' | 'data'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface World {
-  continent: any[]
+  continents: any[]
   flying: boolean
   height: number
   id: number
-  in_door: boolean
-  lodestar: any[]
+  inDoor: boolean
+  lodestars: any[]
   name: Record<string, any>
   pk: boolean
-  place: any[]
-  revival_key?: string
-  revival_world?: number
-  tile_name: string
-  tile_size: number
+  places: any[]
+  revivalKey?: string
+  revivalWorld?: number
+  tileName: string
+  tileSize: number
   type: string
   width: number
 }
 
 export interface WorldLoadMatch {
   id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'world_tile_nametile_x_tile_y_0'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface WorldListMatch {
-  continent?: any[]
+  continents?: any[]
   flying?: boolean
   height?: number
   id?: number
-  in_door?: boolean
-  lodestar?: any[]
+  inDoor?: boolean
+  lodestars?: any[]
   name?: Record<string, any>
   pk?: boolean
-  place?: any[]
-  revival_key?: string
-  revival_world?: number
-  tile_name?: string
-  tile_size?: number
+  places?: any[]
+  revivalKey?: string
+  revivalWorld?: number
+  tileName?: string
+  tileSize?: number
   type?: string
   width?: number
 }

@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FlyffGameSDK.test()
-const achievements = await client.Achievement().list()
-// achievements is an array of bare Achievement records populated with mock data
-console.log(achievements)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FlyffGameSDK.test({
+  entity: {
+    dungeon: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const dungeon = await client.Dungeon().load()
+// dungeon is the Dungeon entity, populated with mock data
+// — call dungeon.data() for the record itself
+console.log(dungeon)
 ```
 
 ### Python
 
 ```python
 client = FlyffGameSDK.test()
-achievements = client.Achievement().list()
-print(achievements)
+dungeon = client.Dungeon().load()
+print(dungeon)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(achievements)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = FlyffGameSDK::test([
-    "entity" => ["achievement" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["dungeon" => ["test01" => []]],
 ]);
-$achievements = $client->Achievement()->list();
+$dungeon = $client->Dungeon()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Achievement(nil).List(
+result, err := client.Dungeon(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Achievement(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = FlyffGameSDK.test({
-  "entity" => { "achievement" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "dungeon" => { "test01" => {} } },
 })
-achievements = client.Achievement.list()
+dungeon = client.Dungeon.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Achievement():list()
+local result, err = client:Dungeon():load()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
 
 const client = new FlyffGameSDK()
 
-// List all achievements (returns Achievement[])
+// List all achievements (returns AchievementEntity[] — .data() for the record)
 const achievements = await client.Achievement().list()
 for (const achievement of achievements) {
   console.log(achievement)
@@ -223,7 +232,7 @@ $client = new FlyffGameSDK();
 $achievements = $client->Achievement()->list();
 print_r($achievements);
 
-// Load a specific achievement (returns the bare record; throws on error)
+// Load a specific achievement (returns the ENTITY; call data_get() for the record; throws on error)
 $achievement = $client->Achievement()->load(["id" => "example_id"]);
 print_r($achievement);
 ```
@@ -263,7 +272,7 @@ client = FlyffGameSDK.new
 achievements = client.Achievement.list
 puts achievements
 
-# Load a specific achievement (returns the bare record; raises on error)
+# Load a specific achievement (returns the ENTITY; call data_get for the record)
 achievement = client.Achievement.load({ "id" => "example_id" })
 puts achievement
 ```
@@ -400,6 +409,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [http://galalab.kr/](http://galalab.kr/)
 

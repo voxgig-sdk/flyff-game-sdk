@@ -6,7 +6,7 @@ main: kit: entity: world: {
 
   fields: [
     {
-      name: "continent"
+      name: "continents"
       req: true
       type: "`$ARRAY`"
     }
@@ -26,12 +26,12 @@ main: kit: entity: world: {
       type: "`$INTEGER`"
     }
     {
-      name: "in_door"
+      name: "inDoor"
       req: true
       type: "`$BOOLEAN`"
     }
     {
-      name: "lodestar"
+      name: "lodestars"
       req: true
       type: "`$ARRAY`"
     }
@@ -46,27 +46,27 @@ main: kit: entity: world: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "place"
+      name: "places"
       req: true
       type: "`$ARRAY`"
     }
     {
-      name: "revival_key"
+      name: "revivalKey"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "revival_world"
+      name: "revivalWorld"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "tile_name"
+      name: "tileName"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "tile_size"
+      name: "tileSize"
       req: true
       type: "`$INTEGER`"
     }

@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-achievements, err := client.Achievement(nil).List(nil, nil)
+dungeon, err := client.Dungeon(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = achievements
+_ = dungeon
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-achievement, err := client.Achievement(nil).List(
+dungeon, err := client.Dungeon(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(achievement) // the returned mock data
+fmt.Println(dungeon) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -322,8 +322,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `"attack_speed"` |  |
-| `"auto_attack_factor"` |  |
+| `"attackSpeed"` |  |
+| `"autoAttackFactors"` |  |
 | `"block"` |  |
 | `"critical"` |  |
 | `"defense"` |  |
@@ -331,13 +331,13 @@ API path: `/image/badge/{fileName}`
 | `"hp"` |  |
 | `"icon"` |  |
 | `"id"` |  |
-| `"magic_defense_int_factor"` |  |
-| `"magic_defense_sta_factor"` |  |
-| `"max_fp"` |  |
-| `"max_hp"` |  |
-| `"max_level"` |  |
-| `"max_mp"` |  |
-| `"min_level"` |  |
+| `"magicDefenseIntFactor"` |  |
+| `"magicDefenseStaFactor"` |  |
+| `"maxFP"` |  |
+| `"maxHP"` |  |
+| `"maxLevel"` |  |
+| `"maxMP"` |  |
+| `"minLevel"` |  |
 | `"mp"` |  |
 | `"name"` |  |
 | `"parent"` |  |
@@ -550,19 +550,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `"continent"` |  |
+| `"continents"` |  |
 | `"flying"` |  |
 | `"height"` |  |
 | `"id"` |  |
-| `"in_door"` |  |
-| `"lodestar"` |  |
+| `"inDoor"` |  |
+| `"lodestars"` |  |
 | `"name"` |  |
 | `"pk"` |  |
-| `"place"` |  |
-| `"revival_key"` |  |
-| `"revival_world"` |  |
-| `"tile_name"` |  |
-| `"tile_size"` |  |
+| `"places"` |  |
+| `"revivalKey"` |  |
+| `"revivalWorld"` |  |
+| `"tileName"` |  |
+| `"tileSize"` |  |
 | `"type"` |  |
 | `"width"` |  |
 
@@ -664,8 +664,8 @@ Create an instance: `class := client.Class(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `float64` |  |
-| `auto_attack_factor` | `map[string]any` |  |
+| `attackSpeed` | `float64` |  |
+| `autoAttackFactors` | `map[string]any` |  |
 | `block` | `float64` |  |
 | `critical` | `float64` |  |
 | `defense` | `float64` |  |
@@ -673,13 +673,13 @@ Create an instance: `class := client.Class(nil)`
 | `hp` | `float64` |  |
 | `icon` | `string` |  |
 | `id` | `int` |  |
-| `magic_defense_int_factor` | `float64` |  |
-| `magic_defense_sta_factor` | `float64` |  |
-| `max_fp` | `string` |  |
-| `max_hp` | `string` |  |
-| `max_level` | `int` |  |
-| `max_mp` | `string` |  |
-| `min_level` | `int` |  |
+| `magicDefenseIntFactor` | `float64` |  |
+| `magicDefenseStaFactor` | `float64` |  |
+| `maxFP` | `string` |  |
+| `maxHP` | `string` |  |
+| `maxLevel` | `int` |  |
+| `maxMP` | `string` |  |
+| `minLevel` | `int` |  |
 | `mp` | `float64` |  |
 | `name` | `map[string]any` |  |
 | `parent` | `int` |  |
@@ -1305,19 +1305,19 @@ Create an instance: `world := client.World(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `[]any` |  |
+| `continents` | `[]any` |  |
 | `flying` | `bool` |  |
 | `height` | `int` |  |
 | `id` | `int` |  |
-| `in_door` | `bool` |  |
-| `lodestar` | `[]any` |  |
+| `inDoor` | `bool` |  |
+| `lodestars` | `[]any` |  |
 | `name` | `map[string]any` |  |
 | `pk` | `bool` |  |
-| `place` | `[]any` |  |
-| `revival_key` | `string` |  |
-| `revival_world` | `int` |  |
-| `tile_name` | `string` |  |
-| `tile_size` | `int` |  |
+| `places` | `[]any` |  |
+| `revivalKey` | `string` |  |
+| `revivalWorld` | `int` |  |
+| `tileName` | `string` |  |
+| `tileSize` | `int` |  |
 | `type` | `string` |  |
 | `width` | `int` |  |
 
@@ -1411,15 +1411,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `List`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-achievement := client.Achievement(nil)
-achievement.List(nil, nil)
+dungeon := client.Dungeon(nil)
+dungeon.Load(nil, nil)
 
-// achievement.Data() now returns the achievement data from the last list
-// achievement.Match() returns the last match criteria
+// dungeon.Data() now returns the dungeon data from the last load
+// dungeon.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

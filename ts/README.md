@@ -35,7 +35,9 @@ const client = new FlyffGameSDK()
 
 ### 2. List achievement records
 
-`list()` resolves to an array of Achievement objects — iterate it directly:
+`list()` resolves to an array of Achievement ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const achievements = await client.Achievement().list()
@@ -68,10 +70,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const achievements = await client.Achievement().list()
-  console.log(achievements)
+  const dungeon = await client.Dungeon().load()
+  console.log(dungeon)
 } catch (err) {
-  console.error('list failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -135,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FlyffGameSDK.test()
 
-const achievement = await client.Achievement().list()
-// achievement is a bare entity populated with mock response data
-console.log(achievement)
+const dungeon = await client.Dungeon().load()
+// dungeon is the entity, populated with mock response data
+// — call dungeon.data() for the record itself
+console.log(dungeon)
 ```
 
 You can also use the instance method:
@@ -152,10 +155,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Achievement()
+const entity = client.Dungeon()
 
 // First call runs the operation and stores its result
-await entity.list()
+await entity.load()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -355,8 +358,8 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attack_speed` |  |
-| `auto_attack_factor` |  |
+| `attackSpeed` |  |
+| `autoAttackFactors` |  |
 | `block` |  |
 | `critical` |  |
 | `defense` |  |
@@ -364,13 +367,13 @@ API path: `/image/badge/{fileName}`
 | `hp` |  |
 | `icon` |  |
 | `id` |  |
-| `magic_defense_int_factor` |  |
-| `magic_defense_sta_factor` |  |
-| `max_fp` |  |
-| `max_hp` |  |
-| `max_level` |  |
-| `max_mp` |  |
-| `min_level` |  |
+| `magicDefenseIntFactor` |  |
+| `magicDefenseStaFactor` |  |
+| `maxFP` |  |
+| `maxHP` |  |
+| `maxLevel` |  |
+| `maxMP` |  |
+| `minLevel` |  |
 | `mp` |  |
 | `name` |  |
 | `parent` |  |
@@ -583,19 +586,19 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continent` |  |
+| `continents` |  |
 | `flying` |  |
 | `height` |  |
 | `id` |  |
-| `in_door` |  |
-| `lodestar` |  |
+| `inDoor` |  |
+| `lodestars` |  |
 | `name` |  |
 | `pk` |  |
-| `place` |  |
-| `revival_key` |  |
-| `revival_world` |  |
-| `tile_name` |  |
-| `tile_size` |  |
+| `places` |  |
+| `revivalKey` |  |
+| `revivalWorld` |  |
+| `tileName` |  |
+| `tileSize` |  |
 | `type` |  |
 | `width` |  |
 
@@ -681,8 +684,8 @@ Create an instance: `const class_ = client.Class()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attack_speed` | `number` |  |
-| `auto_attack_factor` | `Record<string, any>` |  |
+| `attackSpeed` | `number` |  |
+| `autoAttackFactors` | `Record<string, any>` |  |
 | `block` | `number` |  |
 | `critical` | `number` |  |
 | `defense` | `number` |  |
@@ -690,13 +693,13 @@ Create an instance: `const class_ = client.Class()`
 | `hp` | `number` |  |
 | `icon` | `string` |  |
 | `id` | `number` |  |
-| `magic_defense_int_factor` | `number` |  |
-| `magic_defense_sta_factor` | `number` |  |
-| `max_fp` | `string` |  |
-| `max_hp` | `string` |  |
-| `max_level` | `number` |  |
-| `max_mp` | `string` |  |
-| `min_level` | `number` |  |
+| `magicDefenseIntFactor` | `number` |  |
+| `magicDefenseStaFactor` | `number` |  |
+| `maxFP` | `string` |  |
+| `maxHP` | `string` |  |
+| `maxLevel` | `number` |  |
+| `maxMP` | `string` |  |
+| `minLevel` | `number` |  |
 | `mp` | `number` |  |
 | `name` | `Record<string, any>` |  |
 | `parent` | `number` |  |
@@ -1182,19 +1185,19 @@ Create an instance: `const world = client.World()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continent` | `any[]` |  |
+| `continents` | `any[]` |  |
 | `flying` | `boolean` |  |
 | `height` | `number` |  |
 | `id` | `number` |  |
-| `in_door` | `boolean` |  |
-| `lodestar` | `any[]` |  |
+| `inDoor` | `boolean` |  |
+| `lodestars` | `any[]` |  |
 | `name` | `Record<string, any>` |  |
 | `pk` | `boolean` |  |
-| `place` | `any[]` |  |
-| `revival_key` | `string` |  |
-| `revival_world` | `number` |  |
-| `tile_name` | `string` |  |
-| `tile_size` | `number` |  |
+| `places` | `any[]` |  |
+| `revivalKey` | `string` |  |
+| `revivalWorld` | `number` |  |
+| `tileName` | `string` |  |
+| `tileSize` | `number` |  |
 | `type` | `string` |  |
 | `width` | `number` |  |
 
@@ -1275,16 +1278,16 @@ import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const achievement = client.Achievement()
-await achievement.list()
+const dungeon = client.Dungeon()
+await dungeon.load()
 
-// achievement.data() now returns the achievement data from the last `list`
-// achievement.match() returns the last match criteria
+// dungeon.data() now returns the dungeon data from the last `load`
+// dungeon.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

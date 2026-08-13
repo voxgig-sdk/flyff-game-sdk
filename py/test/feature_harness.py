@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import FlyffGameControl
-from core.error import FlyffGameError
-from core.result import FlyffGameResult
-from core.spec import FlyffGameSpec
+from flyffgame_sdk.config import make_config
+from flyffgame_sdk.features import _make_feature
+from flyffgame_sdk.core.control import FlyffGameControl
+from flyffgame_sdk.core.error import FlyffGameError
+from flyffgame_sdk.core.result import FlyffGameResult
+from flyffgame_sdk.core.spec import FlyffGameSpec
 
 
 # True when this SDK was generated with the named feature.

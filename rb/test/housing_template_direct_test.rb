@@ -114,11 +114,11 @@ def housing_template_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FLYFFGAME_TEST_HOUSING_TEMPLATE_ENTID" => {},
-    "FLYFFGAME_TEST_LIVE" => "FALSE",
+    "FLYFF_GAME_TEST_HOUSING_TEMPLATE_ENTID" => {},
+    "FLYFF_GAME_TEST_LIVE" => "FALSE",
   })
 
-  live = env["FLYFFGAME_TEST_LIVE"] == "TRUE"
+  live = env["FLYFF_GAME_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

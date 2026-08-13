@@ -121,11 +121,11 @@ function item_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "FLYFFGAME_TEST_ITEM_ENTID" => [],
-        "FLYFFGAME_TEST_LIVE" => "FALSE",
+        "FLYFF_GAME_TEST_ITEM_ENTID" => [],
+        "FLYFF_GAME_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["FLYFFGAME_TEST_LIVE"] === "TRUE";
+    $live = $env["FLYFF_GAME_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

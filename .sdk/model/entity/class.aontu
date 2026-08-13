@@ -6,12 +6,12 @@ main: kit: entity: class: {
 
   fields: [
     {
-      name: "attack_speed"
+      name: "attackSpeed"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "auto_attack_factor"
+      name: "autoAttackFactors"
       req: true
       type: "`$OBJECT`"
     }
@@ -51,37 +51,37 @@ main: kit: entity: class: {
       type: "`$INTEGER`"
     }
     {
-      name: "magic_defense_int_factor"
+      name: "magicDefenseIntFactor"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "magic_defense_sta_factor"
+      name: "magicDefenseStaFactor"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "max_fp"
+      name: "maxFP"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "max_hp"
+      name: "maxHP"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "max_level"
+      name: "maxLevel"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "max_mp"
+      name: "maxMP"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "min_level"
+      name: "minLevel"
       req: true
       type: "`$INTEGER`"
     }

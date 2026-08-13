@@ -349,8 +349,8 @@ fmt.Println(class.GetName()) // "class"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attack_speed` | `float64` | Yes |  |
-| `auto_attack_factor` | `map[string]any` | Yes |  |
+| `attackSpeed` | `float64` | Yes |  |
+| `autoAttackFactors` | `map[string]any` | Yes |  |
 | `block` | `float64` | Yes |  |
 | `critical` | `float64` | Yes |  |
 | `defense` | `float64` | Yes |  |
@@ -358,13 +358,13 @@ fmt.Println(class.GetName()) // "class"
 | `hp` | `float64` | Yes |  |
 | `icon` | `string` | Yes |  |
 | `id` | `int` | Yes |  |
-| `magic_defense_int_factor` | `float64` | Yes |  |
-| `magic_defense_sta_factor` | `float64` | Yes |  |
-| `max_fp` | `string` | Yes |  |
-| `max_hp` | `string` | Yes |  |
-| `max_level` | `int` | Yes |  |
-| `max_mp` | `string` | Yes |  |
-| `min_level` | `int` | Yes |  |
+| `magicDefenseIntFactor` | `float64` | Yes |  |
+| `magicDefenseStaFactor` | `float64` | Yes |  |
+| `maxFP` | `string` | Yes |  |
+| `maxHP` | `string` | Yes |  |
+| `maxLevel` | `int` | Yes |  |
+| `maxMP` | `string` | Yes |  |
+| `minLevel` | `int` | Yes |  |
 | `mp` | `float64` | Yes |  |
 | `name` | `map[string]any` | Yes |  |
 | `parent` | `int` | No |  |
@@ -1554,19 +1554,19 @@ fmt.Println(world.GetName()) // "world"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continent` | `[]any` | Yes |  |
+| `continents` | `[]any` | Yes |  |
 | `flying` | `bool` | Yes |  |
 | `height` | `int` | Yes |  |
 | `id` | `int` | Yes |  |
-| `in_door` | `bool` | Yes |  |
-| `lodestar` | `[]any` | Yes |  |
+| `inDoor` | `bool` | Yes |  |
+| `lodestars` | `[]any` | Yes |  |
 | `name` | `map[string]any` | Yes |  |
 | `pk` | `bool` | Yes |  |
-| `place` | `[]any` | Yes |  |
-| `revival_key` | `string` | No |  |
-| `revival_world` | `int` | No |  |
-| `tile_name` | `string` | Yes |  |
-| `tile_size` | `int` | Yes |  |
+| `places` | `[]any` | Yes |  |
+| `revivalKey` | `string` | No |  |
+| `revivalWorld` | `int` | No |  |
+| `tileName` | `string` | Yes |  |
+| `tileSize` | `int` | Yes |  |
 | `type` | `string` | Yes |  |
 | `width` | `int` | Yes |  |
 

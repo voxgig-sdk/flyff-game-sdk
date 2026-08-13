@@ -26,8 +26,8 @@ import {
 describe('LifestyleEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FLYFFGAME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FLYFFGAME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FLYFF_GAME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FLYFF_GAME_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FlyffGameSDK.test()
@@ -62,7 +62,7 @@ describe('LifestyleEntity', async () => {
     // LOAD
     const lifestyle_ref01_ent = client.Lifestyle()
     const lifestyle_ref01_match_dt0: any = {}
-    const lifestyle_ref01_data_dt0 = await lifestyle_ref01_ent.load(lifestyle_ref01_match_dt0)
+    const lifestyle_ref01_data_dt0 = (await lifestyle_ref01_ent.load(lifestyle_ref01_match_dt0)).data()
     assert(null != lifestyle_ref01_data_dt0)
 
 

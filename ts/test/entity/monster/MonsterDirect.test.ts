@@ -19,11 +19,15 @@ import {
 describe('MonsterDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FLYFFGAME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FLYFFGAME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FLYFF_GAME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FLYFF_GAME_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new FlyffGameSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'FLYFFGAME_TEST_MONSTER_ENTID': {},
-    'FLYFFGAME_TEST_LIVE': 'FALSE',
+    'FLYFF_GAME_TEST_MONSTER_ENTID': {},
+    'FLYFF_GAME_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.FLYFFGAME_TEST_LIVE
+  const live = 'TRUE' === env.FLYFF_GAME_TEST_LIVE
 
   if (live) {
     const client = new FlyffGameSDK({
     })
 
-    let idmap: any = env['FLYFFGAME_TEST_MONSTER_ENTID']
+    let idmap: any = env['FLYFF_GAME_TEST_MONSTER_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }
