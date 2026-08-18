@@ -1,7 +1,30 @@
 # FlyffGame SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "FlyffGame",
@@ -58,7 +81,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -71,27 +93,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "achievement_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -116,20 +133,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "achievement_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -154,10 +167,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -173,7 +184,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -189,10 +199,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -208,10 +216,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -227,17 +233,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -263,10 +266,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -276,151 +277,108 @@ def make_config():
       "class": {
         "fields": [
           {
-            "active": True,
             "name": "attackSpeed",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "autoAttackFactors",
             "req": True,
             "type": "`$OBJECT`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "block",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "critical",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "defense",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "fp",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "hp",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "icon",
             "req": True,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "id",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "magicDefenseIntFactor",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "magicDefenseStaFactor",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "maxFP",
             "req": True,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "maxHP",
             "req": True,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "maxLevel",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "maxMP",
             "req": True,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "minLevel",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "mp",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$OBJECT`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "parent",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "tree",
             "req": True,
             "type": "`$STRING`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "type",
             "req": True,
             "type": "`$STRING`",
-            "index$": 20,
           },
         ],
         "name": "class",
@@ -430,7 +388,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -443,38 +400,31 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "vagrant.png",
                       "kind": "param",
                       "name": "file_name",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
-                      "active": True,
                       "example": "messenger",
                       "kind": "param",
                       "name": "style",
                       "orig": "style",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                 },
@@ -502,21 +452,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "Vagrant.png",
                       "kind": "param",
                       "name": "file_name",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -543,21 +489,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "1689,296,2881",
                       "kind": "param",
                       "name": "id",
                       "orig": "class_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -582,21 +524,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": 1689,
                       "kind": "param",
                       "name": "id",
                       "orig": "class_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -621,10 +559,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -647,17 +583,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "parameter_id",
                       "orig": "parameter_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -682,20 +615,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "parameter_id",
                       "orig": "parameter_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -720,10 +649,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -743,7 +670,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -756,10 +682,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -775,7 +699,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -788,10 +711,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -807,17 +728,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -843,10 +761,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -862,7 +778,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -875,27 +790,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "equipment_set_id",
                       "orig": "equipment_set_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -920,20 +830,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "equipment_set_id",
                       "orig": "equipment_set_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -958,10 +864,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -981,7 +885,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -994,10 +897,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1013,7 +914,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1026,27 +926,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "housing_pack_id",
                       "orig": "housing_pack_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1071,20 +966,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "housing_pack_id",
                       "orig": "housing_pack_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1109,10 +1000,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1132,7 +1021,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1145,27 +1033,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "file_name",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1191,20 +1074,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "housing_template_id",
                       "orig": "housing_template_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1229,20 +1108,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "housing_template_id",
                       "orig": "housing_template_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1267,10 +1142,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1290,7 +1163,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1303,27 +1175,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1349,20 +1216,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "item_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1387,20 +1250,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "item_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1425,10 +1284,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1444,7 +1301,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1457,27 +1313,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "language_code",
                       "orig": "language_code",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1499,10 +1350,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1522,7 +1371,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1535,10 +1383,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1554,7 +1400,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1567,27 +1412,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1613,20 +1453,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "monster_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1651,20 +1487,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "monster_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1689,10 +1521,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1708,7 +1538,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1721,27 +1550,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1767,20 +1591,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "npc_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1805,20 +1625,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "npc_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1843,10 +1659,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1862,7 +1676,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1875,27 +1688,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "party_skill_id",
                       "orig": "party_skill_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1920,20 +1728,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "party_skill_id",
                       "orig": "party_skill_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1958,10 +1762,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1981,7 +1783,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1994,10 +1795,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2013,17 +1812,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2049,10 +1845,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2068,7 +1862,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2081,27 +1874,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "quest_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2126,20 +1914,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "quest_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2164,10 +1948,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2183,7 +1965,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2196,10 +1977,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2215,7 +1994,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2228,27 +2006,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "recipe_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2273,20 +2046,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "recipe_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2311,10 +2080,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2330,7 +2097,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2343,27 +2109,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "file_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2389,20 +2150,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "skill_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2427,20 +2184,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "skill_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2465,10 +2218,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2484,7 +2235,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2497,10 +2247,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2516,7 +2264,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2532,10 +2279,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2551,10 +2296,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2564,109 +2307,77 @@ def make_config():
       "world": {
         "fields": [
           {
-            "active": True,
             "name": "continents",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "flying",
             "req": True,
             "type": "`$BOOLEAN`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "height",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "id",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "inDoor",
             "req": True,
             "type": "`$BOOLEAN`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "lodestars",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$OBJECT`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "pk",
             "req": True,
             "type": "`$BOOLEAN`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "places",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "revivalKey",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "revivalWorld",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "tileName",
             "req": True,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "tileSize",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "type",
             "req": True,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "width",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 14,
           },
         ],
         "name": "world",
@@ -2676,7 +2387,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2689,46 +2399,37 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "tile_x",
                       "orig": "tile_x",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "tile_y",
                       "orig": "tile_y",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 1,
                     },
                     {
-                      "active": True,
                       "example": "wdmadrigal",
                       "kind": "param",
                       "name": "world_tile_name",
                       "orig": "world_tile_name",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 2,
                     },
                   ],
                 },
@@ -2752,21 +2453,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "4015,4839,6063",
                       "kind": "param",
                       "name": "id",
                       "orig": "world_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2791,21 +2488,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": 4015,
                       "kind": "param",
                       "name": "id",
                       "orig": "world_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2830,10 +2523,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from flyffgame_sdk.config import make_config
+from flyffgame_sdk.config import shared_config
 from flyffgame_sdk.features import _make_feature
 from flyffgame_sdk.core.control import FlyffGameControl
 from flyffgame_sdk.core.error import FlyffGameError
@@ -24,7 +24,7 @@ from flyffgame_sdk.core.spec import FlyffGameSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

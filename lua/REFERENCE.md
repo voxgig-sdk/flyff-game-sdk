@@ -769,7 +769,7 @@ local results, err = client:HousingTemplate():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HousingTemplate():load()
+local result, err = client:HousingTemplate():load({ housing_template_id = "housing_template_id" })
 ```
 
 ### Common Methods

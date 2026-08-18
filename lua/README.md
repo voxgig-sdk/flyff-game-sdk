@@ -804,7 +804,7 @@ Create an instance: `local housing_template = client:HousingTemplate(nil)`
 #### Example: Load
 
 ```lua
-local housing_template, err = client:HousingTemplate():load()
+local housing_template, err = client:HousingTemplate():load({ housing_template_id = "housing_template_id" })
 ```
 
 #### Example: List

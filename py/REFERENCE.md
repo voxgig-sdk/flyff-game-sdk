@@ -765,7 +765,7 @@ for housing_template in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HousingTemplate().load()
+result = client.HousingTemplate().load({"housing_template_id": "housing_template_id"})
 ```
 
 ### Common Methods

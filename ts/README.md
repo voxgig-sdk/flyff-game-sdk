@@ -866,7 +866,7 @@ Create an instance: `const housing_template = client.HousingTemplate()`
 #### Example: Load
 
 ```ts
-const housing_template = await client.HousingTemplate().load()
+const housing_template = await client.HousingTemplate().load({ housing_template_id: 'housing_template_id' })
 ```
 
 #### Example: List

@@ -890,7 +890,7 @@ Create an instance: `housingTemplate := client.HousingTemplate(nil)`
 #### Example: Load
 
 ```go
-housingTemplate, err := client.HousingTemplate(nil).Load(nil, nil)
+housingTemplate, err := client.HousingTemplate(nil).Load(map[string]any{"housing_template_id": "housing_template_id"}, nil)
 if err != nil {
     panic(err)
 }

@@ -137,17 +137,9 @@ ClassType = Struct.new(
 
 # Request payload for Class#load.
 #
-# @!attribute [rw] file_name
-#   @return [String, nil]
-#
-# @!attribute [rw] style
-#   @return [String, nil]
-#
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 ClassLoadMatch = Struct.new(
-  :file_name,
-  :style,
   :id,
   keyword_init: true
 )
@@ -331,13 +323,9 @@ end
 
 # Request payload for HousingTemplate#load.
 #
-# @!attribute [rw] file_name
-#   @return [String, nil]
-#
 # @!attribute [rw] housing_template_id
-#   @return [String, nil]
+#   @return [String]
 HousingTemplateLoadMatch = Struct.new(
-  :file_name,
   :housing_template_id,
   keyword_init: true
 )

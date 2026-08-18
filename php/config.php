@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class FlyffGameConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -63,7 +86,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -76,27 +98,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'achievement_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -121,20 +138,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'achievement_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -159,10 +172,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -178,7 +189,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -194,10 +204,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -213,10 +221,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -232,17 +238,14 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -268,10 +271,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -281,151 +282,108 @@ class FlyffGameConfig
         'class' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'attackSpeed',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'autoAttackFactors',
               'req' => true,
               'type' => '`$OBJECT`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'block',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'critical',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'defense',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'fp',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'hp',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'icon',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'id',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'magicDefenseIntFactor',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'magicDefenseStaFactor',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 10,
             ],
             [
-              'active' => true,
               'name' => 'maxFP',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 11,
             ],
             [
-              'active' => true,
               'name' => 'maxHP',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 12,
             ],
             [
-              'active' => true,
               'name' => 'maxLevel',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 13,
             ],
             [
-              'active' => true,
               'name' => 'maxMP',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 14,
             ],
             [
-              'active' => true,
               'name' => 'minLevel',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 15,
             ],
             [
-              'active' => true,
               'name' => 'mp',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 16,
             ],
             [
-              'active' => true,
               'name' => 'name',
               'req' => true,
               'type' => '`$OBJECT`',
-              'index$' => 17,
             ],
             [
-              'active' => true,
               'name' => 'parent',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 18,
             ],
             [
-              'active' => true,
               'name' => 'tree',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 19,
             ],
             [
-              'active' => true,
               'name' => 'type',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 20,
             ],
           ],
           'name' => 'class',
@@ -435,7 +393,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -448,38 +405,31 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'vagrant.png',
                         'kind' => 'param',
                         'name' => 'file_name',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
-                        'active' => true,
                         'example' => 'messenger',
                         'kind' => 'param',
                         'name' => 'style',
                         'orig' => 'style',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                   ],
@@ -507,21 +457,17 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'Vagrant.png',
                         'kind' => 'param',
                         'name' => 'file_name',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -548,21 +494,17 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => '1689,296,2881',
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'class_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -587,21 +529,17 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 1689,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'class_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -626,10 +564,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 3,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -652,17 +588,14 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'parameter_id',
                         'orig' => 'parameter_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -687,20 +620,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'parameter_id',
                         'orig' => 'parameter_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -725,10 +654,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -748,7 +675,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -761,10 +687,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -780,7 +704,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -793,10 +716,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -812,17 +733,14 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -848,10 +766,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -867,7 +783,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -880,27 +795,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'equipment_set_id',
                         'orig' => 'equipment_set_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -925,20 +835,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'equipment_set_id',
                         'orig' => 'equipment_set_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -963,10 +869,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -986,7 +890,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -999,10 +902,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1018,7 +919,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1031,27 +931,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'housing_pack_id',
                         'orig' => 'housing_pack_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1076,20 +971,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'housing_pack_id',
                         'orig' => 'housing_pack_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1114,10 +1005,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1137,7 +1026,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1150,27 +1038,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'file_name',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1196,20 +1079,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'housing_template_id',
                         'orig' => 'housing_template_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1234,20 +1113,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'housing_template_id',
                         'orig' => 'housing_template_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1272,10 +1147,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1295,7 +1168,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1308,27 +1180,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1354,20 +1221,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'item_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1392,20 +1255,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'item_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1430,10 +1289,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1449,7 +1306,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1462,27 +1318,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'language_code',
                         'orig' => 'language_code',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1504,10 +1355,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1527,7 +1376,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1540,10 +1388,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1559,7 +1405,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1572,27 +1417,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1618,20 +1458,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'monster_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1656,20 +1492,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'monster_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1694,10 +1526,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1713,7 +1543,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1726,27 +1555,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1772,20 +1596,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'npc_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1810,20 +1630,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'npc_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1848,10 +1664,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1867,7 +1681,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1880,27 +1693,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'party_skill_id',
                         'orig' => 'party_skill_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1925,20 +1733,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'party_skill_id',
                         'orig' => 'party_skill_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1963,10 +1767,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -1986,7 +1788,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1999,10 +1800,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2018,17 +1817,14 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2054,10 +1850,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2073,7 +1867,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2086,27 +1879,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'quest_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2131,20 +1919,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'quest_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2169,10 +1953,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2188,7 +1970,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2201,10 +1982,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2220,7 +1999,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2233,27 +2011,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'recipe_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2278,20 +2051,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'recipe_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2316,10 +2085,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2335,7 +2102,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2348,27 +2114,22 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'file_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2394,20 +2155,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'skill_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2432,20 +2189,16 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'skill_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2470,10 +2223,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2489,7 +2240,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2502,10 +2252,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2521,7 +2269,6 @@ class FlyffGameConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2537,10 +2284,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2556,10 +2301,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -2569,109 +2312,77 @@ class FlyffGameConfig
         'world' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'continents',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'flying',
               'req' => true,
               'type' => '`$BOOLEAN`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'height',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'id',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'inDoor',
               'req' => true,
               'type' => '`$BOOLEAN`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'lodestars',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'name',
               'req' => true,
               'type' => '`$OBJECT`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'pk',
               'req' => true,
               'type' => '`$BOOLEAN`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'places',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'revivalKey',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'revivalWorld',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 10,
             ],
             [
-              'active' => true,
               'name' => 'tileName',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 11,
             ],
             [
-              'active' => true,
               'name' => 'tileSize',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 12,
             ],
             [
-              'active' => true,
               'name' => 'type',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 13,
             ],
             [
-              'active' => true,
               'name' => 'width',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 14,
             ],
           ],
           'name' => 'world',
@@ -2681,7 +2392,6 @@ class FlyffGameConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -2694,46 +2404,37 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'tile_x',
                         'orig' => 'tile_x',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'tile_y',
                         'orig' => 'tile_y',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 1,
                       ],
                       [
-                        'active' => true,
                         'example' => 'wdmadrigal',
                         'kind' => 'param',
                         'name' => 'world_tile_name',
                         'orig' => 'world_tile_name',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 2,
                       ],
                     ],
                   ],
@@ -2757,21 +2458,17 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => '4015,4839,6063',
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'world_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2796,21 +2493,17 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 4015,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'world_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2835,10 +2528,8 @@ class FlyffGameConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

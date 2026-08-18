@@ -829,7 +829,7 @@ Create an instance: `housing_template = client.HousingTemplate`
 
 ```ruby
 # load returns the ENTITY — call data_get for the HousingTemplate record (raises on error).
-housing_template = client.HousingTemplate.load()
+housing_template = client.HousingTemplate.load({ "housing_template_id" => "housing_template_id" })
 ```
 
 #### Example: List

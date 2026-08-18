@@ -50,7 +50,7 @@ class BadgeLoadMatch
 }
 
 /** Class entity data model. */
-class Class
+class ClassType
 {
     public float $attackSpeed;
     public array $autoAttackFactors;
@@ -78,9 +78,7 @@ class Class
 /** Request payload for Class#load. */
 class ClassLoadMatch
 {
-    public ?string $file_name = null;
-    public ?string $style = null;
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for Class#list. */
@@ -201,8 +199,7 @@ class HousingTemplate
 /** Request payload for HousingTemplate#load. */
 class HousingTemplateLoadMatch
 {
-    public ?string $file_name = null;
-    public ?string $housing_template_id = null;
+    public string $housing_template_id;
 }
 
 /** Request payload for HousingTemplate#list. */

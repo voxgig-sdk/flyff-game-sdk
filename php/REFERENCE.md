@@ -771,7 +771,7 @@ $results = $client->HousingTemplate()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->HousingTemplate()->load();
+$result = $client->HousingTemplate()->load(["housing_template_id" => "housing_template_id"]);
 ```
 
 ### Common Methods

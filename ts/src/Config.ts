@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.flyff.com',
+    base: "https://api.flyff.com",
 
     headers: {
       "content-type": "application/json"
@@ -139,7 +139,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -151,28 +150,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "achievement_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -196,21 +190,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "achievement_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -234,11 +224,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -254,7 +242,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -269,11 +256,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -288,11 +273,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -308,17 +291,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -343,11 +323,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -357,151 +335,108 @@ class Config {
     "class": {
       "fields": [
         {
-          "active": true,
           "name": "attackSpeed",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "autoAttackFactors",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "block",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "critical",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "defense",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 4
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "fp",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "hp",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 6
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "icon",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "magicDefenseIntFactor",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 9
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "magicDefenseStaFactor",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 10
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "maxFP",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "maxHP",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "maxLevel",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 13
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "maxMP",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "minLevel",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 15
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "mp",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 16
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 17
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "parent",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 18
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tree",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "type",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 20
+          "type": "`$STRING`"
         }
       ],
       "name": "class",
@@ -511,7 +446,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -523,39 +457,32 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "vagrant.png",
                     "kind": "param",
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "messenger",
                     "kind": "param",
                     "name": "style",
                     "orig": "style",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -582,22 +509,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "Vagrant.png",
                     "kind": "param",
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -623,22 +546,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "1689,296,2881",
                     "kind": "param",
                     "name": "id",
                     "orig": "class_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -662,22 +581,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 1689,
                     "kind": "param",
                     "name": "id",
                     "orig": "class_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -701,11 +616,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -728,17 +641,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "parameter_id",
                     "orig": "parameter_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -762,21 +672,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "parameter_id",
                     "orig": "parameter_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -800,11 +706,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -824,7 +728,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -836,11 +739,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -856,7 +757,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -868,11 +768,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -888,17 +786,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -923,11 +818,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -943,7 +836,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -955,28 +847,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "equipment_set_id",
                     "orig": "equipment_set_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1000,21 +887,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "equipment_set_id",
                     "orig": "equipment_set_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1038,11 +921,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1062,7 +943,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1074,11 +954,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1094,7 +972,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1106,28 +983,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "housing_pack_id",
                     "orig": "housing_pack_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1151,21 +1023,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "housing_pack_id",
                     "orig": "housing_pack_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1189,11 +1057,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1213,7 +1079,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1225,28 +1090,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "file_name",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1271,21 +1131,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "housing_template_id",
                     "orig": "housing_template_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1309,21 +1165,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "housing_template_id",
                     "orig": "housing_template_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1347,11 +1199,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1371,7 +1221,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1383,28 +1232,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1429,21 +1273,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "item_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1467,21 +1307,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "item_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1505,11 +1341,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1525,7 +1359,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1537,28 +1370,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "language_code",
                     "orig": "language_code",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1579,11 +1407,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1603,7 +1429,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1615,11 +1440,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1635,7 +1458,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1647,28 +1469,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1693,21 +1510,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "monster_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1731,21 +1544,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "monster_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1769,11 +1578,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1789,7 +1596,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1801,28 +1607,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1847,21 +1648,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "npc_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1885,21 +1682,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "npc_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -1923,11 +1716,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1943,7 +1734,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1955,28 +1745,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "party_skill_id",
                     "orig": "party_skill_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2000,21 +1785,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "party_skill_id",
                     "orig": "party_skill_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -2038,11 +1819,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2062,7 +1841,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2074,11 +1852,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2094,17 +1870,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2129,11 +1902,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2149,7 +1920,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2161,28 +1931,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "quest_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2206,21 +1971,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "quest_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -2244,11 +2005,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2264,7 +2023,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2276,11 +2034,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2296,7 +2052,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2308,28 +2063,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "recipe_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2353,21 +2103,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "recipe_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -2391,11 +2137,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2411,7 +2155,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2423,28 +2166,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "file_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2469,21 +2207,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "skill_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2507,21 +2241,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "skill_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -2545,11 +2275,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2565,7 +2293,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2577,11 +2304,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2597,7 +2322,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2612,11 +2336,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2631,11 +2353,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2645,109 +2365,77 @@ class Config {
     "world": {
       "fields": [
         {
-          "active": true,
           "name": "continents",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "flying",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "height",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "inDoor",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "lodestars",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "pk",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 7
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "places",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "revivalKey",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "revivalWorld",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tileName",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tileSize",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 12
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "type",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "width",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 14
+          "type": "`$INTEGER`"
         }
       ],
       "name": "world",
@@ -2757,7 +2445,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2769,47 +2456,38 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "tile_x",
                     "orig": "tile_x",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "tile_y",
                     "orig": "tile_y",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 1
+                    "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "wdmadrigal",
                     "kind": "param",
                     "name": "world_tile_name",
                     "orig": "world_tile_name",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2832,22 +2510,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "4015,4839,6063",
                     "kind": "param",
                     "name": "id",
                     "orig": "world_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2871,22 +2545,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 4015,
                     "kind": "param",
                     "name": "id",
                     "orig": "world_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -2910,11 +2580,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

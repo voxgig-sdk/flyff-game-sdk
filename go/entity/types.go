@@ -69,9 +69,7 @@ type Class struct {
 
 // ClassLoadMatch is the typed request payload for Class.LoadTyped.
 type ClassLoadMatch struct {
-	FileName *string `json:"file_name,omitempty"`
-	Style *string `json:"style,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 }
 
 // ClassListMatch is the typed request payload for Class.ListTyped.
@@ -173,8 +171,7 @@ type HousingTemplate struct {
 
 // HousingTemplateLoadMatch is the typed request payload for HousingTemplate.LoadTyped.
 type HousingTemplateLoadMatch struct {
-	FileName *string `json:"file_name,omitempty"`
-	HousingTemplateId *string `json:"housing_template_id,omitempty"`
+	HousingTemplateId string `json:"housing_template_id"`
 }
 
 // HousingTemplateListMatch is the typed request payload for HousingTemplate.ListTyped.

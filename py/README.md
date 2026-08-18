@@ -818,7 +818,7 @@ Create an instance: `housing_template = client.HousingTemplate()`
 #### Example: Load
 
 ```python
-housing_template = client.HousingTemplate().load()
+housing_template = client.HousingTemplate().load({"housing_template_id": "housing_template_id"})
 ```
 
 #### Example: List

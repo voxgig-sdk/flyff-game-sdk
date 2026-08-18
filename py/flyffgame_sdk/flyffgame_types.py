@@ -71,9 +71,7 @@ class Class(ClassRequired, total=False):
     parent: int
 
 
-class ClassLoadMatch(TypedDict, total=False):
-    file_name: str
-    style: str
+class ClassLoadMatch(TypedDict):
     id: str
 
 
@@ -169,8 +167,7 @@ class HousingTemplate(TypedDict):
     pass
 
 
-class HousingTemplateLoadMatch(TypedDict, total=False):
-    file_name: str
+class HousingTemplateLoadMatch(TypedDict):
     housing_template_id: str
 
 

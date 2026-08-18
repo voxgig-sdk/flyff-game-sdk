@@ -786,7 +786,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HousingTemplate(nil).Load(nil, nil)
+result, err := client.HousingTemplate(nil).Load(map[string]any{"housing_template_id": "housing_template_id"}, nil)
 if err != nil {
     panic(err)
 }

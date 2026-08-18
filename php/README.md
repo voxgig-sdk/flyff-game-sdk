@@ -839,7 +839,7 @@ Create an instance: `$housing_template = $client->HousingTemplate();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the HousingTemplate record (throws on error).
-$housing_template = $client->HousingTemplate()->load();
+$housing_template = $client->HousingTemplate()->load(["housing_template_id" => "housing_template_id"]);
 ```
 
 #### Example: List

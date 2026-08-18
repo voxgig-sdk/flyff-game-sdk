@@ -40,7 +40,7 @@ class FlyffGameSDK
         $utility = new FlyffGameUtility();
         $this->_utility = $utility;
 
-        $config = FlyffGameConfig::make_config();
+        $config = FlyffGameConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

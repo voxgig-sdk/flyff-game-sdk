@@ -1002,7 +1002,7 @@ const results = await client.HousingTemplate().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HousingTemplate().load()
+const result = await client.HousingTemplate().load({ housing_template_id: 'housing_template_id' })
 ```
 
 ### Common Methods

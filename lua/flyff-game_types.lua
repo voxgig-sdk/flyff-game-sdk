@@ -46,9 +46,7 @@
 ---@field type string
 
 ---@class ClassLoadMatch
----@field file_name? string
----@field style? string
----@field id? string
+---@field id string
 
 ---@class ClassListMatch
 ---@field attackSpeed? number
@@ -112,8 +110,7 @@
 ---@class HousingTemplate
 
 ---@class HousingTemplateLoadMatch
----@field file_name? string
----@field housing_template_id? string
+---@field housing_template_id string
 
 ---@class HousingTemplateListMatch
 

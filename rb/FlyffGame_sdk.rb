@@ -28,7 +28,7 @@ class FlyffGameSDK
     utility = FlyffGameUtility.new
     @_utility = utility
 
-    config = FlyffGameConfig.make_config
+    config = FlyffGameConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

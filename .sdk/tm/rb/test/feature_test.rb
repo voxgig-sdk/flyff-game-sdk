@@ -15,7 +15,7 @@ require_relative "../FlyffGame_sdk"
 module FlyffGameFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = FlyffGameConfig.make_config["feature"]
+    f = FlyffGameConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
