@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -358,27 +358,27 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attackSpeed` |  |
-| `autoAttackFactors` |  |
-| `block` |  |
-| `critical` |  |
-| `defense` |  |
-| `fp` |  |
-| `hp` |  |
-| `icon` |  |
-| `id` |  |
-| `magicDefenseIntFactor` |  |
-| `magicDefenseStaFactor` |  |
-| `maxFP` |  |
-| `maxHP` |  |
-| `maxLevel` |  |
-| `maxMP` |  |
-| `minLevel` |  |
-| `mp` |  |
-| `name` |  |
-| `parent` |  |
-| `tree` |  |
-| `type` |  |
+| `attackSpeed` | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | Auto attack damage factors used in damage calculation |
+| `block` | Blocking constant used in block calculation |
+| `critical` | Critical chance constant used in critical chance calculation |
+| `defense` | Defense factor use in defensive calculations |
+| `fp` | FP Factor |
+| `hp` | HP Factor |
+| `icon` | Icon of the Class |
+| `id` | ID of the class |
+| `magicDefenseIntFactor` | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | Maximum player level for the Class |
+| `maxMP` | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | Minimum player level for the Class |
+| `mp` | MP Factor |
+| `name` | Text available in several languages |
+| `parent` | ID of the parent class |
+| `tree` | Skill tree image for the class |
+| `type` | Type of the class |
 
 Operations: list, load.
 
@@ -586,21 +586,21 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continents` |  |
-| `flying` |  |
-| `height` |  |
-| `id` |  |
-| `inDoor` |  |
-| `lodestars` |  |
-| `name` |  |
-| `pk` |  |
-| `places` |  |
-| `revivalKey` |  |
-| `revivalWorld` |  |
-| `tileName` |  |
-| `tileSize` |  |
-| `type` |  |
-| `width` |  |
+| `continents` | Continents in the World |
+| `flying` | Whether players can fly in the World or not |
+| `height` | Height of the World in meters |
+| `id` | ID of the World |
+| `inDoor` | Whether the World has a sky or not |
+| `lodestars` | Revival places in the World |
+| `name` | Text available in several languages |
+| `pk` | Whether players can kill other players in the World or not |
+| `places` | Special Places in the World |
+| `revivalKey` | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | ID of the World where players revive when they die in the World |
+| `tileName` | Name of the world Tiles for navigator |
+| `tileSize` | World meters per Tile |
+| `type` | Type of the World |
+| `width` | Width of the World in meters |
 
 Operations: list, load.
 
@@ -684,27 +684,27 @@ Create an instance: `const class_ = client.Class()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attackSpeed` | `number` |  |
-| `autoAttackFactors` | `Record<string, any>` |  |
-| `block` | `number` |  |
-| `critical` | `number` |  |
-| `defense` | `number` |  |
-| `fp` | `number` |  |
-| `hp` | `number` |  |
-| `icon` | `string` |  |
-| `id` | `number` |  |
-| `magicDefenseIntFactor` | `number` |  |
-| `magicDefenseStaFactor` | `number` |  |
-| `maxFP` | `string` |  |
-| `maxHP` | `string` |  |
-| `maxLevel` | `number` |  |
-| `maxMP` | `string` |  |
-| `minLevel` | `number` |  |
-| `mp` | `number` |  |
-| `name` | `Record<string, any>` |  |
-| `parent` | `number` |  |
-| `tree` | `string` |  |
-| `type` | `string` |  |
+| `attackSpeed` | `number` | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `Record<string, any>` | Auto attack damage factors used in damage calculation |
+| `block` | `number` | Blocking constant used in block calculation |
+| `critical` | `number` | Critical chance constant used in critical chance calculation |
+| `defense` | `number` | Defense factor use in defensive calculations |
+| `fp` | `number` | FP Factor |
+| `hp` | `number` | HP Factor |
+| `icon` | `string` | Icon of the Class |
+| `id` | `number` | ID of the class |
+| `magicDefenseIntFactor` | `number` | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `number` | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `string` | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `string` | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `number` | Maximum player level for the Class |
+| `maxMP` | `string` | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `number` | Minimum player level for the Class |
+| `mp` | `number` | MP Factor |
+| `name` | `Record<string, any>` | Text available in several languages |
+| `parent` | `number` | ID of the parent class |
+| `tree` | `string` | Skill tree image for the class |
+| `type` | `string` | Type of the class |
 
 #### Example: Load
 
@@ -1185,21 +1185,21 @@ Create an instance: `const world = client.World()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continents` | `any[]` |  |
-| `flying` | `boolean` |  |
-| `height` | `number` |  |
-| `id` | `number` |  |
-| `inDoor` | `boolean` |  |
-| `lodestars` | `any[]` |  |
-| `name` | `Record<string, any>` |  |
-| `pk` | `boolean` |  |
-| `places` | `any[]` |  |
-| `revivalKey` | `string` |  |
-| `revivalWorld` | `number` |  |
-| `tileName` | `string` |  |
-| `tileSize` | `number` |  |
-| `type` | `string` |  |
-| `width` | `number` |  |
+| `continents` | `any[]` | Continents in the World |
+| `flying` | `boolean` | Whether players can fly in the World or not |
+| `height` | `number` | Height of the World in meters |
+| `id` | `number` | ID of the World |
+| `inDoor` | `boolean` | Whether the World has a sky or not |
+| `lodestars` | `any[]` | Revival places in the World |
+| `name` | `Record<string, any>` | Text available in several languages |
+| `pk` | `boolean` | Whether players can kill other players in the World or not |
+| `places` | `any[]` | Special Places in the World |
+| `revivalKey` | `string` | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `number` | ID of the World where players revive when they die in the World |
+| `tileName` | `string` | Name of the world Tiles for navigator |
+| `tileSize` | `number` | World meters per Tile |
+| `type` | `string` | Type of the World |
+| `width` | `number` | Width of the World in meters |
 
 #### Example: Load
 

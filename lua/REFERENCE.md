@@ -340,27 +340,27 @@ local class = client:Class(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attackSpeed` | `number` | Yes |  |
-| `autoAttackFactors` | `table` | Yes |  |
-| `block` | `number` | Yes |  |
-| `critical` | `number` | Yes |  |
-| `defense` | `number` | Yes |  |
-| `fp` | `number` | Yes |  |
-| `hp` | `number` | Yes |  |
-| `icon` | `string` | Yes |  |
-| `id` | `number` | Yes |  |
-| `magicDefenseIntFactor` | `number` | Yes |  |
-| `magicDefenseStaFactor` | `number` | Yes |  |
-| `maxFP` | `string` | Yes |  |
-| `maxHP` | `string` | Yes |  |
-| `maxLevel` | `number` | Yes |  |
-| `maxMP` | `string` | Yes |  |
-| `minLevel` | `number` | Yes |  |
-| `mp` | `number` | Yes |  |
-| `name` | `table` | Yes |  |
-| `parent` | `number` | No |  |
-| `tree` | `string` | Yes |  |
-| `type` | `string` | Yes |  |
+| `attackSpeed` | `number` | Yes | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `table` | Yes | Auto attack damage factors used in damage calculation |
+| `block` | `number` | Yes | Blocking constant used in block calculation |
+| `critical` | `number` | Yes | Critical chance constant used in critical chance calculation |
+| `defense` | `number` | Yes | Defense factor use in defensive calculations |
+| `fp` | `number` | Yes | FP Factor |
+| `hp` | `number` | Yes | HP Factor |
+| `icon` | `string` | Yes | Icon of the Class |
+| `id` | `number` | Yes | ID of the class |
+| `magicDefenseIntFactor` | `number` | Yes | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `number` | Yes | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `string` | Yes | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `string` | Yes | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `number` | Yes | Maximum player level for the Class |
+| `maxMP` | `string` | Yes | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `number` | Yes | Minimum player level for the Class |
+| `mp` | `number` | Yes | MP Factor |
+| `name` | `table` | Yes | Text available in several languages |
+| `parent` | `number` | No | ID of the parent class |
+| `tree` | `string` | Yes | Skill tree image for the class |
+| `type` | `string` | Yes | Type of the class |
 
 ### Operations
 
@@ -1520,21 +1520,21 @@ local world = client:World(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continents` | `table` | Yes |  |
-| `flying` | `boolean` | Yes |  |
-| `height` | `number` | Yes |  |
-| `id` | `number` | Yes |  |
-| `inDoor` | `boolean` | Yes |  |
-| `lodestars` | `table` | Yes |  |
-| `name` | `table` | Yes |  |
-| `pk` | `boolean` | Yes |  |
-| `places` | `table` | Yes |  |
-| `revivalKey` | `string` | No |  |
-| `revivalWorld` | `number` | No |  |
-| `tileName` | `string` | Yes |  |
-| `tileSize` | `number` | Yes |  |
-| `type` | `string` | Yes |  |
-| `width` | `number` | Yes |  |
+| `continents` | `table` | Yes | Continents in the World |
+| `flying` | `boolean` | Yes | Whether players can fly in the World or not |
+| `height` | `number` | Yes | Height of the World in meters |
+| `id` | `number` | Yes | ID of the World |
+| `inDoor` | `boolean` | Yes | Whether the World has a sky or not |
+| `lodestars` | `table` | Yes | Revival places in the World |
+| `name` | `table` | Yes | Text available in several languages |
+| `pk` | `boolean` | Yes | Whether players can kill other players in the World or not |
+| `places` | `table` | Yes | Special Places in the World |
+| `revivalKey` | `string` | No | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `number` | No | ID of the World where players revive when they die in the World |
+| `tileName` | `string` | Yes | Name of the world Tiles for navigator |
+| `tileSize` | `number` | Yes | World meters per Tile |
+| `type` | `string` | Yes | Type of the World |
+| `width` | `number` | Yes | Width of the World in meters |
 
 ### Operations
 

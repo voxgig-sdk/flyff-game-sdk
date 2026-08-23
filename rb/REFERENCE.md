@@ -343,27 +343,27 @@ class_ = client.Class
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attackSpeed` | `Float` | Yes |  |
-| `autoAttackFactors` | `Hash` | Yes |  |
-| `block` | `Float` | Yes |  |
-| `critical` | `Float` | Yes |  |
-| `defense` | `Float` | Yes |  |
-| `fp` | `Float` | Yes |  |
-| `hp` | `Float` | Yes |  |
-| `icon` | `String` | Yes |  |
-| `id` | `Integer` | Yes |  |
-| `magicDefenseIntFactor` | `Float` | Yes |  |
-| `magicDefenseStaFactor` | `Float` | Yes |  |
-| `maxFP` | `String` | Yes |  |
-| `maxHP` | `String` | Yes |  |
-| `maxLevel` | `Integer` | Yes |  |
-| `maxMP` | `String` | Yes |  |
-| `minLevel` | `Integer` | Yes |  |
-| `mp` | `Float` | Yes |  |
-| `name` | `Hash` | Yes |  |
-| `parent` | `Integer` | No |  |
-| `tree` | `String` | Yes |  |
-| `type` | `String` | Yes |  |
+| `attackSpeed` | `Float` | Yes | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `Hash` | Yes | Auto attack damage factors used in damage calculation |
+| `block` | `Float` | Yes | Blocking constant used in block calculation |
+| `critical` | `Float` | Yes | Critical chance constant used in critical chance calculation |
+| `defense` | `Float` | Yes | Defense factor use in defensive calculations |
+| `fp` | `Float` | Yes | FP Factor |
+| `hp` | `Float` | Yes | HP Factor |
+| `icon` | `String` | Yes | Icon of the Class |
+| `id` | `Integer` | Yes | ID of the class |
+| `magicDefenseIntFactor` | `Float` | Yes | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `Float` | Yes | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `String` | Yes | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `String` | Yes | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `Integer` | Yes | Maximum player level for the Class |
+| `maxMP` | `String` | Yes | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `Integer` | Yes | Minimum player level for the Class |
+| `mp` | `Float` | Yes | MP Factor |
+| `name` | `Hash` | Yes | Text available in several languages |
+| `parent` | `Integer` | No | ID of the parent class |
+| `tree` | `String` | Yes | Skill tree image for the class |
+| `type` | `String` | Yes | Type of the class |
 
 ### Operations
 
@@ -1523,21 +1523,21 @@ world = client.World
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continents` | `Array` | Yes |  |
-| `flying` | `Boolean` | Yes |  |
-| `height` | `Integer` | Yes |  |
-| `id` | `Integer` | Yes |  |
-| `inDoor` | `Boolean` | Yes |  |
-| `lodestars` | `Array` | Yes |  |
-| `name` | `Hash` | Yes |  |
-| `pk` | `Boolean` | Yes |  |
-| `places` | `Array` | Yes |  |
-| `revivalKey` | `String` | No |  |
-| `revivalWorld` | `Integer` | No |  |
-| `tileName` | `String` | Yes |  |
-| `tileSize` | `Integer` | Yes |  |
-| `type` | `String` | Yes |  |
-| `width` | `Integer` | Yes |  |
+| `continents` | `Array` | Yes | Continents in the World |
+| `flying` | `Boolean` | Yes | Whether players can fly in the World or not |
+| `height` | `Integer` | Yes | Height of the World in meters |
+| `id` | `Integer` | Yes | ID of the World |
+| `inDoor` | `Boolean` | Yes | Whether the World has a sky or not |
+| `lodestars` | `Array` | Yes | Revival places in the World |
+| `name` | `Hash` | Yes | Text available in several languages |
+| `pk` | `Boolean` | Yes | Whether players can kill other players in the World or not |
+| `places` | `Array` | Yes | Special Places in the World |
+| `revivalKey` | `String` | No | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `Integer` | No | ID of the World where players revive when they die in the World |
+| `tileName` | `String` | Yes | Name of the world Tiles for navigator |
+| `tileSize` | `Integer` | Yes | World meters per Tile |
+| `type` | `String` | Yes | Type of the World |
+| `width` | `Integer` | Yes | Width of the World in meters |
 
 ### Operations
 

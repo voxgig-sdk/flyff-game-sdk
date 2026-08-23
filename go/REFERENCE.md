@@ -349,27 +349,27 @@ fmt.Println(class.GetName()) // "class"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attackSpeed` | `float64` | Yes |  |
-| `autoAttackFactors` | `map[string]any` | Yes |  |
-| `block` | `float64` | Yes |  |
-| `critical` | `float64` | Yes |  |
-| `defense` | `float64` | Yes |  |
-| `fp` | `float64` | Yes |  |
-| `hp` | `float64` | Yes |  |
-| `icon` | `string` | Yes |  |
-| `id` | `int` | Yes |  |
-| `magicDefenseIntFactor` | `float64` | Yes |  |
-| `magicDefenseStaFactor` | `float64` | Yes |  |
-| `maxFP` | `string` | Yes |  |
-| `maxHP` | `string` | Yes |  |
-| `maxLevel` | `int` | Yes |  |
-| `maxMP` | `string` | Yes |  |
-| `minLevel` | `int` | Yes |  |
-| `mp` | `float64` | Yes |  |
-| `name` | `map[string]any` | Yes |  |
-| `parent` | `int` | No |  |
-| `tree` | `string` | Yes |  |
-| `type` | `string` | Yes |  |
+| `attackSpeed` | `float64` | Yes | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `map[string]any` | Yes | Auto attack damage factors used in damage calculation |
+| `block` | `float64` | Yes | Blocking constant used in block calculation |
+| `critical` | `float64` | Yes | Critical chance constant used in critical chance calculation |
+| `defense` | `float64` | Yes | Defense factor use in defensive calculations |
+| `fp` | `float64` | Yes | FP Factor |
+| `hp` | `float64` | Yes | HP Factor |
+| `icon` | `string` | Yes | Icon of the Class |
+| `id` | `int` | Yes | ID of the class |
+| `magicDefenseIntFactor` | `float64` | Yes | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `float64` | Yes | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `string` | Yes | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `string` | Yes | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `int` | Yes | Maximum player level for the Class |
+| `maxMP` | `string` | Yes | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `int` | Yes | Minimum player level for the Class |
+| `mp` | `float64` | Yes | MP Factor |
+| `name` | `map[string]any` | Yes | Text available in several languages |
+| `parent` | `int` | No | ID of the parent class |
+| `tree` | `string` | Yes | Skill tree image for the class |
+| `type` | `string` | Yes | Type of the class |
 
 ### Operations
 
@@ -1554,21 +1554,21 @@ fmt.Println(world.GetName()) // "world"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continents` | `[]any` | Yes |  |
-| `flying` | `bool` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `int` | Yes |  |
-| `inDoor` | `bool` | Yes |  |
-| `lodestars` | `[]any` | Yes |  |
-| `name` | `map[string]any` | Yes |  |
-| `pk` | `bool` | Yes |  |
-| `places` | `[]any` | Yes |  |
-| `revivalKey` | `string` | No |  |
-| `revivalWorld` | `int` | No |  |
-| `tileName` | `string` | Yes |  |
-| `tileSize` | `int` | Yes |  |
-| `type` | `string` | Yes |  |
-| `width` | `int` | Yes |  |
+| `continents` | `[]any` | Yes | Continents in the World |
+| `flying` | `bool` | Yes | Whether players can fly in the World or not |
+| `height` | `int` | Yes | Height of the World in meters |
+| `id` | `int` | Yes | ID of the World |
+| `inDoor` | `bool` | Yes | Whether the World has a sky or not |
+| `lodestars` | `[]any` | Yes | Revival places in the World |
+| `name` | `map[string]any` | Yes | Text available in several languages |
+| `pk` | `bool` | Yes | Whether players can kill other players in the World or not |
+| `places` | `[]any` | Yes | Special Places in the World |
+| `revivalKey` | `string` | No | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `int` | No | ID of the World where players revive when they die in the World |
+| `tileName` | `string` | Yes | Name of the world Tiles for navigator |
+| `tileSize` | `int` | Yes | World meters per Tile |
+| `type` | `string` | Yes | Type of the World |
+| `width` | `int` | Yes | Width of the World in meters |
 
 ### Operations
 

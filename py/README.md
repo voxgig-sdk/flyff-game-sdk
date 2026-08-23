@@ -310,27 +310,27 @@ API path: `/image/badge/{fileName}`
 
 | Field | Description |
 | --- | --- |
-| `attackSpeed` |  |
-| `autoAttackFactors` |  |
-| `block` |  |
-| `critical` |  |
-| `defense` |  |
-| `fp` |  |
-| `hp` |  |
-| `icon` |  |
-| `id` |  |
-| `magicDefenseIntFactor` |  |
-| `magicDefenseStaFactor` |  |
-| `maxFP` |  |
-| `maxHP` |  |
-| `maxLevel` |  |
-| `maxMP` |  |
-| `minLevel` |  |
-| `mp` |  |
-| `name` |  |
-| `parent` |  |
-| `tree` |  |
-| `type` |  |
+| `attackSpeed` | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | Auto attack damage factors used in damage calculation |
+| `block` | Blocking constant used in block calculation |
+| `critical` | Critical chance constant used in critical chance calculation |
+| `defense` | Defense factor use in defensive calculations |
+| `fp` | FP Factor |
+| `hp` | HP Factor |
+| `icon` | Icon of the Class |
+| `id` | ID of the class |
+| `magicDefenseIntFactor` | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | Maximum player level for the Class |
+| `maxMP` | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | Minimum player level for the Class |
+| `mp` | MP Factor |
+| `name` | Text available in several languages |
+| `parent` | ID of the parent class |
+| `tree` | Skill tree image for the class |
+| `type` | Type of the class |
 
 Operations: List, Load.
 
@@ -538,21 +538,21 @@ API path: `/version/api`
 
 | Field | Description |
 | --- | --- |
-| `continents` |  |
-| `flying` |  |
-| `height` |  |
-| `id` |  |
-| `inDoor` |  |
-| `lodestars` |  |
-| `name` |  |
-| `pk` |  |
-| `places` |  |
-| `revivalKey` |  |
-| `revivalWorld` |  |
-| `tileName` |  |
-| `tileSize` |  |
-| `type` |  |
-| `width` |  |
+| `continents` | Continents in the World |
+| `flying` | Whether players can fly in the World or not |
+| `height` | Height of the World in meters |
+| `id` | ID of the World |
+| `inDoor` | Whether the World has a sky or not |
+| `lodestars` | Revival places in the World |
+| `name` | Text available in several languages |
+| `pk` | Whether players can kill other players in the World or not |
+| `places` | Special Places in the World |
+| `revivalKey` | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | ID of the World where players revive when they die in the World |
+| `tileName` | Name of the world Tiles for navigator |
+| `tileSize` | World meters per Tile |
+| `type` | Type of the World |
+| `width` | Width of the World in meters |
 
 Operations: List, Load.
 
@@ -636,27 +636,27 @@ Create an instance: `class_ = client.Class()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `attackSpeed` | `float` |  |
-| `autoAttackFactors` | `dict` |  |
-| `block` | `float` |  |
-| `critical` | `float` |  |
-| `defense` | `float` |  |
-| `fp` | `float` |  |
-| `hp` | `float` |  |
-| `icon` | `str` |  |
-| `id` | `int` |  |
-| `magicDefenseIntFactor` | `float` |  |
-| `magicDefenseStaFactor` | `float` |  |
-| `maxFP` | `str` |  |
-| `maxHP` | `str` |  |
-| `maxLevel` | `int` |  |
-| `maxMP` | `str` |  |
-| `minLevel` | `int` |  |
-| `mp` | `float` |  |
-| `name` | `dict` |  |
-| `parent` | `int` |  |
-| `tree` | `str` |  |
-| `type` | `str` |  |
+| `attackSpeed` | `float` | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `dict` | Auto attack damage factors used in damage calculation |
+| `block` | `float` | Blocking constant used in block calculation |
+| `critical` | `float` | Critical chance constant used in critical chance calculation |
+| `defense` | `float` | Defense factor use in defensive calculations |
+| `fp` | `float` | FP Factor |
+| `hp` | `float` | HP Factor |
+| `icon` | `str` | Icon of the Class |
+| `id` | `int` | ID of the class |
+| `magicDefenseIntFactor` | `float` | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `float` | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `str` | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `str` | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `int` | Maximum player level for the Class |
+| `maxMP` | `str` | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `int` | Minimum player level for the Class |
+| `mp` | `float` | MP Factor |
+| `name` | `dict` | Text available in several languages |
+| `parent` | `int` | ID of the parent class |
+| `tree` | `str` | Skill tree image for the class |
+| `type` | `str` | Type of the class |
 
 #### Example: Load
 
@@ -1137,21 +1137,21 @@ Create an instance: `world = client.World()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `continents` | `list` |  |
-| `flying` | `bool` |  |
-| `height` | `int` |  |
-| `id` | `int` |  |
-| `inDoor` | `bool` |  |
-| `lodestars` | `list` |  |
-| `name` | `dict` |  |
-| `pk` | `bool` |  |
-| `places` | `list` |  |
-| `revivalKey` | `str` |  |
-| `revivalWorld` | `int` |  |
-| `tileName` | `str` |  |
-| `tileSize` | `int` |  |
-| `type` | `str` |  |
-| `width` | `int` |  |
+| `continents` | `list` | Continents in the World |
+| `flying` | `bool` | Whether players can fly in the World or not |
+| `height` | `int` | Height of the World in meters |
+| `id` | `int` | ID of the World |
+| `inDoor` | `bool` | Whether the World has a sky or not |
+| `lodestars` | `list` | Revival places in the World |
+| `name` | `dict` | Text available in several languages |
+| `pk` | `bool` | Whether players can kill other players in the World or not |
+| `places` | `list` | Special Places in the World |
+| `revivalKey` | `str` | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `int` | ID of the World where players revive when they die in the World |
+| `tileName` | `str` | Name of the world Tiles for navigator |
+| `tileSize` | `int` | World meters per Tile |
+| `type` | `str` | Type of the World |
+| `width` | `int` | Width of the World in meters |
 
 #### Example: Load
 

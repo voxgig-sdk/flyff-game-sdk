@@ -342,27 +342,27 @@ $class = $client->Class();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attackSpeed` | `float` | Yes |  |
-| `autoAttackFactors` | `array` | Yes |  |
-| `block` | `float` | Yes |  |
-| `critical` | `float` | Yes |  |
-| `defense` | `float` | Yes |  |
-| `fp` | `float` | Yes |  |
-| `hp` | `float` | Yes |  |
-| `icon` | `string` | Yes |  |
-| `id` | `int` | Yes |  |
-| `magicDefenseIntFactor` | `float` | Yes |  |
-| `magicDefenseStaFactor` | `float` | Yes |  |
-| `maxFP` | `string` | Yes |  |
-| `maxHP` | `string` | Yes |  |
-| `maxLevel` | `int` | Yes |  |
-| `maxMP` | `string` | Yes |  |
-| `minLevel` | `int` | Yes |  |
-| `mp` | `float` | Yes |  |
-| `name` | `array` | Yes |  |
-| `parent` | `int` | No |  |
-| `tree` | `string` | Yes |  |
-| `type` | `string` | Yes |  |
+| `attackSpeed` | `float` | Yes | Attack speed constant used in attack speed calculation |
+| `autoAttackFactors` | `array` | Yes | Auto attack damage factors used in damage calculation |
+| `block` | `float` | Yes | Blocking constant used in block calculation |
+| `critical` | `float` | Yes | Critical chance constant used in critical chance calculation |
+| `defense` | `float` | Yes | Defense factor use in defensive calculations |
+| `fp` | `float` | Yes | FP Factor |
+| `hp` | `float` | Yes | HP Factor |
+| `icon` | `string` | Yes | Icon of the Class |
+| `id` | `int` | Yes | ID of the class |
+| `magicDefenseIntFactor` | `float` | Yes | Magic defense factor based on INT used in defensive calculations |
+| `magicDefenseStaFactor` | `float` | Yes | Magic defense factor based on STA used in defensive calculations |
+| `maxFP` | `string` | Yes | Formula to compute the maximum Fatigue Points of the player |
+| `maxHP` | `string` | Yes | Formula to compute the maximum Hit Points of the player |
+| `maxLevel` | `int` | Yes | Maximum player level for the Class |
+| `maxMP` | `string` | Yes | Formula to compute the maximum Mana Points of the player |
+| `minLevel` | `int` | Yes | Minimum player level for the Class |
+| `mp` | `float` | Yes | MP Factor |
+| `name` | `array` | Yes | Text available in several languages |
+| `parent` | `int` | No | ID of the parent class |
+| `tree` | `string` | Yes | Skill tree image for the class |
+| `type` | `string` | Yes | Type of the class |
 
 ### Operations
 
@@ -1522,21 +1522,21 @@ $world = $client->World();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `continents` | `array` | Yes |  |
-| `flying` | `bool` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `int` | Yes |  |
-| `inDoor` | `bool` | Yes |  |
-| `lodestars` | `array` | Yes |  |
-| `name` | `array` | Yes |  |
-| `pk` | `bool` | Yes |  |
-| `places` | `array` | Yes |  |
-| `revivalKey` | `string` | No |  |
-| `revivalWorld` | `int` | No |  |
-| `tileName` | `string` | Yes |  |
-| `tileSize` | `int` | Yes |  |
-| `type` | `string` | Yes |  |
-| `width` | `int` | Yes |  |
+| `continents` | `array` | Yes | Continents in the World |
+| `flying` | `bool` | Yes | Whether players can fly in the World or not |
+| `height` | `int` | Yes | Height of the World in meters |
+| `id` | `int` | Yes | ID of the World |
+| `inDoor` | `bool` | Yes | Whether the World has a sky or not |
+| `lodestars` | `array` | Yes | Revival places in the World |
+| `name` | `array` | Yes | Text available in several languages |
+| `pk` | `bool` | Yes | Whether players can kill other players in the World or not |
+| `places` | `array` | Yes | Special Places in the World |
+| `revivalKey` | `string` | No | ID of the Lodestar where players revive when they die in the World |
+| `revivalWorld` | `int` | No | ID of the World where players revive when they die in the World |
+| `tileName` | `string` | Yes | Name of the world Tiles for navigator |
+| `tileSize` | `int` | Yes | World meters per Tile |
+| `type` | `string` | Yes | Type of the World |
+| `width` | `int` | Yes | Width of the World in meters |
 
 ### Operations
 

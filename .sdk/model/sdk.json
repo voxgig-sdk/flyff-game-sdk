@@ -259,126 +259,147 @@
               "active": true,
               "name": "attackSpeed",
               "req": true,
+              "short": "Attack speed constant used in attack speed calculation",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "autoAttackFactors",
               "req": true,
+              "short": "Auto attack damage factors used in damage calculation",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "block",
               "req": true,
+              "short": "Blocking constant used in block calculation",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "critical",
               "req": true,
+              "short": "Critical chance constant used in critical chance calculation",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "defense",
               "req": true,
+              "short": "Defense factor use in defensive calculations",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "fp",
               "req": true,
+              "short": "FP Factor",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "hp",
               "req": true,
+              "short": "HP Factor",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "icon",
               "req": true,
+              "short": "Icon of the Class",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "ID of the class",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "magicDefenseIntFactor",
               "req": true,
+              "short": "Magic defense factor based on INT used in defensive calculations",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "magicDefenseStaFactor",
               "req": true,
+              "short": "Magic defense factor based on STA used in defensive calculations",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "maxFP",
               "req": true,
+              "short": "Formula to compute the maximum Fatigue Points of the player",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "maxHP",
               "req": true,
+              "short": "Formula to compute the maximum Hit Points of the player",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "maxLevel",
               "req": true,
+              "short": "Maximum player level for the Class",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxMP",
               "req": true,
+              "short": "Formula to compute the maximum Mana Points of the player",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "minLevel",
               "req": true,
+              "short": "Minimum player level for the Class",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "mp",
               "req": true,
+              "short": "MP Factor",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Text available in several languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "parent",
               "req": false,
+              "short": "ID of the parent class",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "tree",
               "req": true,
+              "short": "Skill tree image for the class",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": true,
+              "short": "Type of the class",
               "type": "`$STRING`"
             }
           ],
@@ -2497,90 +2518,105 @@
               "active": true,
               "name": "continents",
               "req": true,
+              "short": "Continents in the World",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "flying",
               "req": true,
+              "short": "Whether players can fly in the World or not",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "height",
               "req": true,
+              "short": "Height of the World in meters",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "ID of the World",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "inDoor",
               "req": true,
+              "short": "Whether the World has a sky or not",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "lodestars",
               "req": true,
+              "short": "Revival places in the World",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Text available in several languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "pk",
               "req": true,
+              "short": "Whether players can kill other players in the World or not",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "places",
               "req": true,
+              "short": "Special Places in the World",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "revivalKey",
               "req": false,
+              "short": "ID of the Lodestar where players revive when they die in the World",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "revivalWorld",
               "req": false,
+              "short": "ID of the World where players revive when they die in the World",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "tileName",
               "req": true,
+              "short": "Name of the world Tiles for navigator",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tileSize",
               "req": true,
+              "short": "World meters per Tile",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": true,
+              "short": "Type of the World",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "width",
               "req": true,
+              "short": "Width of the World in meters",
               "type": "`$INTEGER`"
             }
           ],

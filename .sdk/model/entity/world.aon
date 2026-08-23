@@ -8,76 +8,91 @@ main: kit: entity: world: {
     {
       name: "continents"
       req: true
+      short: "Continents in the World"
       type: "`$ARRAY`"
     }
     {
       name: "flying"
       req: true
+      short: "Whether players can fly in the World or not"
       type: "`$BOOLEAN`"
     }
     {
       name: "height"
       req: true
+      short: "Height of the World in meters"
       type: "`$INTEGER`"
     }
     {
       name: "id"
       req: true
+      short: "ID of the World"
       type: "`$INTEGER`"
     }
     {
       name: "inDoor"
       req: true
+      short: "Whether the World has a sky or not"
       type: "`$BOOLEAN`"
     }
     {
       name: "lodestars"
       req: true
+      short: "Revival places in the World"
       type: "`$ARRAY`"
     }
     {
       name: "name"
       req: true
+      short: "Text available in several languages"
       type: "`$OBJECT`"
     }
     {
       name: "pk"
       req: true
+      short: "Whether players can kill other players in the World or not"
       type: "`$BOOLEAN`"
     }
     {
       name: "places"
       req: true
+      short: "Special Places in the World"
       type: "`$ARRAY`"
     }
     {
       name: "revivalKey"
       req: false
+      short: "ID of the Lodestar where players revive when they die in the World"
       type: "`$STRING`"
     }
     {
       name: "revivalWorld"
       req: false
+      short: "ID of the World where players revive when they die in the World"
       type: "`$INTEGER`"
     }
     {
       name: "tileName"
       req: true
+      short: "Name of the world Tiles for navigator"
       type: "`$STRING`"
     }
     {
       name: "tileSize"
       req: true
+      short: "World meters per Tile"
       type: "`$INTEGER`"
     }
     {
       name: "type"
       req: true
+      short: "Type of the World"
       type: "`$STRING`"
     }
     {
       name: "width"
       req: true
+      short: "Width of the World in meters"
       type: "`$INTEGER`"
     }
   ]
