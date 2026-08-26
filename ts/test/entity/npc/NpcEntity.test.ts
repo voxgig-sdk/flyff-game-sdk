@@ -66,6 +66,12 @@ describe('NpcEntity', async () => {
     const npc_ref01_list = (await npc_ref01_ent.list(npc_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const npc_ref01_match_dt0: any = {}
+    npc_ref01_match_dt0.id = npc_ref01_data.id
+    const npc_ref01_data_dt0 = (await npc_ref01_ent.load(npc_ref01_match_dt0)).data()
+    assert(npc_ref01_data_dt0.id === npc_ref01_data.id)
+
 
   })
 })

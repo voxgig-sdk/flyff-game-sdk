@@ -93,9 +93,13 @@ class RecipeEntityTest extends TestCase
         $this->assertIsArray($recipe_ref01_list_result);
 
         // LOAD
-        $recipe_ref01_match_dt0 = [];
+        $recipe_ref01_match_dt0 = [
+            "id" => $recipe_ref01_data["id"],
+        ];
         $recipe_ref01_data_dt0_loaded = $recipe_ref01_ent->load($recipe_ref01_match_dt0, null);
-        $this->assertNotNull($recipe_ref01_data_dt0_loaded);
+        $recipe_ref01_data_dt0_load_result = Helpers::to_map(is_object($recipe_ref01_data_dt0_loaded) && method_exists($recipe_ref01_data_dt0_loaded, 'data_get') ? $recipe_ref01_data_dt0_loaded->data_get() : $recipe_ref01_data_dt0_loaded);
+        $this->assertNotNull($recipe_ref01_data_dt0_load_result);
+        $this->assertEquals($recipe_ref01_data_dt0_load_result["id"], $recipe_ref01_data["id"]);
 
     }
 }

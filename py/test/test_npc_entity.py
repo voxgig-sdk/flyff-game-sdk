@@ -88,9 +88,13 @@ class TestNpcEntity:
         assert isinstance(npc_ref01_list_result, list)
 
         # LOAD
-        npc_ref01_match_dt0 = {}
+        npc_ref01_match_dt0 = {
+            "id": npc_ref01_data["id"],
+        }
         npc_ref01_data_dt0_loaded = npc_ref01_ent.load(npc_ref01_match_dt0, None)
-        assert npc_ref01_data_dt0_loaded is not None
+        npc_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(npc_ref01_data_dt0_loaded))
+        assert npc_ref01_data_dt0_load_result is not None
+        assert npc_ref01_data_dt0_load_result["id"] == npc_ref01_data["id"]
 
 
 

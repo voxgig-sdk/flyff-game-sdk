@@ -88,9 +88,13 @@ class TestQuestEntity:
         assert isinstance(quest_ref01_list_result, list)
 
         # LOAD
-        quest_ref01_match_dt0 = {}
+        quest_ref01_match_dt0 = {
+            "id": quest_ref01_data["id"],
+        }
         quest_ref01_data_dt0_loaded = quest_ref01_ent.load(quest_ref01_match_dt0, None)
-        assert quest_ref01_data_dt0_loaded is not None
+        quest_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(quest_ref01_data_dt0_loaded))
+        assert quest_ref01_data_dt0_load_result is not None
+        assert quest_ref01_data_dt0_load_result["id"] == quest_ref01_data["id"]
 
 
 

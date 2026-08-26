@@ -66,6 +66,12 @@ describe('ItemEntity', async () => {
     const item_ref01_list = (await item_ref01_ent.list(item_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const item_ref01_match_dt0: any = {}
+    item_ref01_match_dt0.id = item_ref01_data.id
+    const item_ref01_data_dt0 = (await item_ref01_ent.load(item_ref01_match_dt0)).data()
+    assert(item_ref01_data_dt0.id === item_ref01_data.id)
+
 
   })
 })

@@ -48,9 +48,13 @@ class ElementEntityTest extends TestCase
 
         // LOAD
         $element_ref01_ent = $client->Element(null);
-        $element_ref01_match_dt0 = [];
+        $element_ref01_match_dt0 = [
+            "id" => $element_ref01_data["id"],
+        ];
         $element_ref01_data_dt0_loaded = $element_ref01_ent->load($element_ref01_match_dt0, null);
-        $this->assertNotNull($element_ref01_data_dt0_loaded);
+        $element_ref01_data_dt0_load_result = Helpers::to_map(is_object($element_ref01_data_dt0_loaded) && method_exists($element_ref01_data_dt0_loaded, 'data_get') ? $element_ref01_data_dt0_loaded->data_get() : $element_ref01_data_dt0_loaded);
+        $this->assertNotNull($element_ref01_data_dt0_load_result);
+        $this->assertEquals($element_ref01_data_dt0_load_result["id"], $element_ref01_data["id"]);
 
     }
 }

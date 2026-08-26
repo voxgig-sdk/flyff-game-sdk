@@ -92,10 +92,14 @@ describe("NpcEntity", function()
     assert.is_table(npc_ref01_list_result)
 
     -- LOAD
-    local npc_ref01_match_dt0 = {}
+    local npc_ref01_match_dt0 = {
+      id = npc_ref01_data["id"],
+    }
     local npc_ref01_data_dt0_loaded, err = npc_ref01_ent:load(npc_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(npc_ref01_data_dt0_loaded)
+    local npc_ref01_data_dt0_load_result = helpers.to_map(type(npc_ref01_data_dt0_loaded) == 'table' and npc_ref01_data_dt0_loaded.data_get and npc_ref01_data_dt0_loaded:data_get() or npc_ref01_data_dt0_loaded)
+    assert.is_not_nil(npc_ref01_data_dt0_load_result)
+    assert.are.equal(npc_ref01_data_dt0_load_result["id"], npc_ref01_data["id"])
 
   end)
 end)

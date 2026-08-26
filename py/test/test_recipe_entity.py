@@ -88,9 +88,13 @@ class TestRecipeEntity:
         assert isinstance(recipe_ref01_list_result, list)
 
         # LOAD
-        recipe_ref01_match_dt0 = {}
+        recipe_ref01_match_dt0 = {
+            "id": recipe_ref01_data["id"],
+        }
         recipe_ref01_data_dt0_loaded = recipe_ref01_ent.load(recipe_ref01_match_dt0, None)
-        assert recipe_ref01_data_dt0_loaded is not None
+        recipe_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(recipe_ref01_data_dt0_loaded))
+        assert recipe_ref01_data_dt0_load_result is not None
+        assert recipe_ref01_data_dt0_load_result["id"] == recipe_ref01_data["id"]
 
 
 

@@ -7,17 +7,20 @@
 -- edit by hand.
 
 ---@class Achievement
+---@field id? string
 
 ---@class AchievementLoadMatch
 ---@field id string
 
 ---@class AchievementListMatch
+---@field id? string
 
 ---@class Awake
 
 ---@class AwakeLoadMatch
 
 ---@class Badge
+---@field id? string
 
 ---@class BadgeLoadMatch
 ---@field id string
@@ -85,6 +88,7 @@
 ---@class DungeonLoadMatch
 
 ---@class Element
+---@field id? string
 
 ---@class ElementLoadMatch
 ---@field id string
@@ -115,11 +119,13 @@
 ---@class HousingTemplateListMatch
 
 ---@class Item
+---@field id? string
 
 ---@class ItemLoadMatch
 ---@field id string
 
 ---@class ItemListMatch
+---@field id? string
 
 ---@class Language
 
@@ -133,18 +139,22 @@
 ---@class LifestyleLoadMatch
 
 ---@class Monster
+---@field id? string
 
 ---@class MonsterLoadMatch
 ---@field id string
 
 ---@class MonsterListMatch
+---@field id? string
 
 ---@class Npc
+---@field id? string
 
 ---@class NpcLoadMatch
 ---@field id string
 
 ---@class NpcListMatch
+---@field id? string
 
 ---@class PartySkill
 
@@ -158,34 +168,41 @@
 ---@class PknLoadMatch
 
 ---@class Place
+---@field id? string
 
 ---@class PlaceLoadMatch
 ---@field id string
 
 ---@class Quest
+---@field id? string
 
 ---@class QuestLoadMatch
 ---@field id string
 
 ---@class QuestListMatch
+---@field id? string
 
 ---@class RaisedPet
 
 ---@class RaisedPetLoadMatch
 
 ---@class Recipe
+---@field id? string
 
 ---@class RecipeLoadMatch
 ---@field id string
 
 ---@class RecipeListMatch
+---@field id? string
 
 ---@class Skill
+---@field id? string
 
 ---@class SkillLoadMatch
 ---@field id string
 
 ---@class SkillListMatch
+---@field id? string
 
 ---@class UpgradeLevelBonus
 

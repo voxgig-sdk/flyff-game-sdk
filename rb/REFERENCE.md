@@ -193,6 +193,12 @@ same parameters as `direct()`. Raises on error.
 achievement = client.Achievement
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
@@ -292,6 +298,12 @@ Return the entity name.
 ```ruby
 badge = client.Badge
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -557,6 +569,12 @@ Return the entity name.
 element = client.Element
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -811,6 +829,12 @@ Return the entity name.
 item = client.Item
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
@@ -965,6 +989,12 @@ Return the entity name.
 monster = client.Monster
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
@@ -1018,6 +1048,12 @@ Return the entity name.
 ```ruby
 npc = client.Npc
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -1173,6 +1209,12 @@ Return the entity name.
 place = client.Place
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1218,6 +1260,12 @@ Return the entity name.
 ```ruby
 quest = client.Quest
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -1319,6 +1367,12 @@ Return the entity name.
 recipe = client.Recipe
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
@@ -1372,6 +1426,12 @@ Return the entity name.
 ```ruby
 skill = client.Skill
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 

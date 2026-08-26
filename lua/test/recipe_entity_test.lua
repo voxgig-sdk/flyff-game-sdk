@@ -92,10 +92,14 @@ describe("RecipeEntity", function()
     assert.is_table(recipe_ref01_list_result)
 
     -- LOAD
-    local recipe_ref01_match_dt0 = {}
+    local recipe_ref01_match_dt0 = {
+      id = recipe_ref01_data["id"],
+    }
     local recipe_ref01_data_dt0_loaded, err = recipe_ref01_ent:load(recipe_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(recipe_ref01_data_dt0_loaded)
+    local recipe_ref01_data_dt0_load_result = helpers.to_map(type(recipe_ref01_data_dt0_loaded) == 'table' and recipe_ref01_data_dt0_loaded.data_get and recipe_ref01_data_dt0_loaded:data_get() or recipe_ref01_data_dt0_loaded)
+    assert.is_not_nil(recipe_ref01_data_dt0_load_result)
+    assert.are.equal(recipe_ref01_data_dt0_load_result["id"], recipe_ref01_data["id"])
 
   end)
 end)

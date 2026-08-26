@@ -92,10 +92,14 @@ describe("AchievementEntity", function()
     assert.is_table(achievement_ref01_list_result)
 
     -- LOAD
-    local achievement_ref01_match_dt0 = {}
+    local achievement_ref01_match_dt0 = {
+      id = achievement_ref01_data["id"],
+    }
     local achievement_ref01_data_dt0_loaded, err = achievement_ref01_ent:load(achievement_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(achievement_ref01_data_dt0_loaded)
+    local achievement_ref01_data_dt0_load_result = helpers.to_map(type(achievement_ref01_data_dt0_loaded) == 'table' and achievement_ref01_data_dt0_loaded.data_get and achievement_ref01_data_dt0_loaded:data_get() or achievement_ref01_data_dt0_loaded)
+    assert.is_not_nil(achievement_ref01_data_dt0_load_result)
+    assert.are.equal(achievement_ref01_data_dt0_load_result["id"], achievement_ref01_data["id"])
 
   end)
 end)

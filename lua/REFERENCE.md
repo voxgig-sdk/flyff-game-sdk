@@ -190,6 +190,12 @@ same parameters as `direct()`.
 local achievement = client:Achievement(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`
@@ -289,6 +295,12 @@ Return the entity name.
 ```lua
 local badge = client:Badge(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -554,6 +566,12 @@ Return the entity name.
 local element = client:Element(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -808,6 +826,12 @@ Return the entity name.
 local item = client:Item(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`
@@ -962,6 +986,12 @@ Return the entity name.
 local monster = client:Monster(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`
@@ -1015,6 +1045,12 @@ Return the entity name.
 ```lua
 local npc = client:Npc(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1170,6 +1206,12 @@ Return the entity name.
 local place = client:Place(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1215,6 +1257,12 @@ Return the entity name.
 ```lua
 local quest = client:Quest(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1316,6 +1364,12 @@ Return the entity name.
 local recipe = client:Recipe(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`
@@ -1369,6 +1423,12 @@ Return the entity name.
 ```lua
 local skill = client:Skill(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

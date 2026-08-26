@@ -83,9 +83,13 @@ class SkillEntityTest < Minitest::Test
     assert skill_ref01_list_result.is_a?(Array)
 
     # LOAD
-    skill_ref01_match_dt0 = {}
+    skill_ref01_match_dt0 = {
+      "id" => skill_ref01_data["id"],
+    }
     skill_ref01_data_dt0_loaded = skill_ref01_ent.load(skill_ref01_match_dt0, nil)
-    assert !skill_ref01_data_dt0_loaded.nil?
+    skill_ref01_data_dt0_load_result = Helpers.to_map(skill_ref01_data_dt0_loaded.respond_to?(:data_get) ? skill_ref01_data_dt0_loaded.data_get : skill_ref01_data_dt0_loaded)
+    assert !skill_ref01_data_dt0_load_result.nil?
+    assert_equal skill_ref01_data_dt0_load_result["id"], skill_ref01_data["id"]
 
   end
 end

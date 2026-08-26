@@ -41,9 +41,13 @@ class BadgeEntityTest < Minitest::Test
 
     # LOAD
     badge_ref01_ent = client.Badge(nil)
-    badge_ref01_match_dt0 = {}
+    badge_ref01_match_dt0 = {
+      "id" => badge_ref01_data["id"],
+    }
     badge_ref01_data_dt0_loaded = badge_ref01_ent.load(badge_ref01_match_dt0, nil)
-    assert !badge_ref01_data_dt0_loaded.nil?
+    badge_ref01_data_dt0_load_result = Helpers.to_map(badge_ref01_data_dt0_loaded.respond_to?(:data_get) ? badge_ref01_data_dt0_loaded.data_get : badge_ref01_data_dt0_loaded)
+    assert !badge_ref01_data_dt0_load_result.nil?
+    assert_equal badge_ref01_data_dt0_load_result["id"], badge_ref01_data["id"]
 
   end
 end

@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** Achievement entity data model. */
 class Achievement
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Achievement#load. */
@@ -26,6 +27,7 @@ class AchievementLoadMatch
 /** Request payload for Achievement#list. */
 class AchievementListMatch
 {
+    public ?string $id = null;
 }
 
 /** Awake entity data model. */
@@ -41,6 +43,7 @@ class AwakeLoadMatch
 /** Badge entity data model. */
 class Badge
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Badge#load. */
@@ -141,6 +144,7 @@ class DungeonLoadMatch
 /** Element entity data model. */
 class Element
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Element#load. */
@@ -210,6 +214,7 @@ class HousingTemplateListMatch
 /** Item entity data model. */
 class Item
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Item#load. */
@@ -221,6 +226,7 @@ class ItemLoadMatch
 /** Request payload for Item#list. */
 class ItemListMatch
 {
+    public ?string $id = null;
 }
 
 /** Language entity data model. */
@@ -252,6 +258,7 @@ class LifestyleLoadMatch
 /** Monster entity data model. */
 class Monster
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Monster#load. */
@@ -263,11 +270,13 @@ class MonsterLoadMatch
 /** Request payload for Monster#list. */
 class MonsterListMatch
 {
+    public ?string $id = null;
 }
 
 /** Npc entity data model. */
 class Npc
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Npc#load. */
@@ -279,6 +288,7 @@ class NpcLoadMatch
 /** Request payload for Npc#list. */
 class NpcListMatch
 {
+    public ?string $id = null;
 }
 
 /** PartySkill entity data model. */
@@ -310,6 +320,7 @@ class PknLoadMatch
 /** Place entity data model. */
 class Place
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Place#load. */
@@ -321,6 +332,7 @@ class PlaceLoadMatch
 /** Quest entity data model. */
 class Quest
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Quest#load. */
@@ -332,6 +344,7 @@ class QuestLoadMatch
 /** Request payload for Quest#list. */
 class QuestListMatch
 {
+    public ?string $id = null;
 }
 
 /** RaisedPet entity data model. */
@@ -347,6 +360,7 @@ class RaisedPetLoadMatch
 /** Recipe entity data model. */
 class Recipe
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Recipe#load. */
@@ -358,11 +372,13 @@ class RecipeLoadMatch
 /** Request payload for Recipe#list. */
 class RecipeListMatch
 {
+    public ?string $id = null;
 }
 
 /** Skill entity data model. */
 class Skill
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Skill#load. */
@@ -374,6 +390,7 @@ class SkillLoadMatch
 /** Request payload for Skill#list. */
 class SkillListMatch
 {
+    public ?string $id = null;
 }
 
 /** UpgradeLevelBonus entity data model. */

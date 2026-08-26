@@ -44,10 +44,14 @@ describe("BadgeEntity", function()
 
     -- LOAD
     local badge_ref01_ent = client:Badge(nil)
-    local badge_ref01_match_dt0 = {}
+    local badge_ref01_match_dt0 = {
+      id = badge_ref01_data["id"],
+    }
     local badge_ref01_data_dt0_loaded, err = badge_ref01_ent:load(badge_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(badge_ref01_data_dt0_loaded)
+    local badge_ref01_data_dt0_load_result = helpers.to_map(type(badge_ref01_data_dt0_loaded) == 'table' and badge_ref01_data_dt0_loaded.data_get and badge_ref01_data_dt0_loaded:data_get() or badge_ref01_data_dt0_loaded)
+    assert.is_not_nil(badge_ref01_data_dt0_load_result)
+    assert.are.equal(badge_ref01_data_dt0_load_result["id"], badge_ref01_data["id"])
 
   end)
 end)

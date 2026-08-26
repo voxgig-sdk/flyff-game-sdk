@@ -295,6 +295,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -313,6 +314,7 @@ API path: `/awake/skill`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -379,6 +381,7 @@ API path: `/dungeon`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -424,6 +427,7 @@ API path: `/housingtemplate`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -451,6 +455,7 @@ API path: `/lifestyle`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -460,6 +465,7 @@ API path: `/monster`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -487,6 +493,7 @@ API path: `/pk`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -496,6 +503,7 @@ API path: `/image/place/{fileName}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -514,6 +522,7 @@ API path: `/raisedpet`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -523,6 +532,7 @@ API path: `/recipe`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -586,6 +596,12 @@ Create an instance: `achievement := client.Achievement(nil)`
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -637,6 +653,12 @@ Create an instance: `badge := client.Badge(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -780,6 +802,12 @@ Create an instance: `element := client.Element(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -919,6 +947,12 @@ Create an instance: `item := client.Item(nil)`
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -1004,6 +1038,12 @@ Create an instance: `monster := client.Monster(nil)`
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -1035,6 +1075,12 @@ Create an instance: `npc := client.Npc(nil)`
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -1120,6 +1166,12 @@ Create an instance: `place := client.Place(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -1141,6 +1193,12 @@ Create an instance: `quest := client.Quest(nil)`
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -1195,6 +1253,12 @@ Create an instance: `recipe := client.Recipe(nil)`
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -1226,6 +1290,12 @@ Create an instance: `skill := client.Skill(nil)`
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 

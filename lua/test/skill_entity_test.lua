@@ -92,10 +92,14 @@ describe("SkillEntity", function()
     assert.is_table(skill_ref01_list_result)
 
     -- LOAD
-    local skill_ref01_match_dt0 = {}
+    local skill_ref01_match_dt0 = {
+      id = skill_ref01_data["id"],
+    }
     local skill_ref01_data_dt0_loaded, err = skill_ref01_ent:load(skill_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(skill_ref01_data_dt0_loaded)
+    local skill_ref01_data_dt0_load_result = helpers.to_map(type(skill_ref01_data_dt0_loaded) == 'table' and skill_ref01_data_dt0_loaded.data_get and skill_ref01_data_dt0_loaded:data_get() or skill_ref01_data_dt0_loaded)
+    assert.is_not_nil(skill_ref01_data_dt0_load_result)
+    assert.are.equal(skill_ref01_data_dt0_load_result["id"], skill_ref01_data["id"])
 
   end)
 end)

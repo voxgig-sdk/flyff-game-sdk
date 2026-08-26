@@ -187,6 +187,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 achievement = client.Achievement()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`
@@ -286,6 +292,12 @@ Return the entity name.
 ```python
 badge = client.Badge()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -548,6 +560,12 @@ Return the entity name.
 element = client.Element()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -803,6 +821,12 @@ Return the entity name.
 item = client.Item()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`
@@ -958,6 +982,12 @@ Return the entity name.
 monster = client.Monster()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`
@@ -1012,6 +1042,12 @@ Return the entity name.
 ```python
 npc = client.Npc()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -1168,6 +1204,12 @@ Return the entity name.
 place = client.Place()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -1212,6 +1254,12 @@ Return the entity name.
 ```python
 quest = client.Quest()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -1313,6 +1361,12 @@ Return the entity name.
 recipe = client.Recipe()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`
@@ -1367,6 +1421,12 @@ Return the entity name.
 ```python
 skill = client.Skill()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 

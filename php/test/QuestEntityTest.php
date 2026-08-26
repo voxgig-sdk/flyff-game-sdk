@@ -93,9 +93,13 @@ class QuestEntityTest extends TestCase
         $this->assertIsArray($quest_ref01_list_result);
 
         // LOAD
-        $quest_ref01_match_dt0 = [];
+        $quest_ref01_match_dt0 = [
+            "id" => $quest_ref01_data["id"],
+        ];
         $quest_ref01_data_dt0_loaded = $quest_ref01_ent->load($quest_ref01_match_dt0, null);
-        $this->assertNotNull($quest_ref01_data_dt0_loaded);
+        $quest_ref01_data_dt0_load_result = Helpers::to_map(is_object($quest_ref01_data_dt0_loaded) && method_exists($quest_ref01_data_dt0_loaded, 'data_get') ? $quest_ref01_data_dt0_loaded->data_get() : $quest_ref01_data_dt0_loaded);
+        $this->assertNotNull($quest_ref01_data_dt0_load_result);
+        $this->assertEquals($quest_ref01_data_dt0_load_result["id"], $quest_ref01_data["id"]);
 
     }
 }

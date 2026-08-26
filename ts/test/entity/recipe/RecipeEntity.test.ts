@@ -66,6 +66,12 @@ describe('RecipeEntity', async () => {
     const recipe_ref01_list = (await recipe_ref01_ent.list(recipe_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const recipe_ref01_match_dt0: any = {}
+    recipe_ref01_match_dt0.id = recipe_ref01_data.id
+    const recipe_ref01_data_dt0 = (await recipe_ref01_ent.load(recipe_ref01_match_dt0)).data()
+    assert(recipe_ref01_data_dt0.id === recipe_ref01_data.id)
+
 
   })
 })

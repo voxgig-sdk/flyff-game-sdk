@@ -198,6 +198,12 @@ achievement := client.Achievement(nil)
 fmt.Println(achievement.GetName()) // "achievement"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
@@ -299,6 +305,12 @@ Return the entity name.
 badge := client.Badge(nil)
 fmt.Println(badge.GetName()) // "badge"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -563,6 +575,12 @@ element := client.Element(nil)
 fmt.Println(element.GetName()) // "element"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -824,6 +842,12 @@ item := client.Item(nil)
 fmt.Println(item.GetName()) // "item"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
@@ -983,6 +1007,12 @@ monster := client.Monster(nil)
 fmt.Println(monster.GetName()) // "monster"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
@@ -1039,6 +1069,12 @@ Return the entity name.
 npc := client.Npc(nil)
 fmt.Println(npc.GetName()) // "npc"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1199,6 +1235,12 @@ place := client.Place(nil)
 fmt.Println(place.GetName()) // "place"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1243,6 +1285,12 @@ Return the entity name.
 quest := client.Quest(nil)
 fmt.Println(quest.GetName()) // "quest"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1346,6 +1394,12 @@ recipe := client.Recipe(nil)
 fmt.Println(recipe.GetName()) // "recipe"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
@@ -1402,6 +1456,12 @@ Return the entity name.
 skill := client.Skill(nil)
 fmt.Println(skill.GetName()) // "skill"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

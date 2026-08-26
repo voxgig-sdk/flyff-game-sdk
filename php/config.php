@@ -42,6 +42,7 @@ class FlyffGameConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -81,7 +82,12 @@ class FlyffGameConfig
             ],
             "entity" => [
         'achievement' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'achievement',
           'op' => [
             'list' => [
@@ -233,7 +239,12 @@ class FlyffGameConfig
           ],
         ],
         'badge' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'badge',
           'op' => [
             'load' => [
@@ -749,7 +760,12 @@ class FlyffGameConfig
           ],
         ],
         'element' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'element',
           'op' => [
             'load' => [
@@ -1184,7 +1200,12 @@ class FlyffGameConfig
           ],
         ],
         'item' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'item',
           'op' => [
             'list' => [
@@ -1421,7 +1442,12 @@ class FlyffGameConfig
           ],
         ],
         'monster' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'monster',
           'op' => [
             'list' => [
@@ -1559,7 +1585,12 @@ class FlyffGameConfig
           ],
         ],
         'npc' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'npc',
           'op' => [
             'list' => [
@@ -1833,7 +1864,12 @@ class FlyffGameConfig
           ],
         ],
         'place' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'place',
           'op' => [
             'load' => [
@@ -1883,7 +1919,12 @@ class FlyffGameConfig
           ],
         ],
         'quest' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'quest',
           'op' => [
             'list' => [
@@ -2015,7 +2056,12 @@ class FlyffGameConfig
           ],
         ],
         'recipe' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'recipe',
           'op' => [
             'list' => [
@@ -2118,7 +2164,12 @@ class FlyffGameConfig
           ],
         ],
         'skill' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'skill',
           'op' => [
             'list' => [

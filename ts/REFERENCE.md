@@ -424,6 +424,12 @@ Alias for `FlyffGameSDK.test()`.
 const achievement = client.Achievement()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -540,6 +546,12 @@ Return a copy of the entity options.
 ```ts
 const badge = client.Badge()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -795,6 +807,12 @@ Return a copy of the entity options.
 const element = client.Element()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -1039,6 +1057,12 @@ Return a copy of the entity options.
 const item = client.Item()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -1207,6 +1231,12 @@ Return a copy of the entity options.
 const monster = client.Monster()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -1258,6 +1288,12 @@ Return a copy of the entity options.
 ```ts
 const npc = client.Npc()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1407,6 +1443,12 @@ Return a copy of the entity options.
 const place = client.Place()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -1450,6 +1492,12 @@ Return a copy of the entity options.
 ```ts
 const quest = client.Quest()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -1547,6 +1595,12 @@ Return a copy of the entity options.
 const recipe = client.Recipe()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -1598,6 +1652,12 @@ Return a copy of the entity options.
 ```ts
 const skill = client.Skill()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -55,7 +56,12 @@ local function make_config()
     },
     entity = {
       ["achievement"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "achievement",
         ["op"] = {
           ["list"] = {
@@ -207,7 +213,12 @@ local function make_config()
         },
       },
       ["badge"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "badge",
         ["op"] = {
           ["load"] = {
@@ -723,7 +734,12 @@ local function make_config()
         },
       },
       ["element"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "element",
         ["op"] = {
           ["load"] = {
@@ -1158,7 +1174,12 @@ local function make_config()
         },
       },
       ["item"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "item",
         ["op"] = {
           ["list"] = {
@@ -1395,7 +1416,12 @@ local function make_config()
         },
       },
       ["monster"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "monster",
         ["op"] = {
           ["list"] = {
@@ -1533,7 +1559,12 @@ local function make_config()
         },
       },
       ["npc"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "npc",
         ["op"] = {
           ["list"] = {
@@ -1807,7 +1838,12 @@ local function make_config()
         },
       },
       ["place"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "place",
         ["op"] = {
           ["load"] = {
@@ -1857,7 +1893,12 @@ local function make_config()
         },
       },
       ["quest"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "quest",
         ["op"] = {
           ["list"] = {
@@ -1989,7 +2030,12 @@ local function make_config()
         },
       },
       ["recipe"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "recipe",
         ["op"] = {
           ["list"] = {
@@ -2092,7 +2138,12 @@ local function make_config()
         },
       },
       ["skill"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "skill",
         ["op"] = {
           ["list"] = {

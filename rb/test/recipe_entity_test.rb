@@ -83,9 +83,13 @@ class RecipeEntityTest < Minitest::Test
     assert recipe_ref01_list_result.is_a?(Array)
 
     # LOAD
-    recipe_ref01_match_dt0 = {}
+    recipe_ref01_match_dt0 = {
+      "id" => recipe_ref01_data["id"],
+    }
     recipe_ref01_data_dt0_loaded = recipe_ref01_ent.load(recipe_ref01_match_dt0, nil)
-    assert !recipe_ref01_data_dt0_loaded.nil?
+    recipe_ref01_data_dt0_load_result = Helpers.to_map(recipe_ref01_data_dt0_loaded.respond_to?(:data_get) ? recipe_ref01_data_dt0_loaded.data_get : recipe_ref01_data_dt0_loaded)
+    assert !recipe_ref01_data_dt0_load_result.nil?
+    assert_equal recipe_ref01_data_dt0_load_result["id"], recipe_ref01_data["id"]
 
   end
 end

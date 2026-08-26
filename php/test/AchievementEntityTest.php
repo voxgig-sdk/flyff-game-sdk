@@ -93,9 +93,13 @@ class AchievementEntityTest extends TestCase
         $this->assertIsArray($achievement_ref01_list_result);
 
         // LOAD
-        $achievement_ref01_match_dt0 = [];
+        $achievement_ref01_match_dt0 = [
+            "id" => $achievement_ref01_data["id"],
+        ];
         $achievement_ref01_data_dt0_loaded = $achievement_ref01_ent->load($achievement_ref01_match_dt0, null);
-        $this->assertNotNull($achievement_ref01_data_dt0_loaded);
+        $achievement_ref01_data_dt0_load_result = Helpers::to_map(is_object($achievement_ref01_data_dt0_loaded) && method_exists($achievement_ref01_data_dt0_loaded, 'data_get') ? $achievement_ref01_data_dt0_loaded->data_get() : $achievement_ref01_data_dt0_loaded);
+        $this->assertNotNull($achievement_ref01_data_dt0_load_result);
+        $this->assertEquals($achievement_ref01_data_dt0_load_result["id"], $achievement_ref01_data["id"]);
 
     }
 }

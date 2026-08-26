@@ -331,6 +331,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -349,6 +350,7 @@ API path: `/awake/skill`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -415,6 +417,7 @@ API path: `/dungeon`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -460,6 +463,7 @@ API path: `/housingtemplate`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -487,6 +491,7 @@ API path: `/lifestyle`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -496,6 +501,7 @@ API path: `/monster`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -523,6 +529,7 @@ API path: `/pk`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -532,6 +539,7 @@ API path: `/image/place/{fileName}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -550,6 +558,7 @@ API path: `/raisedpet`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -559,6 +568,7 @@ API path: `/recipe`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list, load.
 
@@ -622,6 +632,12 @@ Create an instance: `const achievement = client.Achievement()`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -661,6 +677,12 @@ Create an instance: `const badge = client.Badge()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -780,6 +802,12 @@ Create an instance: `const element = client.Element()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -887,6 +915,12 @@ Create an instance: `const item = client.Item()`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -952,6 +986,12 @@ Create an instance: `const monster = client.Monster()`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -975,6 +1015,12 @@ Create an instance: `const npc = client.Npc()`
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -1040,6 +1086,12 @@ Create an instance: `const place = client.Place()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -1057,6 +1109,12 @@ Create an instance: `const quest = client.Quest()`
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -1099,6 +1157,12 @@ Create an instance: `const recipe = client.Recipe()`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -1122,6 +1186,12 @@ Create an instance: `const skill = client.Skill()`
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 

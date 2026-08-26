@@ -93,9 +93,13 @@ class ItemEntityTest extends TestCase
         $this->assertIsArray($item_ref01_list_result);
 
         // LOAD
-        $item_ref01_match_dt0 = [];
+        $item_ref01_match_dt0 = [
+            "id" => $item_ref01_data["id"],
+        ];
         $item_ref01_data_dt0_loaded = $item_ref01_ent->load($item_ref01_match_dt0, null);
-        $this->assertNotNull($item_ref01_data_dt0_loaded);
+        $item_ref01_data_dt0_load_result = Helpers::to_map(is_object($item_ref01_data_dt0_loaded) && method_exists($item_ref01_data_dt0_loaded, 'data_get') ? $item_ref01_data_dt0_loaded->data_get() : $item_ref01_data_dt0_loaded);
+        $this->assertNotNull($item_ref01_data_dt0_load_result);
+        $this->assertEquals($item_ref01_data_dt0_load_result["id"], $item_ref01_data["id"]);
 
     }
 }

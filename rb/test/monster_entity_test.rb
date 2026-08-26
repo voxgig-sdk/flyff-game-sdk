@@ -83,9 +83,13 @@ class MonsterEntityTest < Minitest::Test
     assert monster_ref01_list_result.is_a?(Array)
 
     # LOAD
-    monster_ref01_match_dt0 = {}
+    monster_ref01_match_dt0 = {
+      "id" => monster_ref01_data["id"],
+    }
     monster_ref01_data_dt0_loaded = monster_ref01_ent.load(monster_ref01_match_dt0, nil)
-    assert !monster_ref01_data_dt0_loaded.nil?
+    monster_ref01_data_dt0_load_result = Helpers.to_map(monster_ref01_data_dt0_loaded.respond_to?(:data_get) ? monster_ref01_data_dt0_loaded.data_get : monster_ref01_data_dt0_loaded)
+    assert !monster_ref01_data_dt0_load_result.nil?
+    assert_equal monster_ref01_data_dt0_load_result["id"], monster_ref01_data["id"]
 
   end
 end

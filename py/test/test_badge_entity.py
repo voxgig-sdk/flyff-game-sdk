@@ -48,9 +48,13 @@ class TestBadgeEntity:
 
         # LOAD
         badge_ref01_ent = client.Badge(None)
-        badge_ref01_match_dt0 = {}
+        badge_ref01_match_dt0 = {
+            "id": badge_ref01_data["id"],
+        }
         badge_ref01_data_dt0_loaded = badge_ref01_ent.load(badge_ref01_match_dt0, None)
-        assert badge_ref01_data_dt0_loaded is not None
+        badge_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(badge_ref01_data_dt0_loaded))
+        assert badge_ref01_data_dt0_load_result is not None
+        assert badge_ref01_data_dt0_load_result["id"] == badge_ref01_data["id"]
 
 
 

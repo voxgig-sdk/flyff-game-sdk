@@ -121,13 +121,19 @@ func TestQuestEntity(t *testing.T) {
 		}
 
 		// LOAD
-		questRef01MatchDt0 := map[string]any{}
+		questRef01MatchDt0 := map[string]any{
+			"id": questRef01Data["id"],
+		}
 		questRef01DataDt0Loaded, err := questRef01Ent.Load(questRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if questRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		questRef01DataDt0LoadResult := core.ToMapAny(entityData(questRef01DataDt0Loaded))
+		if questRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if questRef01DataDt0LoadResult["id"] != questRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

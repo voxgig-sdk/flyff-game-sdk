@@ -16,16 +16,16 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Achievement(TypedDict):
-    pass
+class Achievement(TypedDict, total=False):
+    id: str
 
 
 class AchievementLoadMatch(TypedDict):
     id: str
 
 
-class AchievementListMatch(TypedDict):
-    pass
+class AchievementListMatch(TypedDict, total=False):
+    id: str
 
 
 class Awake(TypedDict):
@@ -36,8 +36,8 @@ class AwakeLoadMatch(TypedDict):
     pass
 
 
-class Badge(TypedDict):
-    pass
+class Badge(TypedDict, total=False):
+    id: str
 
 
 class BadgeLoadMatch(TypedDict):
@@ -123,8 +123,8 @@ class DungeonLoadMatch(TypedDict):
     pass
 
 
-class Element(TypedDict):
-    pass
+class Element(TypedDict, total=False):
+    id: str
 
 
 class ElementLoadMatch(TypedDict):
@@ -175,16 +175,16 @@ class HousingTemplateListMatch(TypedDict):
     pass
 
 
-class Item(TypedDict):
-    pass
+class Item(TypedDict, total=False):
+    id: str
 
 
 class ItemLoadMatch(TypedDict):
     id: str
 
 
-class ItemListMatch(TypedDict):
-    pass
+class ItemListMatch(TypedDict, total=False):
+    id: str
 
 
 class Language(TypedDict):
@@ -207,28 +207,28 @@ class LifestyleLoadMatch(TypedDict):
     pass
 
 
-class Monster(TypedDict):
-    pass
+class Monster(TypedDict, total=False):
+    id: str
 
 
 class MonsterLoadMatch(TypedDict):
     id: str
 
 
-class MonsterListMatch(TypedDict):
-    pass
+class MonsterListMatch(TypedDict, total=False):
+    id: str
 
 
-class Npc(TypedDict):
-    pass
+class Npc(TypedDict, total=False):
+    id: str
 
 
 class NpcLoadMatch(TypedDict):
     id: str
 
 
-class NpcListMatch(TypedDict):
-    pass
+class NpcListMatch(TypedDict, total=False):
+    id: str
 
 
 class PartySkill(TypedDict):
@@ -251,24 +251,24 @@ class PknLoadMatch(TypedDict):
     pass
 
 
-class Place(TypedDict):
-    pass
+class Place(TypedDict, total=False):
+    id: str
 
 
 class PlaceLoadMatch(TypedDict):
     id: str
 
 
-class Quest(TypedDict):
-    pass
+class Quest(TypedDict, total=False):
+    id: str
 
 
 class QuestLoadMatch(TypedDict):
     id: str
 
 
-class QuestListMatch(TypedDict):
-    pass
+class QuestListMatch(TypedDict, total=False):
+    id: str
 
 
 class RaisedPet(TypedDict):
@@ -279,28 +279,28 @@ class RaisedPetLoadMatch(TypedDict):
     pass
 
 
-class Recipe(TypedDict):
-    pass
+class Recipe(TypedDict, total=False):
+    id: str
 
 
 class RecipeLoadMatch(TypedDict):
     id: str
 
 
-class RecipeListMatch(TypedDict):
-    pass
+class RecipeListMatch(TypedDict, total=False):
+    id: str
 
 
-class Skill(TypedDict):
-    pass
+class Skill(TypedDict, total=False):
+    id: str
 
 
 class SkillLoadMatch(TypedDict):
     id: str
 
 
-class SkillListMatch(TypedDict):
-    pass
+class SkillListMatch(TypedDict, total=False):
+    id: str
 
 
 class UpgradeLevelBonus(TypedDict):

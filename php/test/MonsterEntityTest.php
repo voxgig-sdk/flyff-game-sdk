@@ -93,9 +93,13 @@ class MonsterEntityTest extends TestCase
         $this->assertIsArray($monster_ref01_list_result);
 
         // LOAD
-        $monster_ref01_match_dt0 = [];
+        $monster_ref01_match_dt0 = [
+            "id" => $monster_ref01_data["id"],
+        ];
         $monster_ref01_data_dt0_loaded = $monster_ref01_ent->load($monster_ref01_match_dt0, null);
-        $this->assertNotNull($monster_ref01_data_dt0_loaded);
+        $monster_ref01_data_dt0_load_result = Helpers::to_map(is_object($monster_ref01_data_dt0_loaded) && method_exists($monster_ref01_data_dt0_loaded, 'data_get') ? $monster_ref01_data_dt0_loaded->data_get() : $monster_ref01_data_dt0_loaded);
+        $this->assertNotNull($monster_ref01_data_dt0_load_result);
+        $this->assertEquals($monster_ref01_data_dt0_load_result["id"], $monster_ref01_data["id"]);
 
     }
 }

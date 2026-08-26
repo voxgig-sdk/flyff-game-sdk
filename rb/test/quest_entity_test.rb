@@ -83,9 +83,13 @@ class QuestEntityTest < Minitest::Test
     assert quest_ref01_list_result.is_a?(Array)
 
     # LOAD
-    quest_ref01_match_dt0 = {}
+    quest_ref01_match_dt0 = {
+      "id" => quest_ref01_data["id"],
+    }
     quest_ref01_data_dt0_loaded = quest_ref01_ent.load(quest_ref01_match_dt0, nil)
-    assert !quest_ref01_data_dt0_loaded.nil?
+    quest_ref01_data_dt0_load_result = Helpers.to_map(quest_ref01_data_dt0_loaded.respond_to?(:data_get) ? quest_ref01_data_dt0_loaded.data_get : quest_ref01_data_dt0_loaded)
+    assert !quest_ref01_data_dt0_load_result.nil?
+    assert_equal quest_ref01_data_dt0_load_result["id"], quest_ref01_data["id"]
 
   end
 end

@@ -41,9 +41,13 @@ class ElementEntityTest < Minitest::Test
 
     # LOAD
     element_ref01_ent = client.Element(nil)
-    element_ref01_match_dt0 = {}
+    element_ref01_match_dt0 = {
+      "id" => element_ref01_data["id"],
+    }
     element_ref01_data_dt0_loaded = element_ref01_ent.load(element_ref01_match_dt0, nil)
-    assert !element_ref01_data_dt0_loaded.nil?
+    element_ref01_data_dt0_load_result = Helpers.to_map(element_ref01_data_dt0_loaded.respond_to?(:data_get) ? element_ref01_data_dt0_loaded.data_get : element_ref01_data_dt0_loaded)
+    assert !element_ref01_data_dt0_load_result.nil?
+    assert_equal element_ref01_data_dt0_load_result["id"], element_ref01_data["id"]
 
   end
 end

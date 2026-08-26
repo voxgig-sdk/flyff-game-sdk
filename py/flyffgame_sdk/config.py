@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -76,7 +77,12 @@ def make_config():
         },
         "entity": {
       "achievement": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "achievement",
         "op": {
           "list": {
@@ -228,7 +234,12 @@ def make_config():
         },
       },
       "badge": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "badge",
         "op": {
           "load": {
@@ -744,7 +755,12 @@ def make_config():
         },
       },
       "element": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "element",
         "op": {
           "load": {
@@ -1179,7 +1195,12 @@ def make_config():
         },
       },
       "item": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "item",
         "op": {
           "list": {
@@ -1416,7 +1437,12 @@ def make_config():
         },
       },
       "monster": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "monster",
         "op": {
           "list": {
@@ -1554,7 +1580,12 @@ def make_config():
         },
       },
       "npc": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "npc",
         "op": {
           "list": {
@@ -1828,7 +1859,12 @@ def make_config():
         },
       },
       "place": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "place",
         "op": {
           "load": {
@@ -1878,7 +1914,12 @@ def make_config():
         },
       },
       "quest": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "quest",
         "op": {
           "list": {
@@ -2010,7 +2051,12 @@ def make_config():
         },
       },
       "recipe": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "recipe",
         "op": {
           "list": {
@@ -2113,7 +2159,12 @@ def make_config():
         },
       },
       "skill": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "skill",
         "op": {
           "list": {

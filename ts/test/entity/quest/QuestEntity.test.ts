@@ -66,6 +66,12 @@ describe('QuestEntity', async () => {
     const quest_ref01_list = (await quest_ref01_ent.list(quest_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const quest_ref01_match_dt0: any = {}
+    quest_ref01_match_dt0.id = quest_ref01_data.id
+    const quest_ref01_data_dt0 = (await quest_ref01_ent.load(quest_ref01_match_dt0)).data()
+    assert(quest_ref01_data_dt0.id === quest_ref01_data.id)
+
 
   })
 })

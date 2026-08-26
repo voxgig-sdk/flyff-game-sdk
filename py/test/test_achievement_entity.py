@@ -88,9 +88,13 @@ class TestAchievementEntity:
         assert isinstance(achievement_ref01_list_result, list)
 
         # LOAD
-        achievement_ref01_match_dt0 = {}
+        achievement_ref01_match_dt0 = {
+            "id": achievement_ref01_data["id"],
+        }
         achievement_ref01_data_dt0_loaded = achievement_ref01_ent.load(achievement_ref01_match_dt0, None)
-        assert achievement_ref01_data_dt0_loaded is not None
+        achievement_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(achievement_ref01_data_dt0_loaded))
+        assert achievement_ref01_data_dt0_load_result is not None
+        assert achievement_ref01_data_dt0_load_result["id"] == achievement_ref01_data["id"]
 
 
 

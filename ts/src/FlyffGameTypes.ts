@@ -6,6 +6,7 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Achievement {
+  id?: string
 }
 
 export interface AchievementLoadMatch {
@@ -13,6 +14,7 @@ export interface AchievementLoadMatch {
 }
 
 export interface AchievementListMatch {
+  id?: string
 }
 
 export interface Awake {
@@ -28,6 +30,7 @@ export interface AwakeLoadMatch {
 }
 
 export interface Badge {
+  id?: string
 }
 
 export interface BadgeLoadMatch {
@@ -106,6 +109,7 @@ export interface DungeonLoadMatch {
 }
 
 export interface Element {
+  id?: string
 }
 
 export interface ElementLoadMatch {
@@ -149,6 +153,7 @@ export interface HousingTemplateListMatch {
 }
 
 export interface Item {
+  id?: string
 }
 
 export interface ItemLoadMatch {
@@ -156,6 +161,7 @@ export interface ItemLoadMatch {
 }
 
 export interface ItemListMatch {
+  id?: string
 }
 
 export interface Language {
@@ -181,6 +187,7 @@ export interface LifestyleLoadMatch {
 }
 
 export interface Monster {
+  id?: string
 }
 
 export interface MonsterLoadMatch {
@@ -188,9 +195,11 @@ export interface MonsterLoadMatch {
 }
 
 export interface MonsterListMatch {
+  id?: string
 }
 
 export interface Npc {
+  id?: string
 }
 
 export interface NpcLoadMatch {
@@ -198,6 +207,7 @@ export interface NpcLoadMatch {
 }
 
 export interface NpcListMatch {
+  id?: string
 }
 
 export interface PartySkill {
@@ -217,6 +227,7 @@ export interface PknLoadMatch {
 }
 
 export interface Place {
+  id?: string
 }
 
 export interface PlaceLoadMatch {
@@ -224,6 +235,7 @@ export interface PlaceLoadMatch {
 }
 
 export interface Quest {
+  id?: string
 }
 
 export interface QuestLoadMatch {
@@ -231,6 +243,7 @@ export interface QuestLoadMatch {
 }
 
 export interface QuestListMatch {
+  id?: string
 }
 
 export interface RaisedPet {
@@ -240,6 +253,7 @@ export interface RaisedPetLoadMatch {
 }
 
 export interface Recipe {
+  id?: string
 }
 
 export interface RecipeLoadMatch {
@@ -247,9 +261,11 @@ export interface RecipeLoadMatch {
 }
 
 export interface RecipeListMatch {
+  id?: string
 }
 
 export interface Skill {
+  id?: string
 }
 
 export interface SkillLoadMatch {
@@ -257,6 +273,7 @@ export interface SkillLoadMatch {
 }
 
 export interface SkillListMatch {
+  id?: string
 }
 
 export interface UpgradeLevelBonus {

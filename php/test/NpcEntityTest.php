@@ -93,9 +93,13 @@ class NpcEntityTest extends TestCase
         $this->assertIsArray($npc_ref01_list_result);
 
         // LOAD
-        $npc_ref01_match_dt0 = [];
+        $npc_ref01_match_dt0 = [
+            "id" => $npc_ref01_data["id"],
+        ];
         $npc_ref01_data_dt0_loaded = $npc_ref01_ent->load($npc_ref01_match_dt0, null);
-        $this->assertNotNull($npc_ref01_data_dt0_loaded);
+        $npc_ref01_data_dt0_load_result = Helpers::to_map(is_object($npc_ref01_data_dt0_loaded) && method_exists($npc_ref01_data_dt0_loaded, 'data_get') ? $npc_ref01_data_dt0_loaded->data_get() : $npc_ref01_data_dt0_loaded);
+        $this->assertNotNull($npc_ref01_data_dt0_load_result);
+        $this->assertEquals($npc_ref01_data_dt0_load_result["id"], $npc_ref01_data["id"]);
 
     }
 }

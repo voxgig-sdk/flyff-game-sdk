@@ -121,13 +121,19 @@ func TestMonsterEntity(t *testing.T) {
 		}
 
 		// LOAD
-		monsterRef01MatchDt0 := map[string]any{}
+		monsterRef01MatchDt0 := map[string]any{
+			"id": monsterRef01Data["id"],
+		}
 		monsterRef01DataDt0Loaded, err := monsterRef01Ent.Load(monsterRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if monsterRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		monsterRef01DataDt0LoadResult := core.ToMapAny(entityData(monsterRef01DataDt0Loaded))
+		if monsterRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if monsterRef01DataDt0LoadResult["id"] != monsterRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

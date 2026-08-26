@@ -121,13 +121,19 @@ func TestAchievementEntity(t *testing.T) {
 		}
 
 		// LOAD
-		achievementRef01MatchDt0 := map[string]any{}
+		achievementRef01MatchDt0 := map[string]any{
+			"id": achievementRef01Data["id"],
+		}
 		achievementRef01DataDt0Loaded, err := achievementRef01Ent.Load(achievementRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if achievementRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		achievementRef01DataDt0LoadResult := core.ToMapAny(entityData(achievementRef01DataDt0Loaded))
+		if achievementRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if achievementRef01DataDt0LoadResult["id"] != achievementRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

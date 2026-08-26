@@ -14,6 +14,7 @@ import (
 
 // Achievement is the typed data model for the achievement entity.
 type Achievement struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // AchievementLoadMatch is the typed request payload for Achievement.LoadTyped.
@@ -23,6 +24,7 @@ type AchievementLoadMatch struct {
 
 // AchievementListMatch is the typed request payload for Achievement.ListTyped.
 type AchievementListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // Awake is the typed data model for the awake entity.
@@ -35,6 +37,7 @@ type AwakeLoadMatch struct {
 
 // Badge is the typed data model for the badge entity.
 type Badge struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // BadgeLoadMatch is the typed request payload for Badge.LoadTyped.
@@ -124,6 +127,7 @@ type DungeonLoadMatch struct {
 
 // Element is the typed data model for the element entity.
 type Element struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ElementLoadMatch is the typed request payload for Element.LoadTyped.
@@ -180,6 +184,7 @@ type HousingTemplateListMatch struct {
 
 // Item is the typed data model for the item entity.
 type Item struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ItemLoadMatch is the typed request payload for Item.LoadTyped.
@@ -189,6 +194,7 @@ type ItemLoadMatch struct {
 
 // ItemListMatch is the typed request payload for Item.ListTyped.
 type ItemListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // Language is the typed data model for the language entity.
@@ -214,6 +220,7 @@ type LifestyleLoadMatch struct {
 
 // Monster is the typed data model for the monster entity.
 type Monster struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // MonsterLoadMatch is the typed request payload for Monster.LoadTyped.
@@ -223,10 +230,12 @@ type MonsterLoadMatch struct {
 
 // MonsterListMatch is the typed request payload for Monster.ListTyped.
 type MonsterListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // Npc is the typed data model for the npc entity.
 type Npc struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // NpcLoadMatch is the typed request payload for Npc.LoadTyped.
@@ -236,6 +245,7 @@ type NpcLoadMatch struct {
 
 // NpcListMatch is the typed request payload for Npc.ListTyped.
 type NpcListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PartySkill is the typed data model for the party_skill entity.
@@ -261,6 +271,7 @@ type PknLoadMatch struct {
 
 // Place is the typed data model for the place entity.
 type Place struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PlaceLoadMatch is the typed request payload for Place.LoadTyped.
@@ -270,6 +281,7 @@ type PlaceLoadMatch struct {
 
 // Quest is the typed data model for the quest entity.
 type Quest struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // QuestLoadMatch is the typed request payload for Quest.LoadTyped.
@@ -279,6 +291,7 @@ type QuestLoadMatch struct {
 
 // QuestListMatch is the typed request payload for Quest.ListTyped.
 type QuestListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RaisedPet is the typed data model for the raised_pet entity.
@@ -291,6 +304,7 @@ type RaisedPetLoadMatch struct {
 
 // Recipe is the typed data model for the recipe entity.
 type Recipe struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RecipeLoadMatch is the typed request payload for Recipe.LoadTyped.
@@ -300,10 +314,12 @@ type RecipeLoadMatch struct {
 
 // RecipeListMatch is the typed request payload for Recipe.ListTyped.
 type RecipeListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // Skill is the typed data model for the skill entity.
 type Skill struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // SkillLoadMatch is the typed request payload for Skill.LoadTyped.
@@ -313,6 +329,7 @@ type SkillLoadMatch struct {
 
 // SkillListMatch is the typed request payload for Skill.ListTyped.
 type SkillListMatch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // UpgradeLevelBonus is the typed data model for the upgrade_level_bonus entity.

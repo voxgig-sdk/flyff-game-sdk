@@ -88,9 +88,13 @@ class TestMonsterEntity:
         assert isinstance(monster_ref01_list_result, list)
 
         # LOAD
-        monster_ref01_match_dt0 = {}
+        monster_ref01_match_dt0 = {
+            "id": monster_ref01_data["id"],
+        }
         monster_ref01_data_dt0_loaded = monster_ref01_ent.load(monster_ref01_match_dt0, None)
-        assert monster_ref01_data_dt0_loaded is not None
+        monster_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(monster_ref01_data_dt0_loaded))
+        assert monster_ref01_data_dt0_load_result is not None
+        assert monster_ref01_data_dt0_load_result["id"] == monster_ref01_data["id"]
 
 
 

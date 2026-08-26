@@ -121,13 +121,19 @@ func TestRecipeEntity(t *testing.T) {
 		}
 
 		// LOAD
-		recipeRef01MatchDt0 := map[string]any{}
+		recipeRef01MatchDt0 := map[string]any{
+			"id": recipeRef01Data["id"],
+		}
 		recipeRef01DataDt0Loaded, err := recipeRef01Ent.Load(recipeRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if recipeRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		recipeRef01DataDt0LoadResult := core.ToMapAny(entityData(recipeRef01DataDt0Loaded))
+		if recipeRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if recipeRef01DataDt0LoadResult["id"] != recipeRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

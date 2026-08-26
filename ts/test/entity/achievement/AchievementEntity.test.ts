@@ -66,6 +66,12 @@ describe('AchievementEntity', async () => {
     const achievement_ref01_list = (await achievement_ref01_ent.list(achievement_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const achievement_ref01_match_dt0: any = {}
+    achievement_ref01_match_dt0.id = achievement_ref01_data.id
+    const achievement_ref01_data_dt0 = (await achievement_ref01_ent.load(achievement_ref01_match_dt0)).data()
+    assert(achievement_ref01_data_dt0.id === achievement_ref01_data.id)
+
 
   })
 })

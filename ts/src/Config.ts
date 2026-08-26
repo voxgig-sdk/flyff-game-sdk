@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -142,7 +143,12 @@ class Config {
 
   entity = {
     "achievement": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "achievement",
       "op": {
         "list": {
@@ -294,7 +300,12 @@ class Config {
       }
     },
     "badge": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "badge",
       "op": {
         "load": {
@@ -810,7 +821,12 @@ class Config {
       }
     },
     "element": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "element",
       "op": {
         "load": {
@@ -1245,7 +1261,12 @@ class Config {
       }
     },
     "item": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "item",
       "op": {
         "list": {
@@ -1482,7 +1503,12 @@ class Config {
       }
     },
     "monster": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "monster",
       "op": {
         "list": {
@@ -1620,7 +1646,12 @@ class Config {
       }
     },
     "npc": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "npc",
       "op": {
         "list": {
@@ -1894,7 +1925,12 @@ class Config {
       }
     },
     "place": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "place",
       "op": {
         "load": {
@@ -1944,7 +1980,12 @@ class Config {
       }
     },
     "quest": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "quest",
       "op": {
         "list": {
@@ -2076,7 +2117,12 @@ class Config {
       }
     },
     "recipe": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "recipe",
       "op": {
         "list": {
@@ -2179,7 +2225,12 @@ class Config {
       }
     },
     "skill": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "skill",
       "op": {
         "list": {

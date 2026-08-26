@@ -83,9 +83,13 @@ class NpcEntityTest < Minitest::Test
     assert npc_ref01_list_result.is_a?(Array)
 
     # LOAD
-    npc_ref01_match_dt0 = {}
+    npc_ref01_match_dt0 = {
+      "id" => npc_ref01_data["id"],
+    }
     npc_ref01_data_dt0_loaded = npc_ref01_ent.load(npc_ref01_match_dt0, nil)
-    assert !npc_ref01_data_dt0_loaded.nil?
+    npc_ref01_data_dt0_load_result = Helpers.to_map(npc_ref01_data_dt0_loaded.respond_to?(:data_get) ? npc_ref01_data_dt0_loaded.data_get : npc_ref01_data_dt0_loaded)
+    assert !npc_ref01_data_dt0_load_result.nil?
+    assert_equal npc_ref01_data_dt0_load_result["id"], npc_ref01_data["id"]
 
   end
 end

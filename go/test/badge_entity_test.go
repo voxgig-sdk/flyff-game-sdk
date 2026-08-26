@@ -61,13 +61,19 @@ func TestBadgeEntity(t *testing.T) {
 
 		// LOAD
 		badgeRef01Ent := client.Badge(nil)
-		badgeRef01MatchDt0 := map[string]any{}
+		badgeRef01MatchDt0 := map[string]any{
+			"id": badgeRef01Data["id"],
+		}
 		badgeRef01DataDt0Loaded, err := badgeRef01Ent.Load(badgeRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if badgeRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		badgeRef01DataDt0LoadResult := core.ToMapAny(entityData(badgeRef01DataDt0Loaded))
+		if badgeRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if badgeRef01DataDt0LoadResult["id"] != badgeRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -9,8 +9,13 @@
 # annotations document the shapes. Do not edit by hand.
 
 # Achievement entity data model.
-class Achievement
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Achievement = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Achievement#load.
 #
@@ -22,8 +27,13 @@ AchievementLoadMatch = Struct.new(
 )
 
 # Request payload for Achievement#list.
-class AchievementListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AchievementListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Awake entity data model.
 class Awake
@@ -34,8 +44,13 @@ class AwakeLoadMatch
 end
 
 # Badge entity data model.
-class Badge
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Badge = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Badge#load.
 #
@@ -263,8 +278,13 @@ class DungeonLoadMatch
 end
 
 # Element entity data model.
-class Element
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Element = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Element#load.
 #
@@ -335,8 +355,13 @@ class HousingTemplateListMatch
 end
 
 # Item entity data model.
-class Item
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Item = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Item#load.
 #
@@ -348,8 +373,13 @@ ItemLoadMatch = Struct.new(
 )
 
 # Request payload for Item#list.
-class ItemListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ItemListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Language entity data model.
 class Language
@@ -377,8 +407,13 @@ class LifestyleLoadMatch
 end
 
 # Monster entity data model.
-class Monster
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Monster = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Monster#load.
 #
@@ -390,12 +425,22 @@ MonsterLoadMatch = Struct.new(
 )
 
 # Request payload for Monster#list.
-class MonsterListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+MonsterListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Npc entity data model.
-class Npc
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Npc = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Npc#load.
 #
@@ -407,8 +452,13 @@ NpcLoadMatch = Struct.new(
 )
 
 # Request payload for Npc#list.
-class NpcListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+NpcListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # PartySkill entity data model.
 class PartySkill
@@ -436,8 +486,13 @@ class PknLoadMatch
 end
 
 # Place entity data model.
-class Place
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Place = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Place#load.
 #
@@ -449,8 +504,13 @@ PlaceLoadMatch = Struct.new(
 )
 
 # Quest entity data model.
-class Quest
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Quest = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Quest#load.
 #
@@ -462,8 +522,13 @@ QuestLoadMatch = Struct.new(
 )
 
 # Request payload for Quest#list.
-class QuestListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+QuestListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # RaisedPet entity data model.
 class RaisedPet
@@ -474,8 +539,13 @@ class RaisedPetLoadMatch
 end
 
 # Recipe entity data model.
-class Recipe
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Recipe = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Recipe#load.
 #
@@ -487,12 +557,22 @@ RecipeLoadMatch = Struct.new(
 )
 
 # Request payload for Recipe#list.
-class RecipeListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RecipeListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Skill entity data model.
-class Skill
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Skill = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Skill#load.
 #
@@ -504,8 +584,13 @@ SkillLoadMatch = Struct.new(
 )
 
 # Request payload for Skill#list.
-class SkillListMatch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SkillListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # UpgradeLevelBonus entity data model.
 class UpgradeLevelBonus

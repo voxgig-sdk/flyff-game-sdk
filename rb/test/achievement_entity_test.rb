@@ -83,9 +83,13 @@ class AchievementEntityTest < Minitest::Test
     assert achievement_ref01_list_result.is_a?(Array)
 
     # LOAD
-    achievement_ref01_match_dt0 = {}
+    achievement_ref01_match_dt0 = {
+      "id" => achievement_ref01_data["id"],
+    }
     achievement_ref01_data_dt0_loaded = achievement_ref01_ent.load(achievement_ref01_match_dt0, nil)
-    assert !achievement_ref01_data_dt0_loaded.nil?
+    achievement_ref01_data_dt0_load_result = Helpers.to_map(achievement_ref01_data_dt0_loaded.respond_to?(:data_get) ? achievement_ref01_data_dt0_loaded.data_get : achievement_ref01_data_dt0_loaded)
+    assert !achievement_ref01_data_dt0_load_result.nil?
+    assert_equal achievement_ref01_data_dt0_load_result["id"], achievement_ref01_data["id"]
 
   end
 end
