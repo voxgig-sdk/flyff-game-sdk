@@ -12,8 +12,10 @@ main: kit: entity: housing_template: {
         {
           method: "GET"
           orig: "/housingtemplate"
-          parts: [
-            "housingtemplate"
+          segments: [
+            {
+              lit: "housingtemplate"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -39,16 +41,22 @@ main: kit: entity: housing_template: {
           }
           method: "GET"
           orig: "/image/housingtemplate/{fileName}"
-          parts: [
-            "image"
-            "housingtemplate"
-            "{file_name}"
-          ]
           rename: {
             param: {
               fileName: "file_name"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_name"
@@ -73,15 +81,19 @@ main: kit: entity: housing_template: {
           }
           method: "GET"
           orig: "/housingtemplate/{housingTemplateIds}"
-          parts: [
-            "housingtemplate"
-            "{housing_template_id}"
-          ]
           rename: {
             param: {
               housingTemplateIds: "housing_template_id"
             }
           }
+          segments: [
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "housing_template_id"
+            }
+          ]
           select: {
             exist: [
               "housing_template_id"
@@ -106,15 +118,19 @@ main: kit: entity: housing_template: {
           }
           method: "GET"
           orig: "/housingtemplate/{housingTemplateId}"
-          parts: [
-            "housingtemplate"
-            "{housing_template_id}"
-          ]
           rename: {
             param: {
               housingTemplateId: "housing_template_id"
             }
           }
+          segments: [
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "housing_template_id"
+            }
+          ]
           select: {
             exist: [
               "housing_template_id"

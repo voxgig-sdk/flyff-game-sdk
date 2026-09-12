@@ -25,8 +25,10 @@ main: kit: entity: skill: {
         {
           method: "GET"
           orig: "/skill"
-          parts: [
-            "skill"
+          segments: [
+            {
+              lit: "skill"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -52,16 +54,22 @@ main: kit: entity: skill: {
           }
           method: "GET"
           orig: "/image/skill/{fileName}"
-          parts: [
-            "image"
-            "skill"
-            "{id}"
-          ]
           rename: {
             param: {
               fileName: "id"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "skill"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -86,15 +94,19 @@ main: kit: entity: skill: {
           }
           method: "GET"
           orig: "/skill/{skillIds}"
-          parts: [
-            "skill"
-            "{id}"
-          ]
           rename: {
             param: {
               skillIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "skill"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -119,15 +131,19 @@ main: kit: entity: skill: {
           }
           method: "GET"
           orig: "/skill/{skillId}"
-          parts: [
-            "skill"
-            "{id}"
-          ]
           rename: {
             param: {
               skillId: "id"
             }
           }
+          segments: [
+            {
+              lit: "skill"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -6,6 +6,7 @@ main: kit: entity: class: {
 
   fields: [
     {
+      format: "float"
       name: "attackSpeed"
       req: true
       short: "Attack speed constant used in attack speed calculation"
@@ -18,30 +19,35 @@ main: kit: entity: class: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "block"
       req: true
       short: "Blocking constant used in block calculation"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "critical"
       req: true
       short: "Critical chance constant used in critical chance calculation"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "defense"
       req: true
       short: "Defense factor use in defensive calculations"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "fp"
       req: true
       short: "FP Factor"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "hp"
       req: true
       short: "HP Factor"
@@ -60,12 +66,14 @@ main: kit: entity: class: {
       type: "`$INTEGER`"
     }
     {
+      format: "float"
       name: "magicDefenseIntFactor"
       req: true
       short: "Magic defense factor based on INT used in defensive calculations"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "magicDefenseStaFactor"
       req: true
       short: "Magic defense factor based on STA used in defensive calculations"
@@ -102,6 +110,7 @@ main: kit: entity: class: {
       type: "`$INTEGER`"
     }
     {
+      format: "float"
       name: "mp"
       req: true
       short: "MP Factor"
@@ -146,8 +155,10 @@ main: kit: entity: class: {
         {
           method: "GET"
           orig: "/class"
-          parts: [
-            "class"
+          segments: [
+            {
+              lit: "class"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -182,17 +193,25 @@ main: kit: entity: class: {
           }
           method: "GET"
           orig: "/image/class/{style}/{fileName}"
-          parts: [
-            "image"
-            "class"
-            "{style}"
-            "{file_name}"
-          ]
           rename: {
             param: {
               fileName: "file_name"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "class"
+            }
+            {
+              var: "style"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_name"
@@ -219,17 +238,25 @@ main: kit: entity: class: {
           }
           method: "GET"
           orig: "/image/class/tree/{fileName}"
-          parts: [
-            "image"
-            "class"
-            "tree"
-            "{file_name}"
-          ]
           rename: {
             param: {
               fileName: "file_name"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "class"
+            }
+            {
+              lit: "tree"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_name"
@@ -255,15 +282,19 @@ main: kit: entity: class: {
           }
           method: "GET"
           orig: "/class/{classIds}"
-          parts: [
-            "class"
-            "{id}"
-          ]
           rename: {
             param: {
               classIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "class"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -289,15 +320,19 @@ main: kit: entity: class: {
           }
           method: "GET"
           orig: "/class/{classId}"
-          parts: [
-            "class"
-            "{id}"
-          ]
           rename: {
             param: {
               classId: "id"
             }
           }
+          segments: [
+            {
+              lit: "class"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

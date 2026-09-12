@@ -12,8 +12,10 @@ main: kit: entity: equipment_set: {
         {
           method: "GET"
           orig: "/equipmentset"
-          parts: [
-            "equipmentset"
+          segments: [
+            {
+              lit: "equipmentset"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -39,15 +41,19 @@ main: kit: entity: equipment_set: {
           }
           method: "GET"
           orig: "/equipmentset/{equipmentSetIds}"
-          parts: [
-            "equipmentset"
-            "{equipment_set_id}"
-          ]
           rename: {
             param: {
               equipmentSetIds: "equipment_set_id"
             }
           }
+          segments: [
+            {
+              lit: "equipmentset"
+            }
+            {
+              var: "equipment_set_id"
+            }
+          ]
           select: {
             exist: [
               "equipment_set_id"
@@ -72,15 +78,19 @@ main: kit: entity: equipment_set: {
           }
           method: "GET"
           orig: "/equipmentset/{equipmentSetId}"
-          parts: [
-            "equipmentset"
-            "{equipment_set_id}"
-          ]
           rename: {
             param: {
               equipmentSetId: "equipment_set_id"
             }
           }
+          segments: [
+            {
+              lit: "equipmentset"
+            }
+            {
+              var: "equipment_set_id"
+            }
+          ]
           select: {
             exist: [
               "equipment_set_id"

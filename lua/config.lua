@@ -62,6 +62,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "achievement",
         ["op"] = {
           ["list"] = {
@@ -73,13 +77,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/achievement",
-                ["parts"] = {
-                  "achievement",
+                ["segments"] = {
+                  {
+                    ["lit"] = "achievement",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "achievement",
                 },
               },
             },
@@ -103,13 +112,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/achievement/{achievementIds}",
-                ["parts"] = {
-                  "achievement",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["achievementIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "achievement",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -120,6 +133,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "achievement",
+                  "{id}",
                 },
               },
               {
@@ -137,13 +154,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/achievement/{achievementId}",
-                ["parts"] = {
-                  "achievement",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["achievementId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "achievement",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -154,6 +175,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "achievement",
+                  "{id}",
                 },
               },
             },
@@ -176,9 +201,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/awake/skill",
-                ["parts"] = {
-                  "awake",
-                  "skill",
+                ["segments"] = {
+                  {
+                    ["lit"] = "awake",
+                  },
+                  {
+                    ["lit"] = "skill",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "skill",
@@ -187,15 +216,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "awake",
+                  "skill",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/awake/stat",
-                ["parts"] = {
-                  "awake",
-                  "stat",
+                ["segments"] = {
+                  {
+                    ["lit"] = "awake",
+                  },
+                  {
+                    ["lit"] = "stat",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "stat",
@@ -203,6 +240,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "awake",
+                  "stat",
                 },
               },
             },
@@ -218,6 +259,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "badge",
         ["op"] = {
@@ -240,14 +285,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/badge/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "badge",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "badge",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -258,6 +309,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "badge",
+                  "{id}",
                 },
               },
             },
@@ -270,6 +326,7 @@ local function make_config()
       ["class"] = {
         ["fields"] = {
           {
+            ["format"] = "float",
             ["name"] = "attackSpeed",
             ["req"] = true,
             ["short"] = "Attack speed constant used in attack speed calculation",
@@ -282,30 +339,35 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "block",
             ["req"] = true,
             ["short"] = "Blocking constant used in block calculation",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "critical",
             ["req"] = true,
             ["short"] = "Critical chance constant used in critical chance calculation",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "defense",
             ["req"] = true,
             ["short"] = "Defense factor use in defensive calculations",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "fp",
             ["req"] = true,
             ["short"] = "FP Factor",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "hp",
             ["req"] = true,
             ["short"] = "HP Factor",
@@ -324,12 +386,14 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "magicDefenseIntFactor",
             ["req"] = true,
             ["short"] = "Magic defense factor based on INT used in defensive calculations",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "magicDefenseStaFactor",
             ["req"] = true,
             ["short"] = "Magic defense factor based on STA used in defensive calculations",
@@ -366,6 +430,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "mp",
             ["req"] = true,
             ["short"] = "MP Factor",
@@ -395,6 +460,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "class",
         ["op"] = {
           ["list"] = {
@@ -406,13 +475,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/class",
-                ["parts"] = {
-                  "class",
+                ["segments"] = {
+                  {
+                    ["lit"] = "class",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "class",
                 },
               },
             },
@@ -445,15 +519,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/class/{style}/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "class",
-                  "{style}",
-                  "{file_name}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "file_name",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "class",
+                  },
+                  {
+                    ["var"] = "style",
+                  },
+                  {
+                    ["var"] = "file_name",
                   },
                 },
                 ["select"] = {
@@ -465,6 +547,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "class",
+                  "{style}",
+                  "{file_name}",
                 },
               },
               {
@@ -483,15 +571,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/class/tree/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "class",
-                  "tree",
-                  "{file_name}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "file_name",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "class",
+                  },
+                  {
+                    ["lit"] = "tree",
+                  },
+                  {
+                    ["var"] = "file_name",
                   },
                 },
                 ["select"] = {
@@ -502,6 +598,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "class",
+                  "tree",
+                  "{file_name}",
                 },
               },
               {
@@ -520,13 +622,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/class/{classIds}",
-                ["parts"] = {
-                  "class",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["classIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "class",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -537,6 +643,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "class",
+                  "{id}",
                 },
               },
               {
@@ -555,13 +665,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/class/{classId}",
-                ["parts"] = {
-                  "class",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["classId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "class",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -572,6 +686,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "class",
+                  "{id}",
                 },
               },
             },
@@ -611,13 +729,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parameter/{parameterIds}",
-                ["parts"] = {
-                  "parameter",
-                  "{parameter_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["parameterIds"] = "parameter_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "parameter",
+                  },
+                  {
+                    ["var"] = "parameter_id",
                   },
                 },
                 ["select"] = {
@@ -628,6 +750,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parameter",
+                  "{parameter_id}",
                 },
               },
               {
@@ -645,13 +771,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/parameter/{parameterId}",
-                ["parts"] = {
-                  "parameter",
-                  "{parameter_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["parameterId"] = "parameter_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "parameter",
+                  },
+                  {
+                    ["var"] = "parameter_id",
                   },
                 },
                 ["select"] = {
@@ -662,6 +792,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "parameter",
+                  "{parameter_id}",
                 },
               },
             },
@@ -688,13 +822,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/couple",
-                ["parts"] = {
-                  "couple",
+                ["segments"] = {
+                  {
+                    ["lit"] = "couple",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "couple",
                 },
               },
             },
@@ -717,13 +856,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dungeon",
-                ["parts"] = {
-                  "dungeon",
+                ["segments"] = {
+                  {
+                    ["lit"] = "dungeon",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "dungeon",
                 },
               },
             },
@@ -739,6 +883,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "element",
         ["op"] = {
@@ -761,14 +909,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/element/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "element",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "element",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -779,6 +933,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "element",
+                  "{id}",
                 },
               },
             },
@@ -801,13 +960,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/equipmentset",
-                ["parts"] = {
-                  "equipmentset",
+                ["segments"] = {
+                  {
+                    ["lit"] = "equipmentset",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "equipmentset",
                 },
               },
             },
@@ -831,13 +995,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/equipmentset/{equipmentSetIds}",
-                ["parts"] = {
-                  "equipmentset",
-                  "{equipment_set_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["equipmentSetIds"] = "equipment_set_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "equipmentset",
+                  },
+                  {
+                    ["var"] = "equipment_set_id",
                   },
                 },
                 ["select"] = {
@@ -848,6 +1016,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "equipmentset",
+                  "{equipment_set_id}",
                 },
               },
               {
@@ -865,13 +1037,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/equipmentset/{equipmentSetId}",
-                ["parts"] = {
-                  "equipmentset",
-                  "{equipment_set_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["equipmentSetId"] = "equipment_set_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "equipmentset",
+                  },
+                  {
+                    ["var"] = "equipment_set_id",
                   },
                 },
                 ["select"] = {
@@ -882,6 +1058,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "equipmentset",
+                  "{equipment_set_id}",
                 },
               },
             },
@@ -908,13 +1088,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/exchangemenu",
-                ["parts"] = {
-                  "exchangemenu",
+                ["segments"] = {
+                  {
+                    ["lit"] = "exchangemenu",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "exchangemenu",
                 },
               },
             },
@@ -937,13 +1122,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingpack",
-                ["parts"] = {
-                  "housingpack",
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingpack",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingpack",
                 },
               },
             },
@@ -967,13 +1157,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingpack/{housingPackIds}",
-                ["parts"] = {
-                  "housingpack",
-                  "{housing_pack_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["housingPackIds"] = "housing_pack_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingpack",
+                  },
+                  {
+                    ["var"] = "housing_pack_id",
                   },
                 },
                 ["select"] = {
@@ -984,6 +1178,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingpack",
+                  "{housing_pack_id}",
                 },
               },
               {
@@ -1001,13 +1199,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingpack/{housingPackId}",
-                ["parts"] = {
-                  "housingpack",
-                  "{housing_pack_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["housingPackId"] = "housing_pack_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingpack",
+                  },
+                  {
+                    ["var"] = "housing_pack_id",
                   },
                 },
                 ["select"] = {
@@ -1018,6 +1220,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingpack",
+                  "{housing_pack_id}",
                 },
               },
             },
@@ -1044,13 +1250,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingtemplate",
-                ["parts"] = {
-                  "housingtemplate",
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingtemplate",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingtemplate",
                 },
               },
             },
@@ -1074,14 +1285,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/housingtemplate/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "housingtemplate",
-                  "{file_name}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "file_name",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "housingtemplate",
+                  },
+                  {
+                    ["var"] = "file_name",
                   },
                 },
                 ["select"] = {
@@ -1092,6 +1309,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "housingtemplate",
+                  "{file_name}",
                 },
               },
               {
@@ -1109,13 +1331,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingtemplate/{housingTemplateIds}",
-                ["parts"] = {
-                  "housingtemplate",
-                  "{housing_template_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["housingTemplateIds"] = "housing_template_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingtemplate",
+                  },
+                  {
+                    ["var"] = "housing_template_id",
                   },
                 },
                 ["select"] = {
@@ -1126,6 +1352,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingtemplate",
+                  "{housing_template_id}",
                 },
               },
               {
@@ -1143,13 +1373,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/housingtemplate/{housingTemplateId}",
-                ["parts"] = {
-                  "housingtemplate",
-                  "{housing_template_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["housingTemplateId"] = "housing_template_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "housingtemplate",
+                  },
+                  {
+                    ["var"] = "housing_template_id",
                   },
                 },
                 ["select"] = {
@@ -1160,6 +1394,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "housingtemplate",
+                  "{housing_template_id}",
                 },
               },
             },
@@ -1180,6 +1418,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "item",
         ["op"] = {
           ["list"] = {
@@ -1191,13 +1433,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/item",
-                ["parts"] = {
-                  "item",
+                ["segments"] = {
+                  {
+                    ["lit"] = "item",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "item",
                 },
               },
             },
@@ -1221,14 +1468,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/item/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "item",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "item",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1239,6 +1492,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "item",
+                  "{id}",
                 },
               },
               {
@@ -1256,13 +1514,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/item/{itemIds}",
-                ["parts"] = {
-                  "item",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["itemIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "item",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1273,6 +1535,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "item",
+                  "{id}",
                 },
               },
               {
@@ -1290,13 +1556,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/item/{itemId}",
-                ["parts"] = {
-                  "item",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["itemId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "item",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1307,6 +1577,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "item",
+                  "{id}",
                 },
               },
             },
@@ -1329,13 +1603,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/language",
-                ["parts"] = {
-                  "language",
+                ["segments"] = {
+                  {
+                    ["lit"] = "language",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "language",
                 },
               },
             },
@@ -1359,10 +1638,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/language/{languageCode}.png",
-                ["parts"] = {
-                  "image",
-                  "language",
-                  "{languageCode}.png",
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "language",
+                  },
+                  {
+                    ["lit"] = "{languageCode}.png",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "language_code",
@@ -1374,16 +1659,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "image",
+                  "language",
+                  "{languageCode}.png",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "language",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["lifestyle"] = {
@@ -1399,13 +1685,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/lifestyle",
-                ["parts"] = {
-                  "lifestyle",
+                ["segments"] = {
+                  {
+                    ["lit"] = "lifestyle",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "lifestyle",
                 },
               },
             },
@@ -1422,6 +1713,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "monster",
         ["op"] = {
           ["list"] = {
@@ -1433,13 +1728,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monster",
-                ["parts"] = {
-                  "monster",
+                ["segments"] = {
+                  {
+                    ["lit"] = "monster",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "monster",
                 },
               },
             },
@@ -1463,14 +1763,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/monster/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "monster",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "monster",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1481,6 +1787,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "monster",
+                  "{id}",
                 },
               },
               {
@@ -1498,13 +1809,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monster/{monsterIds}",
-                ["parts"] = {
-                  "monster",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["monsterIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "monster",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1515,6 +1830,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "monster",
+                  "{id}",
                 },
               },
               {
@@ -1532,13 +1851,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monster/{monsterId}",
-                ["parts"] = {
-                  "monster",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["monsterId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "monster",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1549,6 +1872,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "monster",
+                  "{id}",
                 },
               },
             },
@@ -1565,6 +1892,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "npc",
         ["op"] = {
           ["list"] = {
@@ -1576,13 +1907,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/npc",
-                ["parts"] = {
-                  "npc",
+                ["segments"] = {
+                  {
+                    ["lit"] = "npc",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "npc",
                 },
               },
             },
@@ -1606,14 +1942,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/npc/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "npc",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "npc",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1624,6 +1966,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "npc",
+                  "{id}",
                 },
               },
               {
@@ -1641,13 +1988,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/npc/{npcIds}",
-                ["parts"] = {
-                  "npc",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["npcIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "npc",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1658,6 +2009,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "npc",
+                  "{id}",
                 },
               },
               {
@@ -1675,13 +2030,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/npc/{npcId}",
-                ["parts"] = {
-                  "npc",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["npcId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "npc",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1692,6 +2051,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "npc",
+                  "{id}",
                 },
               },
             },
@@ -1714,13 +2077,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/partyskill",
-                ["parts"] = {
-                  "partyskill",
+                ["segments"] = {
+                  {
+                    ["lit"] = "partyskill",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "partyskill",
                 },
               },
             },
@@ -1744,13 +2112,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/partyskill/{partySkillIds}",
-                ["parts"] = {
-                  "partyskill",
-                  "{party_skill_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["partySkillIds"] = "party_skill_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "partyskill",
+                  },
+                  {
+                    ["var"] = "party_skill_id",
                   },
                 },
                 ["select"] = {
@@ -1761,6 +2133,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "partyskill",
+                  "{party_skill_id}",
                 },
               },
               {
@@ -1778,13 +2154,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/partyskill/{partySkillId}",
-                ["parts"] = {
-                  "partyskill",
-                  "{party_skill_id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["partySkillId"] = "party_skill_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "partyskill",
+                  },
+                  {
+                    ["var"] = "party_skill_id",
                   },
                 },
                 ["select"] = {
@@ -1795,6 +2175,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "partyskill",
+                  "{party_skill_id}",
                 },
               },
             },
@@ -1821,13 +2205,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/pk",
-                ["parts"] = {
-                  "pk",
+                ["segments"] = {
+                  {
+                    ["lit"] = "pk",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "pk",
                 },
               },
             },
@@ -1843,6 +2232,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "place",
         ["op"] = {
@@ -1865,14 +2258,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/place/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "place",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "place",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1883,6 +2282,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "place",
+                  "{id}",
                 },
               },
             },
@@ -1899,6 +2303,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "quest",
         ["op"] = {
           ["list"] = {
@@ -1910,13 +2318,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/quest",
-                ["parts"] = {
-                  "quest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "quest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "quest",
                 },
               },
             },
@@ -1940,13 +2353,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/quest/{questIds}",
-                ["parts"] = {
-                  "quest",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["questIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "quest",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1957,6 +2374,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "quest",
+                  "{id}",
                 },
               },
               {
@@ -1974,13 +2395,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/quest/{questId}",
-                ["parts"] = {
-                  "quest",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["questId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "quest",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1991,6 +2416,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "quest",
+                  "{id}",
                 },
               },
             },
@@ -2013,13 +2442,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/raisedpet",
-                ["parts"] = {
-                  "raisedpet",
+                ["segments"] = {
+                  {
+                    ["lit"] = "raisedpet",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "raisedpet",
                 },
               },
             },
@@ -2036,6 +2470,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "recipe",
         ["op"] = {
           ["list"] = {
@@ -2047,13 +2485,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/recipe",
-                ["parts"] = {
-                  "recipe",
+                ["segments"] = {
+                  {
+                    ["lit"] = "recipe",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "recipe",
                 },
               },
             },
@@ -2077,13 +2520,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/recipe/{recipeIds}",
-                ["parts"] = {
-                  "recipe",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["recipeIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "recipe",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2094,6 +2541,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "recipe",
+                  "{id}",
                 },
               },
               {
@@ -2111,13 +2562,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/recipe/{recipeId}",
-                ["parts"] = {
-                  "recipe",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["recipeId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "recipe",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2128,6 +2583,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "recipe",
+                  "{id}",
                 },
               },
             },
@@ -2144,6 +2603,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "skill",
         ["op"] = {
           ["list"] = {
@@ -2155,13 +2618,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skill",
-                ["parts"] = {
-                  "skill",
+                ["segments"] = {
+                  {
+                    ["lit"] = "skill",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "skill",
                 },
               },
             },
@@ -2185,14 +2653,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/skill/{fileName}",
-                ["parts"] = {
-                  "image",
-                  "skill",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["fileName"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "skill",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2203,6 +2677,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "skill",
+                  "{id}",
                 },
               },
               {
@@ -2220,13 +2699,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skill/{skillIds}",
-                ["parts"] = {
-                  "skill",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["skillIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "skill",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2237,6 +2720,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "skill",
+                  "{id}",
                 },
               },
               {
@@ -2254,13 +2741,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skill/{skillId}",
-                ["parts"] = {
-                  "skill",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["skillId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "skill",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2271,6 +2762,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "skill",
+                  "{id}",
                 },
               },
             },
@@ -2293,13 +2788,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/upgradelevelbonus",
-                ["parts"] = {
-                  "upgradelevelbonus",
+                ["segments"] = {
+                  {
+                    ["lit"] = "upgradelevelbonus",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "upgradelevelbonus",
                 },
               },
             },
@@ -2322,9 +2822,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/version/api",
-                ["parts"] = {
-                  "version",
-                  "api",
+                ["segments"] = {
+                  {
+                    ["lit"] = "version",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "api",
@@ -2333,15 +2837,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "version",
+                  "api",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/version/data",
-                ["parts"] = {
-                  "version",
-                  "data",
+                ["segments"] = {
+                  {
+                    ["lit"] = "version",
+                  },
+                  {
+                    ["lit"] = "data",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "data",
@@ -2349,6 +2861,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "version",
+                  "data",
                 },
               },
             },
@@ -2449,6 +2965,10 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "world",
         ["op"] = {
           ["list"] = {
@@ -2460,13 +2980,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/world",
-                ["parts"] = {
-                  "world",
+                ["segments"] = {
+                  {
+                    ["lit"] = "world",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "world",
                 },
               },
             },
@@ -2505,10 +3030,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
-                ["parts"] = {
-                  "image",
-                  "world",
-                  "{worldTileName}{tileX}-{tileY}-0.png",
+                ["segments"] = {
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "world",
+                  },
+                  {
+                    ["lit"] = "{worldTileName}{tileX}-{tileY}-0.png",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "world_tile_nametile_x_tile_y_0",
@@ -2521,6 +3052,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "image",
+                  "world",
+                  "{worldTileName}{tileX}-{tileY}-0.png",
                 },
               },
               {
@@ -2539,13 +3075,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/world/{worldIds}",
-                ["parts"] = {
-                  "world",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["worldIds"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "world",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2556,6 +3096,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "world",
+                  "{id}",
                 },
               },
               {
@@ -2574,13 +3118,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/world/{worldId}",
-                ["parts"] = {
-                  "world",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["worldId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "world",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -2592,16 +3140,16 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "world",
+                  "{id}",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "world",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
     },

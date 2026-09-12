@@ -12,8 +12,10 @@ main: kit: entity: dungeon: {
         {
           method: "GET"
           orig: "/dungeon"
-          parts: [
-            "dungeon"
+          segments: [
+            {
+              lit: "dungeon"
+            }
           ]
           transform: {
             req: "`reqdata`"

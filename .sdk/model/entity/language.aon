@@ -12,8 +12,10 @@ main: kit: entity: language: {
         {
           method: "GET"
           orig: "/language"
-          parts: [
-            "language"
+          segments: [
+            {
+              lit: "language"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -39,10 +41,16 @@ main: kit: entity: language: {
           }
           method: "GET"
           orig: "/image/language/{languageCode}.png"
-          parts: [
-            "image"
-            "language"
-            "{languageCode}.png"
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "language"
+            }
+            {
+              lit: "{languageCode}.png"
+            }
           ]
           select: {
             "$action": "language_code"
@@ -57,14 +65,6 @@ main: kit: entity: language: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "language"
-      ]
-    ]
   }
 
 

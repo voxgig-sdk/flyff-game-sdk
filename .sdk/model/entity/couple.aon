@@ -12,8 +12,10 @@ main: kit: entity: couple: {
         {
           method: "GET"
           orig: "/couple"
-          parts: [
-            "couple"
+          segments: [
+            {
+              lit: "couple"
+            }
           ]
           transform: {
             req: "`reqdata`"

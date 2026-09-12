@@ -110,8 +110,10 @@ main: kit: entity: world: {
         {
           method: "GET"
           orig: "/world"
-          parts: [
-            "world"
+          segments: [
+            {
+              lit: "world"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -152,10 +154,16 @@ main: kit: entity: world: {
           }
           method: "GET"
           orig: "/image/world/{worldTileName}{tileX}-{tileY}-0.png"
-          parts: [
-            "image"
-            "world"
-            "{worldTileName}{tileX}-{tileY}-0.png"
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "world"
+            }
+            {
+              lit: "{worldTileName}{tileX}-{tileY}-0.png"
+            }
           ]
           select: {
             "$action": "world_tile_nametile_x_tile_y_0"
@@ -185,15 +193,19 @@ main: kit: entity: world: {
           }
           method: "GET"
           orig: "/world/{worldIds}"
-          parts: [
-            "world"
-            "{id}"
-          ]
           rename: {
             param: {
               worldIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "world"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -219,15 +231,19 @@ main: kit: entity: world: {
           }
           method: "GET"
           orig: "/world/{worldId}"
-          parts: [
-            "world"
-            "{id}"
-          ]
           rename: {
             param: {
               worldId: "id"
             }
           }
+          segments: [
+            {
+              lit: "world"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -240,14 +256,6 @@ main: kit: entity: world: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "world"
-      ]
-    ]
   }
 
 

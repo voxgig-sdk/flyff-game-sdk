@@ -50,7 +50,7 @@ func TestExchangeMenusEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		exchangeMenusRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.exchange_menus", setup.data)))
+		exchangeMenusRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.exchange_menus")))
 		var exchangeMenusRef01Data map[string]any
 		if len(exchangeMenusRef01DataRaw) > 0 {
 			exchangeMenusRef01Data = core.ToMapAny(exchangeMenusRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func exchange_menusBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"exchange_menus01", "exchange_menus02", "exchange_menus03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func exchange_menusBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["FLYFF_GAME_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewFlyffGameSDK(core.ToMapAny(mergedOpts))
 	}

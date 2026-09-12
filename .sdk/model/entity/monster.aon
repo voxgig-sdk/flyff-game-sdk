@@ -25,8 +25,10 @@ main: kit: entity: monster: {
         {
           method: "GET"
           orig: "/monster"
-          parts: [
-            "monster"
+          segments: [
+            {
+              lit: "monster"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -52,16 +54,22 @@ main: kit: entity: monster: {
           }
           method: "GET"
           orig: "/image/monster/{fileName}"
-          parts: [
-            "image"
-            "monster"
-            "{id}"
-          ]
           rename: {
             param: {
               fileName: "id"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "monster"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -86,15 +94,19 @@ main: kit: entity: monster: {
           }
           method: "GET"
           orig: "/monster/{monsterIds}"
-          parts: [
-            "monster"
-            "{id}"
-          ]
           rename: {
             param: {
               monsterIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "monster"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -119,15 +131,19 @@ main: kit: entity: monster: {
           }
           method: "GET"
           orig: "/monster/{monsterId}"
-          parts: [
-            "monster"
-            "{id}"
-          ]
           rename: {
             param: {
               monsterId: "id"
             }
           }
+          segments: [
+            {
+              lit: "monster"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

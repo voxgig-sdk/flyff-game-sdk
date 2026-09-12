@@ -12,8 +12,10 @@ main: kit: entity: exchange_menus: {
         {
           method: "GET"
           orig: "/exchangemenu"
-          parts: [
-            "exchangemenu"
+          segments: [
+            {
+              lit: "exchangemenu"
+            }
           ]
           transform: {
             req: "`reqdata`"

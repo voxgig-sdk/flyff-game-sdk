@@ -36,16 +36,22 @@ main: kit: entity: badge: {
           }
           method: "GET"
           orig: "/image/badge/{fileName}"
-          parts: [
-            "image"
-            "badge"
-            "{id}"
-          ]
           rename: {
             param: {
               fileName: "id"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "badge"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

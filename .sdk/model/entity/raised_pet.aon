@@ -12,8 +12,10 @@ main: kit: entity: raised_pet: {
         {
           method: "GET"
           orig: "/raisedpet"
-          parts: [
-            "raisedpet"
+          segments: [
+            {
+              lit: "raisedpet"
+            }
           ]
           transform: {
             req: "`reqdata`"

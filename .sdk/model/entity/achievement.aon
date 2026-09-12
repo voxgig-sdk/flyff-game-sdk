@@ -25,8 +25,10 @@ main: kit: entity: achievement: {
         {
           method: "GET"
           orig: "/achievement"
-          parts: [
-            "achievement"
+          segments: [
+            {
+              lit: "achievement"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -52,15 +54,19 @@ main: kit: entity: achievement: {
           }
           method: "GET"
           orig: "/achievement/{achievementIds}"
-          parts: [
-            "achievement"
-            "{id}"
-          ]
           rename: {
             param: {
               achievementIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "achievement"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -85,15 +91,19 @@ main: kit: entity: achievement: {
           }
           method: "GET"
           orig: "/achievement/{achievementId}"
-          parts: [
-            "achievement"
-            "{id}"
-          ]
           rename: {
             param: {
               achievementId: "id"
             }
           }
+          segments: [
+            {
+              lit: "achievement"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

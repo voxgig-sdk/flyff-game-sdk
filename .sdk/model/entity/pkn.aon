@@ -12,8 +12,10 @@ main: kit: entity: pkn: {
         {
           method: "GET"
           orig: "/pk"
-          parts: [
-            "pk"
+          segments: [
+            {
+              lit: "pk"
+            }
           ]
           transform: {
             req: "`reqdata`"

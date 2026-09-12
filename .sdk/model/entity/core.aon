@@ -23,15 +23,19 @@ main: kit: entity: core: {
           }
           method: "GET"
           orig: "/parameter/{parameterIds}"
-          parts: [
-            "parameter"
-            "{parameter_id}"
-          ]
           rename: {
             param: {
               parameterIds: "parameter_id"
             }
           }
+          segments: [
+            {
+              lit: "parameter"
+            }
+            {
+              var: "parameter_id"
+            }
+          ]
           select: {
             exist: [
               "parameter_id"
@@ -56,15 +60,19 @@ main: kit: entity: core: {
           }
           method: "GET"
           orig: "/parameter/{parameterId}"
-          parts: [
-            "parameter"
-            "{parameter_id}"
-          ]
           rename: {
             param: {
               parameterId: "parameter_id"
             }
           }
+          segments: [
+            {
+              lit: "parameter"
+            }
+            {
+              var: "parameter_id"
+            }
+          ]
           select: {
             exist: [
               "parameter_id"

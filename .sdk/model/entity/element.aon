@@ -36,16 +36,22 @@ main: kit: entity: element: {
           }
           method: "GET"
           orig: "/image/element/{fileName}"
-          parts: [
-            "image"
-            "element"
-            "{id}"
-          ]
           rename: {
             param: {
               fileName: "id"
             }
           }
+          segments: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "element"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

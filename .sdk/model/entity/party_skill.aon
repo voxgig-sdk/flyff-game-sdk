@@ -12,8 +12,10 @@ main: kit: entity: party_skill: {
         {
           method: "GET"
           orig: "/partyskill"
-          parts: [
-            "partyskill"
+          segments: [
+            {
+              lit: "partyskill"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -39,15 +41,19 @@ main: kit: entity: party_skill: {
           }
           method: "GET"
           orig: "/partyskill/{partySkillIds}"
-          parts: [
-            "partyskill"
-            "{party_skill_id}"
-          ]
           rename: {
             param: {
               partySkillIds: "party_skill_id"
             }
           }
+          segments: [
+            {
+              lit: "partyskill"
+            }
+            {
+              var: "party_skill_id"
+            }
+          ]
           select: {
             exist: [
               "party_skill_id"
@@ -72,15 +78,19 @@ main: kit: entity: party_skill: {
           }
           method: "GET"
           orig: "/partyskill/{partySkillId}"
-          parts: [
-            "partyskill"
-            "{party_skill_id}"
-          ]
           rename: {
             param: {
               partySkillId: "party_skill_id"
             }
           }
+          segments: [
+            {
+              lit: "partyskill"
+            }
+            {
+              var: "party_skill_id"
+            }
+          ]
           select: {
             exist: [
               "party_skill_id"

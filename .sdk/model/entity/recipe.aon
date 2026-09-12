@@ -25,8 +25,10 @@ main: kit: entity: recipe: {
         {
           method: "GET"
           orig: "/recipe"
-          parts: [
-            "recipe"
+          segments: [
+            {
+              lit: "recipe"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -52,15 +54,19 @@ main: kit: entity: recipe: {
           }
           method: "GET"
           orig: "/recipe/{recipeIds}"
-          parts: [
-            "recipe"
-            "{id}"
-          ]
           rename: {
             param: {
               recipeIds: "id"
             }
           }
+          segments: [
+            {
+              lit: "recipe"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -85,15 +91,19 @@ main: kit: entity: recipe: {
           }
           method: "GET"
           orig: "/recipe/{recipeId}"
-          parts: [
-            "recipe"
-            "{id}"
-          ]
           rename: {
             param: {
               recipeId: "id"
             }
           }
+          segments: [
+            {
+              lit: "recipe"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

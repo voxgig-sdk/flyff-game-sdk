@@ -1,0 +1,251 @@
+export interface Achievement {
+    id?: string;
+}
+export interface AchievementLoadMatch {
+    id: string;
+}
+export interface AchievementListMatch {
+    id?: string;
+}
+export interface Awake {
+}
+export interface AwakeLoadMatch {
+    $action?: string;
+    [action: string]: any;
+}
+export interface Badge {
+    id?: string;
+}
+export interface BadgeLoadMatch {
+    id: string;
+}
+export interface Class {
+    attackSpeed: number;
+    autoAttackFactors: Record<string, any>;
+    block: number;
+    critical: number;
+    defense: number;
+    fp: number;
+    hp: number;
+    icon: string;
+    id: number;
+    magicDefenseIntFactor: number;
+    magicDefenseStaFactor: number;
+    maxFP: string;
+    maxHP: string;
+    maxLevel: number;
+    maxMP: string;
+    minLevel: number;
+    mp: number;
+    name: Record<string, any>;
+    parent?: number;
+    tree: string;
+    type: string;
+}
+export interface ClassLoadMatch {
+    id: string;
+}
+export interface ClassListMatch {
+    attackSpeed?: number;
+    autoAttackFactors?: Record<string, any>;
+    block?: number;
+    critical?: number;
+    defense?: number;
+    fp?: number;
+    hp?: number;
+    icon?: string;
+    id?: number;
+    magicDefenseIntFactor?: number;
+    magicDefenseStaFactor?: number;
+    maxFP?: string;
+    maxHP?: string;
+    maxLevel?: number;
+    maxMP?: string;
+    minLevel?: number;
+    mp?: number;
+    name?: Record<string, any>;
+    parent?: number;
+    tree?: string;
+    type?: string;
+}
+export interface Core {
+}
+export interface CoreLoadMatch {
+    parameter_id: string;
+}
+export interface Couple {
+}
+export interface CoupleLoadMatch {
+}
+export interface Dungeon {
+}
+export interface DungeonLoadMatch {
+}
+export interface Element {
+    id?: string;
+}
+export interface ElementLoadMatch {
+    id: string;
+}
+export interface EquipmentSet {
+}
+export interface EquipmentSetLoadMatch {
+    equipment_set_id: string;
+}
+export interface EquipmentSetListMatch {
+}
+export interface ExchangeMenus {
+}
+export interface ExchangeMenusLoadMatch {
+}
+export interface HousingPack {
+}
+export interface HousingPackLoadMatch {
+    housing_pack_id: string;
+}
+export interface HousingPackListMatch {
+}
+export interface HousingTemplate {
+}
+export interface HousingTemplateLoadMatch {
+    housing_template_id: string;
+}
+export interface HousingTemplateListMatch {
+}
+export interface Item {
+    id?: string;
+}
+export interface ItemLoadMatch {
+    id: string;
+}
+export interface ItemListMatch {
+    id?: string;
+}
+export interface Language {
+}
+export interface LanguageLoadMatch {
+    language_code: string;
+    $action?: string;
+    [action: string]: any;
+}
+export interface LanguageListMatch {
+}
+export interface Lifestyle {
+}
+export interface LifestyleLoadMatch {
+}
+export interface Monster {
+    id?: string;
+}
+export interface MonsterLoadMatch {
+    id: string;
+}
+export interface MonsterListMatch {
+    id?: string;
+}
+export interface Npc {
+    id?: string;
+}
+export interface NpcLoadMatch {
+    id: string;
+}
+export interface NpcListMatch {
+    id?: string;
+}
+export interface PartySkill {
+}
+export interface PartySkillLoadMatch {
+    party_skill_id: string;
+}
+export interface PartySkillListMatch {
+}
+export interface Pkn {
+}
+export interface PknLoadMatch {
+}
+export interface Place {
+    id?: string;
+}
+export interface PlaceLoadMatch {
+    id: string;
+}
+export interface Quest {
+    id?: string;
+}
+export interface QuestLoadMatch {
+    id: string;
+}
+export interface QuestListMatch {
+    id?: string;
+}
+export interface RaisedPet {
+}
+export interface RaisedPetLoadMatch {
+}
+export interface Recipe {
+    id?: string;
+}
+export interface RecipeLoadMatch {
+    id: string;
+}
+export interface RecipeListMatch {
+    id?: string;
+}
+export interface Skill {
+    id?: string;
+}
+export interface SkillLoadMatch {
+    id: string;
+}
+export interface SkillListMatch {
+    id?: string;
+}
+export interface UpgradeLevelBonus {
+}
+export interface UpgradeLevelBonusLoadMatch {
+}
+export interface Version {
+}
+export interface VersionLoadMatch {
+    $action?: string;
+    [action: string]: any;
+}
+export interface World {
+    continents: any[];
+    flying: boolean;
+    height: number;
+    id: number;
+    inDoor: boolean;
+    lodestars: any[];
+    name: Record<string, any>;
+    pk: boolean;
+    places: any[];
+    revivalKey?: string;
+    revivalWorld?: number;
+    tileName: string;
+    tileSize: number;
+    type: string;
+    width: number;
+}
+export interface WorldLoadMatch {
+    id: string;
+    $action?: string;
+    [action: string]: any;
+}
+export interface WorldListMatch {
+    continents?: any[];
+    flying?: boolean;
+    height?: number;
+    id?: number;
+    inDoor?: boolean;
+    lodestars?: any[];
+    name?: Record<string, any>;
+    pk?: boolean;
+    places?: any[];
+    revivalKey?: string;
+    revivalWorld?: number;
+    tileName?: string;
+    tileSize?: number;
+    type?: string;
+    width?: number;
+}

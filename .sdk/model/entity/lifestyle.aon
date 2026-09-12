@@ -12,8 +12,10 @@ main: kit: entity: lifestyle: {
         {
           method: "GET"
           orig: "/lifestyle"
-          parts: [
-            "lifestyle"
+          segments: [
+            {
+              lit: "lifestyle"
+            }
           ]
           transform: {
             req: "`reqdata`"

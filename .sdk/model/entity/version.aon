@@ -12,9 +12,13 @@ main: kit: entity: version: {
         {
           method: "GET"
           orig: "/version/api"
-          parts: [
-            "version"
-            "api"
+          segments: [
+            {
+              lit: "version"
+            }
+            {
+              lit: "api"
+            }
           ]
           select: {
             "$action": "api"
@@ -27,9 +31,13 @@ main: kit: entity: version: {
         {
           method: "GET"
           orig: "/version/data"
-          parts: [
-            "version"
-            "data"
+          segments: [
+            {
+              lit: "version"
+            }
+            {
+              lit: "data"
+            }
           ]
           select: {
             "$action": "data"

@@ -12,8 +12,10 @@ main: kit: entity: upgrade_level_bonus: {
         {
           method: "GET"
           orig: "/upgradelevelbonus"
-          parts: [
-            "upgradelevelbonus"
+          segments: [
+            {
+              lit: "upgradelevelbonus"
+            }
           ]
           transform: {
             req: "`reqdata`"

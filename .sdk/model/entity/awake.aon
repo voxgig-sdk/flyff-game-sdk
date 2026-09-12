@@ -12,9 +12,13 @@ main: kit: entity: awake: {
         {
           method: "GET"
           orig: "/awake/skill"
-          parts: [
-            "awake"
-            "skill"
+          segments: [
+            {
+              lit: "awake"
+            }
+            {
+              lit: "skill"
+            }
           ]
           select: {
             "$action": "skill"
@@ -27,9 +31,13 @@ main: kit: entity: awake: {
         {
           method: "GET"
           orig: "/awake/stat"
-          parts: [
-            "awake"
-            "stat"
+          segments: [
+            {
+              lit: "awake"
+            }
+            {
+              lit: "stat"
+            }
           ]
           select: {
             "$action": "stat"
