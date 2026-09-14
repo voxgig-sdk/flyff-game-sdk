@@ -105,7 +105,7 @@ local result, err = client:Dungeon():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
+| TypeScript | `@voxgig-sdk/flyff-game-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
 | Python | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
 | PHP | `voxgig-sdk/flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/flyff-game-sdk/go` | `go get github.com/voxgig-sdk/flyff-game-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Dungeon():load()
 ### TypeScript
 
 ```ts
-import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
+import { FlyffGameSDK } from '@voxgig-sdk/flyff-game-sdk'
 
 const client = new FlyffGameSDK()
 

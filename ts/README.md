@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
+import { FlyffGameSDK } from '@voxgig-sdk/flyff-game-sdk'
 
 const client = new FlyffGameSDK()
 ```
@@ -1366,7 +1366,7 @@ flyff-game/
 Import the SDK from the package root:
 
 ```ts
-import { FlyffGameSDK } from '@voxgig-sdk/flyff-game'
+import { FlyffGameSDK } from '@voxgig-sdk/flyff-game-sdk'
 ```
 
 ### Entity state
