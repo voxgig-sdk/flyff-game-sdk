@@ -19,5 +19,78 @@
     "core": {
       "core_ref01": {}
     }
+  },
+  "requests": {
+    "GET /parameter/{parameterIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getParameterNames",
+        "parameters": [
+          {
+            "description": "IDs of parameters separated by comma",
+            "in": "path",
+            "name": "parameterIds",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Parameters not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /parameter/{parameterId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getParameterName",
+        "parameters": [
+          {
+            "description": "ID of parameter",
+            "in": "path",
+            "name": "parameterId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

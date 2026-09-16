@@ -16,5 +16,42 @@
     "badge": {
       "badge_ref01": {}
     }
+  },
+  "requests": {
+    "GET /image/badge/{fileName}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBadgeIcon",
+        "parameters": [
+          {
+            "description": "File name of the badge icon",
+            "in": "path",
+            "name": "fileName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

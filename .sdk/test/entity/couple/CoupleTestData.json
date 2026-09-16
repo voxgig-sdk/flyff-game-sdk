@@ -16,5 +16,28 @@
     "couple": {
       "couple_ref01": {}
     }
+  },
+  "requests": {
+    "GET /couple": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCoupleInformation",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

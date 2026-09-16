@@ -23,6 +23,12 @@ main: kit: entity: npc: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /npc"
+            json: "{\"operationId\":\"getAllNpcIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/npc"
           segments: [
@@ -51,6 +57,12 @@ main: kit: entity: npc: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/npc/{fileName}"
+            json: "{\"operationId\":\"getNpcDialogImage\",\"parameters\":[{\"description\":\"File name of the NPC dialog image\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Image not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/npc/{fileName}"
@@ -92,6 +104,12 @@ main: kit: entity: npc: {
               }
             ]
           }
+          contract: {
+            id: "GET /npc/{npcIds}"
+            json: "{\"operationId\":\"getNpcsByIds\",\"parameters\":[{\"description\":\"IDs of NPCs to return separated by comma\",\"in\":\"path\",\"name\":\"npcIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"NPC not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/npc/{npcIds}"
           rename: {
@@ -128,6 +146,12 @@ main: kit: entity: npc: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /npc/{npcId}"
+            json: "{\"operationId\":\"getNpcById\",\"parameters\":[{\"description\":\"ID of NPC to return\",\"in\":\"path\",\"name\":\"npcId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"NPC not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/npc/{npcId}"

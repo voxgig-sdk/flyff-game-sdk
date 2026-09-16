@@ -16,5 +16,42 @@
     "place": {
       "place_ref01": {}
     }
+  },
+  "requests": {
+    "GET /image/place/{fileName}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPlaceIcon",
+        "parameters": [
+          {
+            "description": "File name of the place icon",
+            "in": "path",
+            "name": "fileName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Icon not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

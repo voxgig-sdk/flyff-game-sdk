@@ -19,5 +19,108 @@
     "equipment_set": {
       "equipment_set_ref01": {}
     }
+  },
+  "requests": {
+    "GET /equipmentset": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllEquipmentSetIds",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /equipmentset/{equipmentSetIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getEquipmentSetsByIds",
+        "parameters": [
+          {
+            "description": "IDs of equipment sets to return separated by comma",
+            "in": "path",
+            "name": "equipmentSetIds",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Equipment set not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /equipmentset/{equipmentSetId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getEquipmentSetById",
+        "parameters": [
+          {
+            "description": "ID of equipment set to return",
+            "in": "path",
+            "name": "equipmentSetId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Equipment set not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

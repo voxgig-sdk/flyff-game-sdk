@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "achievement": {
           "active": true,
@@ -52,6 +116,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /achievement",
+                    "json": "{\"operationId\":\"getAllAchievementIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/achievement",
@@ -85,6 +155,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /achievement/{achievementIds}",
+                    "json": "{\"operationId\":\"getAchievementsByIds\",\"parameters\":[{\"description\":\"IDs of achievements to return separated by comma\",\"in\":\"path\",\"name\":\"achievementIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Achievement not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -125,6 +201,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /achievement/{achievementId}",
+                    "json": "{\"operationId\":\"getAchievementById\",\"parameters\":[{\"description\":\"ID of achievement to return\",\"in\":\"path\",\"name\":\"achievementId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Achievement not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -174,6 +256,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /awake/skill",
+                    "json": "{\"operationId\":\"getSkillAwakeValues\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/awake/skill",
@@ -196,6 +284,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /awake/stat",
+                    "json": "{\"operationId\":\"getStatAwakeValues\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/awake/stat",
@@ -258,6 +352,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/badge/{fileName}",
+                    "json": "{\"operationId\":\"getBadgeIcon\",\"parameters\":[{\"description\":\"File name of the badge icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -471,6 +571,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /class",
+                    "json": "{\"operationId\":\"getAllClassIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":[1689,296,2881],\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/class",
@@ -514,6 +620,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/class/{style}/{fileName}",
+                    "json": "{\"operationId\":\"getClassIcon\",\"parameters\":[{\"description\":\"Style of the icon. Accepted values: messenger, old_female, old_male, target\",\"in\":\"path\",\"name\":\"style\",\"required\":true,\"schema\":{\"enum\":[\"messenger\",\"old_female\",\"old_male\",\"target\"],\"example\":\"messenger\",\"type\":\"string\"}},{\"description\":\"File name of the icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"example\":\"vagrant.png\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -563,6 +675,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /image/class/tree/{fileName}",
+                    "json": "{\"operationId\":\"getClassSkillTree\",\"parameters\":[{\"description\":\"File name of the skill tree\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"example\":\"Vagrant.png\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Tree not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/image/class/tree/{fileName}",
@@ -610,6 +728,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /class/{classIds}",
+                    "json": "{\"operationId\":\"getClassesByIds\",\"parameters\":[{\"description\":\"IDs of classes to return separated by comma\",\"in\":\"path\",\"name\":\"classIds\",\"required\":true,\"schema\":{\"example\":\"1689,296,2881\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"attackSpeed\":{\"description\":\"Attack speed constant used in attack speed calculation\",\"format\":\"float\",\"type\":\"number\"},\"autoAttackFactors\":{\"description\":\"Auto attack damage factors used in damage calculation\",\"properties\":{\"axe\":{\"format\":\"float\",\"type\":\"number\"},\"bow\":{\"format\":\"float\",\"type\":\"number\"},\"knuckle\":{\"format\":\"float\",\"type\":\"number\"},\"staff\":{\"format\":\"float\",\"type\":\"number\"},\"stick\":{\"format\":\"float\",\"type\":\"number\"},\"sword\":{\"format\":\"float\",\"type\":\"number\"},\"wand\":{\"format\":\"float\",\"type\":\"number\"},\"yoyo\":{\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"block\":{\"description\":\"Blocking constant used in block calculation\",\"format\":\"float\",\"type\":\"number\"},\"critical\":{\"description\":\"Critical chance constant used in critical chance calculation\",\"format\":\"float\",\"type\":\"number\"},\"defense\":{\"description\":\"Defense factor use in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"fp\":{\"description\":\"FP Factor\",\"format\":\"float\",\"type\":\"number\"},\"hp\":{\"description\":\"HP Factor\",\"format\":\"float\",\"type\":\"number\"},\"icon\":{\"description\":\"Icon of the Class\",\"type\":\"string\"},\"id\":{\"description\":\"ID of the class\",\"type\":\"integer\"},\"magicDefenseIntFactor\":{\"description\":\"Magic defense factor based on INT used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"magicDefenseStaFactor\":{\"description\":\"Magic defense factor based on STA used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"maxFP\":{\"description\":\"Formula to compute the maximum Fatigue Points of the player\",\"type\":\"string\"},\"maxHP\":{\"description\":\"Formula to compute the maximum Hit Points of the player\",\"type\":\"string\"},\"maxLevel\":{\"description\":\"Maximum player level for the Class\",\"type\":\"integer\"},\"maxMP\":{\"description\":\"Formula to compute the maximum Mana Points of the player\",\"type\":\"string\"},\"minLevel\":{\"description\":\"Minimum player level for the Class\",\"type\":\"integer\"},\"mp\":{\"description\":\"MP Factor\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"parent\":{\"description\":\"ID of the parent class\",\"type\":\"integer\"},\"tree\":{\"description\":\"Skill tree image for the class\",\"type\":\"string\"},\"type\":{\"description\":\"Type of the class\",\"enum\":[\"beginner\",\"expert\",\"professional\"],\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\",\"icon\",\"tree\",\"minLevel\",\"maxLevel\",\"maxHP\",\"maxFP\",\"maxMP\",\"hp\",\"mp\",\"fp\",\"attackSpeed\",\"block\",\"critical\",\"autoAttackFactors\",\"defense\",\"magicDefenseStaFactor\",\"magicDefenseIntFactor\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/class/{classIds}",
@@ -650,6 +774,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /class/{classId}",
+                    "json": "{\"operationId\":\"getClassById\",\"parameters\":[{\"description\":\"ID of class to return\",\"in\":\"path\",\"name\":\"classId\",\"required\":true,\"schema\":{\"example\":1689,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"attackSpeed\":{\"description\":\"Attack speed constant used in attack speed calculation\",\"format\":\"float\",\"type\":\"number\"},\"autoAttackFactors\":{\"description\":\"Auto attack damage factors used in damage calculation\",\"properties\":{\"axe\":{\"format\":\"float\",\"type\":\"number\"},\"bow\":{\"format\":\"float\",\"type\":\"number\"},\"knuckle\":{\"format\":\"float\",\"type\":\"number\"},\"staff\":{\"format\":\"float\",\"type\":\"number\"},\"stick\":{\"format\":\"float\",\"type\":\"number\"},\"sword\":{\"format\":\"float\",\"type\":\"number\"},\"wand\":{\"format\":\"float\",\"type\":\"number\"},\"yoyo\":{\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"block\":{\"description\":\"Blocking constant used in block calculation\",\"format\":\"float\",\"type\":\"number\"},\"critical\":{\"description\":\"Critical chance constant used in critical chance calculation\",\"format\":\"float\",\"type\":\"number\"},\"defense\":{\"description\":\"Defense factor use in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"fp\":{\"description\":\"FP Factor\",\"format\":\"float\",\"type\":\"number\"},\"hp\":{\"description\":\"HP Factor\",\"format\":\"float\",\"type\":\"number\"},\"icon\":{\"description\":\"Icon of the Class\",\"type\":\"string\"},\"id\":{\"description\":\"ID of the class\",\"type\":\"integer\"},\"magicDefenseIntFactor\":{\"description\":\"Magic defense factor based on INT used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"magicDefenseStaFactor\":{\"description\":\"Magic defense factor based on STA used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"maxFP\":{\"description\":\"Formula to compute the maximum Fatigue Points of the player\",\"type\":\"string\"},\"maxHP\":{\"description\":\"Formula to compute the maximum Hit Points of the player\",\"type\":\"string\"},\"maxLevel\":{\"description\":\"Maximum player level for the Class\",\"type\":\"integer\"},\"maxMP\":{\"description\":\"Formula to compute the maximum Mana Points of the player\",\"type\":\"string\"},\"minLevel\":{\"description\":\"Minimum player level for the Class\",\"type\":\"integer\"},\"mp\":{\"description\":\"MP Factor\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"parent\":{\"description\":\"ID of the parent class\",\"type\":\"integer\"},\"tree\":{\"description\":\"Skill tree image for the class\",\"type\":\"string\"},\"type\":{\"description\":\"Type of the class\",\"enum\":[\"beginner\",\"expert\",\"professional\"],\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\",\"icon\",\"tree\",\"minLevel\",\"maxLevel\",\"maxHP\",\"maxFP\",\"maxMP\",\"hp\",\"mp\",\"fp\",\"attackSpeed\",\"block\",\"critical\",\"autoAttackFactors\",\"defense\",\"magicDefenseStaFactor\",\"magicDefenseIntFactor\"],\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -717,6 +847,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /parameter/{parameterIds}",
+                    "json": "{\"operationId\":\"getParameterNames\",\"parameters\":[{\"description\":\"IDs of parameters separated by comma\",\"in\":\"path\",\"name\":\"parameterIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Parameters not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/parameter/{parameterIds}",
@@ -756,6 +892,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /parameter/{parameterId}",
+                    "json": "{\"operationId\":\"getParameterName\",\"parameters\":[{\"description\":\"ID of parameter\",\"in\":\"path\",\"name\":\"parameterId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Parameter not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -809,6 +951,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /couple",
+                    "json": "{\"operationId\":\"getCoupleInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/couple",
@@ -845,6 +993,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /dungeon",
+                    "json": "{\"operationId\":\"getDungeonsInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dungeon",
@@ -903,6 +1057,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /image/element/{fileName}",
+                    "json": "{\"operationId\":\"getElementIcon\",\"parameters\":[{\"description\":\"File name of the element icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/image/element/{fileName}",
@@ -954,6 +1114,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /equipmentset",
+                    "json": "{\"operationId\":\"getAllEquipmentSetIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/equipmentset",
@@ -987,6 +1153,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /equipmentset/{equipmentSetIds}",
+                    "json": "{\"operationId\":\"getEquipmentSetsByIds\",\"parameters\":[{\"description\":\"IDs of equipment sets to return separated by comma\",\"in\":\"path\",\"name\":\"equipmentSetIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Equipment set not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1027,6 +1199,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /equipmentset/{equipmentSetId}",
+                    "json": "{\"operationId\":\"getEquipmentSetById\",\"parameters\":[{\"description\":\"ID of equipment set to return\",\"in\":\"path\",\"name\":\"equipmentSetId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Equipment set not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1080,6 +1258,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /exchangemenu",
+                    "json": "{\"operationId\":\"getExchangeMenus\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/exchangemenu",
@@ -1116,6 +1300,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /housingpack",
+                    "json": "{\"operationId\":\"getAllHousingPackIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/housingpack",
@@ -1149,6 +1339,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /housingpack/{housingPackIds}",
+                    "json": "{\"operationId\":\"getHousingPacksByIds\",\"parameters\":[{\"description\":\"IDs of housing packs to return separated by comma\",\"in\":\"path\",\"name\":\"housingPackIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Housing pack not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1189,6 +1385,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /housingpack/{housingPackId}",
+                    "json": "{\"operationId\":\"getHousingPackById\",\"parameters\":[{\"description\":\"ID of housing pack to return\",\"in\":\"path\",\"name\":\"housingPackId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Housing pack not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1242,6 +1444,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /housingtemplate",
+                    "json": "{\"operationId\":\"getAllHousingTemplateIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/housingtemplate",
@@ -1275,6 +1483,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/housingtemplate/{fileName}",
+                    "json": "{\"operationId\":\"getHousingTemplatePreview\",\"parameters\":[{\"description\":\"File name of the housing template preview\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Preview image not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1319,6 +1533,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /housingtemplate/{housingTemplateIds}",
+                    "json": "{\"operationId\":\"getHousingTemplatesByIds\",\"parameters\":[{\"description\":\"IDs of housing templates to return separated by comma\",\"in\":\"path\",\"name\":\"housingTemplateIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Housing template not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/housingtemplate/{housingTemplateIds}",
@@ -1358,6 +1578,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /housingtemplate/{housingTemplateId}",
+                    "json": "{\"operationId\":\"getHousingTemplateById\",\"parameters\":[{\"description\":\"ID of housing template to return\",\"in\":\"path\",\"name\":\"housingTemplateId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Housing template not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1422,6 +1648,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /item",
+                    "json": "{\"operationId\":\"getAllItemIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/item",
@@ -1455,6 +1687,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/item/{fileName}",
+                    "json": "{\"operationId\":\"getItemIcon\",\"parameters\":[{\"description\":\"File name of the item icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1499,6 +1737,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /item/{itemIds}",
+                    "json": "{\"operationId\":\"getItemsByIds\",\"parameters\":[{\"description\":\"IDs of items to return separated by comma\",\"in\":\"path\",\"name\":\"itemIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/item/{itemIds}",
@@ -1538,6 +1782,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /item/{itemId}",
+                    "json": "{\"operationId\":\"getItemById\",\"parameters\":[{\"description\":\"ID of item to return\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1587,6 +1837,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /language",
+                    "json": "{\"operationId\":\"getAllLanguages\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/language",
@@ -1620,6 +1876,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/language/{languageCode}.png",
+                    "json": "{\"operationId\":\"getLanguageFlag\",\"parameters\":[{\"description\":\"Language code\",\"in\":\"path\",\"name\":\"languageCode\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Flag not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1668,6 +1930,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /lifestyle",
+                    "json": "{\"operationId\":\"getLifestyleInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/lifestyle",
@@ -1715,6 +1983,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /monster",
+                    "json": "{\"operationId\":\"getAllMonsterIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/monster",
@@ -1748,6 +2022,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/monster/{fileName}",
+                    "json": "{\"operationId\":\"getMonsterIcon\",\"parameters\":[{\"description\":\"File name of the monster icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1792,6 +2072,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /monster/{monsterIds}",
+                    "json": "{\"operationId\":\"getMonstersByIds\",\"parameters\":[{\"description\":\"IDs of monsters to return separated by comma\",\"in\":\"path\",\"name\":\"monsterIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/monster/{monsterIds}",
@@ -1831,6 +2117,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /monster/{monsterId}",
+                    "json": "{\"operationId\":\"getMonsterById\",\"parameters\":[{\"description\":\"ID of monster to return\",\"in\":\"path\",\"name\":\"monsterId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1891,6 +2183,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /npc",
+                    "json": "{\"operationId\":\"getAllNpcIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/npc",
@@ -1924,6 +2222,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/npc/{fileName}",
+                    "json": "{\"operationId\":\"getNpcDialogImage\",\"parameters\":[{\"description\":\"File name of the NPC dialog image\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Image not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1968,6 +2272,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /npc/{npcIds}",
+                    "json": "{\"operationId\":\"getNpcsByIds\",\"parameters\":[{\"description\":\"IDs of NPCs to return separated by comma\",\"in\":\"path\",\"name\":\"npcIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"NPC not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/npc/{npcIds}",
@@ -2007,6 +2317,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /npc/{npcId}",
+                    "json": "{\"operationId\":\"getNpcById\",\"parameters\":[{\"description\":\"ID of NPC to return\",\"in\":\"path\",\"name\":\"npcId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"NPC not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2056,6 +2372,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /partyskill",
+                    "json": "{\"operationId\":\"getAllPartySkillIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/partyskill",
@@ -2089,6 +2411,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /partyskill/{partySkillIds}",
+                    "json": "{\"operationId\":\"getPartySkillsByIds\",\"parameters\":[{\"description\":\"IDs of party skills to return separated by comma\",\"in\":\"path\",\"name\":\"partySkillIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Party skill not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2129,6 +2457,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /partyskill/{partySkillId}",
+                    "json": "{\"operationId\":\"getPartySkillById\",\"parameters\":[{\"description\":\"ID of party skill to return\",\"in\":\"path\",\"name\":\"partySkillId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Party skill not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2182,6 +2516,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /pk",
+                    "json": "{\"operationId\":\"getPkInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/pk",
@@ -2239,6 +2579,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/place/{fileName}",
+                    "json": "{\"operationId\":\"getPlaceIcon\",\"parameters\":[{\"description\":\"File name of the place icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2302,6 +2648,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /quest",
+                    "json": "{\"operationId\":\"getAllQuestIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/quest",
@@ -2335,6 +2687,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /quest/{questIds}",
+                    "json": "{\"operationId\":\"getQuestsByIds\",\"parameters\":[{\"description\":\"IDs of quests to return separated by comma\",\"in\":\"path\",\"name\":\"questIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Quest not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2375,6 +2733,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /quest/{questId}",
+                    "json": "{\"operationId\":\"getQuestById\",\"parameters\":[{\"description\":\"ID of quest to return\",\"in\":\"path\",\"name\":\"questId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Quest not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2424,6 +2788,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /raisedpet",
+                    "json": "{\"operationId\":\"getRaisedPetInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/raisedpet",
@@ -2471,6 +2841,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /recipe",
+                    "json": "{\"operationId\":\"getAllRecipeIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/recipe",
@@ -2504,6 +2880,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /recipe/{recipeIds}",
+                    "json": "{\"operationId\":\"getRecipesByIds\",\"parameters\":[{\"description\":\"IDs of recipes to return separated by comma\",\"in\":\"path\",\"name\":\"recipeIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Recipe not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2544,6 +2926,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /recipe/{recipeId}",
+                    "json": "{\"operationId\":\"getRecipeById\",\"parameters\":[{\"description\":\"ID of recipe to return\",\"in\":\"path\",\"name\":\"recipeId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Recipe not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2604,6 +2992,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /skill",
+                    "json": "{\"operationId\":\"getAllSkillIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/skill",
@@ -2637,6 +3031,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /image/skill/{fileName}",
+                    "json": "{\"operationId\":\"getSkillIcon\",\"parameters\":[{\"description\":\"File name of the skill icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2681,6 +3081,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /skill/{skillIds}",
+                    "json": "{\"operationId\":\"getSkillsByIds\",\"parameters\":[{\"description\":\"IDs of skills to return separated by comma\",\"in\":\"path\",\"name\":\"skillIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Skill not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/skill/{skillIds}",
@@ -2720,6 +3126,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /skill/{skillId}",
+                    "json": "{\"operationId\":\"getSkillById\",\"parameters\":[{\"description\":\"ID of skill to return\",\"in\":\"path\",\"name\":\"skillId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Skill not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -2769,6 +3181,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /upgradelevelbonus",
+                    "json": "{\"operationId\":\"getUpgradeLevelBonus\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/upgradelevelbonus",
@@ -2805,6 +3223,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /version/api",
+                    "json": "{\"operationId\":\"getApiVersion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":\"1.9.2\",\"type\":\"string\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/version/api",
@@ -2827,6 +3251,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /version/data",
+                    "json": "{\"operationId\":\"getDataVersion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":1,\"type\":\"integer\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/version/data",
@@ -2978,6 +3408,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /world",
+                    "json": "{\"operationId\":\"getAllWorldIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":[4015,4839,6063],\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/world",
@@ -3029,6 +3465,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /image/world/{worldTileName}{tileX}-{tileY}-0.png",
+                    "json": "{\"operationId\":\"getWorldTile\",\"parameters\":[{\"description\":\"Tile name of the world\",\"in\":\"path\",\"name\":\"worldTileName\",\"required\":true,\"schema\":{\"example\":\"wdmadrigal\",\"type\":\"string\"}},{\"description\":\"X position of the tile\",\"in\":\"path\",\"name\":\"tileX\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Y position of the tile\",\"in\":\"path\",\"name\":\"tileY\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Tile not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
@@ -3071,6 +3513,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /world/{worldIds}",
+                    "json": "{\"operationId\":\"getWorldsByIds\",\"parameters\":[{\"description\":\"IDs of worlds to return separated by comma\",\"in\":\"path\",\"name\":\"worldIds\",\"required\":true,\"schema\":{\"example\":\"4015,4839,6063\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"continents\":{\"description\":\"Continents in the World\",\"items\":{\"properties\":{\"id\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"polygon\":{\"items\":{\"properties\":{\"x\":{\"type\":\"number\"},\"z\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"town\":{\"description\":\"Whether the continent is a town\",\"type\":\"boolean\"}},\"type\":\"object\"},\"type\":\"array\"},\"flying\":{\"description\":\"Whether players can fly in the World or not\",\"type\":\"boolean\"},\"height\":{\"description\":\"Height of the World in meters\",\"type\":\"integer\"},\"id\":{\"description\":\"ID of the World\",\"type\":\"integer\"},\"inDoor\":{\"description\":\"Whether the World has a sky or not\",\"type\":\"boolean\"},\"lodestars\":{\"description\":\"Revival places in the World\",\"items\":{\"properties\":{\"key\":{\"description\":\"Lodestar key\",\"type\":\"string\"},\"location\":{\"properties\":{\"continent\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"world\":{\"description\":\"World ID\",\"type\":\"integer\"},\"x\":{\"description\":\"X coordinate\",\"format\":\"float\",\"type\":\"number\"},\"y\":{\"description\":\"Y coordinate\",\"format\":\"float\",\"type\":\"number\"},\"z\":{\"description\":\"Z coordinate\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"pk\":{\"description\":\"Whether players can kill other players in the World or not\",\"type\":\"boolean\"},\"places\":{\"description\":\"Special Places in the World\",\"items\":{\"properties\":{\"location\":{\"properties\":{\"continent\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"world\":{\"description\":\"World ID\",\"type\":\"integer\"},\"x\":{\"description\":\"X coordinate\",\"format\":\"float\",\"type\":\"number\"},\"y\":{\"description\":\"Y coordinate\",\"format\":\"float\",\"type\":\"number\"},\"z\":{\"description\":\"Z coordinate\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":{\"description\":\"Type of place\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"revivalKey\":{\"description\":\"ID of the Lodestar where players revive when they die in the World\",\"type\":\"string\"},\"revivalWorld\":{\"description\":\"ID of the World where players revive when they die in the World\",\"type\":\"integer\"},\"tileName\":{\"description\":\"Name of the world Tiles for navigator\",\"type\":\"string\"},\"tileSize\":{\"description\":\"World meters per Tile\",\"type\":\"integer\"},\"type\":{\"description\":\"Type of the World\",\"enum\":[\"main\",\"prison\",\"dungeon\",\"instance\",\"event\"],\"type\":\"string\"},\"width\":{\"description\":\"Width of the World in meters\",\"type\":\"integer\"}},\"required\":[\"id\",\"name\",\"type\",\"width\",\"height\",\"tileName\",\"tileSize\",\"flying\",\"pk\",\"inDoor\",\"places\",\"lodestars\",\"continents\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"World not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/world/{worldIds}",
@@ -3112,6 +3560,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /world/{worldId}",
+                    "json": "{\"operationId\":\"getWorldById\",\"parameters\":[{\"description\":\"ID of world to return\",\"in\":\"path\",\"name\":\"worldId\",\"required\":true,\"schema\":{\"example\":4015,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"continents\":{\"description\":\"Continents in the World\",\"items\":{\"properties\":{\"id\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"polygon\":{\"items\":{\"properties\":{\"x\":{\"type\":\"number\"},\"z\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"town\":{\"description\":\"Whether the continent is a town\",\"type\":\"boolean\"}},\"type\":\"object\"},\"type\":\"array\"},\"flying\":{\"description\":\"Whether players can fly in the World or not\",\"type\":\"boolean\"},\"height\":{\"description\":\"Height of the World in meters\",\"type\":\"integer\"},\"id\":{\"description\":\"ID of the World\",\"type\":\"integer\"},\"inDoor\":{\"description\":\"Whether the World has a sky or not\",\"type\":\"boolean\"},\"lodestars\":{\"description\":\"Revival places in the World\",\"items\":{\"properties\":{\"key\":{\"description\":\"Lodestar key\",\"type\":\"string\"},\"location\":{\"properties\":{\"continent\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"world\":{\"description\":\"World ID\",\"type\":\"integer\"},\"x\":{\"description\":\"X coordinate\",\"format\":\"float\",\"type\":\"number\"},\"y\":{\"description\":\"Y coordinate\",\"format\":\"float\",\"type\":\"number\"},\"z\":{\"description\":\"Z coordinate\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"pk\":{\"description\":\"Whether players can kill other players in the World or not\",\"type\":\"boolean\"},\"places\":{\"description\":\"Special Places in the World\",\"items\":{\"properties\":{\"location\":{\"properties\":{\"continent\":{\"description\":\"Continent ID\",\"type\":\"integer\"},\"world\":{\"description\":\"World ID\",\"type\":\"integer\"},\"x\":{\"description\":\"X coordinate\",\"format\":\"float\",\"type\":\"number\"},\"y\":{\"description\":\"Y coordinate\",\"format\":\"float\",\"type\":\"number\"},\"z\":{\"description\":\"Z coordinate\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":{\"description\":\"Type of place\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"revivalKey\":{\"description\":\"ID of the Lodestar where players revive when they die in the World\",\"type\":\"string\"},\"revivalWorld\":{\"description\":\"ID of the World where players revive when they die in the World\",\"type\":\"integer\"},\"tileName\":{\"description\":\"Name of the world Tiles for navigator\",\"type\":\"string\"},\"tileSize\":{\"description\":\"World meters per Tile\",\"type\":\"integer\"},\"type\":{\"description\":\"Type of the World\",\"enum\":[\"main\",\"prison\",\"dungeon\",\"instance\",\"event\"],\"type\":\"string\"},\"width\":{\"description\":\"Width of the World in meters\",\"type\":\"integer\"}},\"required\":[\"id\",\"name\",\"type\",\"width\",\"height\",\"tileName\",\"tileSize\",\"flying\",\"pk\",\"inDoor\",\"places\",\"lodestars\",\"continents\"],\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"World not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/world/{worldId}",
@@ -3147,13 +3601,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -3243,6 +3907,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -4344,6 +5104,48 @@
         "website": "https://flyff.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -4898,6 +5700,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -4939,7 +5742,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

@@ -10,6 +10,12 @@ main: kit: entity: dungeon: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /dungeon"
+            json: "{\"operationId\":\"getDungeonsInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/dungeon"
           segments: [

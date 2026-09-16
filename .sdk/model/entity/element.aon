@@ -34,6 +34,12 @@ main: kit: entity: element: {
               }
             ]
           }
+          contract: {
+            id: "GET /image/element/{fileName}"
+            json: "{\"operationId\":\"getElementIcon\",\"parameters\":[{\"description\":\"File name of the element icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/image/element/{fileName}"
           rename: {

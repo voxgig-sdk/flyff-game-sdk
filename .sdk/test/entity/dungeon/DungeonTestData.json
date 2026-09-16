@@ -16,5 +16,28 @@
     "dungeon": {
       "dungeon_ref01": {}
     }
+  },
+  "requests": {
+    "GET /dungeon": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDungeonsInformation",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

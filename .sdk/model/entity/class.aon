@@ -153,6 +153,12 @@ main: kit: entity: class: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /class"
+            json: "{\"operationId\":\"getAllClassIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":[1689,296,2881],\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/class"
           segments: [
@@ -190,6 +196,12 @@ main: kit: entity: class: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/class/{style}/{fileName}"
+            json: "{\"operationId\":\"getClassIcon\",\"parameters\":[{\"description\":\"Style of the icon. Accepted values: messenger, old_female, old_male, target\",\"in\":\"path\",\"name\":\"style\",\"required\":true,\"schema\":{\"enum\":[\"messenger\",\"old_female\",\"old_male\",\"target\"],\"example\":\"messenger\",\"type\":\"string\"}},{\"description\":\"File name of the icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"example\":\"vagrant.png\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/class/{style}/{fileName}"
@@ -236,6 +248,12 @@ main: kit: entity: class: {
               }
             ]
           }
+          contract: {
+            id: "GET /image/class/tree/{fileName}"
+            json: "{\"operationId\":\"getClassSkillTree\",\"parameters\":[{\"description\":\"File name of the skill tree\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"example\":\"Vagrant.png\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Tree not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/image/class/tree/{fileName}"
           rename: {
@@ -280,6 +298,12 @@ main: kit: entity: class: {
               }
             ]
           }
+          contract: {
+            id: "GET /class/{classIds}"
+            json: "{\"operationId\":\"getClassesByIds\",\"parameters\":[{\"description\":\"IDs of classes to return separated by comma\",\"in\":\"path\",\"name\":\"classIds\",\"required\":true,\"schema\":{\"example\":\"1689,296,2881\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"attackSpeed\":{\"description\":\"Attack speed constant used in attack speed calculation\",\"format\":\"float\",\"type\":\"number\"},\"autoAttackFactors\":{\"description\":\"Auto attack damage factors used in damage calculation\",\"properties\":{\"axe\":{\"format\":\"float\",\"type\":\"number\"},\"bow\":{\"format\":\"float\",\"type\":\"number\"},\"knuckle\":{\"format\":\"float\",\"type\":\"number\"},\"staff\":{\"format\":\"float\",\"type\":\"number\"},\"stick\":{\"format\":\"float\",\"type\":\"number\"},\"sword\":{\"format\":\"float\",\"type\":\"number\"},\"wand\":{\"format\":\"float\",\"type\":\"number\"},\"yoyo\":{\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"block\":{\"description\":\"Blocking constant used in block calculation\",\"format\":\"float\",\"type\":\"number\"},\"critical\":{\"description\":\"Critical chance constant used in critical chance calculation\",\"format\":\"float\",\"type\":\"number\"},\"defense\":{\"description\":\"Defense factor use in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"fp\":{\"description\":\"FP Factor\",\"format\":\"float\",\"type\":\"number\"},\"hp\":{\"description\":\"HP Factor\",\"format\":\"float\",\"type\":\"number\"},\"icon\":{\"description\":\"Icon of the Class\",\"type\":\"string\"},\"id\":{\"description\":\"ID of the class\",\"type\":\"integer\"},\"magicDefenseIntFactor\":{\"description\":\"Magic defense factor based on INT used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"magicDefenseStaFactor\":{\"description\":\"Magic defense factor based on STA used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"maxFP\":{\"description\":\"Formula to compute the maximum Fatigue Points of the player\",\"type\":\"string\"},\"maxHP\":{\"description\":\"Formula to compute the maximum Hit Points of the player\",\"type\":\"string\"},\"maxLevel\":{\"description\":\"Maximum player level for the Class\",\"type\":\"integer\"},\"maxMP\":{\"description\":\"Formula to compute the maximum Mana Points of the player\",\"type\":\"string\"},\"minLevel\":{\"description\":\"Minimum player level for the Class\",\"type\":\"integer\"},\"mp\":{\"description\":\"MP Factor\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"parent\":{\"description\":\"ID of the parent class\",\"type\":\"integer\"},\"tree\":{\"description\":\"Skill tree image for the class\",\"type\":\"string\"},\"type\":{\"description\":\"Type of the class\",\"enum\":[\"beginner\",\"expert\",\"professional\"],\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\",\"icon\",\"tree\",\"minLevel\",\"maxLevel\",\"maxHP\",\"maxFP\",\"maxMP\",\"hp\",\"mp\",\"fp\",\"attackSpeed\",\"block\",\"critical\",\"autoAttackFactors\",\"defense\",\"magicDefenseStaFactor\",\"magicDefenseIntFactor\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/class/{classIds}"
           rename: {
@@ -317,6 +341,12 @@ main: kit: entity: class: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /class/{classId}"
+            json: "{\"operationId\":\"getClassById\",\"parameters\":[{\"description\":\"ID of class to return\",\"in\":\"path\",\"name\":\"classId\",\"required\":true,\"schema\":{\"example\":1689,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"attackSpeed\":{\"description\":\"Attack speed constant used in attack speed calculation\",\"format\":\"float\",\"type\":\"number\"},\"autoAttackFactors\":{\"description\":\"Auto attack damage factors used in damage calculation\",\"properties\":{\"axe\":{\"format\":\"float\",\"type\":\"number\"},\"bow\":{\"format\":\"float\",\"type\":\"number\"},\"knuckle\":{\"format\":\"float\",\"type\":\"number\"},\"staff\":{\"format\":\"float\",\"type\":\"number\"},\"stick\":{\"format\":\"float\",\"type\":\"number\"},\"sword\":{\"format\":\"float\",\"type\":\"number\"},\"wand\":{\"format\":\"float\",\"type\":\"number\"},\"yoyo\":{\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"block\":{\"description\":\"Blocking constant used in block calculation\",\"format\":\"float\",\"type\":\"number\"},\"critical\":{\"description\":\"Critical chance constant used in critical chance calculation\",\"format\":\"float\",\"type\":\"number\"},\"defense\":{\"description\":\"Defense factor use in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"fp\":{\"description\":\"FP Factor\",\"format\":\"float\",\"type\":\"number\"},\"hp\":{\"description\":\"HP Factor\",\"format\":\"float\",\"type\":\"number\"},\"icon\":{\"description\":\"Icon of the Class\",\"type\":\"string\"},\"id\":{\"description\":\"ID of the class\",\"type\":\"integer\"},\"magicDefenseIntFactor\":{\"description\":\"Magic defense factor based on INT used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"magicDefenseStaFactor\":{\"description\":\"Magic defense factor based on STA used in defensive calculations\",\"format\":\"float\",\"type\":\"number\"},\"maxFP\":{\"description\":\"Formula to compute the maximum Fatigue Points of the player\",\"type\":\"string\"},\"maxHP\":{\"description\":\"Formula to compute the maximum Hit Points of the player\",\"type\":\"string\"},\"maxLevel\":{\"description\":\"Maximum player level for the Class\",\"type\":\"integer\"},\"maxMP\":{\"description\":\"Formula to compute the maximum Mana Points of the player\",\"type\":\"string\"},\"minLevel\":{\"description\":\"Minimum player level for the Class\",\"type\":\"integer\"},\"mp\":{\"description\":\"MP Factor\",\"format\":\"float\",\"type\":\"number\"},\"name\":{\"description\":\"Text available in several languages\",\"example\":{\"en\":\"Julia\",\"fr\":\"[Intendante de Flarine] Julia\",\"kr\":\"쥬리아\"},\"properties\":{\"en\":{\"description\":\"English text\",\"type\":\"string\"},\"fr\":{\"description\":\"French text\",\"type\":\"string\"},\"kr\":{\"description\":\"Korean text\",\"type\":\"string\"}},\"type\":\"object\"},\"parent\":{\"description\":\"ID of the parent class\",\"type\":\"integer\"},\"tree\":{\"description\":\"Skill tree image for the class\",\"type\":\"string\"},\"type\":{\"description\":\"Type of the class\",\"enum\":[\"beginner\",\"expert\",\"professional\"],\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\",\"icon\",\"tree\",\"minLevel\",\"maxLevel\",\"maxHP\",\"maxFP\",\"maxMP\",\"hp\",\"mp\",\"fp\",\"attackSpeed\",\"block\",\"critical\",\"autoAttackFactors\",\"defense\",\"magicDefenseStaFactor\",\"magicDefenseIntFactor\"],\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/class/{classId}"

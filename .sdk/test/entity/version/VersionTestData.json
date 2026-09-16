@@ -16,5 +16,51 @@
     "version": {
       "version_ref01": {}
     }
+  },
+  "requests": {
+    "GET /version/api": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiVersion",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": "1.9.2",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /version/data": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDataVersion",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": 1,
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

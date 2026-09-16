@@ -10,6 +10,12 @@ main: kit: entity: language: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /language"
+            json: "{\"operationId\":\"getAllLanguages\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/language"
           segments: [
@@ -38,6 +44,12 @@ main: kit: entity: language: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/language/{languageCode}.png"
+            json: "{\"operationId\":\"getLanguageFlag\",\"parameters\":[{\"description\":\"Language code\",\"in\":\"path\",\"name\":\"languageCode\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Flag not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/language/{languageCode}.png"

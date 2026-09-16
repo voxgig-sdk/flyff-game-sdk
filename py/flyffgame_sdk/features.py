@@ -1,12 +1,18 @@
 # FlyffGame SDK feature factory
 
 from flyffgame_sdk.feature.base_feature import FlyffGameBaseFeature
+from flyffgame_sdk.feature.ratelimit_feature import FlyffGameRatelimitFeature
+from flyffgame_sdk.feature.retry_feature import FlyffGameRetryFeature
 from flyffgame_sdk.feature.test_feature import FlyffGameTestFeature
+from flyffgame_sdk.feature.timeout_feature import FlyffGameTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FlyffGameBaseFeature(),
+    "ratelimit": lambda: FlyffGameRatelimitFeature(),
+    "retry": lambda: FlyffGameRetryFeature(),
     "test": lambda: FlyffGameTestFeature(),
+    "timeout": lambda: FlyffGameTimeoutFeature(),
 }
 
 

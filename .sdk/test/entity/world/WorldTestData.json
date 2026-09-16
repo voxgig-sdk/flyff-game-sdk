@@ -4,7 +4,7 @@
       "WORLD00": {
         "continents": [],
         "flying": false,
-        "height": "s98",
+        "height": 152,
         "id": "WORLD00",
         "inDoor": true,
         "lodestars": [],
@@ -12,11 +12,11 @@
         "pk": false,
         "places": [],
         "revivalKey": "s9f",
-        "revivalWorld": "sa0",
+        "revivalWorld": 160,
         "tileName": "sa1",
-        "tileSize": "sa2",
+        "tileSize": 162,
         "type": "sa3",
-        "width": "sa4",
+        "width": 164,
         "tile_x": "TILE_X01",
         "tile_y": "TILE_Y01",
         "world_tile_name": "WORLD_TILE_NAME01"
@@ -24,7 +24,7 @@
       "WORLD01": {
         "continents": [],
         "flying": false,
-        "height": "s12e",
+        "height": 302,
         "id": "WORLD01",
         "inDoor": true,
         "lodestars": [],
@@ -32,11 +32,11 @@
         "pk": false,
         "places": [],
         "revivalKey": "s135",
-        "revivalWorld": "s136",
+        "revivalWorld": 310,
         "tileName": "s137",
-        "tileSize": "s138",
+        "tileSize": 312,
         "type": "s139",
-        "width": "s13a",
+        "width": 314,
         "tile_x": "TILE_X01",
         "tile_y": "TILE_Y01",
         "world_tile_name": "WORLD_TILE_NAME01"
@@ -44,7 +44,7 @@
       "WORLD02": {
         "continents": [],
         "flying": false,
-        "height": "s1c4",
+        "height": 452,
         "id": "WORLD02",
         "inDoor": true,
         "lodestars": [],
@@ -52,11 +52,11 @@
         "pk": false,
         "places": [],
         "revivalKey": "s1cb",
-        "revivalWorld": "s1cc",
+        "revivalWorld": 460,
         "tileName": "s1cd",
-        "tileSize": "s1ce",
+        "tileSize": 462,
         "type": "s1cf",
-        "width": "s1d0",
+        "width": 464,
         "tile_x": "TILE_X01",
         "tile_y": "TILE_Y01",
         "world_tile_name": "WORLD_TILE_NAME01"
@@ -68,18 +68,636 @@
       "world_ref01": {
         "continents": [],
         "flying": false,
-        "height": "s25a",
+        "height": 602,
         "inDoor": true,
         "lodestars": [],
         "name": {},
         "pk": false,
         "places": [],
         "revivalKey": "s261",
-        "revivalWorld": "s262",
+        "revivalWorld": 610,
         "tileName": "s263",
-        "tileSize": "s264",
+        "tileSize": 612,
         "type": "s265",
-        "width": "s266"
+        "width": 614
+      }
+    }
+  },
+  "requests": {
+    "GET /world": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllWorldIds",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    4015,
+                    4839,
+                    6063
+                  ],
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /image/world/{worldTileName}{tileX}-{tileY}-0.png": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWorldTile",
+        "parameters": [
+          {
+            "description": "Tile name of the world",
+            "in": "path",
+            "name": "worldTileName",
+            "required": true,
+            "schema": {
+              "example": "wdmadrigal",
+              "type": "string"
+            }
+          },
+          {
+            "description": "X position of the tile",
+            "in": "path",
+            "name": "tileX",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Y position of the tile",
+            "in": "path",
+            "name": "tileY",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Tile not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /world/{worldIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWorldsByIds",
+        "parameters": [
+          {
+            "description": "IDs of worlds to return separated by comma",
+            "in": "path",
+            "name": "worldIds",
+            "required": true,
+            "schema": {
+              "example": "4015,4839,6063",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "continents": {
+                        "description": "Continents in the World",
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "description": "Continent ID",
+                              "type": "integer"
+                            },
+                            "name": {
+                              "description": "Text available in several languages",
+                              "example": {
+                                "en": "Julia",
+                                "fr": "[Intendante de Flarine] Julia",
+                                "kr": "쥬리아"
+                              },
+                              "properties": {
+                                "en": {
+                                  "description": "English text",
+                                  "type": "string"
+                                },
+                                "fr": {
+                                  "description": "French text",
+                                  "type": "string"
+                                },
+                                "kr": {
+                                  "description": "Korean text",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "polygon": {
+                              "items": {
+                                "properties": {
+                                  "x": {
+                                    "type": "number"
+                                  },
+                                  "z": {
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "town": {
+                              "description": "Whether the continent is a town",
+                              "type": "boolean"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "flying": {
+                        "description": "Whether players can fly in the World or not",
+                        "type": "boolean"
+                      },
+                      "height": {
+                        "description": "Height of the World in meters",
+                        "type": "integer"
+                      },
+                      "id": {
+                        "description": "ID of the World",
+                        "type": "integer"
+                      },
+                      "inDoor": {
+                        "description": "Whether the World has a sky or not",
+                        "type": "boolean"
+                      },
+                      "lodestars": {
+                        "description": "Revival places in the World",
+                        "items": {
+                          "properties": {
+                            "key": {
+                              "description": "Lodestar key",
+                              "type": "string"
+                            },
+                            "location": {
+                              "properties": {
+                                "continent": {
+                                  "description": "Continent ID",
+                                  "type": "integer"
+                                },
+                                "world": {
+                                  "description": "World ID",
+                                  "type": "integer"
+                                },
+                                "x": {
+                                  "description": "X coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "description": "Y coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                },
+                                "z": {
+                                  "description": "Z coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "name": {
+                        "description": "Text available in several languages",
+                        "example": {
+                          "en": "Julia",
+                          "fr": "[Intendante de Flarine] Julia",
+                          "kr": "쥬리아"
+                        },
+                        "properties": {
+                          "en": {
+                            "description": "English text",
+                            "type": "string"
+                          },
+                          "fr": {
+                            "description": "French text",
+                            "type": "string"
+                          },
+                          "kr": {
+                            "description": "Korean text",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "pk": {
+                        "description": "Whether players can kill other players in the World or not",
+                        "type": "boolean"
+                      },
+                      "places": {
+                        "description": "Special Places in the World",
+                        "items": {
+                          "properties": {
+                            "location": {
+                              "properties": {
+                                "continent": {
+                                  "description": "Continent ID",
+                                  "type": "integer"
+                                },
+                                "world": {
+                                  "description": "World ID",
+                                  "type": "integer"
+                                },
+                                "x": {
+                                  "description": "X coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "description": "Y coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                },
+                                "z": {
+                                  "description": "Z coordinate",
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": {
+                              "description": "Type of place",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "revivalKey": {
+                        "description": "ID of the Lodestar where players revive when they die in the World",
+                        "type": "string"
+                      },
+                      "revivalWorld": {
+                        "description": "ID of the World where players revive when they die in the World",
+                        "type": "integer"
+                      },
+                      "tileName": {
+                        "description": "Name of the world Tiles for navigator",
+                        "type": "string"
+                      },
+                      "tileSize": {
+                        "description": "World meters per Tile",
+                        "type": "integer"
+                      },
+                      "type": {
+                        "description": "Type of the World",
+                        "enum": [
+                          "main",
+                          "prison",
+                          "dungeon",
+                          "instance",
+                          "event"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "description": "Width of the World in meters",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "type",
+                      "width",
+                      "height",
+                      "tileName",
+                      "tileSize",
+                      "flying",
+                      "pk",
+                      "inDoor",
+                      "places",
+                      "lodestars",
+                      "continents"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "World not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /world/{worldId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWorldById",
+        "parameters": [
+          {
+            "description": "ID of world to return",
+            "in": "path",
+            "name": "worldId",
+            "required": true,
+            "schema": {
+              "example": 4015,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "continents": {
+                      "description": "Continents in the World",
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "description": "Continent ID",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "description": "Text available in several languages",
+                            "example": {
+                              "en": "Julia",
+                              "fr": "[Intendante de Flarine] Julia",
+                              "kr": "쥬리아"
+                            },
+                            "properties": {
+                              "en": {
+                                "description": "English text",
+                                "type": "string"
+                              },
+                              "fr": {
+                                "description": "French text",
+                                "type": "string"
+                              },
+                              "kr": {
+                                "description": "Korean text",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "polygon": {
+                            "items": {
+                              "properties": {
+                                "x": {
+                                  "type": "number"
+                                },
+                                "z": {
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "town": {
+                            "description": "Whether the continent is a town",
+                            "type": "boolean"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "flying": {
+                      "description": "Whether players can fly in the World or not",
+                      "type": "boolean"
+                    },
+                    "height": {
+                      "description": "Height of the World in meters",
+                      "type": "integer"
+                    },
+                    "id": {
+                      "description": "ID of the World",
+                      "type": "integer"
+                    },
+                    "inDoor": {
+                      "description": "Whether the World has a sky or not",
+                      "type": "boolean"
+                    },
+                    "lodestars": {
+                      "description": "Revival places in the World",
+                      "items": {
+                        "properties": {
+                          "key": {
+                            "description": "Lodestar key",
+                            "type": "string"
+                          },
+                          "location": {
+                            "properties": {
+                              "continent": {
+                                "description": "Continent ID",
+                                "type": "integer"
+                              },
+                              "world": {
+                                "description": "World ID",
+                                "type": "integer"
+                              },
+                              "x": {
+                                "description": "X coordinate",
+                                "format": "float",
+                                "type": "number"
+                              },
+                              "y": {
+                                "description": "Y coordinate",
+                                "format": "float",
+                                "type": "number"
+                              },
+                              "z": {
+                                "description": "Z coordinate",
+                                "format": "float",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "name": {
+                      "description": "Text available in several languages",
+                      "example": {
+                        "en": "Julia",
+                        "fr": "[Intendante de Flarine] Julia",
+                        "kr": "쥬리아"
+                      },
+                      "properties": {
+                        "en": {
+                          "description": "English text",
+                          "type": "string"
+                        },
+                        "fr": {
+                          "description": "French text",
+                          "type": "string"
+                        },
+                        "kr": {
+                          "description": "Korean text",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "pk": {
+                      "description": "Whether players can kill other players in the World or not",
+                      "type": "boolean"
+                    },
+                    "places": {
+                      "description": "Special Places in the World",
+                      "items": {
+                        "properties": {
+                          "location": {
+                            "properties": {
+                              "continent": {
+                                "description": "Continent ID",
+                                "type": "integer"
+                              },
+                              "world": {
+                                "description": "World ID",
+                                "type": "integer"
+                              },
+                              "x": {
+                                "description": "X coordinate",
+                                "format": "float",
+                                "type": "number"
+                              },
+                              "y": {
+                                "description": "Y coordinate",
+                                "format": "float",
+                                "type": "number"
+                              },
+                              "z": {
+                                "description": "Z coordinate",
+                                "format": "float",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "description": "Type of place",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "revivalKey": {
+                      "description": "ID of the Lodestar where players revive when they die in the World",
+                      "type": "string"
+                    },
+                    "revivalWorld": {
+                      "description": "ID of the World where players revive when they die in the World",
+                      "type": "integer"
+                    },
+                    "tileName": {
+                      "description": "Name of the world Tiles for navigator",
+                      "type": "string"
+                    },
+                    "tileSize": {
+                      "description": "World meters per Tile",
+                      "type": "integer"
+                    },
+                    "type": {
+                      "description": "Type of the World",
+                      "enum": [
+                        "main",
+                        "prison",
+                        "dungeon",
+                        "instance",
+                        "event"
+                      ],
+                      "type": "string"
+                    },
+                    "width": {
+                      "description": "Width of the World in meters",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "width",
+                    "height",
+                    "tileName",
+                    "tileSize",
+                    "flying",
+                    "pk",
+                    "inDoor",
+                    "places",
+                    "lodestars",
+                    "continents"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "World not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

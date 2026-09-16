@@ -16,5 +16,28 @@
     "lifestyle": {
       "lifestyle_ref01": {}
     }
+  },
+  "requests": {
+    "GET /lifestyle": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLifestyleInformation",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -19,5 +19,66 @@
     "language": {
       "language_ref01": {}
     }
+  },
+  "requests": {
+    "GET /language": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllLanguages",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /image/language/{languageCode}.png": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLanguageFlag",
+        "parameters": [
+          {
+            "description": "Language code",
+            "in": "path",
+            "name": "languageCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Flag not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

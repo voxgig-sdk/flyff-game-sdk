@@ -16,5 +16,108 @@
     "quest": {
       "quest_ref01": {}
     }
+  },
+  "requests": {
+    "GET /quest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllQuestIds",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quest/{questIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuestsByIds",
+        "parameters": [
+          {
+            "description": "IDs of quests to return separated by comma",
+            "in": "path",
+            "name": "questIds",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Quest not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quest/{questId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuestById",
+        "parameters": [
+          {
+            "description": "ID of quest to return",
+            "in": "path",
+            "name": "questId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Quest not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

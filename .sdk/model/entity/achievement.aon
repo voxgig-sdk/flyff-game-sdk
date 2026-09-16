@@ -23,6 +23,12 @@ main: kit: entity: achievement: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /achievement"
+            json: "{\"operationId\":\"getAllAchievementIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/achievement"
           segments: [
@@ -51,6 +57,12 @@ main: kit: entity: achievement: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /achievement/{achievementIds}"
+            json: "{\"operationId\":\"getAchievementsByIds\",\"parameters\":[{\"description\":\"IDs of achievements to return separated by comma\",\"in\":\"path\",\"name\":\"achievementIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Achievement not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/achievement/{achievementIds}"
@@ -88,6 +100,12 @@ main: kit: entity: achievement: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /achievement/{achievementId}"
+            json: "{\"operationId\":\"getAchievementById\",\"parameters\":[{\"description\":\"ID of achievement to return\",\"in\":\"path\",\"name\":\"achievementId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Achievement not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/achievement/{achievementId}"

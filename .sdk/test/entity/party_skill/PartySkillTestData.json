@@ -19,5 +19,108 @@
     "party_skill": {
       "party_skill_ref01": {}
     }
+  },
+  "requests": {
+    "GET /partyskill": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllPartySkillIds",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /partyskill/{partySkillIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPartySkillsByIds",
+        "parameters": [
+          {
+            "description": "IDs of party skills to return separated by comma",
+            "in": "path",
+            "name": "partySkillIds",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Party skill not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /partyskill/{partySkillId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPartySkillById",
+        "parameters": [
+          {
+            "description": "ID of party skill to return",
+            "in": "path",
+            "name": "partySkillId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Party skill not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

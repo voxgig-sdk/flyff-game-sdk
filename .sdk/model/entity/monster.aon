@@ -23,6 +23,12 @@ main: kit: entity: monster: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /monster"
+            json: "{\"operationId\":\"getAllMonsterIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/monster"
           segments: [
@@ -51,6 +57,12 @@ main: kit: entity: monster: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/monster/{fileName}"
+            json: "{\"operationId\":\"getMonsterIcon\",\"parameters\":[{\"description\":\"File name of the monster icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/monster/{fileName}"
@@ -92,6 +104,12 @@ main: kit: entity: monster: {
               }
             ]
           }
+          contract: {
+            id: "GET /monster/{monsterIds}"
+            json: "{\"operationId\":\"getMonstersByIds\",\"parameters\":[{\"description\":\"IDs of monsters to return separated by comma\",\"in\":\"path\",\"name\":\"monsterIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/monster/{monsterIds}"
           rename: {
@@ -128,6 +146,12 @@ main: kit: entity: monster: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /monster/{monsterId}"
+            json: "{\"operationId\":\"getMonsterById\",\"parameters\":[{\"description\":\"ID of monster to return\",\"in\":\"path\",\"name\":\"monsterId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/monster/{monsterId}"

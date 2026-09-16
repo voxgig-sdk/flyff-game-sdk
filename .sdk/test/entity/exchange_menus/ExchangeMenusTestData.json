@@ -16,5 +16,28 @@
     "exchange_menus": {
       "exchange_menus_ref01": {}
     }
+  },
+  "requests": {
+    "GET /exchangemenu": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getExchangeMenus",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

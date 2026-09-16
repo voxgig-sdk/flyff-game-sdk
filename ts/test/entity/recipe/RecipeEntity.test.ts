@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { FlyffGameSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('RecipeEntity', async () => {
 
     const live = 'TRUE' === process.env.FLYFF_GAME_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'recipe.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'recipe.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set FLYFF_GAME_TEST_RECIPE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"recipe","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /recipe","json":"{\"operationId\":\"getAllRecipeIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/recipe","segments":[{"lit":"recipe"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"recipe_id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /recipe/{recipeIds}","json":"{\"operationId\":\"getRecipesByIds\",\"parameters\":[{\"description\":\"IDs of recipes to return separated by comma\",\"in\":\"path\",\"name\":\"recipeIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Recipe not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/recipe/{recipeIds}","rename":{"param":{"recipeIds":"id"}},"segments":[{"lit":"recipe"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"recipe_id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /recipe/{recipeId}","json":"{\"operationId\":\"getRecipeById\",\"parameters\":[{\"description\":\"ID of recipe to return\",\"in\":\"path\",\"name\":\"recipeId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Recipe not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/recipe/{recipeId}","rename":{"param":{"recipeId":"id"}},"segments":[{"lit":"recipe"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"recipe","name__orig":"recipe","Name":"Recipe","name_":"recipe","name-":"recipe","NAME":"RECIPE","index$":22}, {"active":true,"entity":"recipe","key$":"BasicRecipeFlow","kind":"basic","name":"BasicRecipeFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"recipe_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"recipe_ref01","srcdatavar":"recipe_ref01_data","suffix":"_dt0"},"match":{"id":"recipe01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-recipe_ref01"}}],"index$":1}]}, 'Recipe')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['FLYFF_GAME_TEST_RECIPE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'FLYFF_GAME_TEST_RECIPE_ENTID': idmap,
     'FLYFF_GAME_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.FLYFF_GAME_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['FLYFF_GAME_TEST_RECIPE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new FlyffGameSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.FLYFF_GAME_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

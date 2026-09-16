@@ -10,6 +10,12 @@ main: kit: entity: housing_template: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /housingtemplate"
+            json: "{\"operationId\":\"getAllHousingTemplateIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/housingtemplate"
           segments: [
@@ -38,6 +44,12 @@ main: kit: entity: housing_template: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/housingtemplate/{fileName}"
+            json: "{\"operationId\":\"getHousingTemplatePreview\",\"parameters\":[{\"description\":\"File name of the housing template preview\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Preview image not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/housingtemplate/{fileName}"
@@ -79,6 +91,12 @@ main: kit: entity: housing_template: {
               }
             ]
           }
+          contract: {
+            id: "GET /housingtemplate/{housingTemplateIds}"
+            json: "{\"operationId\":\"getHousingTemplatesByIds\",\"parameters\":[{\"description\":\"IDs of housing templates to return separated by comma\",\"in\":\"path\",\"name\":\"housingTemplateIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Housing template not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/housingtemplate/{housingTemplateIds}"
           rename: {
@@ -115,6 +133,12 @@ main: kit: entity: housing_template: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /housingtemplate/{housingTemplateId}"
+            json: "{\"operationId\":\"getHousingTemplateById\",\"parameters\":[{\"description\":\"ID of housing template to return\",\"in\":\"path\",\"name\":\"housingTemplateId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Housing template not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/housingtemplate/{housingTemplateId}"

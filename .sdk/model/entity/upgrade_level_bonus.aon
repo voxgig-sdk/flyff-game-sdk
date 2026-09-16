@@ -10,6 +10,12 @@ main: kit: entity: upgrade_level_bonus: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /upgradelevelbonus"
+            json: "{\"operationId\":\"getUpgradeLevelBonus\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/upgradelevelbonus"
           segments: [

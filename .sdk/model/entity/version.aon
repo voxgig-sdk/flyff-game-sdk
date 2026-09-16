@@ -10,6 +10,12 @@ main: kit: entity: version: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /version/api"
+            json: "{\"operationId\":\"getApiVersion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":\"1.9.2\",\"type\":\"string\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/version/api"
           segments: [
@@ -29,6 +35,12 @@ main: kit: entity: version: {
           }
         }
         {
+          contract: {
+            id: "GET /version/data"
+            json: "{\"operationId\":\"getDataVersion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":1,\"type\":\"integer\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/version/data"
           segments: [

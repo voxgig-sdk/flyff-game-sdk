@@ -16,5 +16,28 @@
     "upgrade_level_bonus": {
       "upgrade_level_bonus_ref01": {}
     }
+  },
+  "requests": {
+    "GET /upgradelevelbonus": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getUpgradeLevelBonus",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -10,6 +10,12 @@ main: kit: entity: raised_pet: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /raisedpet"
+            json: "{\"operationId\":\"getRaisedPetInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/raisedpet"
           segments: [

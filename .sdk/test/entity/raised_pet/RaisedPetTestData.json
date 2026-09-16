@@ -16,5 +16,28 @@
     "raised_pet": {
       "raised_pet_ref01": {}
     }
+  },
+  "requests": {
+    "GET /raisedpet": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRaisedPetInformation",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

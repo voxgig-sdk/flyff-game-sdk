@@ -21,6 +21,12 @@ main: kit: entity: core: {
               }
             ]
           }
+          contract: {
+            id: "GET /parameter/{parameterIds}"
+            json: "{\"operationId\":\"getParameterNames\",\"parameters\":[{\"description\":\"IDs of parameters separated by comma\",\"in\":\"path\",\"name\":\"parameterIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Parameters not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/parameter/{parameterIds}"
           rename: {
@@ -57,6 +63,12 @@ main: kit: entity: core: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /parameter/{parameterId}"
+            json: "{\"operationId\":\"getParameterName\",\"parameters\":[{\"description\":\"ID of parameter\",\"in\":\"path\",\"name\":\"parameterId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Parameter not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/parameter/{parameterId}"

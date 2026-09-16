@@ -10,6 +10,12 @@ main: kit: entity: lifestyle: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /lifestyle"
+            json: "{\"operationId\":\"getLifestyleInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/lifestyle"
           segments: [

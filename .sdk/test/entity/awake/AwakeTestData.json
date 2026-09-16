@@ -16,5 +16,49 @@
     "awake": {
       "awake_ref01": {}
     }
+  },
+  "requests": {
+    "GET /awake/skill": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSkillAwakeValues",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /awake/stat": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getStatAwakeValues",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

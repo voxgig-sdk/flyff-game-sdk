@@ -22,5 +22,143 @@
     "housing_template": {
       "housing_template_ref01": {}
     }
+  },
+  "requests": {
+    "GET /housingtemplate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllHousingTemplateIds",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /image/housingtemplate/{fileName}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHousingTemplatePreview",
+        "parameters": [
+          {
+            "description": "File name of the housing template preview",
+            "in": "path",
+            "name": "fileName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Preview image not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /housingtemplate/{housingTemplateIds}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHousingTemplatesByIds",
+        "parameters": [
+          {
+            "description": "IDs of housing templates to return separated by comma",
+            "in": "path",
+            "name": "housingTemplateIds",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid list of IDs supplied"
+          },
+          "404": {
+            "description": "Housing template not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /housingtemplate/{housingTemplateId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHousingTemplateById",
+        "parameters": [
+          {
+            "description": "ID of housing template to return",
+            "in": "path",
+            "name": "housingTemplateId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Housing template not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

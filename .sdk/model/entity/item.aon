@@ -23,6 +23,12 @@ main: kit: entity: item: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /item"
+            json: "{\"operationId\":\"getAllItemIds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/item"
           segments: [
@@ -51,6 +57,12 @@ main: kit: entity: item: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /image/item/{fileName}"
+            json: "{\"operationId\":\"getItemIcon\",\"parameters\":[{\"description\":\"File name of the item icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/image/item/{fileName}"
@@ -92,6 +104,12 @@ main: kit: entity: item: {
               }
             ]
           }
+          contract: {
+            id: "GET /item/{itemIds}"
+            json: "{\"operationId\":\"getItemsByIds\",\"parameters\":[{\"description\":\"IDs of items to return separated by comma\",\"in\":\"path\",\"name\":\"itemIds\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid list of IDs supplied\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/item/{itemIds}"
           rename: {
@@ -128,6 +146,12 @@ main: kit: entity: item: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /item/{itemId}"
+            json: "{\"operationId\":\"getItemById\",\"parameters\":[{\"description\":\"ID of item to return\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"},\"400\":{\"description\":\"Invalid ID supplied\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/item/{itemId}"
