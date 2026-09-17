@@ -127,87 +127,87 @@ class Config {
 
     entity: {
       
-      achievement: {
-      },
-
-      awake: {
-      },
-
-      badge: {
-      },
-
-      class: {
-      },
-
-      core: {
-      },
-
-      couple: {
-      },
-
-      dungeon: {
-      },
-
-      element: {
-      },
-
-      equipment_set: {
-      },
-
-      exchange_menus: {
-      },
-
-      housing_pack: {
-      },
-
-      housing_template: {
-      },
-
-      item: {
-      },
-
-      language: {
-      },
-
-      lifestyle: {
-      },
-
-      monster: {
-      },
-
-      npc: {
-      },
-
-      party_skill: {
-      },
-
-      pkn: {
-      },
-
-      place: {
-      },
-
-      quest: {
-      },
-
-      raised_pet: {
-      },
-
-      recipe: {
-      },
-
-      skill: {
-      },
-
-      upgrade_level_bonus: {
-      },
-
-      version: {
-      },
-
-      world: {
-      },
-
+        achievement: {
+        },
+  
+        awake: {
+        },
+  
+        badge: {
+        },
+  
+        class: {
+        },
+  
+        core: {
+        },
+  
+        couple: {
+        },
+  
+        dungeon: {
+        },
+  
+        element: {
+        },
+  
+        equipment_set: {
+        },
+  
+        exchange_menus: {
+        },
+  
+        housing_pack: {
+        },
+  
+        housing_template: {
+        },
+  
+        item: {
+        },
+  
+        language: {
+        },
+  
+        lifestyle: {
+        },
+  
+        monster: {
+        },
+  
+        npc: {
+        },
+  
+        party_skill: {
+        },
+  
+        pkn: {
+        },
+  
+        place: {
+        },
+  
+        quest: {
+        },
+  
+        raised_pet: {
+        },
+  
+        recipe: {
+        },
+  
+        skill: {
+        },
+  
+        upgrade_level_bonus: {
+        },
+  
+        version: {
+        },
+  
+        world: {
+        },
+  
     }
   }
 

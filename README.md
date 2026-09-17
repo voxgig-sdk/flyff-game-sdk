@@ -105,12 +105,12 @@ local result, err = client:Dungeon():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/flyff-game-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
-| Python | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
-| PHP | `voxgig-sdk/flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
+| TypeScript | `@voxgig-sdk/flyff-game-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/tags) |
+| Python | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/tags) |
+| PHP | `voxgig-sdk/flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/flyff-game-sdk/go` | `go get github.com/voxgig-sdk/flyff-game-sdk/go@latest` |
-| Ruby | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
-| Lua | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/releases) |
+| Ruby | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/tags) |
+| Lua | `voxgig-sdk-flyff-game` | publish pending — [install from git tag](https://github.com/voxgig-sdk/flyff-game-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/flyff-game-sdk/go-cli` | `go install github.com/voxgig-sdk/flyff-game-sdk/go-cli/cmd/flyff-game@latest` |
 | Go MCP server | `github.com/voxgig-sdk/flyff-game-sdk/go-mcp` | `go get github.com/voxgig-sdk/flyff-game-sdk/go-mcp@latest` |
 
