@@ -1,0 +1,128 @@
+# Entity: housing_pack
+
+main: kit: entity: housing_pack: {
+
+  alias: field: {}
+
+  name: "housing_pack"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /housingpack"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/housingpack"
+          s: [
+            {
+              lit: "housingpack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /housingpack/{housingPackIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "housing_pack_id"
+                or: "housing_pack_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/housingpack/{housingPackIds}"
+          q: {
+            exist: [
+              "housing_pack_id"
+            ]
+          }
+          r: {
+            param: {
+              housingPackIds: "housing_pack_id"
+            }
+          }
+          s: [
+            {
+              lit: "housingpack"
+            }
+            {
+              var: "housing_pack_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /housingpack/{housingPackId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "housing_pack_id"
+                or: "housing_pack_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/housingpack/{housingPackId}"
+          q: {
+            exist: [
+              "housing_pack_id"
+            ]
+          }
+          r: {
+            param: {
+              housingPackId: "housing_pack_id"
+            }
+          }
+          s: [
+            {
+              lit: "housingpack"
+            }
+            {
+              var: "housing_pack_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

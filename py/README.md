@@ -50,15 +50,14 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a core
+### 3. Load an achievement
 
-Core is nested under parameter, so provide the `parameter_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    core = client.Core().load({"parameter_id": "example_parameter_id"})
-    print(core)
+    achievement = client.Achievement().load({"id": "example_id"})
+    print(achievement)
 except Exception as err:
     print(f"load failed: {err}")
 ```

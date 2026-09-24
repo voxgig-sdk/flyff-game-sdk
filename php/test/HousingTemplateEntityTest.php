@@ -115,7 +115,7 @@ function housing_template_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["housing_template01", "housing_template02", "housing_template03", "housingtemplate01", "housingtemplate02", "housingtemplate03"] as $k) {
+    foreach (["housing_template01", "housing_template02", "housing_template03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

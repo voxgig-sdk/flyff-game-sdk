@@ -110,7 +110,7 @@ def _housing_pack_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["housing_pack01", "housing_pack02", "housing_pack03", "housingpack01", "housingpack02", "housingpack03"],
+        ["housing_pack01", "housing_pack02", "housing_pack03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

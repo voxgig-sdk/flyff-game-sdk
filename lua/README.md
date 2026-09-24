@@ -47,14 +47,12 @@ for _, item in ipairs(achievements) do
 end
 ```
 
-### 3. Load a core
-
-Core is nested under parameter, so provide the `parameter_id`.
+### 3. Load an achievement
 
 ```lua
-local core, err = client:Core():load({ parameter_id = "example_parameter_id" })
+local achievement, err = client:Achievement():load({ id = "example_id" })
 if err then error(err) end
-print(core)
+print(achievement)
 ```
 
 

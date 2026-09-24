@@ -108,7 +108,7 @@ def class_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["class01", "class02", "class03", "tree01", "tree02", "tree03"],
+    ["class01", "class02", "class03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

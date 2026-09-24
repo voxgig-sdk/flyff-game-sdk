@@ -1,7 +1,7 @@
 // Typed models for the FlyffGame SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,7 +14,6 @@ import (
 
 // Achievement is the typed data model for the achievement entity.
 type Achievement struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // AchievementLoadMatch is the typed request payload for Achievement.LoadTyped.
@@ -37,7 +36,6 @@ type AwakeLoadMatch struct {
 
 // Badge is the typed data model for the badge entity.
 type Badge struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // BadgeLoadMatch is the typed request payload for Badge.LoadTyped.
@@ -47,27 +45,6 @@ type BadgeLoadMatch struct {
 
 // Class is the typed data model for the class entity.
 type Class struct {
-	AttackSpeed float64 `json:"attackSpeed"`
-	AutoAttackFactors map[string]any `json:"autoAttackFactors"`
-	Block float64 `json:"block"`
-	Critical float64 `json:"critical"`
-	Defense float64 `json:"defense"`
-	Fp float64 `json:"fp"`
-	Hp float64 `json:"hp"`
-	Icon string `json:"icon"`
-	Id int `json:"id"`
-	MagicDefenseIntFactor float64 `json:"magicDefenseIntFactor"`
-	MagicDefenseStaFactor float64 `json:"magicDefenseStaFactor"`
-	MaxFP string `json:"maxFP"`
-	MaxHP string `json:"maxHP"`
-	MaxLevel int `json:"maxLevel"`
-	MaxMP string `json:"maxMP"`
-	MinLevel int `json:"minLevel"`
-	Mp float64 `json:"mp"`
-	Name map[string]any `json:"name"`
-	Parent *int `json:"parent,omitempty"`
-	Tree string `json:"tree"`
-	Type string `json:"type"`
 }
 
 // ClassLoadMatch is the typed request payload for Class.LoadTyped.
@@ -127,7 +104,6 @@ type DungeonLoadMatch struct {
 
 // Element is the typed data model for the element entity.
 type Element struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ElementLoadMatch is the typed request payload for Element.LoadTyped.
@@ -184,7 +160,6 @@ type HousingTemplateListMatch struct {
 
 // Item is the typed data model for the item entity.
 type Item struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ItemLoadMatch is the typed request payload for Item.LoadTyped.
@@ -220,7 +195,6 @@ type LifestyleLoadMatch struct {
 
 // Monster is the typed data model for the monster entity.
 type Monster struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // MonsterLoadMatch is the typed request payload for Monster.LoadTyped.
@@ -235,7 +209,6 @@ type MonsterListMatch struct {
 
 // Npc is the typed data model for the npc entity.
 type Npc struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // NpcLoadMatch is the typed request payload for Npc.LoadTyped.
@@ -271,7 +244,6 @@ type PknLoadMatch struct {
 
 // Place is the typed data model for the place entity.
 type Place struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // PlaceLoadMatch is the typed request payload for Place.LoadTyped.
@@ -281,7 +253,6 @@ type PlaceLoadMatch struct {
 
 // Quest is the typed data model for the quest entity.
 type Quest struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // QuestLoadMatch is the typed request payload for Quest.LoadTyped.
@@ -304,7 +275,6 @@ type RaisedPetLoadMatch struct {
 
 // Recipe is the typed data model for the recipe entity.
 type Recipe struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // RecipeLoadMatch is the typed request payload for Recipe.LoadTyped.
@@ -319,7 +289,6 @@ type RecipeListMatch struct {
 
 // Skill is the typed data model for the skill entity.
 type Skill struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // SkillLoadMatch is the typed request payload for Skill.LoadTyped.
@@ -350,21 +319,6 @@ type VersionLoadMatch struct {
 
 // World is the typed data model for the world entity.
 type World struct {
-	Continents []any `json:"continents"`
-	Flying bool `json:"flying"`
-	Height int `json:"height"`
-	Id int `json:"id"`
-	InDoor bool `json:"inDoor"`
-	Lodestars []any `json:"lodestars"`
-	Name map[string]any `json:"name"`
-	Pk bool `json:"pk"`
-	Places []any `json:"places"`
-	RevivalKey *string `json:"revivalKey,omitempty"`
-	RevivalWorld *int `json:"revivalWorld,omitempty"`
-	TileName string `json:"tileName"`
-	TileSize int `json:"tileSize"`
-	Type string `json:"type"`
-	Width int `json:"width"`
 }
 
 // WorldLoadMatch is the typed request payload for World.LoadTyped.

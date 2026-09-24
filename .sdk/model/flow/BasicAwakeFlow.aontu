@@ -1,0 +1,28 @@
+# BasicAwakeFlow
+
+main: kit: flow: BasicAwakeFlow:
+{
+  entity: "awake",
+  kind: "basic",
+  name: "BasicAwakeFlow",
+  step: [
+    {
+      i: {
+        ref: "awake_ref01",
+        srcdatavar: "awake_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-awake_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAwakeFlow"
+}

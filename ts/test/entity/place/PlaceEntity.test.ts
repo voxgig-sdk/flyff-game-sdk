@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('PlaceEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"place","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"file_name","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /image/place/{fileName}","json":"{\"operationId\":\"getPlaceIcon\",\"parameters\":[{\"description\":\"File name of the place icon\",\"in\":\"path\",\"name\":\"fileName\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Icon not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/image/place/{fileName}","rename":{"param":{"fileName":"id"}},"segments":[{"lit":"image"},{"lit":"place"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"place","name__orig":"place","Name":"Place","name_":"place","name-":"place","NAME":"PLACE","index$":19}, {"active":true,"entity":"place","key$":"BasicPlaceFlow","kind":"basic","name":"BasicPlaceFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"place_ref01","srcdatavar":"place_ref01_data","suffix":"_dt0"},"match":{"id":"place01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-place_ref01"}}],"index$":0}]}, 'Place')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"place","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /image/place/{fileName}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"file_name","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/image/place/{fileName}","q":{"exist":["id"]},"r":{"param":{"fileName":"id"}},"s":[{"lit":"image"},{"lit":"place"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"place","name__orig":"place","Name":"Place","name_":"place","name-":"place","NAME":"PLACE","index$":19}, {"active":true,"entity":"place","key$":"BasicPlaceFlow","kind":"basic","name":"BasicPlaceFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"place_ref01","srcdatavar":"place_ref01_data","suffix":"_dt0"},"m":{"id":"place01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-place_ref01"}}],"index$":0}]}, 'Place', {"GET /image/place/{fileName}":{"protocol":"http","operationId":"getPlaceIcon","responses":{"200":{"description":"Successful operation","content":{"image/png":{"schema":{"type":"string","format":"binary"}}}},"404":{"description":"Icon not found"}},"parameters":[{"name":"fileName","in":"path","description":"File name of the place icon","required":true,"schema":{"type":"string"},"index$":0}],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct

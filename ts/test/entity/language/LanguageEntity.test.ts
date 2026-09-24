@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('LanguageEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"language","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /language","json":"{\"operationId\":\"getAllLanguages\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/language","segments":[{"lit":"language"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"language_code","orig":"language_code","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /image/language/{languageCode}.png","json":"{\"operationId\":\"getLanguageFlag\",\"parameters\":[{\"description\":\"Language code\",\"in\":\"path\",\"name\":\"languageCode\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful operation\"},\"404\":{\"description\":\"Flag not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/image/language/{languageCode}.png","segments":[{"lit":"image"},{"lit":"language"},{"lit":"{languageCode}.png"}],"select":{"$action":"language_code","exist":["language_code"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"language","name__orig":"language","Name":"Language","name_":"language","name-":"language","NAME":"LANGUAGE","index$":13}, {"active":true,"entity":"language","key$":"BasicLanguageFlow","kind":"basic","name":"BasicLanguageFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"language_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"language_ref01","srcdatavar":"language_ref01_data","suffix":"_dt0"},"match":{"language_code":"language_code01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-language_ref01"}}],"index$":1}]}, 'Language')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"language","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /language","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/language","q":{},"r":{},"s":[{"lit":"language"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /image/language/{languageCode}.png","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"language_code","or":"language_code","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/image/language/{languageCode}.png","q":{"$action":"language_code","exist":["language_code"]},"r":{},"s":[{"lit":"image"},{"lit":"language"},{"lit":"{languageCode}.png"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"language","name__orig":"language","Name":"Language","name_":"language","name-":"language","NAME":"LANGUAGE","index$":13}, {"active":true,"entity":"language","key$":"BasicLanguageFlow","kind":"basic","name":"BasicLanguageFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"language_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"language_ref01","srcdatavar":"language_ref01_data","suffix":"_dt0"},"m":{"language_code":"language_code01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-language_ref01"}}],"index$":1}]}, 'Language', {"GET /language":{"protocol":"http","operationId":"getAllLanguages","responses":{"200":{"description":"Successful operation","content":{"application/json":{"schema":{"type":"array","items":{"type":"string","key$":"items"}}}}}},"parameters":[],"securitySource":"unspecified"},"GET /image/language/{languageCode}.png":{"protocol":"http","operationId":"getLanguageFlag","responses":{"200":{"description":"Successful operation","content":{"image/png":{"schema":{"type":"string","format":"binary"}}}},"404":{"description":"Flag not found"}},"parameters":[{"name":"languageCode","in":"path","description":"Language code","required":true,"schema":{"type":"string"},"index$":0}],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct
@@ -101,7 +97,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['language01','language02','language03'],
+    ['language01','language02','language03','language_code01'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

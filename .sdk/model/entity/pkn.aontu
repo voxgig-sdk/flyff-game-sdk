@@ -1,0 +1,39 @@
+# Entity: pkn
+
+main: kit: entity: pkn: {
+
+  alias: field: {}
+
+  name: "pkn"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /pk"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/pk"
+          s: [
+            {
+              lit: "pk"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -44,15 +44,13 @@ rescue => err
 end
 ```
 
-### 3. Load a core
-
-Core is nested under parameter, so provide the `parameter_id`.
+### 3. Load an achievement
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Core record (raises on error).
-  core = client.Core.load({ "parameter_id" => "example_parameter_id" })
-  puts core
+  # load returns the ENTITY — call data_get for the Achievement record (raises on error).
+  achievement = client.Achievement.load({ "id" => "example_id" })
+  puts achievement
 rescue => err
   warn "load failed: #{err}"
 end

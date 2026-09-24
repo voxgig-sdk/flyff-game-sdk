@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('PknEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"pkn","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /pk","json":"{\"operationId\":\"getPkInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/pk","segments":[{"lit":"pk"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"pkn","name__orig":"pkn","Name":"Pkn","name_":"pkn","name-":"pkn","NAME":"PKN","index$":18}, {"active":true,"entity":"pkn","key$":"BasicPknFlow","kind":"basic","name":"BasicPknFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"pkn_ref01","srcdatavar":"pkn_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-pkn_ref01"}}],"index$":0}]}, 'Pkn')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"pkn","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /pk","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/pk","q":{},"r":{},"s":[{"lit":"pk"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"pkn","name__orig":"pkn","Name":"Pkn","name_":"pkn","name-":"pkn","NAME":"PKN","index$":18}, {"active":true,"entity":"pkn","key$":"BasicPknFlow","kind":"basic","name":"BasicPknFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"pkn_ref01","srcdatavar":"pkn_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-pkn_ref01"}}],"index$":0}]}, 'Pkn', {"GET /pk":{"protocol":"http","operationId":"getPkInformation","responses":{"200":{"description":"Successful operation","content":{"application/json":{"schema":{"type":"object"}}}}},"parameters":[],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct

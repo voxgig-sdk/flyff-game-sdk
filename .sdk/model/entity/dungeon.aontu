@@ -1,0 +1,39 @@
+# Entity: dungeon
+
+main: kit: entity: dungeon: {
+
+  alias: field: {}
+
+  name: "dungeon"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /dungeon"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/dungeon"
+          s: [
+            {
+              lit: "dungeon"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

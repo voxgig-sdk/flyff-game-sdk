@@ -120,7 +120,7 @@ function party_skill_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "party_skill01", "party_skill02", "party_skill03", "partyskill01", "partyskill02", "partyskill03" },
+    { "party_skill01", "party_skill02", "party_skill03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

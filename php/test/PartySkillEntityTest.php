@@ -115,7 +115,7 @@ function party_skill_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["party_skill01", "party_skill02", "party_skill03", "partyskill01", "partyskill02", "partyskill03"] as $k) {
+    foreach (["party_skill01", "party_skill02", "party_skill03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

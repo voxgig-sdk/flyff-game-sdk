@@ -1,0 +1,44 @@
+# BasicRecipeFlow
+
+main: kit: flow: BasicRecipeFlow:
+{
+  entity: "recipe",
+  kind: "basic",
+  name: "BasicRecipeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "recipe_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "recipe_ref01",
+        srcdatavar: "recipe_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "recipe01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-recipe_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRecipeFlow"
+}

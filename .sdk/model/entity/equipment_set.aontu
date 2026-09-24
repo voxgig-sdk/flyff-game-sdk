@@ -1,0 +1,128 @@
+# Entity: equipment_set
+
+main: kit: entity: equipment_set: {
+
+  alias: field: {}
+
+  name: "equipment_set"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /equipmentset"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/equipmentset"
+          s: [
+            {
+              lit: "equipmentset"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /equipmentset/{equipmentSetIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "equipment_set_id"
+                or: "equipment_set_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/equipmentset/{equipmentSetIds}"
+          q: {
+            exist: [
+              "equipment_set_id"
+            ]
+          }
+          r: {
+            param: {
+              equipmentSetIds: "equipment_set_id"
+            }
+          }
+          s: [
+            {
+              lit: "equipmentset"
+            }
+            {
+              var: "equipment_set_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /equipmentset/{equipmentSetId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "equipment_set_id"
+                or: "equipment_set_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/equipmentset/{equipmentSetId}"
+          q: {
+            exist: [
+              "equipment_set_id"
+            ]
+          }
+          r: {
+            param: {
+              equipmentSetId: "equipment_set_id"
+            }
+          }
+          s: [
+            {
+              lit: "equipmentset"
+            }
+            {
+              var: "equipment_set_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

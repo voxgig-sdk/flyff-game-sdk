@@ -1,0 +1,173 @@
+# Entity: housing_template
+
+main: kit: entity: housing_template: {
+
+  alias: field: {}
+
+  name: "housing_template"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /housingtemplate"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/housingtemplate"
+          s: [
+            {
+              lit: "housingtemplate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /image/housingtemplate/{fileName}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/image/housingtemplate/{fileName}"
+          q: {
+            exist: [
+              "file_name"
+            ]
+          }
+          r: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          s: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /housingtemplate/{housingTemplateIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "housing_template_id"
+                or: "housing_template_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/housingtemplate/{housingTemplateIds}"
+          q: {
+            exist: [
+              "housing_template_id"
+            ]
+          }
+          r: {
+            param: {
+              housingTemplateIds: "housing_template_id"
+            }
+          }
+          s: [
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "housing_template_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /housingtemplate/{housingTemplateId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "housing_template_id"
+                or: "housing_template_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/housingtemplate/{housingTemplateId}"
+          q: {
+            exist: [
+              "housing_template_id"
+            ]
+          }
+          r: {
+            param: {
+              housingTemplateId: "housing_template_id"
+            }
+          }
+          s: [
+            {
+              lit: "housingtemplate"
+            }
+            {
+              var: "housing_template_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

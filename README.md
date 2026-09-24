@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -128,12 +128,6 @@ const achievements = await client.Achievement().list()
 for (const achievement of achievements) {
   console.log(achievement)
 }
-
-// Load a specific core (returns a Core)
-const core = await client.Core().load({
-  parameter_id: 'example_parameter_id',
-})
-console.log(core)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -254,15 +248,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(achievements)
-
-// Load a specific core
-core, err := client.Core(nil).Load(
-    map[string]any{"parameter_id": "example_parameter_id"}, nil,
-)
-if err != nil {
-    panic(err)
-}
-fmt.Println(core)
 ```
 
 ### Ruby

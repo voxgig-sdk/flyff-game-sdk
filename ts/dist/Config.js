@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -140,6 +133,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -154,7 +148,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/achievement",
@@ -163,14 +156,16 @@ class Config {
                                     "lit": "achievement"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "achievement"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "achievement"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -179,25 +174,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "achievement_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/achievement/{achievementIds}",
+                            "segments": [
+                                {
+                                    "lit": "achievement"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "achievement",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "achievementIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "achievement_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/achievement/{achievementId}",
                             "segments": [
                                 {
                                     "lit": "achievement"
@@ -206,61 +227,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "achievement",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "achievement_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/achievement/{achievementId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "achievementId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "achievement"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "achievement",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "achievement_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -278,7 +273,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/awake/skill",
@@ -290,20 +284,21 @@ class Config {
                                     "lit": "skill"
                                 }
                             ],
-                            "select": {
-                                "$action": "skill"
-                            },
+                            "parts": [
+                                "awake",
+                                "skill"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "awake",
-                                "skill"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "skill"
+                            }
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/awake/stat",
@@ -315,17 +310,19 @@ class Config {
                                     "lit": "stat"
                                 }
                             ],
-                            "select": {
-                                "$action": "stat"
-                            },
+                            "parts": [
+                                "awake",
+                                "stat"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "awake",
-                                "stat"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "stat"
+                            }
                         }
                     ]
                 }
@@ -338,6 +335,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -352,25 +350,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/badge/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -382,20 +364,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "badge",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "badge",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -407,138 +405,159 @@ class Config {
         "class": {
             "fields": [
                 {
-                    "format": "float",
                     "name": "attackSpeed",
+                    "title": "Attack Speed",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Attack speed constant used in attack speed calculation",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "autoAttackFactors",
+                    "title": "Auto Attack Factors",
+                    "type": "`$OBJECT`",
                     "req": true,
-                    "short": "Auto attack damage factors used in damage calculation",
-                    "type": "`$OBJECT`"
+                    "short": "Auto attack damage factors used in damage calculation"
                 },
                 {
-                    "format": "float",
                     "name": "block",
+                    "title": "Block",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Blocking constant used in block calculation",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "float",
                     "name": "critical",
+                    "title": "Critical",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Critical chance constant used in critical chance calculation",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "float",
                     "name": "defense",
+                    "title": "Defense",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Defense factor use in defensive calculations",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "float",
                     "name": "fp",
+                    "title": "Fp",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "FP Factor",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "float",
                     "name": "hp",
+                    "title": "Hp",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "HP Factor",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "icon",
+                    "title": "Icon",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Icon of the Class",
-                    "type": "`$STRING`"
+                    "short": "Icon of the Class"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "ID of the class",
-                    "type": "`$INTEGER`"
+                    "short": "ID of the class"
                 },
                 {
-                    "format": "float",
                     "name": "magicDefenseIntFactor",
+                    "title": "Magic Defense Int Factor",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Magic defense factor based on INT used in defensive calculations",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "float",
                     "name": "magicDefenseStaFactor",
+                    "title": "Magic Defense Sta Factor",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "Magic defense factor based on STA used in defensive calculations",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "maxFP",
+                    "title": "Max Fp",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Formula to compute the maximum Fatigue Points of the player",
-                    "type": "`$STRING`"
+                    "short": "Formula to compute the maximum Fatigue Points of the player"
                 },
                 {
                     "name": "maxHP",
+                    "title": "Max Hp",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Formula to compute the maximum Hit Points of the player",
-                    "type": "`$STRING`"
+                    "short": "Formula to compute the maximum Hit Points of the player"
                 },
                 {
                     "name": "maxLevel",
+                    "title": "Max Level",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Maximum player level for the Class",
-                    "type": "`$INTEGER`"
+                    "short": "Maximum player level for the Class"
                 },
                 {
                     "name": "maxMP",
+                    "title": "Max Mp",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Formula to compute the maximum Mana Points of the player",
-                    "type": "`$STRING`"
+                    "short": "Formula to compute the maximum Mana Points of the player"
                 },
                 {
                     "name": "minLevel",
+                    "title": "Min Level",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Minimum player level for the Class",
-                    "type": "`$INTEGER`"
+                    "short": "Minimum player level for the Class"
                 },
                 {
-                    "format": "float",
                     "name": "mp",
+                    "title": "Mp",
+                    "type": "`$NUMBER`",
                     "req": true,
                     "short": "MP Factor",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$OBJECT`",
                     "req": true,
-                    "short": "Text available in several languages",
-                    "type": "`$OBJECT`"
+                    "short": "Text available in several languages"
                 },
                 {
                     "name": "parent",
-                    "short": "ID of the parent class",
-                    "type": "`$INTEGER`"
+                    "title": "Parent",
+                    "type": "`$INTEGER`",
+                    "short": "ID of the parent class"
                 },
                 {
                     "name": "tree",
+                    "title": "Tree",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Skill tree image for the class",
-                    "type": "`$STRING`"
+                    "short": "Skill tree image for the class"
                 },
                 {
                     "name": "type",
+                    "title": "Type",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Type of the class",
-                    "type": "`$STRING`"
+                    "short": "Type of the class"
                 }
             ],
             "id": {
@@ -552,7 +571,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/class",
@@ -561,14 +579,16 @@ class Config {
                                     "lit": "class"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "class"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "class"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -577,34 +597,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": "vagrant.png",
-                                        "kind": "param",
-                                        "name": "file_name",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "messenger",
-                                        "kind": "param",
-                                        "name": "style",
-                                        "orig": "style",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/class/{style}/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "file_name"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -619,44 +614,52 @@ class Config {
                                     "var": "file_name"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "file_name",
-                                    "style"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "image",
                                 "class",
                                 "{style}",
                                 "{file_name}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": "Vagrant.png",
-                                        "kind": "param",
-                                        "name": "file_name",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/image/class/tree/{fileName}",
+                            ],
                             "rename": {
                                 "param": {
                                     "fileName": "file_name"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "file_name",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "vagrant.png"
+                                    },
+                                    {
+                                        "name": "style",
+                                        "orig": "style",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "messenger"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "file_name",
+                                    "style"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/image/class/tree/{fileName}",
                             "segments": [
                                 {
                                     "lit": "image"
@@ -671,43 +674,86 @@ class Config {
                                     "var": "file_name"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "file_name"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "image",
                                 "class",
                                 "tree",
                                 "{file_name}"
-                            ]
-                        },
-                        {
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "file_name"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
                             "args": {
                                 "params": [
                                     {
-                                        "example": "1689,296,2881",
+                                        "name": "file_name",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
                                         "kind": "param",
-                                        "name": "id",
-                                        "orig": "class_id",
                                         "reqd": true,
-                                        "type": "`$STRING`"
+                                        "example": "Vagrant.png"
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "file_name"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/class/{classIds}",
+                            "segments": [
+                                {
+                                    "lit": "class"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "class",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "classIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "class_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "1689,296,2881"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/class/{classId}",
                             "segments": [
                                 {
                                     "lit": "class"
@@ -716,75 +762,42 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "class",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 1689,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "class_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/class/{classId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "classId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "class"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "class",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "class_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 1689
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "tree"
-                    ],
-                    [
-                        "class"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "core": {
@@ -796,25 +809,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "parameter_id",
-                                        "orig": "parameter_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/parameter/{parameterIds}",
+                            "segments": [
+                                {
+                                    "lit": "parameter"
+                                },
+                                {
+                                    "var": "parameter_id"
+                                }
+                            ],
+                            "parts": [
+                                "parameter",
+                                "{parameter_id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "parameterIds": "parameter_id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "parameter_id",
+                                        "orig": "parameter_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "parameter_id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/parameter/{parameterId}",
                             "segments": [
                                 {
                                     "lit": "parameter"
@@ -823,71 +862,41 @@ class Config {
                                     "var": "parameter_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "parameter_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "parameter",
                                 "{parameter_id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "parameter_id",
-                                        "orig": "parameter_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/parameter/{parameterId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "parameterId": "parameter_id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "parameter"
-                                },
-                                {
-                                    "var": "parameter_id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "parameter_id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "parameter",
-                                "{parameter_id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "parameter_id",
+                                        "orig": "parameter_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "parameter_id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "parameter"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "couple": {
@@ -899,7 +908,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/couple",
@@ -908,14 +916,16 @@ class Config {
                                     "lit": "couple"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "couple"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "couple"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -933,7 +943,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/dungeon",
@@ -942,14 +951,16 @@ class Config {
                                     "lit": "dungeon"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "dungeon"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "dungeon"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -962,6 +973,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -976,25 +988,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/element/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -1006,20 +1002,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "element",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "element",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1037,7 +1049,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/equipmentset",
@@ -1046,14 +1057,16 @@ class Config {
                                     "lit": "equipmentset"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "equipmentset"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "equipmentset"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1062,25 +1075,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "equipment_set_id",
-                                        "orig": "equipment_set_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/equipmentset/{equipmentSetIds}",
+                            "segments": [
+                                {
+                                    "lit": "equipmentset"
+                                },
+                                {
+                                    "var": "equipment_set_id"
+                                }
+                            ],
+                            "parts": [
+                                "equipmentset",
+                                "{equipment_set_id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "equipmentSetIds": "equipment_set_id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "equipment_set_id",
+                                        "orig": "equipment_set_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "equipment_set_id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/equipmentset/{equipmentSetId}",
                             "segments": [
                                 {
                                     "lit": "equipmentset"
@@ -1089,71 +1128,41 @@ class Config {
                                     "var": "equipment_set_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "equipment_set_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "equipmentset",
                                 "{equipment_set_id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "equipment_set_id",
-                                        "orig": "equipment_set_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/equipmentset/{equipmentSetId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "equipmentSetId": "equipment_set_id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "equipmentset"
-                                },
-                                {
-                                    "var": "equipment_set_id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "equipment_set_id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "equipmentset",
-                                "{equipment_set_id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "equipment_set_id",
+                                        "orig": "equipment_set_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "equipment_set_id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "equipmentset"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "exchange_menus": {
@@ -1165,7 +1174,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/exchangemenu",
@@ -1174,14 +1182,16 @@ class Config {
                                     "lit": "exchangemenu"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "exchangemenu"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "exchangemenu"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -1199,7 +1209,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/housingpack",
@@ -1208,14 +1217,16 @@ class Config {
                                     "lit": "housingpack"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "housingpack"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "housingpack"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1224,25 +1235,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "housing_pack_id",
-                                        "orig": "housing_pack_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/housingpack/{housingPackIds}",
+                            "segments": [
+                                {
+                                    "lit": "housingpack"
+                                },
+                                {
+                                    "var": "housing_pack_id"
+                                }
+                            ],
+                            "parts": [
+                                "housingpack",
+                                "{housing_pack_id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "housingPackIds": "housing_pack_id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "housing_pack_id",
+                                        "orig": "housing_pack_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "housing_pack_id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/housingpack/{housingPackId}",
                             "segments": [
                                 {
                                     "lit": "housingpack"
@@ -1251,71 +1288,41 @@ class Config {
                                     "var": "housing_pack_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "housing_pack_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "housingpack",
                                 "{housing_pack_id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "housing_pack_id",
-                                        "orig": "housing_pack_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/housingpack/{housingPackId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "housingPackId": "housing_pack_id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "housingpack"
-                                },
-                                {
-                                    "var": "housing_pack_id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "housing_pack_id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "housingpack",
-                                "{housing_pack_id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "housing_pack_id",
+                                        "orig": "housing_pack_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "housing_pack_id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "housingpack"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "housing_template": {
@@ -1327,7 +1334,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/housingtemplate",
@@ -1336,14 +1342,16 @@ class Config {
                                     "lit": "housingtemplate"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "housingtemplate"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "housingtemplate"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1352,25 +1360,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "file_name",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/housingtemplate/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "file_name"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -1382,41 +1374,83 @@ class Config {
                                     "var": "file_name"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "file_name"
-                                ]
+                            "parts": [
+                                "image",
+                                "housingtemplate",
+                                "{file_name}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "file_name"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "housingtemplate",
-                                "{file_name}"
-                            ]
-                        },
-                        {
                             "args": {
                                 "params": [
                                     {
+                                        "name": "file_name",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
                                         "kind": "param",
-                                        "name": "housing_template_id",
-                                        "orig": "housing_template_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "file_name"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/housingtemplate/{housingTemplateIds}",
+                            "segments": [
+                                {
+                                    "lit": "housingtemplate"
+                                },
+                                {
+                                    "var": "housing_template_id"
+                                }
+                            ],
+                            "parts": [
+                                "housingtemplate",
+                                "{housing_template_id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "housingTemplateIds": "housing_template_id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "housing_template_id",
+                                        "orig": "housing_template_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "housing_template_id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/housingtemplate/{housingTemplateId}",
                             "segments": [
                                 {
                                     "lit": "housingtemplate"
@@ -1425,77 +1459,48 @@ class Config {
                                     "var": "housing_template_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "housing_template_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "housingtemplate",
                                 "{housing_template_id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "housing_template_id",
-                                        "orig": "housing_template_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/housingtemplate/{housingTemplateId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "housingTemplateId": "housing_template_id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "housingtemplate"
-                                },
-                                {
-                                    "var": "housing_template_id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "housing_template_id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "housingtemplate",
-                                "{housing_template_id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "housing_template_id",
+                                        "orig": "housing_template_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "housing_template_id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "housingtemplate"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "item": {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -1510,7 +1515,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/item",
@@ -1519,14 +1523,16 @@ class Config {
                                     "lit": "item"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "item"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "item"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1535,25 +1541,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/item/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -1565,41 +1555,83 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "item",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "item",
-                                "{id}"
-                            ]
-                        },
-                        {
                             "args": {
                                 "params": [
                                     {
-                                        "kind": "param",
                                         "name": "id",
-                                        "orig": "item_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/item/{itemIds}",
+                            "segments": [
+                                {
+                                    "lit": "item"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "item",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "itemIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "item_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/item/{itemId}",
                             "segments": [
                                 {
                                     "lit": "item"
@@ -1608,61 +1640,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "item",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "item_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/item/{itemId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "itemId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "item"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "item",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "item_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1680,7 +1686,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/language",
@@ -1689,14 +1694,16 @@ class Config {
                                     "lit": "language"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "language"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "language"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1705,17 +1712,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "language_code",
-                                        "orig": "language_code",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/language/{languageCode}.png",
@@ -1730,21 +1726,33 @@ class Config {
                                     "lit": "{languageCode}.png"
                                 }
                             ],
+                            "parts": [
+                                "image",
+                                "language",
+                                "{languageCode}.png"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "language_code",
+                                        "orig": "language_code",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "language_code",
                                 "exist": [
                                     "language_code"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "image",
-                                "language",
-                                "{languageCode}.png"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1762,7 +1770,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/lifestyle",
@@ -1771,14 +1778,16 @@ class Config {
                                     "lit": "lifestyle"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "lifestyle"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "lifestyle"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -1791,6 +1800,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -1805,7 +1815,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/monster",
@@ -1814,14 +1823,16 @@ class Config {
                                     "lit": "monster"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "monster"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "monster"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1830,25 +1841,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/monster/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -1860,41 +1855,83 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "monster",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "monster",
-                                "{id}"
-                            ]
-                        },
-                        {
                             "args": {
                                 "params": [
                                     {
-                                        "kind": "param",
                                         "name": "id",
-                                        "orig": "monster_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/monster/{monsterIds}",
+                            "segments": [
+                                {
+                                    "lit": "monster"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "monster",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "monsterIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "monster_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/monster/{monsterId}",
                             "segments": [
                                 {
                                     "lit": "monster"
@@ -1903,61 +1940,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "monster",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "monster_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/monster/{monsterId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "monsterId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "monster"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "monster",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "monster_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1970,6 +1981,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -1984,7 +1996,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/npc",
@@ -1993,14 +2004,16 @@ class Config {
                                     "lit": "npc"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "npc"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "npc"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -2009,25 +2022,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/npc/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -2039,41 +2036,83 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "npc",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "npc",
-                                "{id}"
-                            ]
-                        },
-                        {
                             "args": {
                                 "params": [
                                     {
-                                        "kind": "param",
                                         "name": "id",
-                                        "orig": "npc_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/npc/{npcIds}",
+                            "segments": [
+                                {
+                                    "lit": "npc"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "npc",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "npcIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "npc_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/npc/{npcId}",
                             "segments": [
                                 {
                                     "lit": "npc"
@@ -2082,61 +2121,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "npc",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "npc_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/npc/{npcId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "npcId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "npc"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "npc",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "npc_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -2154,7 +2167,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/partyskill",
@@ -2163,14 +2175,16 @@ class Config {
                                     "lit": "partyskill"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "partyskill"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "partyskill"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -2179,25 +2193,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "party_skill_id",
-                                        "orig": "party_skill_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/partyskill/{partySkillIds}",
+                            "segments": [
+                                {
+                                    "lit": "partyskill"
+                                },
+                                {
+                                    "var": "party_skill_id"
+                                }
+                            ],
+                            "parts": [
+                                "partyskill",
+                                "{party_skill_id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "partySkillIds": "party_skill_id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "party_skill_id",
+                                        "orig": "party_skill_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "party_skill_id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/partyskill/{partySkillId}",
                             "segments": [
                                 {
                                     "lit": "partyskill"
@@ -2206,71 +2246,41 @@ class Config {
                                     "var": "party_skill_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "party_skill_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "partyskill",
                                 "{party_skill_id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "party_skill_id",
-                                        "orig": "party_skill_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/partyskill/{partySkillId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "partySkillId": "party_skill_id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "partyskill"
-                                },
-                                {
-                                    "var": "party_skill_id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "party_skill_id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "partyskill",
-                                "{party_skill_id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "party_skill_id",
+                                        "orig": "party_skill_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "party_skill_id"
+                                ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "partyskill"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "pkn": {
@@ -2282,7 +2292,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/pk",
@@ -2291,14 +2300,16 @@ class Config {
                                     "lit": "pk"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "pk"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "pk"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -2311,6 +2322,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -2325,25 +2337,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/place/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -2355,20 +2351,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "place",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "place",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -2381,6 +2393,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -2395,7 +2408,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/quest",
@@ -2404,14 +2416,16 @@ class Config {
                                     "lit": "quest"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "quest"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "quest"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -2420,25 +2434,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "quest_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/quest/{questIds}",
+                            "segments": [
+                                {
+                                    "lit": "quest"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "quest",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "questIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "quest_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/quest/{questId}",
                             "segments": [
                                 {
                                     "lit": "quest"
@@ -2447,61 +2487,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "quest",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "quest_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/quest/{questId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "questId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "quest"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "quest",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "quest_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -2519,7 +2533,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/raisedpet",
@@ -2528,14 +2541,16 @@ class Config {
                                     "lit": "raisedpet"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "raisedpet"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "raisedpet"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -2548,6 +2563,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -2562,7 +2578,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/recipe",
@@ -2571,14 +2586,16 @@ class Config {
                                     "lit": "recipe"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "recipe"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "recipe"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -2587,25 +2604,51 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "recipe_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/recipe/{recipeIds}",
+                            "segments": [
+                                {
+                                    "lit": "recipe"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "recipe",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "recipeIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "recipe_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/recipe/{recipeId}",
                             "segments": [
                                 {
                                     "lit": "recipe"
@@ -2614,61 +2657,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "recipe",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "recipe_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/recipe/{recipeId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "recipeId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "recipe"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "recipe",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "recipe_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -2681,6 +2698,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -2695,7 +2713,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/skill",
@@ -2704,14 +2721,16 @@ class Config {
                                     "lit": "skill"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "skill"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "skill"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -2720,25 +2739,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "file_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/skill/{fileName}",
-                            "rename": {
-                                "param": {
-                                    "fileName": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "image"
@@ -2750,41 +2753,83 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "image",
+                                "skill",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "fileName": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "image",
-                                "skill",
-                                "{id}"
-                            ]
-                        },
-                        {
                             "args": {
                                 "params": [
                                     {
-                                        "kind": "param",
                                         "name": "id",
-                                        "orig": "skill_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
+                                        "orig": "file_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/skill/{skillIds}",
+                            "segments": [
+                                {
+                                    "lit": "skill"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "skill",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "skillIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "skill_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/skill/{skillId}",
                             "segments": [
                                 {
                                     "lit": "skill"
@@ -2793,61 +2838,35 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "skill",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "skill_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/skill/{skillId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "skillId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "skill"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "skill",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "skill_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -2865,7 +2884,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/upgradelevelbonus",
@@ -2874,14 +2892,16 @@ class Config {
                                     "lit": "upgradelevelbonus"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "upgradelevelbonus"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "upgradelevelbonus"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -2899,7 +2919,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/version/api",
@@ -2911,20 +2930,21 @@ class Config {
                                     "lit": "api"
                                 }
                             ],
-                            "select": {
-                                "$action": "api"
-                            },
+                            "parts": [
+                                "version",
+                                "api"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "version",
-                                "api"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "api"
+                            }
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/version/data",
@@ -2936,17 +2956,19 @@ class Config {
                                     "lit": "data"
                                 }
                             ],
-                            "select": {
-                                "$action": "data"
-                            },
+                            "parts": [
+                                "version",
+                                "data"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "version",
-                                "data"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "data"
+                            }
                         }
                     ]
                 }
@@ -2959,91 +2981,106 @@ class Config {
             "fields": [
                 {
                     "name": "continents",
+                    "title": "Continents",
+                    "type": "`$ARRAY`",
                     "req": true,
-                    "short": "Continents in the World",
-                    "type": "`$ARRAY`"
+                    "short": "Continents in the World"
                 },
                 {
                     "name": "flying",
+                    "title": "Flying",
+                    "type": "`$BOOLEAN`",
                     "req": true,
-                    "short": "Whether players can fly in the World or not",
-                    "type": "`$BOOLEAN`"
+                    "short": "Whether players can fly in the World or not"
                 },
                 {
                     "name": "height",
+                    "title": "Height",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Height of the World in meters",
-                    "type": "`$INTEGER`"
+                    "short": "Height of the World in meters"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "ID of the World",
-                    "type": "`$INTEGER`"
+                    "short": "ID of the World"
                 },
                 {
                     "name": "inDoor",
+                    "title": "In Door",
+                    "type": "`$BOOLEAN`",
                     "req": true,
-                    "short": "Whether the World has a sky or not",
-                    "type": "`$BOOLEAN`"
+                    "short": "Whether the World has a sky or not"
                 },
                 {
                     "name": "lodestars",
+                    "title": "Lodestars",
+                    "type": "`$ARRAY`",
                     "req": true,
-                    "short": "Revival places in the World",
-                    "type": "`$ARRAY`"
+                    "short": "Revival places in the World"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$OBJECT`",
                     "req": true,
-                    "short": "Text available in several languages",
-                    "type": "`$OBJECT`"
+                    "short": "Text available in several languages"
                 },
                 {
                     "name": "pk",
+                    "title": "Pk",
+                    "type": "`$BOOLEAN`",
                     "req": true,
-                    "short": "Whether players can kill other players in the World or not",
-                    "type": "`$BOOLEAN`"
+                    "short": "Whether players can kill other players in the World or not"
                 },
                 {
                     "name": "places",
+                    "title": "Places",
+                    "type": "`$ARRAY`",
                     "req": true,
-                    "short": "Special Places in the World",
-                    "type": "`$ARRAY`"
+                    "short": "Special Places in the World"
                 },
                 {
                     "name": "revivalKey",
-                    "short": "ID of the Lodestar where players revive when they die in the World",
-                    "type": "`$STRING`"
+                    "title": "Revival Key",
+                    "type": "`$STRING`",
+                    "short": "ID of the Lodestar where players revive when they die in the World"
                 },
                 {
                     "name": "revivalWorld",
-                    "short": "ID of the World where players revive when they die in the World",
-                    "type": "`$INTEGER`"
+                    "title": "Revival World",
+                    "type": "`$INTEGER`",
+                    "short": "ID of the World where players revive when they die in the World"
                 },
                 {
                     "name": "tileName",
+                    "title": "Tile Name",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the world Tiles for navigator",
-                    "type": "`$STRING`"
+                    "short": "Name of the world Tiles for navigator"
                 },
                 {
                     "name": "tileSize",
+                    "title": "Tile Size",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "World meters per Tile",
-                    "type": "`$INTEGER`"
+                    "short": "World meters per Tile"
                 },
                 {
                     "name": "type",
+                    "title": "Type",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Type of the World",
-                    "type": "`$STRING`"
+                    "short": "Type of the World"
                 },
                 {
                     "name": "width",
+                    "title": "Width",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Width of the World in meters",
-                    "type": "`$INTEGER`"
+                    "short": "Width of the World in meters"
                 }
             ],
             "id": {
@@ -3057,7 +3094,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/world",
@@ -3066,14 +3102,16 @@ class Config {
                                     "lit": "world"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "world"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "world"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -3082,32 +3120,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "tile_x",
-                                        "orig": "tile_x",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "tile_y",
-                                        "orig": "tile_y",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "wdmadrigal",
-                                        "kind": "param",
-                                        "name": "world_tile_name",
-                                        "orig": "world_tile_name",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/image/world/{worldTileName}{tileX}-{tileY}-0.png",
@@ -3122,6 +3134,42 @@ class Config {
                                     "lit": "{worldTileName}{tileX}-{tileY}-0.png"
                                 }
                             ],
+                            "parts": [
+                                "image",
+                                "world",
+                                "{worldTileName}{tileX}-{tileY}-0.png"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "tile_x",
+                                        "orig": "tile_x",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "tile_y",
+                                        "orig": "tile_y",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "world_tile_name",
+                                        "orig": "world_tile_name",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "wdmadrigal"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "world_tile_nametile_x_tile_y_0",
                                 "exist": [
@@ -3129,38 +3177,55 @@ class Config {
                                     "tile_y",
                                     "world_tile_name"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "image",
-                                "world",
-                                "{worldTileName}{tileX}-{tileY}-0.png"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": "4015,4839,6063",
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "world_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/world/{worldIds}",
+                            "segments": [
+                                {
+                                    "lit": "world"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
+                            "parts": [
+                                "world",
+                                "{id}"
+                            ],
                             "rename": {
                                 "param": {
                                     "worldIds": "id"
                                 }
                             },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "world_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "4015,4839,6063"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/world/{worldId}",
                             "segments": [
                                 {
                                     "lit": "world"
@@ -3169,62 +3234,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "world",
                                 "{id}"
-                            ]
-                        },
-                        {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 4015,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "world_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/world/{worldId}",
+                            ],
                             "rename": {
                                 "param": {
                                     "worldId": "id"
                                 }
                             },
-                            "segments": [
-                                {
-                                    "lit": "world"
-                                },
-                                {
-                                    "var": "id"
-                                }
-                            ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "world",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "world_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 4015
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

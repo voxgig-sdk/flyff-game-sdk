@@ -158,7 +158,7 @@ func party_skillBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"party_skill01", "party_skill02", "party_skill03", "partyskill01", "partyskill02", "partyskill03"},
+		[]any{"party_skill01", "party_skill02", "party_skill03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,69 @@
+# Entity: awake
+
+main: kit: entity: awake: {
+
+  alias: field: {}
+
+  name: "awake"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /awake/skill"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/awake/skill"
+          q: {
+            "$action": "skill"
+          }
+          s: [
+            {
+              lit: "awake"
+            }
+            {
+              lit: "skill"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /awake/stat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/awake/stat"
+          q: {
+            "$action": "stat"
+          }
+          s: [
+            {
+              lit: "awake"
+            }
+            {
+              lit: "stat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

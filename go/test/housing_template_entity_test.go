@@ -158,7 +158,7 @@ func housing_templateBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"housing_template01", "housing_template02", "housing_template03", "housingtemplate01", "housingtemplate02", "housingtemplate03"},
+		[]any{"housing_template01", "housing_template02", "housing_template03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

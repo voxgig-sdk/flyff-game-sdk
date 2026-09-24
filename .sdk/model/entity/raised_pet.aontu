@@ -1,0 +1,39 @@
+# Entity: raised_pet
+
+main: kit: entity: raised_pet: {
+
+  alias: field: {}
+
+  name: "raised_pet"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /raisedpet"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/raisedpet"
+          s: [
+            {
+              lit: "raisedpet"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

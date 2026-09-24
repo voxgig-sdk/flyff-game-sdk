@@ -1,0 +1,44 @@
+# BasicItemFlow
+
+main: kit: flow: BasicItemFlow:
+{
+  entity: "item",
+  kind: "basic",
+  name: "BasicItemFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "item_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "item_ref01",
+        srcdatavar: "item_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "item01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-item_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicItemFlow"
+}

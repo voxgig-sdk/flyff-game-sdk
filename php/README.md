@@ -46,15 +46,13 @@ try {
 }
 ```
 
-### 3. Load a core
-
-Core is nested under parameter, so provide the `parameter_id`.
+### 3. Load an achievement
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the Core record (throws on error).
-    $core = $client->Core()->load(["parameter_id" => "example_parameter_id"]);
-    print_r($core->data_get());
+    // load() returns the ENTITY — call data_get() for the Achievement record (throws on error).
+    $achievement = $client->Achievement()->load(["id" => "example_id"]);
+    print_r($achievement->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

@@ -1,0 +1,39 @@
+# Entity: lifestyle
+
+main: kit: entity: lifestyle: {
+
+  alias: field: {}
+
+  name: "lifestyle"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /lifestyle"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/lifestyle"
+          s: [
+            {
+              lit: "lifestyle"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

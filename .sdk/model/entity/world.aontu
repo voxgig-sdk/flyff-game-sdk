@@ -1,0 +1,298 @@
+# Entity: world
+
+main: kit: entity: world: {
+
+  alias: field: {}
+
+  fields: {
+    continents: {
+      h: "Continents"
+      n: "continents"
+      r: true
+      sh: "Continents in the World"
+      t: "`$ARRAY`"
+    }
+    flying: {
+      h: "Flying"
+      n: "flying"
+      r: true
+      sh: "Whether players can fly in the World or not"
+      t: "`$BOOLEAN`"
+    }
+    height: {
+      h: "Height"
+      n: "height"
+      r: true
+      sh: "Height of the World in meters"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "ID of the World"
+      t: "`$INTEGER`"
+    }
+    inDoor: {
+      h: "In Door"
+      n: "inDoor"
+      r: true
+      sh: "Whether the World has a sky or not"
+      t: "`$BOOLEAN`"
+    }
+    lodestars: {
+      h: "Lodestars"
+      n: "lodestars"
+      r: true
+      sh: "Revival places in the World"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Text available in several languages"
+      t: "`$OBJECT`"
+    }
+    pk: {
+      h: "Pk"
+      n: "pk"
+      r: true
+      sh: "Whether players can kill other players in the World or not"
+      t: "`$BOOLEAN`"
+    }
+    places: {
+      h: "Places"
+      n: "places"
+      r: true
+      sh: "Special Places in the World"
+      t: "`$ARRAY`"
+    }
+    revivalKey: {
+      h: "Revival Key"
+      n: "revivalKey"
+      r: false
+      sh: "ID of the Lodestar where players revive when they die in the World"
+      t: "`$STRING`"
+    }
+    revivalWorld: {
+      h: "Revival World"
+      n: "revivalWorld"
+      r: false
+      sh: "ID of the World where players revive when they die in the World"
+      t: "`$INTEGER`"
+    }
+    tileName: {
+      h: "Tile Name"
+      n: "tileName"
+      r: true
+      sh: "Name of the world Tiles for navigator"
+      t: "`$STRING`"
+    }
+    tileSize: {
+      h: "Tile Size"
+      n: "tileSize"
+      r: true
+      sh: "World meters per Tile"
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Type of the World"
+      t: "`$STRING`"
+    }
+    width: {
+      h: "Width"
+      n: "width"
+      r: true
+      sh: "Width of the World in meters"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "world"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /world"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/world"
+          s: [
+            {
+              lit: "world"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /image/world/{worldTileName}{tileX}-{tileY}-0.png"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "tile_x"
+                or: "tile_x"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "tile_y"
+                or: "tile_y"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "wdmadrigal"
+                k: "param"
+                n: "world_tile_name"
+                or: "world_tile_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/image/world/{worldTileName}{tileX}-{tileY}-0.png"
+          q: {
+            "$action": "world_tile_nametile_x_tile_y_0"
+            exist: [
+              "tile_x"
+              "tile_y"
+              "world_tile_name"
+            ]
+          }
+          s: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "world"
+            }
+            {
+              lit: "{worldTileName}{tileX}-{tileY}-0.png"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /world/{worldIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4015,4839,6063"
+                k: "param"
+                n: "id"
+                or: "world_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/world/{worldIds}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              worldIds: "id"
+            }
+          }
+          s: [
+            {
+              lit: "world"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /world/{worldId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 4015
+                k: "param"
+                n: "id"
+                or: "world_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/world/{worldId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              worldId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "world"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

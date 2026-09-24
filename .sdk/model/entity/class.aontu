@@ -1,0 +1,398 @@
+# Entity: class
+
+main: kit: entity: class: {
+
+  alias: field: {}
+
+  fields: {
+    attackSpeed: {
+      fo: "float"
+      h: "Attack Speed"
+      n: "attackSpeed"
+      r: true
+      sh: "Attack speed constant used in attack speed calculation"
+      t: "`$NUMBER`"
+    }
+    autoAttackFactors: {
+      h: "Auto Attack Factors"
+      n: "autoAttackFactors"
+      r: true
+      sh: "Auto attack damage factors used in damage calculation"
+      t: "`$OBJECT`"
+    }
+    block: {
+      fo: "float"
+      h: "Block"
+      n: "block"
+      r: true
+      sh: "Blocking constant used in block calculation"
+      t: "`$NUMBER`"
+    }
+    critical: {
+      fo: "float"
+      h: "Critical"
+      n: "critical"
+      r: true
+      sh: "Critical chance constant used in critical chance calculation"
+      t: "`$NUMBER`"
+    }
+    defense: {
+      fo: "float"
+      h: "Defense"
+      n: "defense"
+      r: true
+      sh: "Defense factor use in defensive calculations"
+      t: "`$NUMBER`"
+    }
+    fp: {
+      fo: "float"
+      h: "Fp"
+      n: "fp"
+      r: true
+      sh: "FP Factor"
+      t: "`$NUMBER`"
+    }
+    hp: {
+      fo: "float"
+      h: "Hp"
+      n: "hp"
+      r: true
+      sh: "HP Factor"
+      t: "`$NUMBER`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: true
+      sh: "Icon of the Class"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "ID of the class"
+      t: "`$INTEGER`"
+    }
+    magicDefenseIntFactor: {
+      fo: "float"
+      h: "Magic Defense Int Factor"
+      n: "magicDefenseIntFactor"
+      r: true
+      sh: "Magic defense factor based on INT used in defensive calculations"
+      t: "`$NUMBER`"
+    }
+    magicDefenseStaFactor: {
+      fo: "float"
+      h: "Magic Defense Sta Factor"
+      n: "magicDefenseStaFactor"
+      r: true
+      sh: "Magic defense factor based on STA used in defensive calculations"
+      t: "`$NUMBER`"
+    }
+    maxFP: {
+      h: "Max Fp"
+      n: "maxFP"
+      r: true
+      sh: "Formula to compute the maximum Fatigue Points of the player"
+      t: "`$STRING`"
+    }
+    maxHP: {
+      h: "Max Hp"
+      n: "maxHP"
+      r: true
+      sh: "Formula to compute the maximum Hit Points of the player"
+      t: "`$STRING`"
+    }
+    maxLevel: {
+      h: "Max Level"
+      n: "maxLevel"
+      r: true
+      sh: "Maximum player level for the Class"
+      t: "`$INTEGER`"
+    }
+    maxMP: {
+      h: "Max Mp"
+      n: "maxMP"
+      r: true
+      sh: "Formula to compute the maximum Mana Points of the player"
+      t: "`$STRING`"
+    }
+    minLevel: {
+      h: "Min Level"
+      n: "minLevel"
+      r: true
+      sh: "Minimum player level for the Class"
+      t: "`$INTEGER`"
+    }
+    mp: {
+      fo: "float"
+      h: "Mp"
+      n: "mp"
+      r: true
+      sh: "MP Factor"
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Text available in several languages"
+      t: "`$OBJECT`"
+    }
+    parent: {
+      h: "Parent"
+      n: "parent"
+      r: false
+      sh: "ID of the parent class"
+      t: "`$INTEGER`"
+    }
+    tree: {
+      h: "Tree"
+      n: "tree"
+      r: true
+      sh: "Skill tree image for the class"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Type of the class"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "class"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /class"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/class"
+          s: [
+            {
+              lit: "class"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /image/class/{style}/{fileName}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "vagrant.png"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "messenger"
+                k: "param"
+                n: "style"
+                or: "style"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/image/class/{style}/{fileName}"
+          q: {
+            exist: [
+              "file_name"
+              "style"
+            ]
+          }
+          r: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          s: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "class"
+            }
+            {
+              var: "style"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /image/class/tree/{fileName}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "Vagrant.png"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/image/class/tree/{fileName}"
+          q: {
+            exist: [
+              "file_name"
+            ]
+          }
+          r: {
+            param: {
+              fileName: "file_name"
+            }
+          }
+          s: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "class"
+            }
+            {
+              lit: "tree"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /class/{classIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "1689,296,2881"
+                k: "param"
+                n: "id"
+                or: "class_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/class/{classIds}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              classIds: "id"
+            }
+          }
+          s: [
+            {
+              lit: "class"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /class/{classId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1689
+                k: "param"
+                n: "id"
+                or: "class_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/class/{classId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              classId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "class"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -44,10 +44,6 @@ const live_runner_1 = require("../../live-runner");
 const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
 (0, node_test_1.describe)('RaisedPetEntity', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
@@ -66,7 +62,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [], "name": "raised_pet", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": {}, "contract": { "id": "GET /raisedpet", "json": "{\"operationId\":\"getRaisedPetInformation\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/raisedpet", "segments": [{ "lit": "raisedpet" }], "select": {}, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "raised_pet", "name__orig": "raised_pet", "Name": "RaisedPet", "name_": "raised_pet", "name-": "raised-pet", "NAME": "RAISED_PET", "index$": 21 }, { "active": true, "entity": "raised_pet", "key$": "BasicRaisedPetFlow", "kind": "basic", "name": "BasicRaisedPetFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "raised_pet_ref01", "srcdatavar": "raised_pet_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-raised_pet_ref01" } }], "index$": 0 }] }, 'RaisedPet');
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "raised_pet", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /raisedpet", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/raisedpet", "q": {}, "r": {}, "s": [{ "lit": "raisedpet" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "raised_pet", "name__orig": "raised_pet", "Name": "RaisedPet", "name_": "raised_pet", "name-": "raised-pet", "NAME": "RAISED_PET", "index$": 21 }, { "active": true, "entity": "raised_pet", "key$": "BasicRaisedPetFlow", "kind": "basic", "name": "BasicRaisedPetFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "raised_pet_ref01", "srcdatavar": "raised_pet_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-raised_pet_ref01" } }], "index$": 0 }] }, 'RaisedPet', { "GET /raisedpet": { "protocol": "http", "operationId": "getRaisedPetInformation", "responses": { "200": { "description": "Successful operation", "content": { "application/json": { "schema": { "type": "object" } } } } }, "parameters": [], "securitySource": "unspecified" } });
         }
         const client = setup.client;
         const struct = setup.struct;

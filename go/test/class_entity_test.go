@@ -164,7 +164,7 @@ func classBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"class01", "class02", "class03", "tree01", "tree02", "tree03"},
+		[]any{"class01", "class02", "class03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

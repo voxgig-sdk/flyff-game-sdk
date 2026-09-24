@@ -120,7 +120,7 @@ function equipment_set_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "equipment_set01", "equipment_set02", "equipment_set03", "equipmentset01", "equipmentset02", "equipmentset03" },
+    { "equipment_set01", "equipment_set02", "equipment_set03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

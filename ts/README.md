@@ -47,17 +47,14 @@ for (const achievement of achievements) {
 }
 ```
 
-### 3. Load a core
+### 3. Load an achievement
 
-Core is nested under parameter, so provide the `parameter_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const core = await client.Core().load({
-    parameter_id: 'example_parameter_id',
-  })
-  console.log(core)
+  const achievement = await client.Achievement().load({ id: 'example_id' })
+  console.log(achievement)
 } catch (err) {
   console.error('load failed:', err)
 }

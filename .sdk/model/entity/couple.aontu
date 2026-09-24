@@ -1,0 +1,39 @@
+# Entity: couple
+
+main: kit: entity: couple: {
+
+  alias: field: {}
+
+  name: "couple"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /couple"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/couple"
+          s: [
+            {
+              lit: "couple"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

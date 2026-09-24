@@ -119,7 +119,7 @@ function class_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["class01", "class02", "class03", "tree01", "tree02", "tree03"] as $k) {
+    foreach (["class01", "class02", "class03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

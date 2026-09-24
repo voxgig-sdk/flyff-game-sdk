@@ -1,0 +1,105 @@
+# Entity: core
+
+main: kit: entity: core: {
+
+  alias: field: {}
+
+  name: "core"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /parameter/{parameterIds}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "parameter_id"
+                or: "parameter_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/parameter/{parameterIds}"
+          q: {
+            exist: [
+              "parameter_id"
+            ]
+          }
+          r: {
+            param: {
+              parameterIds: "parameter_id"
+            }
+          }
+          s: [
+            {
+              lit: "parameter"
+            }
+            {
+              var: "parameter_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /parameter/{parameterId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "parameter_id"
+                or: "parameter_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/parameter/{parameterId}"
+          q: {
+            exist: [
+              "parameter_id"
+            ]
+          }
+          r: {
+            param: {
+              parameterId: "parameter_id"
+            }
+          }
+          s: [
+            {
+              lit: "parameter"
+            }
+            {
+              var: "parameter_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

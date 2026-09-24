@@ -1,0 +1,44 @@
+# BasicAchievementFlow
+
+main: kit: flow: BasicAchievementFlow:
+{
+  entity: "achievement",
+  kind: "basic",
+  name: "BasicAchievementFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "achievement_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "achievement_ref01",
+        srcdatavar: "achievement_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "achievement01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-achievement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAchievementFlow"
+}

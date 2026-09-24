@@ -44,10 +44,6 @@ const live_runner_1 = require("../../live-runner");
 const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
 (0, node_test_1.describe)('ExchangeMenusEntity', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
@@ -66,7 +62,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [], "name": "exchange_menus", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": {}, "contract": { "id": "GET /exchangemenu", "json": "{\"operationId\":\"getExchangeMenus\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/exchangemenu", "segments": [{ "lit": "exchangemenu" }], "select": {}, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "exchange_menus", "name__orig": "exchange_menus", "Name": "ExchangeMenus", "name_": "exchange_menus", "name-": "exchange-menus", "NAME": "EXCHANGE_MENUS", "index$": 9 }, { "active": true, "entity": "exchange_menus", "key$": "BasicExchangeMenusFlow", "kind": "basic", "name": "BasicExchangeMenusFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "exchange_menus_ref01", "srcdatavar": "exchange_menus_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-exchange_menus_ref01" } }], "index$": 0 }] }, 'ExchangeMenus');
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "exchange_menus", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /exchangemenu", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/exchangemenu", "q": {}, "r": {}, "s": [{ "lit": "exchangemenu" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "exchange_menus", "name__orig": "exchange_menus", "Name": "ExchangeMenus", "name_": "exchange_menus", "name-": "exchange-menus", "NAME": "EXCHANGE_MENUS", "index$": 9 }, { "active": true, "entity": "exchange_menus", "key$": "BasicExchangeMenusFlow", "kind": "basic", "name": "BasicExchangeMenusFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "exchange_menus_ref01", "srcdatavar": "exchange_menus_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-exchange_menus_ref01" } }], "index$": 0 }] }, 'ExchangeMenus', { "GET /exchangemenu": { "protocol": "http", "operationId": "getExchangeMenus", "responses": { "200": { "description": "Successful operation", "content": { "application/json": { "schema": { "type": "object" } } } } }, "parameters": [], "securitySource": "unspecified" } });
         }
         const client = setup.client;
         const struct = setup.struct;

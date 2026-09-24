@@ -104,7 +104,7 @@ def housing_template_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["housing_template01", "housing_template02", "housing_template03", "housingtemplate01", "housingtemplate02", "housingtemplate03"],
+    ["housing_template01", "housing_template02", "housing_template03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

@@ -1,0 +1,44 @@
+# BasicClassFlow
+
+main: kit: flow: BasicClassFlow:
+{
+  entity: "class",
+  kind: "basic",
+  name: "BasicClassFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "class_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "class_ref01",
+        srcdatavar: "class_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "class01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-class_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClassFlow"
+}

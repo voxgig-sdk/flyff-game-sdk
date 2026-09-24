@@ -1,0 +1,85 @@
+# Entity: language
+
+main: kit: entity: language: {
+
+  alias: field: {}
+
+  name: "language"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /language"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/language"
+          s: [
+            {
+              lit: "language"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /image/language/{languageCode}.png"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "language_code"
+                or: "language_code"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/image/language/{languageCode}.png"
+          q: {
+            "$action": "language_code"
+            exist: [
+              "language_code"
+            ]
+          }
+          s: [
+            {
+              lit: "image"
+            }
+            {
+              lit: "language"
+            }
+            {
+              lit: "{languageCode}.png"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

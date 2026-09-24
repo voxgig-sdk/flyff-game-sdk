@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('UpgradeLevelBonusEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"upgrade_level_bonus","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /upgradelevelbonus","json":"{\"operationId\":\"getUpgradeLevelBonus\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Successful operation\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/upgradelevelbonus","segments":[{"lit":"upgradelevelbonus"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"upgrade_level_bonus","name__orig":"upgrade_level_bonus","Name":"UpgradeLevelBonus","name_":"upgrade_level_bonus","name-":"upgrade-level-bonus","NAME":"UPGRADE_LEVEL_BONUS","index$":24}, {"active":true,"entity":"upgrade_level_bonus","key$":"BasicUpgradeLevelBonusFlow","kind":"basic","name":"BasicUpgradeLevelBonusFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"upgrade_level_bonus_ref01","srcdatavar":"upgrade_level_bonus_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-upgrade_level_bonus_ref01"}}],"index$":0}]}, 'UpgradeLevelBonus')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"upgrade_level_bonus","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /upgradelevelbonus","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/upgradelevelbonus","q":{},"r":{},"s":[{"lit":"upgradelevelbonus"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"upgrade_level_bonus","name__orig":"upgrade_level_bonus","Name":"UpgradeLevelBonus","name_":"upgrade_level_bonus","name-":"upgrade-level-bonus","NAME":"UPGRADE_LEVEL_BONUS","index$":24}, {"active":true,"entity":"upgrade_level_bonus","key$":"BasicUpgradeLevelBonusFlow","kind":"basic","name":"BasicUpgradeLevelBonusFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"upgrade_level_bonus_ref01","srcdatavar":"upgrade_level_bonus_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-upgrade_level_bonus_ref01"}}],"index$":0}]}, 'UpgradeLevelBonus', {"GET /upgradelevelbonus":{"protocol":"http","operationId":"getUpgradeLevelBonus","responses":{"200":{"description":"Successful operation","content":{"application/json":{"schema":{"type":"object"}}}}},"parameters":[],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct

@@ -20,24 +20,8 @@
   "requests": {
     "GET /raisedpet": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getRaisedPetInformation",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful operation"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

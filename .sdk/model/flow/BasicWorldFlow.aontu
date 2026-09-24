@@ -1,0 +1,44 @@
+# BasicWorldFlow
+
+main: kit: flow: BasicWorldFlow:
+{
+  entity: "world",
+  kind: "basic",
+  name: "BasicWorldFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "world_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "world_ref01",
+        srcdatavar: "world_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "world01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-world_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorldFlow"
+}
